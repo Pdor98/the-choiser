@@ -1,0 +1,7 @@
+@theme {
+  --color-background: #04070d;
+  --color-foreground: #f8fafc;
+  --font-heading: "Avenir Next Condensed", "Arial Narrow", "Trebuchet MS",
+    sans-serif;
+  --font-body: "Avenir Next", "Segoe UI", sans-serif;
+}

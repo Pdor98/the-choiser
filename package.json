@@ -1,0 +1,39 @@
+{
+  "name": "choiser",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "node_modules/node/bin/node ./node_modules/next/dist/bin/next dev",
+    "build": "node_modules/node/bin/node ./node_modules/next/dist/bin/next build --webpack",
+    "start": "node_modules/node/bin/node ./node_modules/next/dist/bin/next start --hostname 0.0.0.0 --port 3000",
+    "lint": "node_modules/node/bin/node ./node_modules/eslint/bin/eslint.js .",
+    "typecheck": "node_modules/node/bin/node ./node_modules/typescript/bin/tsc --noEmit"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.8.0",
+    "next": "^16.2.3",
+    "node": "22.22.2",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "tailwind-merge": "^3.5.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@tailwindcss/postcss": "^4.2.2",
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.3",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.2"
+  },
+  "optionalDependencies": {
+    "@tailwindcss/oxide-darwin-arm64": "^4.2.2"
+  }
+}
