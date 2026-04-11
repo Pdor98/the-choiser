@@ -1,6 +1,40 @@
 # The Choiser
 
-The Choiser is a polished interactive web app with mini-games, random generators, and practical tools. The project is built with Next.js but is also prepared for static export so it can be published on GitHub Pages and opened from phones, tablets, and other devices without a backend.
+The Choiser is a modern interactive web app that mixes mini-games, random generators, and useful tools in a single polished experience. It is built with Next.js and exported as a static site so it can run smoothly on GitHub Pages without any backend.
+
+## Live Demo
+
+[Open the live site](https://pdor98.github.io/the-choiser/)
+
+## Highlights
+
+- dark, responsive UI designed for desktop and mobile
+- category-based navigation for Random, Games, and Tools
+- interactive mini-games including `TAB-WHO ?`
+- static export workflow ready for GitHub Pages deployment
+
+## Included Experiences
+
+### Home
+
+- category hub with direct access to the app sections
+
+### Random
+
+- random number generator
+- "what should I do today?" generator
+
+### Games
+
+- `TAB-WHO ?`
+- Guess the Number
+- Bottle Spin
+- Elimination Wheel
+- Dice Arena
+
+### Tools
+
+- countdown timer
 
 ## Stack
 
@@ -10,64 +44,55 @@ The Choiser is a polished interactive web app with mini-games, random generators
 - Tailwind CSS 4
 - Framer Motion
 
-## Local scripts
+## Local Development
 
-- `npm run dev`
+Run the project locally with:
+
+```bash
+npm run dev
+```
+
+Useful scripts:
+
 - `npm run build`
 - `npm run lint`
 - `npm run typecheck`
 - `npm run export:pages`
 
-## GitHub Pages setup
+## GitHub Pages
 
-This repository is configured to generate a static export into the `docs/` folder. That is the publishable version for GitHub Pages.
+This repository is configured to publish the static export from the `docs/` folder.
 
-### Export the site
-
-Run:
+Generate the deployable build with:
 
 ```bash
 npm run export:pages
 ```
 
-This script:
+The export script:
 
 - builds the app in static export mode
-- rewrites asset paths for the `/the-choiser` GitHub Pages URL
-- generates the deployable site into `docs/`
+- rewrites routes and assets for `/the-choiser`
+- generates the publishable files into `docs/`
 - creates `docs/.nojekyll`
 
-## How to publish on GitHub Pages
+### Publish Steps
 
-1. Create a GitHub repository named `the-choiser`.
-2. Push the whole project to the `main` branch.
-3. Run `npm run export:pages`.
-4. Commit and push the generated `docs/` folder.
-5. Open `Settings -> Pages`.
-6. Set:
-   - `Source`: `Deploy from branch`
-   - `Branch`: `main`
-   - `Folder`: `/docs`
-7. Save and wait for GitHub Pages to publish the site.
+1. Push the repository to GitHub.
+2. Run `npm run export:pages`.
+3. Commit and push the updated `docs/` folder.
+4. Open `Settings -> Pages`.
+5. Set `Deploy from branch`.
+6. Choose `main` and `/docs`.
+7. Wait for GitHub Pages to publish the site.
 
-The final URL will be:
+The final URL is:
 
 ```text
 https://USERNAME.github.io/the-choiser
 ```
 
-## Important note
+## Notes
 
-GitHub Pages does not build a Next.js application directly from source when using the repository branch as a static site source. Because of that, this project must publish the generated static output from `docs/`, not the raw source files from the repository root.
-
-## Mobile compatibility
-
-The app is responsive and optimized for modern browsers on:
-
-- phones
-- tablets
-- desktops
-
-## Environment note
-
-The local setup available during development ships with Node 18, while Next.js 16 requires Node 20.9 or newer. To keep the project runnable without changing the system installation, the scripts use the project-local Node 22 binary provided by the `node` package.
+- GitHub Pages does not build a Next.js app directly from the raw source tree, so this project publishes the generated static output from `docs/`.
+- The local development environment uses a project-local Node 22 binary because Next.js 16 requires Node 20.9 or newer.
