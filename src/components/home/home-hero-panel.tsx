@@ -10,7 +10,7 @@ import { SectionBadge } from "@/components/ui/section-badge";
 
 export function HomeHeroPanel() {
   return (
-    <Card className="relative overflow-hidden border-white/8 bg-[linear-gradient(180deg,rgba(12,23,40,0.94),rgba(15,29,51,0.92))] p-6 shadow-[0_28px_68px_-44px_rgba(37,99,235,0.26)] sm:p-7">
+    <Card className="relative overflow-hidden border-white/8 bg-[linear-gradient(180deg,rgba(12,23,40,0.94),rgba(15,29,51,0.92))] p-5 shadow-[0_28px_68px_-44px_rgba(37,99,235,0.26)] sm:p-7">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-cyan-300/16 via-indigo-300/8 to-transparent" />
       <div className="pointer-events-none absolute -right-10 bottom-0 h-36 w-36 rounded-full bg-cyan-300/12 blur-3xl" />
       <div className="relative space-y-6">
@@ -19,12 +19,12 @@ export function HomeHeroPanel() {
         </SectionBadge>
 
         <div className="space-y-4">
-          <div className="flex size-14 items-center justify-center rounded-[20px] border border-cyan-300/16 bg-white/6 text-cyan-200 shadow-[0_18px_44px_-30px_rgba(56,189,248,0.2)]">
+          <div className="flex size-12 items-center justify-center rounded-[20px] border border-cyan-300/16 bg-white/6 text-cyan-200 shadow-[0_18px_44px_-30px_rgba(56,189,248,0.2)] sm:size-14">
             <Sparkles className="size-6" />
           </div>
 
           <div className="space-y-3">
-            <h2 className="font-heading text-2xl font-semibold tracking-tight text-slate-50">
+            <h2 className="font-heading text-xl font-semibold tracking-tight text-slate-50 sm:text-2xl">
               Una dashboard dark più morbida, leggibile e immediata.
             </h2>
             <p className="text-sm leading-7 text-slate-300">

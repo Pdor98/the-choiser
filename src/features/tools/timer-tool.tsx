@@ -94,17 +94,17 @@ function ClassicTimerDisplay({
   progress: number;
 }) {
   return (
-    <div className="rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(11,21,37,0.96),rgba(15,29,50,0.94))] p-6 shadow-[0_24px_60px_-38px_rgba(37,99,235,0.26)]">
-      <div className="flex items-center justify-between gap-4">
+    <div className="rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(11,21,37,0.96),rgba(15,29,50,0.94))] p-5 shadow-[0_24px_60px_-38px_rgba(37,99,235,0.26)] sm:p-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
             Tempo rimanente
           </p>
-          <p className="font-heading mt-3 text-5xl font-semibold tracking-tight text-slate-50 sm:text-6xl">
+          <p className="font-heading mt-3 text-4xl font-semibold tracking-tight text-slate-50 sm:text-6xl">
             {timeLabel}
           </p>
         </div>
-        <div className="rounded-2xl border border-cyan-300/16 bg-white/6 px-4 py-3 text-right">
+        <div className="w-full rounded-2xl border border-cyan-300/16 bg-white/6 px-4 py-3 text-left sm:w-auto sm:text-right">
           <p className="text-xs uppercase tracking-[0.16em] text-slate-400">
             Durata
           </p>
@@ -148,13 +148,13 @@ function HourglassDisplay({
   const streamVisible = isRunning && !hasFinished && progress > 0 && progress < 1;
 
   return (
-    <div className="rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(11,21,37,0.96),rgba(15,29,50,0.94))] p-6 shadow-[0_24px_60px_-38px_rgba(37,99,235,0.26)]">
+    <div className="rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(11,21,37,0.96),rgba(15,29,50,0.94))] p-5 shadow-[0_24px_60px_-38px_rgba(37,99,235,0.26)] sm:p-6">
       <div className="mx-auto flex max-w-[280px] flex-col items-center gap-6">
         <div className="text-center">
           <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
             Modalità clessidra
           </p>
-          <p className="font-heading mt-3 text-5xl font-semibold tracking-tight text-slate-50 sm:text-6xl">
+          <p className="font-heading mt-3 text-4xl font-semibold tracking-tight text-slate-50 sm:text-6xl">
             {timeLabel}
           </p>
         </div>
@@ -408,9 +408,9 @@ export function TimerTool() {
   }
 
   return (
-    <Card className="relative overflow-hidden border-white/8 bg-[linear-gradient(180deg,rgba(10,20,35,0.96),rgba(14,28,48,0.92))] p-6 sm:p-7">
+    <Card className="relative overflow-hidden border-white/8 bg-[linear-gradient(180deg,rgba(10,20,35,0.96),rgba(14,28,48,0.92))] p-5 sm:p-7">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-cyan-300/16 via-indigo-300/8 to-transparent" />
-      <div className="relative grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start">
+      <div className="relative grid gap-6 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start lg:gap-8">
         <div className="space-y-5">
           <div className="flex items-center justify-between">
             <div className="rounded-2xl border border-cyan-300/16 bg-white/6 p-3 text-cyan-200">
@@ -425,7 +425,7 @@ export function TimerTool() {
             <p className="text-xs uppercase tracking-[0.22em] text-cyan-200/66">
               Timer tool
             </p>
-            <h2 className="font-heading text-3xl font-semibold tracking-tight text-slate-50">
+            <h2 className="font-heading text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
               Countdown con suono finale e vista clessidra
             </h2>
             <p className="text-sm leading-7 text-slate-300">
@@ -445,7 +445,7 @@ export function TimerTool() {
                   type="button"
                   onClick={() => handlePresetSelect(preset)}
                   disabled={isRunning}
-                  className={`rounded-2xl border px-4 py-3 text-left text-sm transition duration-300 ${
+                  className={`min-h-16 touch-manipulation rounded-2xl border px-4 py-3 text-left text-sm transition duration-300 ${
                     isSelected
                       ? "border-cyan-300/20 bg-[linear-gradient(180deg,rgba(22,38,62,0.96),rgba(17,30,50,0.92))] text-slate-50"
                       : "border-white/8 bg-white/5 text-slate-300 hover:bg-white/8 hover:text-slate-50"
@@ -497,11 +497,12 @@ export function TimerTool() {
             />
           )}
 
-          <div className="flex flex-wrap gap-3">
+          <div className="grid gap-3 sm:flex sm:flex-wrap">
             <Button
               icon={<Play className="size-4" />}
               onClick={startTimer}
               disabled={isRunning}
+              className="w-full sm:w-auto"
             >
               Start
             </Button>
@@ -510,6 +511,7 @@ export function TimerTool() {
               icon={<Pause className="size-4" />}
               onClick={pauseTimer}
               disabled={!isRunning}
+              className="w-full sm:w-auto"
             >
               Pause
             </Button>
@@ -517,6 +519,7 @@ export function TimerTool() {
               variant="secondary"
               icon={<RotateCcw className="size-4" />}
               onClick={resetTimer}
+              className="w-full sm:w-auto"
             >
               Reset
             </Button>

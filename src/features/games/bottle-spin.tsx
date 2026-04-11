@@ -60,10 +60,10 @@ export function BottleSpinGame() {
     setRotation(nextRotation);
   }
 
-  const orbitRadius = 39;
+  const orbitRadius = 36;
 
   return (
-    <Card className="relative overflow-hidden p-6 sm:p-7">
+    <Card className="relative overflow-hidden p-5 sm:p-7">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-cyan-300/14 to-transparent" />
       <div className="relative space-y-6">
         <div className="flex items-start justify-between gap-4">
@@ -71,7 +71,7 @@ export function BottleSpinGame() {
             <p className="text-xs uppercase tracking-[0.22em] text-cyan-200/70">
               Bottle spin
             </p>
-            <h2 className="font-heading text-3xl font-semibold tracking-tight text-white">
+            <h2 className="font-heading text-2xl font-semibold tracking-tight text-white sm:text-3xl">
               Gira la bottiglia sulle tue scelte
             </h2>
             <p className="max-w-2xl text-sm leading-7 text-white/62">
@@ -84,9 +84,9 @@ export function BottleSpinGame() {
           </div>
         </div>
 
-        <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_340px] xl:items-start">
+        <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_340px] xl:items-start xl:gap-6">
           <div className="rounded-[28px] border border-white/10 bg-slate-950/62 p-5">
-            <div className="relative mx-auto aspect-square w-full max-w-[420px]">
+            <div className="relative mx-auto aspect-square w-full max-w-[320px] sm:max-w-[420px]">
               <div className="absolute inset-3 rounded-full border border-white/10 bg-[radial-gradient(circle_at_center,_rgba(34,211,238,0.2),_rgba(6,13,24,0.95)_64%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_30px_70px_-45px_rgba(0,0,0,0.95)]" />
               <div className="absolute inset-8 rounded-full border border-white/8 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.05),_rgba(7,11,25,0.95)_72%)]" />
 
@@ -99,11 +99,11 @@ export function BottleSpinGame() {
                 return (
                   <div
                     key={choice}
-                    className="absolute w-[110px] -translate-x-1/2 -translate-y-1/2"
+                    className="absolute w-[84px] -translate-x-1/2 -translate-y-1/2 sm:w-[110px]"
                     style={{ left: `${x}%`, top: `${y}%` }}
                   >
                     <div
-                      className={`rounded-full border px-3 py-2 text-center text-sm font-semibold shadow-[0_12px_30px_-24px_rgba(0,0,0,0.95)] ${
+                      className={`rounded-full border px-2.5 py-2 text-center text-xs font-semibold shadow-[0_12px_30px_-24px_rgba(0,0,0,0.95)] sm:px-3 sm:text-sm ${
                         isSelected
                           ? "border-cyan-200/50 bg-cyan-300/18 text-white"
                           : "border-white/10 bg-slate-950/86 text-white/76"
@@ -160,8 +160,13 @@ export function BottleSpinGame() {
                 onChange={(event) => setDraftChoices(event.target.value)}
                 placeholder="Es. Alice&#10;Marco&#10;Pizza"
               />
-              <div className="mt-4 flex flex-wrap gap-3">
-                <Button type="button" variant="secondary" onClick={applyChoices}>
+              <div className="mt-4 grid gap-3 sm:flex sm:flex-wrap">
+                <Button
+                  type="button"
+                  variant="secondary"
+                  onClick={applyChoices}
+                  className="w-full sm:w-auto"
+                >
                   Applica scelte
                 </Button>
                 <Button
@@ -169,6 +174,7 @@ export function BottleSpinGame() {
                   icon={<Play className="size-4" />}
                   onClick={spinBottle}
                   disabled={isSpinning}
+                  className="w-full sm:w-auto"
                 >
                   Gira bottiglia
                 </Button>
@@ -177,6 +183,7 @@ export function BottleSpinGame() {
                   variant="ghost"
                   icon={<RotateCcw className="size-4" />}
                   onClick={resetBoard}
+                  className="w-full sm:w-auto"
                 >
                   Reset
                 </Button>

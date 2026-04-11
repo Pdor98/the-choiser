@@ -14,8 +14,8 @@ import { categories, homeHighlights } from "@/lib/site-content";
 
 export default function HomePage() {
   return (
-    <div className="space-y-12">
-      <section className="grid gap-6 xl:grid-cols-[minmax(0,1.12fr)_400px] xl:items-stretch">
+    <div className="space-y-10 sm:space-y-12">
+      <section className="grid gap-5 xl:grid-cols-[minmax(0,1.12fr)_400px] xl:items-stretch">
         <DailyAdvicePanel />
         <HomeHeroPanel />
       </section>
@@ -24,7 +24,7 @@ export default function HomePage() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <SectionBadge>Scorciatoie Choiser</SectionBadge>
-            <h2 className="font-heading mt-3 text-3xl font-semibold tracking-tight text-slate-50">
+            <h2 className="font-heading mt-3 text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
               Dopo il consiglio, scegli dove continuare
             </h2>
           </div>
@@ -75,7 +75,7 @@ export default function HomePage() {
             <p className="text-xs uppercase tracking-[0.22em] text-slate-400">
               Categorie
             </p>
-            <h2 className="font-heading mt-2 text-3xl font-semibold tracking-tight text-slate-50">
+            <h2 className="font-heading mt-2 text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
               Scegli come vuoi iniziare
             </h2>
           </div>
@@ -97,7 +97,7 @@ export default function HomePage() {
           <p className="text-xs uppercase tracking-[0.22em] text-slate-400">
             Perché Choiser
           </p>
-          <h2 className="font-heading mt-2 text-3xl font-semibold tracking-tight text-slate-50">
+          <h2 className="font-heading mt-2 text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
             Più leggibile, più profondo, più orientato all’azione
           </h2>
         </div>

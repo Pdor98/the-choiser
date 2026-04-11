@@ -50,12 +50,12 @@ export function DailyAdvicePanel() {
   );
 
   return (
-    <Card className="relative overflow-hidden border-cyan-300/16 bg-[linear-gradient(180deg,rgba(10,20,35,0.96),rgba(14,28,48,0.94))] p-6 shadow-[0_34px_90px_-48px_rgba(37,99,235,0.34)] sm:p-8 lg:p-10">
+    <Card className="relative overflow-hidden border-cyan-300/16 bg-[linear-gradient(180deg,rgba(10,20,35,0.96),rgba(14,28,48,0.94))] p-5 shadow-[0_34px_90px_-48px_rgba(37,99,235,0.34)] sm:p-8 lg:p-10">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-cyan-400/18 via-sky-400/12 to-transparent" />
       <div className="pointer-events-none absolute -right-12 top-10 h-44 w-44 rounded-full bg-cyan-300/12 blur-3xl" />
       <div className="pointer-events-none absolute -left-10 bottom-0 h-36 w-36 rounded-full bg-indigo-300/10 blur-3xl" />
 
-      <div className="relative space-y-7">
+      <div className="relative space-y-6 sm:space-y-7">
         <div className="space-y-4">
           <SectionBadge className="border-cyan-300/18 bg-white/6 text-cyan-100">
             Consiglio del giorno
@@ -72,10 +72,10 @@ export function DailyAdvicePanel() {
             </div>
 
             <div className="space-y-3">
-              <h1 className="font-heading text-balance max-w-4xl text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl">
+              <h1 className="font-heading text-balance max-w-4xl text-3xl font-semibold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl">
                 Parti da qui: ti aiutiamo a scegliere la prossima cosa da fare.
               </h1>
-              <p className="max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+              <p className="max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
                 Non sai da dove partire? Choiser mette al centro il suggerimento
                 più utile del momento e ti lascia generare un nuovo consiglio in
                 un attimo.
@@ -88,7 +88,7 @@ export function DailyAdvicePanel() {
           <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
             Consiglio attuale
           </p>
-          <p className="mt-4 font-heading text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl">
+          <p className="mt-4 font-heading text-2xl font-semibold tracking-tight text-slate-50 sm:text-4xl">
             {advice}
           </p>
         </div>

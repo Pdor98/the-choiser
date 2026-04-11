@@ -199,7 +199,7 @@ export function TabWhoGame() {
             <p className="text-xs uppercase tracking-[0.22em] text-cyan-200/66">
               Word challenge
             </p>
-            <h1 className="font-heading text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl">
+            <h1 className="font-heading text-2xl font-semibold tracking-tight text-slate-50 sm:text-4xl">
               TAB-WHO ?
             </h1>
             <p className="max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
@@ -227,7 +227,7 @@ export function TabWhoGame() {
                   <p className="text-sm uppercase tracking-[0.28em] text-slate-400">
                     Intro game
                   </p>
-                  <h2 className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl">
+                  <h2 className="font-heading text-4xl font-semibold tracking-tight sm:text-6xl">
                     TAB-WHO ?
                   </h2>
                   <p className="mx-auto max-w-2xl text-base leading-7 text-slate-300">
@@ -285,7 +285,7 @@ export function TabWhoGame() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="grid gap-3 sm:flex sm:flex-wrap sm:items-center sm:justify-center">
                 <Button
                   type="button"
                   icon={<Play className="size-4" />}
@@ -393,7 +393,7 @@ export function TabWhoGame() {
                         <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
                           Parola principale
                         </p>
-                        <h3 className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
+                        <h3 className="font-heading text-4xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
                           {currentCard.parola}
                         </h3>
                         <p className="max-w-md text-sm leading-6 text-slate-300">
@@ -573,7 +573,7 @@ export function TabWhoGame() {
                 </div>
               </div>
 
-              <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:justify-center">
                 <Button
                   type="button"
                   icon={<Play className="size-4" />}
