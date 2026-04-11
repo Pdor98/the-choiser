@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { CSSProperties } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -11,11 +12,16 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(236,254,255,0.96)_48%,rgba(253,230,138,0.9))] text-slate-950 shadow-[0_24px_60px_-28px_rgba(250,204,21,0.65)] hover:-translate-y-0.5 hover:brightness-[1.02] hover:text-slate-950 hover:shadow-[0_28px_70px_-28px_rgba(255,255,255,0.8)] [&>*]:text-slate-950",
+    "border border-amber-100/80 bg-[linear-gradient(135deg,rgba(255,247,237,0.99),rgba(254,243,199,0.98)_52%,rgba(252,211,77,0.96))] text-slate-950 shadow-[0_24px_60px_-28px_rgba(250,204,21,0.65)] hover:-translate-y-0.5 hover:brightness-[1.02] hover:text-slate-950 hover:shadow-[0_28px_70px_-28px_rgba(255,255,255,0.8)] [&>*]:text-slate-950",
   secondary:
     "border border-white/14 bg-slate-900/76 text-white/92 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] hover:-translate-y-0.5 hover:border-cyan-200/28 hover:bg-slate-800/90 hover:text-white",
   ghost:
     "border border-white/10 bg-white/[0.045] text-white/88 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] hover:-translate-y-0.5 hover:border-white/18 hover:bg-white/[0.08] hover:text-white",
+};
+
+export const primaryButtonReadableStyle: CSSProperties = {
+  color: "#0f172a",
+  WebkitTextFillColor: "#0f172a",
 };
 
 export function buttonStyles({
@@ -42,6 +48,7 @@ export function Button({
   return (
     <button
       className={buttonStyles({ variant, className })}
+      style={variant === "primary" ? primaryButtonReadableStyle : undefined}
       {...props}
     >
       {icon}

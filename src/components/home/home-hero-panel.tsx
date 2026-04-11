@@ -1,7 +1,10 @@
 import { ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 
-import { buttonStyles } from "@/components/ui/button";
+import {
+  buttonStyles,
+  primaryButtonReadableStyle,
+} from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SectionBadge } from "@/components/ui/section-badge";
 
@@ -52,9 +55,18 @@ export function HomeHeroPanel() {
         <Link
           href="/random"
           className={buttonStyles({ className: "w-full sm:w-auto" })}
+          style={primaryButtonReadableStyle}
         >
-          <ArrowRight className="size-4" />
-          <span>Inizia dal Random</span>
+          <ArrowRight
+            className="size-4 text-slate-950"
+            style={primaryButtonReadableStyle}
+          />
+          <span
+            className="text-slate-950"
+            style={primaryButtonReadableStyle}
+          >
+            Inizia dal Random
+          </span>
         </Link>
       </div>
     </Card>
