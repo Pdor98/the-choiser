@@ -8,12 +8,14 @@ type AppShellProps = {
 
 export function AppShell({ children }: AppShellProps) {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(125,211,252,0.24),_transparent_28%),radial-gradient(circle_at_82%_10%,_rgba(252,211,77,0.18),_transparent_26%),linear-gradient(180deg,_#091321_0%,_#0b1726_42%,_#07101a_100%)]">
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(circle_at_center,black_48%,transparent_92%)] opacity-24" />
-      <div className="pointer-events-none absolute left-1/2 top-[-9rem] h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-cyan-300/14 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-[-14rem] right-[-9rem] h-[28rem] w-[28rem] rounded-full bg-amber-300/12 blur-3xl" />
+    <div className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.18),transparent_26%),radial-gradient(circle_at_84%_14%,rgba(99,102,241,0.18),transparent_22%),radial-gradient(circle_at_50%_120%,rgba(14,165,233,0.16),transparent_26%),linear-gradient(180deg,#07111d_0%,#0a1524_42%,#0d1b2e_100%)]">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.06)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(circle_at_center,black_44%,transparent_90%)] opacity-40" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-[linear-gradient(180deg,rgba(15,23,42,0.28),transparent)]" />
+      <div className="pointer-events-none absolute left-[-8rem] top-[-6rem] h-[28rem] w-[28rem] rounded-full bg-sky-400/12 blur-3xl" />
+      <div className="pointer-events-none absolute right-[-10rem] top-16 h-[24rem] w-[24rem] rounded-full bg-indigo-400/12 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-[-12rem] left-1/2 h-[24rem] w-[24rem] -translate-x-1/2 rounded-full bg-cyan-300/10 blur-3xl" />
 
-      <div className="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-6 px-4 py-4 sm:gap-8 sm:px-6 sm:py-6 lg:px-8">
+      <div className="relative mx-auto flex min-h-screen w-full max-w-[88rem] flex-col gap-6 px-4 py-4 sm:gap-8 sm:px-6 sm:py-6 lg:px-8">
         <SiteHeader />
         <main className="flex-1 pb-8 pt-1 sm:pt-2">{children}</main>
       </div>

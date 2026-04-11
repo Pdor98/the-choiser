@@ -221,7 +221,7 @@ export function GuessTheNumberGame() {
   const directionMeta = getDirectionMeta(guessDirection);
 
   return (
-    <Card className="relative overflow-hidden p-6 sm:p-7">
+    <Card className="relative overflow-hidden p-5 sm:p-7">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-amber-300/16 to-transparent" />
       <div className="relative grid gap-6 lg:grid-cols-[minmax(0,1fr)_280px]">
         <div className="space-y-6">
@@ -230,7 +230,7 @@ export function GuessTheNumberGame() {
               <p className="text-xs uppercase tracking-[0.22em] text-amber-200/70">
                 Guess the number
               </p>
-              <h2 className="font-heading text-3xl font-semibold tracking-tight text-white">
+              <h2 className="font-heading text-2xl font-semibold tracking-tight text-white sm:text-3xl">
                 Indovina il numero segreto
               </h2>
               <p className="max-w-xl text-sm leading-7 text-white/62">
@@ -258,8 +258,8 @@ export function GuessTheNumberGame() {
               />
             </label>
 
-            <div className="flex flex-wrap gap-3">
-              <Button type="submit" disabled={hasWon}>
+            <div className="grid gap-3 sm:flex sm:flex-wrap">
+              <Button type="submit" disabled={hasWon} className="w-full sm:w-auto">
                 Invia tentativo
               </Button>
               <Button
@@ -267,6 +267,7 @@ export function GuessTheNumberGame() {
                 variant="secondary"
                 icon={<RotateCcw className="size-4" />}
                 onClick={() => resetGame()}
+                className="w-full sm:w-auto"
               >
                 Reset
               </Button>
@@ -289,7 +290,7 @@ export function GuessTheNumberGame() {
                       <p className="text-xs uppercase tracking-[0.18em] text-current/70">
                         Ultimo tentativo
                       </p>
-                      <p className="font-heading mt-2 text-5xl font-semibold tracking-tight text-current">
+                      <p className="font-heading mt-2 text-4xl font-semibold tracking-tight text-current sm:text-5xl">
                         {lastGuess}
                       </p>
                     </div>
@@ -375,7 +376,7 @@ export function GuessTheNumberGame() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
+              <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-3">
                 <Input
                   type="number"
                   inputMode="numeric"
@@ -386,7 +387,7 @@ export function GuessTheNumberGame() {
                       min: event.target.value,
                     }))
                   }
-                  className="h-14 px-3 text-center font-heading text-2xl font-semibold"
+                  className="h-14 px-3 text-center font-heading text-xl font-semibold sm:text-2xl"
                 />
                 <span className="text-center font-heading text-3xl font-semibold text-white/55">
                   -
@@ -401,7 +402,7 @@ export function GuessTheNumberGame() {
                       max: event.target.value,
                     }))
                   }
-                  className="h-14 px-3 text-center font-heading text-2xl font-semibold"
+                  className="h-14 px-3 text-center font-heading text-xl font-semibold sm:text-2xl"
                 />
               </div>
 

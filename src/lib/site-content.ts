@@ -69,7 +69,7 @@ export const categories: Category[] = [
     eyebrow: "Scelte rapide",
     icon: Dices,
     accentClassName:
-      "from-cyan-400/30 via-cyan-400/10 to-transparent shadow-cyan-500/20",
+      "from-sky-200/65 via-cyan-100/45 to-transparent shadow-sky-200/40",
   },
   {
     href: "/games",
@@ -79,7 +79,7 @@ export const categories: Category[] = [
     eyebrow: "Giochi veloci",
     icon: Gamepad2,
     accentClassName:
-      "from-amber-400/30 via-amber-400/10 to-transparent shadow-amber-500/20",
+      "from-indigo-200/55 via-fuchsia-100/40 to-transparent shadow-indigo-200/36",
   },
   {
     href: "/tools",
@@ -89,7 +89,7 @@ export const categories: Category[] = [
     eyebrow: "Strumenti utili",
     icon: TimerReset,
     accentClassName:
-      "from-emerald-400/30 via-emerald-400/10 to-transparent shadow-emerald-500/20",
+      "from-emerald-200/58 via-cyan-100/40 to-transparent shadow-emerald-200/36",
   },
 ];
 

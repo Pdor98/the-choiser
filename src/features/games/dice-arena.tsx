@@ -82,7 +82,7 @@ export function DiceArenaGame() {
   }
 
   return (
-    <Card className="relative overflow-hidden p-6 sm:p-7">
+    <Card className="relative overflow-hidden p-5 sm:p-7">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-emerald-300/14 to-transparent" />
       <div className="relative space-y-6">
         <div className="flex items-start justify-between gap-4">
@@ -90,7 +90,7 @@ export function DiceArenaGame() {
             <p className="text-xs uppercase tracking-[0.22em] text-emerald-200/70">
               Dice arena
             </p>
-            <h2 className="font-heading text-3xl font-semibold tracking-tight text-white">
+            <h2 className="font-heading text-2xl font-semibold tracking-tight text-white sm:text-3xl">
               Lancia i dadi con setup personalizzato
             </h2>
             <p className="max-w-2xl text-sm leading-7 text-white/62">
@@ -103,7 +103,7 @@ export function DiceArenaGame() {
           </div>
         </div>
 
-        <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-start">
+        <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-start xl:gap-6">
           <div className="rounded-[28px] border border-white/10 bg-slate-950/62 p-5">
             <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {diceValues.map((value, index) => (
@@ -121,7 +121,7 @@ export function DiceArenaGame() {
                   <p className="text-xs uppercase tracking-[0.18em] text-white/42">
                     Dado {index + 1}
                   </p>
-                  <p className="font-heading mt-4 text-6xl font-semibold tracking-tight text-white">
+                  <p className="font-heading mt-4 text-5xl font-semibold tracking-tight text-white sm:text-6xl">
                     {value}
                   </p>
                 </motion.div>
@@ -189,12 +189,13 @@ export function DiceArenaGame() {
                 </div>
               </div>
 
-              <div className="mt-5 flex flex-wrap gap-3">
+              <div className="mt-5 grid gap-3 sm:flex sm:flex-wrap">
                 <Button
                   type="button"
                   icon={<Play className="size-4" />}
                   onClick={rollDice}
                   disabled={isRolling}
+                  className="w-full sm:w-auto"
                 >
                   Lancia dadi
                 </Button>
@@ -203,6 +204,7 @@ export function DiceArenaGame() {
                   variant="secondary"
                   icon={<RotateCcw className="size-4" />}
                   onClick={resetHistory}
+                  className="w-full sm:w-auto"
                 >
                   Reset
                 </Button>

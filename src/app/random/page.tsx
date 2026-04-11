@@ -14,14 +14,14 @@ export default function RandomPage() {
         aside={
           <Card className="p-5">
             <div className="flex items-start gap-4">
-              <div className="rounded-2xl border border-white/10 bg-white/8 p-3 text-cyan-200">
+              <div className="rounded-2xl border border-cyan-300/16 bg-white/6 p-3 text-cyan-200">
                 <Dices className="size-5" />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-white/45">
+                <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
                   Due generatori
                 </p>
-                <p className="mt-2 text-sm leading-7 text-white/64">
+                <p className="mt-2 text-sm leading-7 text-slate-300">
                   Risultati rapidi, reset immediato e presentazione visuale
                   coerente con il resto dell&apos;app.
                 </p>
