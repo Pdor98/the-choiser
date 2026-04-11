@@ -3,7 +3,7 @@
 @import "../styles/utilities.css";
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 * {
@@ -37,7 +37,7 @@ input {
 
 ::selection {
   background: rgba(96, 165, 250, 0.34);
-  color: #f8fafc;
+  color: #0f172a;
 }
 
 :focus-visible {

@@ -51,14 +51,14 @@ export default function GamesPage() {
         aside={
           <Card className="p-5">
             <div className="flex items-start gap-4">
-              <div className="rounded-2xl border border-indigo-100/14 bg-[linear-gradient(180deg,rgba(24,28,58,0.96),rgba(10,13,30,0.94))] p-3 text-indigo-100">
+              <div className="rounded-2xl border border-indigo-200/80 bg-white/84 p-3 text-indigo-700">
                 <Dices className="size-5" />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-white/45">
+                <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                   Game collection
                 </p>
-                <p className="mt-2 text-sm leading-7 text-white/64">
+                <p className="mt-2 text-sm leading-7 text-slate-700">
                   Cinque moduli con logiche distinte e interfacce più coerenti
                   rendono la sezione più solida, più moderna e più facile da usare.
                 </p>
@@ -74,17 +74,17 @@ export default function GamesPage() {
 
           return (
             <Link key={section.href} href={section.href} className="group h-full">
-              <Card className="relative h-full overflow-hidden p-5 transition duration-300 group-hover:-translate-y-1 group-hover:border-cyan-100/14">
-                <div className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-white/18 to-transparent" />
+              <Card className="relative h-full overflow-hidden border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(244,248,255,0.9))] p-5 transition duration-300 group-hover:-translate-y-1 group-hover:border-sky-200/80">
+                <div className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-sky-200/80 to-transparent" />
                 <div className="space-y-4">
-                  <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] text-cyan-100">
+                  <div className="flex size-12 items-center justify-center rounded-2xl border border-sky-200/80 bg-white/82 text-sky-700">
                     <Icon className="size-5" />
                   </div>
                   <div className="space-y-2">
-                    <h2 className="font-heading text-xl font-semibold text-white">
+                    <h2 className="font-heading text-xl font-semibold text-slate-900">
                       {section.title}
                     </h2>
-                    <p className="text-sm leading-7 text-white/74">
+                    <p className="text-sm leading-7 text-slate-700">
                       {section.description}
                     </p>
                   </div>

@@ -14,14 +14,14 @@ export default function ToolsPage() {
         aside={
           <Card className="p-5">
             <div className="flex items-start gap-4">
-              <div className="rounded-2xl border border-cyan-100/14 bg-[linear-gradient(180deg,rgba(17,29,47,0.96),rgba(8,15,28,0.94))] p-3 text-cyan-100">
+              <div className="rounded-2xl border border-sky-200/80 bg-white/84 p-3 text-sky-700">
                 <TimerReset className="size-5" />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-white/45">
+                <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                   Utility deck
                 </p>
-                <p className="mt-2 text-sm leading-7 text-white/64">
+                <p className="mt-2 text-sm leading-7 text-slate-700">
                   Countdown più leggibile, doppia visualizzazione e feedback
                   sonoro mantengono l’esperienza essenziale ma più sofisticata.
                 </p>

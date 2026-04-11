@@ -36,7 +36,7 @@ function AnimatedValue({
   const isNumeric = typeof value === "number";
 
   return (
-    <div className="relative min-h-28 overflow-hidden rounded-[24px] border border-white/10 bg-slate-950/70 p-5">
+    <div className="relative min-h-28 overflow-hidden rounded-[24px] border border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(245,249,255,0.92))] p-5">
       <AnimatePresence mode="wait">
         <motion.div
           key={String(value ?? emptyState)}
@@ -50,14 +50,14 @@ function AnimatedValue({
             <p
               className={
                 isNumeric
-                  ? "font-heading text-4xl font-semibold tracking-tight text-white sm:text-5xl"
-                  : "max-w-lg text-base leading-8 text-white sm:text-lg"
+                  ? "font-heading text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl"
+                  : "max-w-lg text-base leading-8 text-slate-800 sm:text-lg"
               }
             >
               {value}
             </p>
           ) : (
-            <p className="max-w-md text-sm leading-7 text-white/42">{emptyState}</p>
+            <p className="max-w-md text-sm leading-7 text-slate-500">{emptyState}</p>
           )}
         </motion.div>
       </AnimatePresence>
@@ -71,19 +71,19 @@ export function RandomHub() {
 
   return (
     <div className="grid gap-6 xl:grid-cols-2">
-      <Card className="relative overflow-hidden p-6">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-cyan-300/16 to-transparent" />
+      <Card className="relative overflow-hidden border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(244,248,255,0.9))] p-6">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-sky-200/80 to-transparent" />
         <div className="relative space-y-5">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.22em] text-cyan-200/70">
+              <p className="text-xs uppercase tracking-[0.22em] text-sky-700/70">
                 Random number
               </p>
-              <h2 className="font-heading mt-2 text-2xl font-semibold text-white">
+              <h2 className="font-heading mt-2 text-2xl font-semibold text-slate-900">
                 Numero casuale da 1 a 100
               </h2>
             </div>
-            <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-cyan-200">
+            <div className="flex size-12 items-center justify-center rounded-2xl border border-sky-200/80 bg-white/82 text-sky-700">
               <Dice5 className="size-5" />
             </div>
           </div>
@@ -107,19 +107,19 @@ export function RandomHub() {
         </div>
       </Card>
 
-      <Card className="relative overflow-hidden p-6">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-amber-300/16 to-transparent" />
+      <Card className="relative overflow-hidden border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(245,248,255,0.9))] p-6">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-amber-200/70 to-transparent" />
         <div className="relative space-y-5">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.22em] text-amber-200/70">
+              <p className="text-xs uppercase tracking-[0.22em] text-amber-700/72">
                 Today prompt
               </p>
-              <h2 className="font-heading mt-2 text-2xl font-semibold text-white">
+              <h2 className="font-heading mt-2 text-2xl font-semibold text-slate-900">
                 Cosa dovrei fare oggi?
               </h2>
             </div>
-            <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-amber-200">
+            <div className="flex size-12 items-center justify-center rounded-2xl border border-amber-200/80 bg-white/82 text-amber-700">
               <Wand2 className="size-5" />
             </div>
           </div>

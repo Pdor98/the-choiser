@@ -10,65 +10,65 @@ import { SectionBadge } from "@/components/ui/section-badge";
 
 export function HomeHeroPanel() {
   return (
-    <Card className="relative overflow-hidden p-6 sm:p-7">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-cyan-300/14 via-indigo-300/10 to-transparent" />
-      <div className="pointer-events-none absolute -right-10 bottom-0 h-36 w-36 rounded-full bg-cyan-200/8 blur-3xl" />
+    <Card className="relative overflow-hidden border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(243,248,255,0.88))] p-6 shadow-[0_28px_68px_-44px_rgba(96,165,250,0.18)] sm:p-7">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-sky-200/80 via-indigo-100/45 to-transparent" />
+      <div className="pointer-events-none absolute -right-10 bottom-0 h-36 w-36 rounded-full bg-cyan-200/24 blur-3xl" />
       <div className="relative space-y-6">
-        <SectionBadge className="border-cyan-100/14 bg-slate-950/52 text-white/84">
-          Control panel
+        <SectionBadge className="border-sky-200/80 bg-white/84 text-sky-800">
+          Choiser overview
         </SectionBadge>
 
         <div className="space-y-4">
-          <div className="flex size-14 items-center justify-center rounded-[20px] border border-cyan-100/14 bg-[linear-gradient(180deg,rgba(17,29,47,0.96),rgba(8,15,28,0.94))] text-cyan-100 shadow-[0_20px_48px_-34px_rgba(56,189,248,0.5)]">
+          <div className="flex size-14 items-center justify-center rounded-[20px] border border-sky-200/80 bg-white/84 text-sky-700 shadow-[0_18px_44px_-30px_rgba(96,165,250,0.22)]">
             <Sparkles className="size-6" />
           </div>
 
           <div className="space-y-3">
-            <h2 className="font-heading text-2xl font-semibold tracking-tight text-white">
-              Un’interfaccia pensata per scegliere con meno attrito.
+            <h2 className="font-heading text-2xl font-semibold tracking-tight text-slate-900">
+              Una dashboard più luminosa, più chiara e più immediata.
             </h2>
-            <p className="text-sm leading-7 text-white/80">
-              Choiser combina micro-tool, giochi veloci e generatori casuali in
-              un layout più pulito, leggibile e modulare, pensato per desktop e
-              mobile.
+            <p className="text-sm leading-7 text-slate-700">
+              Questa variante mette al centro l’azione iniziale, riduce il
+              rumore visivo e rende ogni modulo più leggibile da desktop e da
+              smartphone.
             </p>
           </div>
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2">
-          <div className="rounded-[22px] border border-white/12 bg-white/[0.05] p-4">
-            <p className="text-xs uppercase tracking-[0.18em] text-white/64">
+          <div className="rounded-[22px] border border-slate-200/80 bg-white/76 p-4">
+            <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
               Moduli attivi
             </p>
-            <p className="mt-2 font-heading text-3xl font-semibold text-white">
+            <p className="mt-2 font-heading text-3xl font-semibold text-slate-900">
               8
             </p>
           </div>
-          <div className="rounded-[22px] border border-white/12 bg-white/[0.05] p-4">
-            <p className="text-xs uppercase tracking-[0.18em] text-white/64">
+          <div className="rounded-[22px] border border-slate-200/80 bg-white/76 p-4">
+            <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
               Pronta per mobile
             </p>
-            <p className="mt-2 font-heading text-3xl font-semibold text-white">
+            <p className="mt-2 font-heading text-3xl font-semibold text-slate-900">
               100%
             </p>
           </div>
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2">
-          <div className="rounded-[22px] border border-white/10 bg-slate-950/42 p-4">
-            <p className="text-xs uppercase tracking-[0.18em] text-white/56">
+          <div className="rounded-[22px] border border-slate-200/80 bg-slate-50/88 p-4">
+            <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
               UX goal
             </p>
-            <p className="mt-2 text-sm leading-6 text-white/80">
+            <p className="mt-2 text-sm leading-6 text-slate-700">
               Meno rumore visivo, più gerarchia, azioni subito riconoscibili.
             </p>
           </div>
-          <div className="rounded-[22px] border border-white/10 bg-slate-950/42 p-4">
-            <p className="text-xs uppercase tracking-[0.18em] text-white/56">
+          <div className="rounded-[22px] border border-slate-200/80 bg-slate-50/88 p-4">
+            <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
               Feeling
             </p>
-            <p className="mt-2 text-sm leading-6 text-white/80">
-              Dashboard leggera, superfici premium e navigazione più chiara.
+            <p className="mt-2 text-sm leading-6 text-slate-700">
+              Superfici soft, accenti freddi e lettura più rilassata.
             </p>
           </div>
         </div>
@@ -83,10 +83,10 @@ export function HomeHeroPanel() {
             style={primaryButtonReadableStyle}
           />
           <span
-            className="text-slate-950"
+            className="text-slate-700"
             style={primaryButtonReadableStyle}
           >
-            Apri il Random
+            Apri il modulo Random
           </span>
         </Link>
       </div>
