@@ -11,7 +11,9 @@
     "start": "node_modules/node/bin/node ./node_modules/next/dist/bin/next start --hostname 0.0.0.0 --port 3000",
     "lint": "node_modules/node/bin/node ./node_modules/eslint/bin/eslint.js .",
     "typecheck": "node_modules/node/bin/node ./node_modules/typescript/bin/tsc --noEmit",
-    "export:pages": "node_modules/node/bin/node ./scripts/export-github-pages.mjs"
+    "export:pages": "node_modules/node/bin/node ./scripts/export-github-pages.mjs",
+    "preview:pages": "node_modules/node/bin/node ./scripts/preview-github-pages.mjs",
+    "release:check": "npm run lint && npm run typecheck && npm run export:pages"
   },
   "dependencies": {
     "clsx": "^2.1.1",

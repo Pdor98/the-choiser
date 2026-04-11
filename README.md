@@ -1,42 +1,34 @@
 # The Choiser
 
-The Choiser is a modern interactive web app that mixes mini-games, random generators, and useful tools in a single polished experience. It is built with Next.js and exported as a static site so it can run smoothly on GitHub Pages without any backend.
+The Choiser e una web app interattiva con mini-giochi, generatori casuali e strumenti utili. Il progetto e sviluppato con Next.js, ma viene pubblicato come sito statico su GitHub Pages tramite export nella cartella `docs/`.
 
-## Live Demo
+## Link utili
 
-[Open the live site](https://pdor98.github.io/the-choiser/)
+- Sito live: [https://pdor98.github.io/the-choiser/](https://pdor98.github.io/the-choiser/)
+- Repository: [https://github.com/Pdor98/the-choiser](https://github.com/Pdor98/the-choiser)
 
-## Highlights
+## Struttura del progetto
 
-- dark, responsive UI designed for desktop and mobile
-- category-based navigation for Random, Games, and Tools
-- interactive mini-games including `TAB-WHO ?`
-- static export workflow ready for GitHub Pages deployment
+```text
+the-choiser/
+├── src/
+│   ├── app/                  # pagine e route principali
+│   ├── components/           # componenti UI e layout
+│   ├── features/             # logiche delle sezioni Games, Random e Tools
+│   ├── lib/                  # contenuti e helper condivisi
+│   └── styles/               # tema e utility CSS
+├── scripts/
+│   ├── export-github-pages.mjs
+│   └── preview-github-pages.mjs
+├── docs/                     # build statica pubblicata da GitHub Pages
+├── package.json
+├── next.config.ts
+└── README.md
+```
 
-## Included Experiences
+## Stato reale del progetto
 
-### Home
-
-- category hub with direct access to the app sections
-
-### Random
-
-- random number generator
-- "what should I do today?" generator
-
-### Games
-
-- `TAB-WHO ?`
-- Guess the Number
-- Bottle Spin
-- Elimination Wheel
-- Dice Arena
-
-### Tools
-
-- countdown timer
-
-## Stack
+Anche se il sito pubblicato e statico, la sorgente non e piu un progetto HTML/CSS/JS vanilla puro. Oggi The Choiser usa:
 
 - Next.js 16
 - React 19
@@ -44,55 +36,124 @@ The Choiser is a modern interactive web app that mixes mini-games, random genera
 - Tailwind CSS 4
 - Framer Motion
 
-## Local Development
+Questo significa che:
 
-Run the project locally with:
+- per sviluppare in locale si usa `npm run dev`
+- per generare la versione pubblicabile si usa `npm run export:pages`
+- GitHub Pages pubblica il contenuto gia compilato dentro `docs/`
+
+## Lavorare offline in locale
+
+Per sviluppare il progetto senza toccare subito la versione online:
+
+1. Installa le dipendenze se necessario:
+
+```bash
+npm install
+```
+
+2. Avvia il sito in sviluppo locale:
 
 ```bash
 npm run dev
 ```
 
-Useful scripts:
+3. Apri il browser su:
 
-- `npm run build`
-- `npm run lint`
-- `npm run typecheck`
-- `npm run export:pages`
+```text
+http://localhost:3000
+```
 
-## GitHub Pages
+Questo e il modo migliore per modificare pagine, componenti e logica del progetto.
 
-This repository is configured to publish the static export from the `docs/` folder.
+## Testare in locale la versione GitHub Pages
 
-Generate the deployable build with:
+Quando vuoi controllare esattamente cosa verra pubblicato online:
+
+1. Genera la build statica:
 
 ```bash
 npm run export:pages
 ```
 
-The export script:
+2. Avvia l'anteprima locale della cartella `docs` con il base path corretto:
 
-- builds the app in static export mode
-- rewrites routes and assets for `/the-choiser`
-- generates the publishable files into `docs/`
-- creates `docs/.nojekyll`
-
-### Publish Steps
-
-1. Push the repository to GitHub.
-2. Run `npm run export:pages`.
-3. Commit and push the updated `docs/` folder.
-4. Open `Settings -> Pages`.
-5. Set `Deploy from branch`.
-6. Choose `main` and `/docs`.
-7. Wait for GitHub Pages to publish the site.
-
-The final URL is:
-
-```text
-https://USERNAME.github.io/the-choiser
+```bash
+npm run preview:pages
 ```
 
-## Notes
+3. Apri:
 
-- GitHub Pages does not build a Next.js app directly from the raw source tree, so this project publishes the generated static output from `docs/`.
-- The local development environment uses a project-local Node 22 binary because Next.js 16 requires Node 20.9 or newer.
+```text
+http://127.0.0.1:4173/the-choiser/
+```
+
+Nota importante:
+
+- non e consigliato aprire `docs/index.html` con doppio click
+- GitHub Pages usa il base path `/the-choiser`, quindi la preview corretta va fatta tramite server locale
+
+## Comandi disponibili
+
+- `npm run dev` avvia l'ambiente di sviluppo locale
+- `npm run build` compila l'app
+- `npm run lint` controlla il codice
+- `npm run typecheck` controlla i tipi TypeScript
+- `npm run export:pages` rigenera `docs/` per GitHub Pages
+- `npm run preview:pages` mostra in locale la build statica di `docs/`
+- `npm run release:check` esegue lint, typecheck ed export finale
+
+## Workflow consigliato
+
+Per non rompere il sito pubblico, il flusso piu semplice e sicuro e questo:
+
+1. lavori sul branch `develop`
+2. testi in locale con `npm run dev`
+3. fai il controllo finale con `npm run release:check`
+4. provi la build pubblicabile con `npm run preview:pages`
+5. salvi tutto con commit chiaro
+6. fai push su `develop`
+7. quando e tutto pronto, porti `develop` su `main`
+8. fai push di `main`
+9. GitHub Pages aggiorna il sito online leggendo `docs/`
+
+## Comandi Git consigliati
+
+Per lavorare in sicurezza:
+
+```bash
+git checkout develop
+git pull origin develop
+git status
+git add .
+git commit -m "Describe the update clearly"
+git push origin develop
+```
+
+Quando vuoi pubblicare:
+
+```bash
+git checkout main
+git pull origin main
+git merge develop
+npm run release:check
+git add .
+git commit -m "Publish latest Choiser updates"
+git push origin main
+```
+
+## GitHub Pages
+
+Il repository e configurato per pubblicare da:
+
+- branch: `main`
+- cartella: `/docs`
+
+La presenza di `docs/.nojekyll` evita problemi con il deploy statico.
+
+## Note pratiche
+
+- `docs/` va tenuta versionata, perche e la versione che GitHub Pages serve online
+- `out/` e solo una cartella temporanea di export locale
+- il link a `TAB-WHO ?` e gia collegato sia dalla home sia dalla sezione Games
+- per controllare il risultato finale su telefono, usa il link pubblico GitHub Pages dopo il push su `main`
