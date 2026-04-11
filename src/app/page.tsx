@@ -4,7 +4,10 @@ import Link from "next/link";
 import { CategoryCard } from "@/components/home/category-card";
 import { HighlightCard } from "@/components/home/highlight-card";
 import { HomeHeroPanel } from "@/components/home/home-hero-panel";
-import { buttonStyles } from "@/components/ui/button";
+import {
+  buttonStyles,
+  primaryButtonReadableStyle,
+} from "@/components/ui/button";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { categories, homeHighlights } from "@/lib/site-content";
 
@@ -34,9 +37,18 @@ export default function HomePage() {
               <Link
                 href="/random"
                 className={buttonStyles({ className: "w-full sm:w-auto" })}
+                style={primaryButtonReadableStyle}
               >
-                <ArrowRight className="size-4" />
-                <span>Esplora le categorie</span>
+                <ArrowRight
+                  className="size-4 text-slate-950"
+                  style={primaryButtonReadableStyle}
+                />
+                <span
+                  className="text-slate-950"
+                  style={primaryButtonReadableStyle}
+                >
+                  Esplora le categorie
+                </span>
               </Link>
               <Link
                 href="/games/tab-who"
