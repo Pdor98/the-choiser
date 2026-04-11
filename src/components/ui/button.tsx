@@ -11,10 +11,11 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-white text-slate-950 shadow-[0_20px_50px_-24px_rgba(255,255,255,0.9)] hover:bg-slate-100",
+    "border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(236,254,255,0.96)_48%,rgba(253,230,138,0.9))] text-slate-950 shadow-[0_24px_60px_-28px_rgba(250,204,21,0.65)] hover:-translate-y-0.5 hover:brightness-[1.02] hover:text-slate-950 hover:shadow-[0_28px_70px_-28px_rgba(255,255,255,0.8)] [&>*]:text-slate-950",
   secondary:
-    "border border-white/12 bg-white/8 text-white hover:bg-white/12",
-  ghost: "text-white/72 hover:bg-white/8 hover:text-white",
+    "border border-white/14 bg-slate-900/76 text-white/92 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] hover:-translate-y-0.5 hover:border-cyan-200/28 hover:bg-slate-800/90 hover:text-white",
+  ghost:
+    "border border-white/10 bg-white/[0.045] text-white/88 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] hover:-translate-y-0.5 hover:border-white/18 hover:bg-white/[0.08] hover:text-white",
 };
 
 export function buttonStyles({
@@ -25,7 +26,7 @@ export function buttonStyles({
   className?: string;
 }) {
   return cn(
-    "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold transition duration-300 ease-out disabled:cursor-not-allowed disabled:opacity-50",
+    "inline-flex min-h-12 touch-manipulation items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold leading-none whitespace-nowrap transition duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70 disabled:cursor-not-allowed disabled:opacity-50 [&>svg]:shrink-0 [&>svg]:text-current [&>span]:text-current",
     variantClasses[variant],
     className,
   );

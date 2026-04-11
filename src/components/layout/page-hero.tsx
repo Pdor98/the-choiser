@@ -23,7 +23,7 @@ export function PageHero({
           <h1 className="font-heading text-balance max-w-4xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
             {title}
           </h1>
-          <p className="mx-auto max-w-3xl text-base leading-8 text-white/66 sm:text-lg">
+          <p className="mx-auto max-w-3xl text-base leading-8 text-white/76 sm:text-lg">
             {description}
           </p>
         </div>
