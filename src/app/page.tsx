@@ -14,7 +14,7 @@ export default function HomePage() {
       <section className="grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_420px] xl:items-stretch">
         <div className="rounded-[34px] border border-white/12 bg-[linear-gradient(180deg,rgba(32,47,63,0.94),rgba(18,25,39,0.9))] p-6 shadow-[0_42px_90px_-54px_rgba(8,15,30,0.95)] backdrop-blur-xl sm:p-10 lg:p-12">
           <div className="space-y-6">
-            <SectionBadge>Decision platform</SectionBadge>
+            <SectionBadge>Piattaforma decisionale</SectionBadge>
 
             <div className="space-y-5">
               <h1 className="text-balance font-heading max-w-4xl text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
@@ -89,7 +89,7 @@ export default function HomePage() {
       <section className="space-y-5">
         <div>
           <p className="text-xs uppercase tracking-[0.22em] text-white/48">
-            Why Choiser
+            Perché Choiser
           </p>
           <h2 className="font-heading mt-2 text-3xl font-semibold tracking-tight text-white">
             Design orientato all&apos;uso, non solo alla presentazione

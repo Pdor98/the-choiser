@@ -76,7 +76,7 @@ export const categories: Category[] = [
     title: "Games",
     description:
       "Mini esperienze leggere, reattive e divertenti per giocare quando vuoi staccare un attimo.",
-    eyebrow: "Mini games",
+    eyebrow: "Giochi veloci",
     icon: Gamepad2,
     accentClassName:
       "from-amber-400/30 via-amber-400/10 to-transparent shadow-amber-500/20",
@@ -86,7 +86,7 @@ export const categories: Category[] = [
     title: "Tools",
     description:
       "Utility essenziali con un'interfaccia pulita, pensate per essere utili davvero anche su mobile.",
-    eyebrow: "Focus tools",
+    eyebrow: "Strumenti utili",
     icon: TimerReset,
     accentClassName:
       "from-emerald-400/30 via-emerald-400/10 to-transparent shadow-emerald-500/20",

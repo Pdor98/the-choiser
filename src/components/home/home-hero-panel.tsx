@@ -11,7 +11,7 @@ export function HomeHeroPanel() {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-r from-cyan-300/16 via-white/7 to-amber-300/16" />
       <div className="relative space-y-6">
         <SectionBadge className="border-white/14 bg-slate-900/58 text-white/82">
-          Startup-ready experience
+          Esperienza pronta
         </SectionBadge>
 
         <div className="space-y-4">
@@ -33,7 +33,7 @@ export function HomeHeroPanel() {
         <div className="grid gap-3 sm:grid-cols-2">
           <div className="rounded-2xl border border-white/12 bg-white/[0.06] p-4">
             <p className="text-xs uppercase tracking-[0.18em] text-white/58">
-              Live modules
+              Moduli attivi
             </p>
             <p className="mt-2 font-heading text-3xl font-semibold text-white">
               8
@@ -41,7 +41,7 @@ export function HomeHeroPanel() {
           </div>
           <div className="rounded-2xl border border-white/12 bg-white/[0.06] p-4">
             <p className="text-xs uppercase tracking-[0.18em] text-white/58">
-              Mobile ready
+              Pronta per mobile
             </p>
             <p className="mt-2 font-heading text-3xl font-semibold text-white">
               100%

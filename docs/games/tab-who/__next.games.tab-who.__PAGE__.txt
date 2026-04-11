@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[6982,["124","static/chunks/124-55d14cebe8fc13ce.js","979","static/chunks/979-99badc6b3c5f3e98.js","500","static/chunks/500-c99b8dfd3de17c86.js","523","static/chunks/app/games/tab-who/page-d3d0fbfb7fd9d57d.js"],"TabWhoGame"]
+2:I[6982,["124","static/chunks/124-55d14cebe8fc13ce.js","979","static/chunks/979-99badc6b3c5f3e98.js","500","static/chunks/500-c99b8dfd3de17c86.js","523","static/chunks/app/games/tab-who/page-5920eb327d41130f.js"],"TabWhoGame"]
 3:I[484,[],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"sM6z62zI_wlQk4LBRVMO1"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"7c9DLOp0xPWsvjAY8TfmB"}
 5:null

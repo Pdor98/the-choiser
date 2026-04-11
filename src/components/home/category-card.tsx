@@ -52,7 +52,7 @@ export function CategoryCard({
         <div className="relative mt-8 flex items-center justify-between text-sm text-white/78">
           <span>Apri sezione</span>
           <span className="rounded-full border border-white/12 bg-white/[0.05] px-3 py-1 text-xs uppercase tracking-[0.16em] text-white/72">
-            Explore
+            Scopri
           </span>
         </div>
       </Card>
