@@ -51,14 +51,14 @@ export default function GamesPage() {
         aside={
           <Card className="p-5">
             <div className="flex items-start gap-4">
-              <div className="rounded-2xl border border-indigo-200/80 bg-white/84 p-3 text-indigo-700">
+              <div className="rounded-2xl border border-indigo-300/18 bg-white/6 p-3 text-indigo-200">
                 <Dices className="size-5" />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
+                <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
                   Game collection
                 </p>
-                <p className="mt-2 text-sm leading-7 text-slate-700">
+                <p className="mt-2 text-sm leading-7 text-slate-300">
                   Cinque moduli con logiche distinte e interfacce più coerenti
                   rendono la sezione più solida, più moderna e più facile da usare.
                 </p>
@@ -74,17 +74,17 @@ export default function GamesPage() {
 
           return (
             <Link key={section.href} href={section.href} className="group h-full">
-              <Card className="relative h-full overflow-hidden border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(244,248,255,0.9))] p-5 transition duration-300 group-hover:-translate-y-1 group-hover:border-sky-200/80">
-                <div className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-sky-200/80 to-transparent" />
+              <Card className="relative h-full overflow-hidden border-white/8 bg-[linear-gradient(180deg,rgba(10,20,35,0.94),rgba(14,28,48,0.9))] p-5 transition duration-300 group-hover:-translate-y-1 group-hover:border-cyan-300/18">
+                <div className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/24 to-transparent" />
                 <div className="space-y-4">
-                  <div className="flex size-12 items-center justify-center rounded-2xl border border-sky-200/80 bg-white/82 text-sky-700">
+                  <div className="flex size-12 items-center justify-center rounded-2xl border border-cyan-300/16 bg-white/6 text-cyan-200">
                     <Icon className="size-5" />
                   </div>
                   <div className="space-y-2">
-                    <h2 className="font-heading text-xl font-semibold text-slate-900">
+                    <h2 className="font-heading text-xl font-semibold text-slate-50">
                       {section.title}
                     </h2>
-                    <p className="text-sm leading-7 text-slate-700">
+                    <p className="text-sm leading-7 text-slate-300">
                       {section.description}
                     </p>
                   </div>

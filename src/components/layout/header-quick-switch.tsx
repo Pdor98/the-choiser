@@ -14,19 +14,19 @@ export function HeaderQuickSwitch() {
     <div className="space-y-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div className="space-y-1 text-center sm:text-left">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-sky-700/66">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-cyan-200/58">
             Navigation hub
           </p>
-          <h2 className="font-heading text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+          <h2 className="font-heading text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
             {currentPage.headerTitle}
           </h2>
         </div>
-        <div className="hidden rounded-full border border-slate-200/80 bg-white/72 px-4 py-2 text-xs uppercase tracking-[0.22em] text-slate-600 sm:inline-flex">
+        <div className="hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.22em] text-slate-300 sm:inline-flex">
           Pagina attiva
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-4xl items-center justify-start gap-2 overflow-x-auto rounded-[26px] border border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(244,248,255,0.88))] p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.86)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:flex-wrap sm:justify-center">
+      <div className="mx-auto flex max-w-4xl items-center justify-start gap-2 overflow-x-auto rounded-[26px] border border-white/8 bg-[linear-gradient(180deg,rgba(9,18,33,0.88),rgba(13,25,44,0.88))] p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:flex-wrap sm:justify-center">
         {navigationLinks.map((link) => {
           const isActive = currentPage.href === link.href;
           const Icon = link.icon;
@@ -39,8 +39,8 @@ export function HeaderQuickSwitch() {
               className={cn(
                 "inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition duration-300",
                 isActive
-                  ? "border-sky-200/90 bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(223,244,255,0.96)_55%,rgba(186,230,253,0.92))] text-slate-900 shadow-[0_18px_44px_-30px_rgba(125,211,252,0.52)]"
-                  : "border-slate-200/80 bg-white/62 text-slate-700 hover:border-sky-200/80 hover:bg-white/86 hover:text-slate-900",
+                  ? "border-cyan-300/26 bg-[linear-gradient(135deg,rgba(34,211,238,0.18),rgba(59,130,246,0.3)_55%,rgba(99,102,241,0.24))] text-slate-50 shadow-[0_18px_44px_-30px_rgba(56,189,248,0.36)]"
+                  : "border-white/8 bg-white/5 text-slate-300 hover:border-cyan-300/22 hover:bg-white/8 hover:text-slate-50",
               )}
             >
               <Icon className="size-4" />

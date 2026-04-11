@@ -24,11 +24,11 @@ export default function HomePage() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <SectionBadge>Scorciatoie Choiser</SectionBadge>
-            <h2 className="font-heading mt-3 text-3xl font-semibold tracking-tight text-slate-900">
+            <h2 className="font-heading mt-3 text-3xl font-semibold tracking-tight text-slate-50">
               Dopo il consiglio, scegli dove continuare
             </h2>
           </div>
-          <p className="max-w-2xl text-sm leading-7 text-slate-700">
+          <p className="max-w-2xl text-sm leading-7 text-slate-300">
             La home ora parte da un’azione concreta e poi ti accompagna verso
             generatori, giochi e strumenti senza dispersione.
           </p>
@@ -72,14 +72,14 @@ export default function HomePage() {
       <section className="space-y-5">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-slate-500">
+            <p className="text-xs uppercase tracking-[0.22em] text-slate-400">
               Categorie
             </p>
-            <h2 className="font-heading mt-2 text-3xl font-semibold tracking-tight text-slate-900">
+            <h2 className="font-heading mt-2 text-3xl font-semibold tracking-tight text-slate-50">
               Scegli come vuoi iniziare
             </h2>
           </div>
-          <p className="max-w-2xl text-sm leading-7 text-slate-700">
+          <p className="max-w-2xl text-sm leading-7 text-slate-300">
             Tre aree principali organizzano l&apos;esperienza: generatori
             casuali, mini giochi e strumenti pratici.
           </p>
@@ -94,11 +94,11 @@ export default function HomePage() {
 
       <section className="space-y-5">
         <div>
-          <p className="text-xs uppercase tracking-[0.22em] text-slate-500">
+          <p className="text-xs uppercase tracking-[0.22em] text-slate-400">
             Perché Choiser
           </p>
-          <h2 className="font-heading mt-2 text-3xl font-semibold tracking-tight text-slate-900">
-            Più chiaro, più fresco, più orientato all’azione
+          <h2 className="font-heading mt-2 text-3xl font-semibold tracking-tight text-slate-50">
+            Più leggibile, più profondo, più orientato all’azione
           </h2>
         </div>
 
