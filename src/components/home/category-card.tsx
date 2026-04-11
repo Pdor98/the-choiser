@@ -24,9 +24,9 @@ export function CategoryCard({
 }: CategoryCardProps) {
   return (
     <Link href={href} className="group h-full">
-      <Card className="relative flex h-full flex-col justify-between overflow-hidden p-6 shadow-[0_30px_70px_-45px_rgba(15,23,42,0.95)] transition duration-500 hover:-translate-y-1.5 hover:border-white/18 hover:bg-white/8">
+      <Card className="relative flex h-full flex-col justify-between overflow-hidden border-white/12 bg-slate-900/80 p-6 shadow-[0_35px_80px_-52px_rgba(15,23,42,0.95)] transition duration-500 hover:-translate-y-1.5 hover:border-white/20 hover:bg-slate-900/90">
         <div
-          className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${accentClassName} opacity-90 transition duration-500 group-hover:opacity-100`}
+          className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${accentClassName} opacity-70 transition duration-500 group-hover:opacity-85`}
         />
         <div className="pointer-events-none absolute right-0 top-0 h-28 w-28 rounded-full bg-white/6 blur-3xl transition duration-500 group-hover:scale-110" />
 
@@ -35,23 +35,23 @@ export function CategoryCard({
             <div className="rounded-2xl border border-white/10 bg-slate-950/60 p-3 text-white shadow-[0_18px_40px_-28px_rgba(255,255,255,0.3)]">
               <Icon className="size-6" />
             </div>
-            <ArrowUpRight className="size-5 text-white/45 transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
+            <ArrowUpRight className="size-5 text-white/60 transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
           </div>
 
           <div className="space-y-3">
-            <p className="text-xs font-medium uppercase tracking-[0.22em] text-white/52">
+            <p className="text-xs font-medium uppercase tracking-[0.22em] text-white/66">
               {eyebrow}
             </p>
             <h2 className="font-heading text-2xl font-semibold tracking-tight text-white">
               {title}
             </h2>
-            <p className="text-sm leading-7 text-white/64">{description}</p>
+            <p className="text-sm leading-7 text-white/76">{description}</p>
           </div>
         </div>
 
-        <div className="relative mt-8 flex items-center justify-between text-sm text-white/60">
+        <div className="relative mt-8 flex items-center justify-between text-sm text-white/78">
           <span>Apri sezione</span>
-          <span className="rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.16em] text-white/46">
+          <span className="rounded-full border border-white/12 bg-white/[0.05] px-3 py-1 text-xs uppercase tracking-[0.16em] text-white/72">
             Explore
           </span>
         </div>

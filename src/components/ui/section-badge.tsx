@@ -9,7 +9,7 @@ export function SectionBadge({
   return (
     <div
       className={cn(
-        "inline-flex items-center rounded-full border border-white/10 bg-white/6 px-3 py-1 text-xs font-medium uppercase tracking-[0.22em] text-white/55",
+        "inline-flex items-center rounded-full border border-white/12 bg-slate-900/72 px-3 py-1 text-xs font-medium uppercase tracking-[0.22em] text-white/76 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]",
         className,
       )}
       {...props}
