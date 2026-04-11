@@ -1,0 +1,2 @@
+:HL["/the-choiser/_next/static/css/ac8e0a2aa60dfb6f.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"games","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"q1phdHUBFmgwyHZWCsZf1"}

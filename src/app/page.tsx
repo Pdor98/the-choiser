@@ -36,8 +36,14 @@ export default function HomePage() {
                 <span>Esplora le categorie</span>
               </Link>
               <Link
-                href="/tools"
+                href="/games/tab-who"
                 className={buttonStyles({ variant: "secondary" })}
+              >
+                <span>Apri TAB-WHO ?</span>
+              </Link>
+              <Link
+                href="/tools"
+                className={buttonStyles({ variant: "ghost" })}
               >
                 <span>Vai ai tools</span>
               </Link>
