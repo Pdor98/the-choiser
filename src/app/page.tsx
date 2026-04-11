@@ -13,9 +13,9 @@ import { categories, homeHighlights } from "@/lib/site-content";
 
 export default function HomePage() {
   return (
-    <div className="space-y-10">
+    <div className="space-y-12">
       <section className="grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_420px] xl:items-stretch">
-        <div className="rounded-[34px] border border-white/12 bg-[linear-gradient(180deg,rgba(32,47,63,0.94),rgba(18,25,39,0.9))] p-6 shadow-[0_42px_90px_-54px_rgba(8,15,30,0.95)] backdrop-blur-xl sm:p-10 lg:p-12">
+        <div className="rounded-[36px] border border-[var(--stroke-strong)] bg-[linear-gradient(180deg,rgba(13,22,38,0.94),rgba(8,14,26,0.92))] p-6 shadow-[0_42px_100px_-56px_rgba(2,8,23,0.96),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl sm:p-10 lg:p-12">
           <div className="space-y-6">
             <SectionBadge>Piattaforma decisionale</SectionBadge>
 
@@ -23,13 +23,13 @@ export default function HomePage() {
               <h1 className="text-balance font-heading max-w-4xl text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
                 Choiser
               </h1>
-              <p className="text-balance max-w-2xl text-lg leading-8 text-white/82 sm:text-xl">
+              <p className="text-balance max-w-2xl text-lg leading-8 text-white/86 sm:text-xl">
                 Non sai cosa scegliere? Ti aiutiamo noi.
               </p>
-              <p className="max-w-2xl text-base leading-8 text-white/72">
-                Una web app moderna per generare idee, giocare rapidamente e
-                usare strumenti essenziali dentro un&apos;unica esperienza
-                fluida.
+              <p className="max-w-2xl text-base leading-8 text-white/78">
+                Una dashboard leggera per generare idee, giocare in pochi tap e
+                usare strumenti utili con un linguaggio visivo più chiaro e
+                coerente.
               </p>
             </div>
 
@@ -69,6 +69,33 @@ export default function HomePage() {
                 <span>Vai ai tools</span>
               </Link>
             </div>
+
+            <div className="grid gap-3 pt-1 sm:grid-cols-3">
+              <div className="rounded-[22px] border border-white/10 bg-white/[0.045] px-4 py-3">
+                <p className="text-xs uppercase tracking-[0.18em] text-white/54">
+                  Esperienza
+                </p>
+                <p className="mt-2 text-sm font-semibold text-white">
+                  Mobile-first e leggibile
+                </p>
+              </div>
+              <div className="rounded-[22px] border border-white/10 bg-white/[0.045] px-4 py-3">
+                <p className="text-xs uppercase tracking-[0.18em] text-white/54">
+                  Moduli
+                </p>
+                <p className="mt-2 text-sm font-semibold text-white">
+                  Giochi, random e tools
+                </p>
+              </div>
+              <div className="rounded-[22px] border border-white/10 bg-white/[0.045] px-4 py-3">
+                <p className="text-xs uppercase tracking-[0.18em] text-white/54">
+                  Focus
+                </p>
+                <p className="mt-2 text-sm font-semibold text-white">
+                  Interfaccia più semplice
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -78,14 +105,14 @@ export default function HomePage() {
       <section className="space-y-5">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-          <p className="text-xs uppercase tracking-[0.22em] text-white/48">
-            Categorie
-          </p>
-          <h2 className="font-heading mt-2 text-3xl font-semibold tracking-tight text-white">
-            Scegli come vuoi iniziare
-          </h2>
-        </div>
-          <p className="max-w-2xl text-sm leading-7 text-white/70">
+            <p className="text-xs uppercase tracking-[0.22em] text-white/50">
+              Categorie
+            </p>
+            <h2 className="font-heading mt-2 text-3xl font-semibold tracking-tight text-white">
+              Scegli come vuoi iniziare
+            </h2>
+          </div>
+          <p className="max-w-2xl text-sm leading-7 text-white/76">
             Tre aree principali organizzano l&apos;esperienza: generatori
             casuali, mini giochi e strumenti pratici.
           </p>
@@ -100,11 +127,11 @@ export default function HomePage() {
 
       <section className="space-y-5">
         <div>
-          <p className="text-xs uppercase tracking-[0.22em] text-white/48">
+          <p className="text-xs uppercase tracking-[0.22em] text-white/50">
             Perché Choiser
           </p>
           <h2 className="font-heading mt-2 text-3xl font-semibold tracking-tight text-white">
-            Design orientato all&apos;uso, non solo alla presentazione
+            Un linguaggio visivo più tech, ma più facile da usare
           </h2>
         </div>
 

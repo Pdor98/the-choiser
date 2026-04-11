@@ -190,34 +190,35 @@ export function TabWhoGame() {
 
   return (
     <Card className="relative overflow-hidden p-4 sm:p-5">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-r from-amber-300/16 via-rose-300/10 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-r from-cyan-300/14 via-indigo-300/10 to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 h-40 w-40 rounded-full bg-cyan-300/8 blur-3xl" />
 
       <div className="relative space-y-4">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="space-y-2">
-            <p className="text-xs uppercase tracking-[0.22em] text-amber-100/72">
+            <p className="text-xs uppercase tracking-[0.22em] text-cyan-100/70">
               Word challenge
             </p>
             <h1 className="font-heading text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               TAB-WHO ?
             </h1>
-            <p className="max-w-2xl text-sm leading-6 text-white/64 sm:text-base">
+            <p className="max-w-2xl text-sm leading-6 text-white/74 sm:text-base">
               Fai indovinare la parola principale senza usare i 5 taboo. Turno
               rapido da 60 secondi, punteggio live e controllo anche per carta
               sbagliata o taboo pronunciato.
             </p>
           </div>
 
-          <div className="flex size-11 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-amber-100">
+          <div className="flex size-11 items-center justify-center rounded-2xl border border-cyan-100/14 bg-[linear-gradient(180deg,rgba(17,29,47,0.96),rgba(8,15,28,0.94))] text-cyan-100">
             <MessageCircle className="size-5" />
           </div>
         </div>
 
-        <div className="rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,253,249,1)_0%,rgba(255,246,232,0.99)_100%)] p-4 text-slate-950 shadow-[0_40px_90px_-50px_rgba(245,158,11,0.5)] sm:p-5">
+        <div className="rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(249,252,255,1)_0%,rgba(237,244,255,0.99)_100%)] p-4 text-slate-950 shadow-[0_40px_90px_-52px_rgba(59,130,246,0.32)] sm:p-5">
           {gameState === "idle" ? (
             <div className="space-y-5">
               <div className="space-y-4 text-center">
-                <div className="inline-flex items-center gap-2 rounded-full border border-slate-950/10 bg-white/85 px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm">
+                <div className="inline-flex items-center gap-2 rounded-full border border-slate-950/8 bg-white/90 px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm">
                   <ShieldBan className="size-4 text-rose-500" />
                   <span>{parole.length} carte pronte</span>
                 </div>
@@ -238,7 +239,7 @@ export function TabWhoGame() {
               </div>
 
               <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-stretch">
-                <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm">
+                <div className="rounded-[28px] border border-slate-200/90 bg-white p-5 shadow-[0_20px_50px_-36px_rgba(59,130,246,0.25)]">
                   <div className="space-y-3 text-center">
                     <p className="text-xs uppercase tracking-[0.24em] text-slate-500">
                       Carta pronta
@@ -261,7 +262,7 @@ export function TabWhoGame() {
                 </div>
 
                 <div className="grid gap-3">
-                  <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm">
+                  <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-4 shadow-sm">
                     <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                       Regole rapide
                     </p>
@@ -272,7 +273,7 @@ export function TabWhoGame() {
                     </div>
                   </div>
 
-                  <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm">
+                  <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-4 shadow-sm">
                     <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                       Per The Choiser
                     </p>
@@ -318,9 +319,9 @@ export function TabWhoGame() {
           ) : (
             <div className="space-y-4">
               <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-                <div className="rounded-[22px] border border-slate-200 bg-white/90 p-4 shadow-sm">
+                <div className="rounded-[22px] border border-slate-200 bg-white/92 p-4 shadow-sm">
                   <div className="flex items-center gap-3">
-                    <div className="flex size-10 items-center justify-center rounded-2xl bg-slate-950 text-white">
+                    <div className="flex size-10 items-center justify-center rounded-2xl bg-slate-950 text-cyan-100">
                       <Clock3 className="size-4" />
                     </div>
                     <div>
@@ -340,7 +341,7 @@ export function TabWhoGame() {
                   </div>
                 </div>
 
-                <div className="rounded-[22px] border border-slate-200 bg-white/90 p-4 shadow-sm">
+                <div className="rounded-[22px] border border-slate-200 bg-white/92 p-4 shadow-sm">
                   <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                     Punteggio
                   </p>
@@ -352,7 +353,7 @@ export function TabWhoGame() {
                   </p>
                 </div>
 
-                <div className="rounded-[22px] border border-slate-200 bg-white/90 p-4 shadow-sm">
+                <div className="rounded-[22px] border border-slate-200 bg-white/92 p-4 shadow-sm">
                   <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                     Sbagliate
                   </p>
@@ -364,7 +365,7 @@ export function TabWhoGame() {
                   </p>
                 </div>
 
-                <div className="rounded-[22px] border border-slate-200 bg-white/90 p-4 shadow-sm">
+                <div className="rounded-[22px] border border-slate-200 bg-white/92 p-4 shadow-sm">
                   <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                     Stato turno
                   </p>
@@ -384,10 +385,10 @@ export function TabWhoGame() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -12, scale: 0.98 }}
                   transition={{ duration: 0.24, ease: "easeOut" }}
-                  className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] sm:p-5"
+                  className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-[0_30px_70px_-50px_rgba(37,99,235,0.22)] sm:p-5"
                 >
                   <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-stretch">
-                    <div className="rounded-[24px] border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(248,250,252,1)_100%)] p-5 sm:p-6">
+                    <div className="rounded-[24px] border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(241,245,255,1)_100%)] p-5 sm:p-6">
                       <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
                         <p className="text-xs uppercase tracking-[0.24em] text-slate-500">
                           Parola principale
@@ -474,7 +475,7 @@ export function TabWhoGame() {
               </div>
 
               <div className="grid gap-3 lg:grid-cols-3">
-                <div className="rounded-[22px] border border-slate-200 bg-white/82 p-4 shadow-sm">
+                <div className="rounded-[22px] border border-slate-200 bg-white/86 p-4 shadow-sm">
                   <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                     Regole rapide
                   </p>
@@ -483,7 +484,7 @@ export function TabWhoGame() {
                     toglie punti.
                   </p>
                 </div>
-                <div className="rounded-[22px] border border-slate-200 bg-white/82 p-4 shadow-sm">
+                <div className="rounded-[22px] border border-slate-200 bg-white/86 p-4 shadow-sm">
                   <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                     Round stats
                   </p>
@@ -502,7 +503,7 @@ export function TabWhoGame() {
                     </span>
                   </p>
                 </div>
-                <div className="rounded-[22px] border border-slate-200 bg-white/82 p-4 shadow-sm">
+                <div className="rounded-[22px] border border-slate-200 bg-white/86 p-4 shadow-sm">
                   <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                     Dataset
                   </p>
@@ -530,9 +531,9 @@ export function TabWhoGame() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 12, scale: 0.98 }}
               transition={{ duration: 0.24, ease: "easeOut" }}
-              className="w-full max-w-lg rounded-[28px] border border-white/10 bg-slate-950/95 p-6 text-center shadow-[0_40px_100px_-60px_rgba(0,0,0,0.95)]"
+              className="w-full max-w-lg rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(7,12,24,0.98),rgba(11,18,33,0.96))] p-6 text-center shadow-[0_40px_100px_-60px_rgba(0,0,0,0.95)]"
             >
-              <div className="mx-auto flex size-14 items-center justify-center rounded-2xl bg-amber-300/14 text-amber-100">
+              <div className="mx-auto flex size-14 items-center justify-center rounded-2xl bg-cyan-300/14 text-cyan-100">
                 <Trophy className="size-6" />
               </div>
               <p className="mt-5 text-xs uppercase tracking-[0.24em] text-white/45">

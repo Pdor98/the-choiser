@@ -70,8 +70,8 @@ function ViewModeToggle({
               onClick={() => onChange(option.mode)}
               className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition duration-300 ${
                 isActive
-                  ? "border-emerald-300/45 bg-emerald-300/14 text-white shadow-[0_18px_40px_-28px_rgba(110,231,183,0.65)]"
-                  : "border-white/10 bg-white/[0.045] text-white/72 hover:border-white/18 hover:bg-white/[0.08] hover:text-white"
+                  ? "border-cyan-100/26 bg-[linear-gradient(135deg,rgba(89,197,255,0.22),rgba(129,140,248,0.12))] text-white shadow-[0_18px_40px_-28px_rgba(96,165,250,0.55)]"
+                  : "border-white/10 bg-white/[0.04] text-white/78 hover:border-cyan-100/18 hover:bg-white/[0.07] hover:text-white"
               }`}
             >
               <Icon className="size-4" />
@@ -94,7 +94,7 @@ function ClassicTimerDisplay({
   progress: number;
 }) {
   return (
-    <div className="rounded-[28px] border border-white/10 bg-slate-950/72 p-6">
+    <div className="rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(7,12,24,0.96),rgba(11,19,34,0.92))] p-6 shadow-[0_28px_70px_-50px_rgba(2,8,23,0.95)]">
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="text-xs uppercase tracking-[0.18em] text-white/42">
@@ -104,7 +104,7 @@ function ClassicTimerDisplay({
             {timeLabel}
           </p>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-white/6 px-4 py-3 text-right">
+        <div className="rounded-2xl border border-cyan-100/12 bg-white/[0.05] px-4 py-3 text-right">
           <p className="text-xs uppercase tracking-[0.16em] text-white/42">
             Durata
           </p>
@@ -116,7 +116,7 @@ function ClassicTimerDisplay({
 
       <div className="mt-6 h-3 overflow-hidden rounded-full bg-white/8">
         <motion.div
-          className="h-full rounded-full bg-gradient-to-r from-emerald-300 via-cyan-300 to-white"
+          className="h-full rounded-full bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-200"
           animate={{ width: `${progress * 100}%` }}
           transition={{ duration: 0.22, ease: "easeOut" }}
         />
@@ -148,7 +148,7 @@ function HourglassDisplay({
   const streamVisible = isRunning && !hasFinished && progress > 0 && progress < 1;
 
   return (
-    <div className="rounded-[28px] border border-white/10 bg-slate-950/72 p-6">
+    <div className="rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(7,12,24,0.96),rgba(11,19,34,0.92))] p-6 shadow-[0_28px_70px_-50px_rgba(2,8,23,0.95)]">
       <div className="mx-auto flex max-w-[280px] flex-col items-center gap-6">
         <div className="text-center">
           <p className="text-xs uppercase tracking-[0.18em] text-white/42">
@@ -180,7 +180,7 @@ function HourglassDisplay({
           <div className="absolute left-1/2 top-5 h-[112px] w-[150px] -translate-x-1/2 overflow-hidden [clip-path:polygon(8%_0%,92%_0%,62%_100%,38%_100%)]">
             <div className="absolute inset-0 border border-white/14 bg-[linear-gradient(180deg,rgba(15,23,42,0.9),rgba(59,130,246,0.08))]" />
             <motion.div
-              className="absolute inset-x-[14%] bottom-0 rounded-t-[28px] bg-[linear-gradient(180deg,rgba(254,240,138,0.96),rgba(245,158,11,0.92))]"
+              className="absolute inset-x-[14%] bottom-0 rounded-t-[28px] bg-[linear-gradient(180deg,rgba(216,242,255,0.96),rgba(96,165,250,0.92))]"
               animate={{ height: topFill }}
               transition={{ duration: isRunning ? 0.22 : 0.28, ease: "easeOut" }}
             />
@@ -189,7 +189,7 @@ function HourglassDisplay({
           <div className="absolute left-1/2 bottom-5 h-[112px] w-[150px] -translate-x-1/2 overflow-hidden [clip-path:polygon(38%_0%,62%_0%,92%_100%,8%_100%)]">
             <div className="absolute inset-0 border border-white/14 bg-[linear-gradient(180deg,rgba(15,23,42,0.82),rgba(59,130,246,0.08))]" />
             <motion.div
-              className="absolute inset-x-[14%] bottom-0 rounded-b-[28px] bg-[linear-gradient(180deg,rgba(254,240,138,0.96),rgba(245,158,11,0.92))]"
+              className="absolute inset-x-[14%] bottom-0 rounded-b-[28px] bg-[linear-gradient(180deg,rgba(216,242,255,0.96),rgba(96,165,250,0.92))]"
               animate={{ height: bottomFill }}
               transition={{ duration: isRunning ? 0.22 : 0.28, ease: "easeOut" }}
             />
@@ -197,7 +197,7 @@ function HourglassDisplay({
 
           <div className="absolute left-1/2 top-[122px] h-[56px] w-1.5 -translate-x-1/2 overflow-hidden rounded-full bg-white/8">
             <motion.div
-              className="absolute inset-x-0 top-0 rounded-full bg-[linear-gradient(180deg,rgba(254,240,138,0.98),rgba(245,158,11,0.92))]"
+              className="absolute inset-x-0 top-0 rounded-full bg-[linear-gradient(180deg,rgba(216,242,255,0.98),rgba(96,165,250,0.92))]"
               animate={{
                 opacity: streamVisible ? 1 : 0,
                 height: streamVisible ? ["15%", "100%", "35%"] : "0%",
@@ -409,26 +409,26 @@ export function TimerTool() {
 
   return (
     <Card className="relative overflow-hidden p-6 sm:p-7">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-emerald-300/16 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-cyan-300/16 via-indigo-300/10 to-transparent" />
       <div className="relative grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start">
         <div className="space-y-5">
           <div className="flex items-center justify-between">
-            <div className="rounded-2xl border border-white/10 bg-white/8 p-3 text-emerald-200">
+            <div className="rounded-2xl border border-cyan-100/14 bg-[linear-gradient(180deg,rgba(17,29,47,0.96),rgba(8,15,28,0.94))] p-3 text-cyan-100">
               <TimerReset className="size-5" />
             </div>
             <span className="rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/46">
-              Focus mode
+              Utility deck
             </span>
           </div>
 
           <div className="space-y-2">
-            <p className="text-xs uppercase tracking-[0.22em] text-emerald-200/70">
+            <p className="text-xs uppercase tracking-[0.22em] text-cyan-100/70">
               Timer tool
             </p>
             <h2 className="font-heading text-3xl font-semibold tracking-tight text-white">
               Countdown con suono finale e vista clessidra
             </h2>
-            <p className="text-sm leading-7 text-white/66">
+            <p className="text-sm leading-7 text-white/74">
               Scegli i secondi, imposta la visualizzazione che preferisci e
               lascia che il timer ti segnali la fine con un suono breve e chiaro.
             </p>
@@ -447,8 +447,8 @@ export function TimerTool() {
                   disabled={isRunning}
                   className={`rounded-2xl border px-4 py-3 text-left text-sm transition duration-300 ${
                     isSelected
-                      ? "border-emerald-300/50 bg-emerald-300/12 text-white"
-                      : "border-white/10 bg-white/6 text-white/68 hover:bg-white/10 hover:text-white"
+                      ? "border-cyan-100/22 bg-[linear-gradient(180deg,rgba(89,197,255,0.18),rgba(129,140,248,0.08))] text-white"
+                      : "border-white/10 bg-white/[0.05] text-white/74 hover:bg-white/[0.08] hover:text-white"
                   } disabled:cursor-not-allowed disabled:opacity-50`}
                 >
                   <span className="block text-xs uppercase tracking-[0.16em] text-white/40">
@@ -464,7 +464,7 @@ export function TimerTool() {
 
           <div className="rounded-[24px] border border-white/10 bg-white/[0.05] p-4">
             <div className="flex items-start gap-3">
-              <div className="mt-0.5 flex size-10 items-center justify-center rounded-2xl bg-emerald-300/12 text-emerald-100">
+              <div className="mt-0.5 flex size-10 items-center justify-center rounded-2xl bg-cyan-300/12 text-cyan-100">
                 <Volume2 className="size-4" />
               </div>
               <div className="space-y-1">
@@ -532,7 +532,7 @@ export function TimerTool() {
               className={`rounded-[24px] border p-4 ${
                 hasFinished
                   ? "border-emerald-300/20 bg-emerald-300/10"
-                  : "border-white/10 bg-white/6"
+                  : "border-white/10 bg-white/[0.05]"
               }`}
             >
               <div className="flex items-start gap-3">

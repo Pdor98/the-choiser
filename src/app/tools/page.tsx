@@ -9,21 +9,21 @@ export default function ToolsPage() {
     <div className="space-y-8">
       <PageHero
         badge="Tools category"
-        title="Strumenti utili con interfacce essenziali e una UX davvero pulita."
-        description="Il timer di Choiser ora include selezione rapida dei secondi, suono finale, vista classica, modalità clessidra animata e controlli semplici per desktop e mobile."
+        title="Strumenti essenziali con una UI più pulita, moderna e pronta all’uso."
+        description="La sezione tools adotta ora un look più dashboard: preset rapidi, controlli più leggibili, feedback visivi chiari e countdown disponibile sia in vista classica sia in modalità clessidra."
         aside={
           <Card className="p-5">
             <div className="flex items-start gap-4">
-              <div className="rounded-2xl border border-white/10 bg-white/8 p-3 text-emerald-200">
+              <div className="rounded-2xl border border-cyan-100/14 bg-[linear-gradient(180deg,rgba(17,29,47,0.96),rgba(8,15,28,0.94))] p-3 text-cyan-100">
                 <TimerReset className="size-5" />
               </div>
               <div>
                 <p className="text-xs uppercase tracking-[0.18em] text-white/45">
-                  Focus utility
+                  Utility deck
                 </p>
                 <p className="mt-2 text-sm leading-7 text-white/64">
-                  Preset rapidi, doppia visualizzazione e segnale sonoro finale
-                  rendono il countdown più chiaro, coinvolgente e facile da usare.
+                  Countdown più leggibile, doppia visualizzazione e feedback
+                  sonoro mantengono l’esperienza essenziale ma più sofisticata.
                 </p>
               </div>
             </div>

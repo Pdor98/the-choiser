@@ -1,7 +1,19 @@
 @theme {
-  --color-background: #04070d;
-  --color-foreground: #f8fafc;
+  --color-background: #060b14;
+  --color-foreground: #f6f9ff;
   --font-heading: "Avenir Next Condensed", "Arial Narrow", "Trebuchet MS",
     sans-serif;
   --font-body: "Avenir Next", "Segoe UI", sans-serif;
+  --surface-panel: rgba(9, 16, 29, 0.8);
+  --surface-panel-strong: rgba(6, 11, 21, 0.92);
+  --surface-soft: rgba(255, 255, 255, 0.05);
+  --surface-soft-strong: rgba(255, 255, 255, 0.09);
+  --stroke-soft: rgba(148, 163, 184, 0.18);
+  --stroke-strong: rgba(191, 219, 254, 0.22);
+  --text-soft: rgba(234, 241, 255, 0.8);
+  --text-muted: rgba(220, 230, 247, 0.62);
+  --accent-cyan: #7dd3fc;
+  --accent-blue: #60a5fa;
+  --accent-indigo: #818cf8;
+  --accent-emerald: #6ee7b7;
 }
