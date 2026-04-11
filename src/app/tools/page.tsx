@@ -10,7 +10,7 @@ export default function ToolsPage() {
       <PageHero
         badge="Tools category"
         title="Strumenti utili con interfacce essenziali e una UX davvero pulita."
-        description="Il primo tool di Choiser è un timer con selezione dei secondi, countdown in tempo reale, barra di progresso e notifica finale. Un modulo pronto da espandere con utility future."
+        description="Il timer di Choiser ora include selezione rapida dei secondi, suono finale, vista classica, modalità clessidra animata e controlli semplici per desktop e mobile."
         aside={
           <Card className="p-5">
             <div className="flex items-start gap-4">
@@ -22,8 +22,8 @@ export default function ToolsPage() {
                   Focus utility
                 </p>
                 <p className="mt-2 text-sm leading-7 text-white/64">
-                  Preset rapidi, countdown visivo e stato finale evidente per un
-                  uso semplice in desktop e mobile.
+                  Preset rapidi, doppia visualizzazione e segnale sonoro finale
+                  rendono il countdown più chiaro, coinvolgente e facile da usare.
                 </p>
               </div>
             </div>
