@@ -68,13 +68,17 @@ export default function GamesPage() {
         }
       />
 
-      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
+      <section className="grid auto-cols-[minmax(15.5rem,82vw)] grid-flow-col gap-3 overflow-x-auto pb-1 snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid-flow-row md:auto-cols-auto md:grid-cols-2 md:overflow-visible md:pb-0 xl:grid-cols-3 2xl:grid-cols-5">
         {gameSections.map((section) => {
           const Icon = section.icon;
 
           return (
-            <Link key={section.href} href={section.href} className="group h-full">
-              <Card className="relative h-full overflow-hidden border-white/8 bg-[linear-gradient(180deg,rgba(10,20,35,0.94),rgba(14,28,48,0.9))] p-5 transition duration-300 group-hover:-translate-y-1 group-hover:border-cyan-300/18">
+            <Link
+              key={section.href}
+              href={section.href}
+              className="group h-full snap-center md:min-w-0"
+            >
+              <Card className="relative h-full overflow-hidden border-white/8 bg-[linear-gradient(180deg,rgba(10,20,35,0.94),rgba(14,28,48,0.9))] p-4 transition duration-300 group-hover:-translate-y-1 group-hover:border-cyan-300/18 sm:p-5">
                 <div className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/24 to-transparent" />
                 <div className="space-y-4">
                   <div className="flex size-12 items-center justify-center rounded-2xl border border-cyan-300/16 bg-white/6 text-cyan-200">

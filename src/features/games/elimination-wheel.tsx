@@ -84,7 +84,7 @@ export function EliminationWheelGame() {
   const segmentAngle = activeNames.length > 0 ? 360 / activeNames.length : 360;
 
   return (
-    <Card className="relative overflow-hidden p-5 sm:p-7">
+    <Card className="relative overflow-hidden p-4 sm:p-6 lg:p-7">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-pink-300/12 to-transparent" />
       <div className="relative space-y-6">
         <div className="flex items-start justify-between gap-4">
@@ -105,8 +105,8 @@ export function EliminationWheelGame() {
           </div>
         </div>
 
-        <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_340px] xl:items-start xl:gap-6">
-          <div className="rounded-[28px] border border-white/10 bg-slate-950/62 p-5">
+        <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_340px] xl:items-start xl:gap-6">
+          <div className="rounded-[28px] border border-white/10 bg-slate-950/62 p-4 sm:p-5">
             <div className="relative mx-auto aspect-square w-full max-w-[320px] sm:max-w-[430px]">
               <div className="absolute left-1/2 top-0 z-20 h-0 w-0 -translate-x-1/2 border-l-[14px] border-r-[14px] border-t-[24px] border-l-transparent border-r-transparent border-t-pink-200 drop-shadow-[0_0_14px_rgba(244,114,182,0.8)]" />
 
@@ -208,7 +208,7 @@ export function EliminationWheelGame() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-[28px] border border-white/10 bg-slate-950/72 p-5">
+            <div className="rounded-[28px] border border-white/10 bg-slate-950/72 p-4 sm:p-5">
               <p className="text-xs uppercase tracking-[0.18em] text-white/42">
                 Partecipanti
               </p>
@@ -221,12 +221,12 @@ export function EliminationWheelGame() {
                 onChange={(event) => setDraftNames(event.target.value)}
                 placeholder="Es. Alice&#10;Marco&#10;Giulia"
               />
-              <div className="mt-4 grid gap-3 sm:flex sm:flex-wrap">
+              <div className="mt-4 grid gap-3">
                 <Button
                   type="button"
                   variant="secondary"
                   onClick={applyNames}
-                  className="w-full sm:w-auto"
+                  className="w-full"
                 >
                   Applica nomi
                 </Button>
@@ -235,7 +235,7 @@ export function EliminationWheelGame() {
                   icon={<Play className="size-4" />}
                   onClick={spinWheel}
                   disabled={isSpinning || activeNames.length <= 1}
-                  className="w-full sm:w-auto"
+                  className="w-full"
                 >
                   Gira la ruota
                 </Button>
@@ -244,14 +244,31 @@ export function EliminationWheelGame() {
                   variant="ghost"
                   icon={<RotateCcw className="size-4" />}
                   onClick={resetWheel}
-                  className="w-full sm:w-auto"
+                  className="w-full"
                 >
                   Reset
                 </Button>
               </div>
+
+              <div className="mt-4 rounded-[24px] border border-pink-300/18 bg-pink-300/10 p-4 xl:hidden">
+                <p className="text-xs uppercase tracking-[0.18em] text-pink-100/70">
+                  Stato rapido
+                </p>
+                <p className="mt-2 text-sm leading-6 text-white/72">{feedback}</p>
+                {winner ? (
+                  <div className="mt-3 rounded-[20px] border border-emerald-300/22 bg-emerald-300/10 p-3">
+                    <p className="text-xs uppercase tracking-[0.18em] text-emerald-100/72">
+                      Vincitore
+                    </p>
+                    <p className="font-heading mt-1 text-2xl font-semibold text-white">
+                      {winner}
+                    </p>
+                  </div>
+                ) : null}
+              </div>
             </div>
 
-            <div className="rounded-[28px] border border-white/10 bg-slate-950/72 p-5">
+            <div className="hidden rounded-[28px] border border-white/10 bg-slate-950/72 p-5 xl:block">
               <p className="text-xs uppercase tracking-[0.18em] text-white/42">
                 Stato
               </p>
@@ -284,7 +301,7 @@ export function EliminationWheelGame() {
               </AnimatePresence>
             </div>
 
-            <div className="rounded-[28px] border border-white/10 bg-slate-950/72 p-5">
+            <div className="rounded-[28px] border border-white/10 bg-slate-950/72 p-4 sm:p-5">
               <p className="text-xs uppercase tracking-[0.18em] text-white/42">
                 Eliminati
               </p>

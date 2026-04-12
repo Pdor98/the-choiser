@@ -63,7 +63,7 @@ export function BottleSpinGame() {
   const orbitRadius = 36;
 
   return (
-    <Card className="relative overflow-hidden p-5 sm:p-7">
+    <Card className="relative overflow-hidden p-4 sm:p-6 lg:p-7">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-cyan-300/14 to-transparent" />
       <div className="relative space-y-6">
         <div className="flex items-start justify-between gap-4">
@@ -84,8 +84,8 @@ export function BottleSpinGame() {
           </div>
         </div>
 
-        <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_340px] xl:items-start xl:gap-6">
-          <div className="rounded-[28px] border border-white/10 bg-slate-950/62 p-5">
+        <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_340px] xl:items-start xl:gap-6">
+          <div className="rounded-[28px] border border-white/10 bg-slate-950/62 p-4 sm:p-5">
             <div className="relative mx-auto aspect-square w-full max-w-[320px] sm:max-w-[420px]">
               <div className="absolute inset-3 rounded-full border border-white/10 bg-[radial-gradient(circle_at_center,_rgba(34,211,238,0.2),_rgba(6,13,24,0.95)_64%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_30px_70px_-45px_rgba(0,0,0,0.95)]" />
               <div className="absolute inset-8 rounded-full border border-white/8 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.05),_rgba(7,11,25,0.95)_72%)]" />
@@ -147,7 +147,7 @@ export function BottleSpinGame() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-[28px] border border-white/10 bg-slate-950/72 p-5">
+            <div className="rounded-[28px] border border-white/10 bg-slate-950/72 p-4 sm:p-5">
               <p className="text-xs uppercase tracking-[0.18em] text-white/42">
                 Scelte
               </p>
@@ -160,12 +160,12 @@ export function BottleSpinGame() {
                 onChange={(event) => setDraftChoices(event.target.value)}
                 placeholder="Es. Alice&#10;Marco&#10;Pizza"
               />
-              <div className="mt-4 grid gap-3 sm:flex sm:flex-wrap">
+              <div className="mt-4 grid gap-3">
                 <Button
                   type="button"
                   variant="secondary"
                   onClick={applyChoices}
-                  className="w-full sm:w-auto"
+                  className="w-full"
                 >
                   Applica scelte
                 </Button>
@@ -174,7 +174,7 @@ export function BottleSpinGame() {
                   icon={<Play className="size-4" />}
                   onClick={spinBottle}
                   disabled={isSpinning}
-                  className="w-full sm:w-auto"
+                  className="w-full"
                 >
                   Gira bottiglia
                 </Button>
@@ -183,14 +183,29 @@ export function BottleSpinGame() {
                   variant="ghost"
                   icon={<RotateCcw className="size-4" />}
                   onClick={resetBoard}
-                  className="w-full sm:w-auto"
+                  className="w-full"
                 >
                   Reset
                 </Button>
               </div>
+
+              <div className="mt-4 rounded-[24px] border border-cyan-200/20 bg-cyan-300/10 p-4 xl:hidden">
+                <p className="text-xs uppercase tracking-[0.18em] text-cyan-100/70">
+                  Risultato rapido
+                </p>
+                {selectedChoice && !isSpinning ? (
+                  <p className="font-heading mt-2 text-2xl font-semibold text-white">
+                    {selectedChoice}
+                  </p>
+                ) : (
+                  <p className="mt-2 text-sm leading-6 text-white/72">
+                    {feedback}
+                  </p>
+                )}
+              </div>
             </div>
 
-            <div className="rounded-[28px] border border-white/10 bg-slate-950/72 p-5">
+            <div className="hidden rounded-[28px] border border-white/10 bg-slate-950/72 p-5 xl:block">
               <p className="text-xs uppercase tracking-[0.18em] text-white/42">
                 Risultato
               </p>

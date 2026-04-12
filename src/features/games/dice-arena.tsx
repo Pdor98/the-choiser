@@ -82,7 +82,7 @@ export function DiceArenaGame() {
   }
 
   return (
-    <Card className="relative overflow-hidden p-5 sm:p-7">
+    <Card className="relative overflow-hidden p-4 sm:p-6 lg:p-7">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-emerald-300/14 to-transparent" />
       <div className="relative space-y-6">
         <div className="flex items-start justify-between gap-4">
@@ -103,16 +103,16 @@ export function DiceArenaGame() {
           </div>
         </div>
 
-        <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-start xl:gap-6">
-          <div className="rounded-[28px] border border-white/10 bg-slate-950/62 p-5">
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-start xl:gap-6">
+          <div className="rounded-[28px] border border-white/10 bg-slate-950/62 p-4 sm:p-5">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 xl:grid-cols-4">
               {diceValues.map((value, index) => (
                 <motion.div
                   key={`${index}-${value}-${isRolling ? "rolling" : "idle"}`}
                   initial={{ opacity: 0, y: 14, scale: 0.96 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.24, ease: "easeOut" }}
-                  className={`rounded-[28px] border p-6 text-center shadow-[0_24px_55px_-40px_rgba(0,0,0,0.95)] ${
+                  className={`rounded-[24px] border p-4 text-center shadow-[0_24px_55px_-40px_rgba(0,0,0,0.95)] sm:rounded-[28px] sm:p-6 ${
                     isRolling
                       ? "animate-pulse border-emerald-300/24 bg-emerald-300/10"
                       : "border-white/10 bg-slate-950/86"
@@ -121,14 +121,14 @@ export function DiceArenaGame() {
                   <p className="text-xs uppercase tracking-[0.18em] text-white/42">
                     Dado {index + 1}
                   </p>
-                  <p className="font-heading mt-4 text-5xl font-semibold tracking-tight text-white sm:text-6xl">
+                  <p className="font-heading mt-3 text-4xl font-semibold tracking-tight text-white sm:mt-4 sm:text-6xl">
                     {value}
                   </p>
                 </motion.div>
               ))}
             </div>
 
-            <div className="mt-5 rounded-[24px] border border-white/10 bg-slate-950/80 p-4">
+            <div className="mt-4 rounded-[24px] border border-white/10 bg-slate-950/80 p-4 sm:mt-5">
               <p className="text-xs uppercase tracking-[0.18em] text-white/42">
                 Totale corrente
               </p>
@@ -140,7 +140,7 @@ export function DiceArenaGame() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-[28px] border border-white/10 bg-slate-950/72 p-5">
+            <div className="rounded-[28px] border border-white/10 bg-slate-950/72 p-4 sm:p-5">
               <p className="text-xs uppercase tracking-[0.18em] text-white/42">
                 Setup
               </p>
@@ -189,13 +189,13 @@ export function DiceArenaGame() {
                 </div>
               </div>
 
-              <div className="mt-5 grid gap-3 sm:flex sm:flex-wrap">
+              <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
                 <Button
                   type="button"
                   icon={<Play className="size-4" />}
                   onClick={rollDice}
                   disabled={isRolling}
-                  className="w-full sm:w-auto"
+                  className="w-full"
                 >
                   Lancia dadi
                 </Button>
@@ -204,14 +204,26 @@ export function DiceArenaGame() {
                   variant="secondary"
                   icon={<RotateCcw className="size-4" />}
                   onClick={resetHistory}
-                  className="w-full sm:w-auto"
+                  className="w-full"
                 >
                   Reset
                 </Button>
               </div>
+
+              <div className="mt-4 rounded-[24px] border border-emerald-300/14 bg-emerald-300/8 p-4 xl:hidden">
+                <p className="text-xs uppercase tracking-[0.18em] text-emerald-100/68">
+                  Risultato rapido
+                </p>
+                <p className="font-heading mt-2 text-3xl font-semibold text-white">
+                  {total}
+                </p>
+                <p className="mt-2 text-sm leading-6 text-white/72">
+                  {diceValues.join(" · ")} su d{diceSides}
+                </p>
+              </div>
             </div>
 
-            <div className="rounded-[28px] border border-white/10 bg-slate-950/72 p-5">
+            <div className="rounded-[28px] border border-white/10 bg-slate-950/72 p-4 sm:p-5">
               <p className="text-xs uppercase tracking-[0.18em] text-white/42">
                 Storico lanci
               </p>
