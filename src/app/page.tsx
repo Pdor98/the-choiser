@@ -5,6 +5,7 @@ import { CategoryCard } from "@/components/home/category-card";
 import { DailyAdvicePanel } from "@/components/home/daily-advice-panel";
 import { HighlightCard } from "@/components/home/highlight-card";
 import { HomeHeroPanel } from "@/components/home/home-hero-panel";
+import { ScrollFocusSection } from "@/components/layout/scroll-focus-section";
 import {
   buttonStyles,
   primaryButtonReadableStyle,
@@ -15,20 +16,23 @@ import { categories, homeHighlights } from "@/lib/site-content";
 export default function HomePage() {
   return (
     <div className="space-y-10 sm:space-y-12">
-      <section className="grid gap-5 xl:grid-cols-[minmax(0,1.12fr)_400px] xl:items-stretch">
+      <ScrollFocusSection emphasis="hero">
         <DailyAdvicePanel />
-        <HomeHeroPanel />
-      </section>
+      </ScrollFocusSection>
 
-      <section className="space-y-5">
+      <ScrollFocusSection className="mx-auto max-w-5xl">
+        <HomeHeroPanel />
+      </ScrollFocusSection>
+
+      <ScrollFocusSection className="space-y-5">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <SectionBadge>Scorciatoie Choiser</SectionBadge>
-            <h2 className="font-heading mt-3 text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
+            <h2 className="font-heading mt-3 text-xl font-semibold tracking-tight text-slate-100 sm:text-2xl">
               Dopo il consiglio, scegli dove continuare
             </h2>
           </div>
-          <p className="max-w-2xl text-sm leading-7 text-slate-300">
+          <p className="max-w-2xl text-sm leading-7 text-slate-300/86">
             La home ora parte da un’azione concreta e poi ti accompagna verso
             generatori, giochi e strumenti senza dispersione.
           </p>
@@ -67,9 +71,9 @@ export default function HomePage() {
             <span>Apri i tools</span>
           </Link>
         </div>
-      </section>
+      </ScrollFocusSection>
 
-      <section className="space-y-5">
+      <ScrollFocusSection className="space-y-5">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-xs uppercase tracking-[0.22em] text-slate-400">
@@ -90,9 +94,9 @@ export default function HomePage() {
             <CategoryCard key={category.href} {...category} />
           ))}
         </div>
-      </section>
+      </ScrollFocusSection>
 
-      <section className="space-y-5">
+      <ScrollFocusSection className="space-y-5">
         <div>
           <p className="text-xs uppercase tracking-[0.22em] text-slate-400">
             Perché Choiser
@@ -107,7 +111,7 @@ export default function HomePage() {
             <HighlightCard key={highlight.title} {...highlight} />
           ))}
         </div>
-      </section>
+      </ScrollFocusSection>
     </div>
   );
 }

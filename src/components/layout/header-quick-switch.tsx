@@ -12,8 +12,8 @@ export function HeaderQuickSwitch() {
 
   return (
     <div className="space-y-3 sm:space-y-4">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-        <div className="space-y-1 text-center sm:text-left">
+      <div className="relative flex flex-col items-center gap-3 text-center">
+        <div className="space-y-1">
           <p className="text-[11px] uppercase tracking-[0.3em] text-cyan-200/58">
             Navigation hub
           </p>
@@ -21,7 +21,8 @@ export function HeaderQuickSwitch() {
             {currentPage.headerTitle}
           </h2>
         </div>
-        <div className="hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.22em] text-slate-300 sm:inline-flex">
+
+        <div className="hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.22em] text-slate-300 sm:absolute sm:right-0 sm:top-1/2 sm:inline-flex sm:-translate-y-1/2">
           Pagina attiva
         </div>
       </div>

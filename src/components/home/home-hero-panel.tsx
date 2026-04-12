@@ -10,66 +10,67 @@ import { SectionBadge } from "@/components/ui/section-badge";
 
 export function HomeHeroPanel() {
   return (
-    <Card className="relative overflow-hidden border-white/8 bg-[linear-gradient(180deg,rgba(12,23,40,0.94),rgba(15,29,51,0.92))] p-5 shadow-[0_28px_68px_-44px_rgba(37,99,235,0.26)] sm:p-7">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-cyan-300/16 via-indigo-300/8 to-transparent" />
-      <div className="pointer-events-none absolute -right-10 bottom-0 h-36 w-36 rounded-full bg-cyan-300/12 blur-3xl" />
+    <Card className="relative overflow-hidden border-white/7 bg-[linear-gradient(180deg,rgba(10,19,33,0.78),rgba(13,24,41,0.74))] p-5 shadow-[0_22px_58px_-46px_rgba(15,23,42,0.3)] sm:p-6">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-r from-cyan-300/10 via-indigo-300/5 to-transparent" />
+      <div className="pointer-events-none absolute -right-10 bottom-0 h-32 w-32 rounded-full bg-cyan-300/8 blur-3xl" />
       <div className="relative space-y-6">
-        <SectionBadge className="border-cyan-300/18 bg-white/6 text-cyan-100">
-          Choiser overview
+        <SectionBadge className="border-white/8 bg-white/5 text-slate-200">
+          Secondo step
         </SectionBadge>
 
         <div className="space-y-4">
-          <div className="flex size-12 items-center justify-center rounded-[20px] border border-cyan-300/16 bg-white/6 text-cyan-200 shadow-[0_18px_44px_-30px_rgba(56,189,248,0.2)] sm:size-14">
-            <Sparkles className="size-6" />
+          <div className="flex size-11 items-center justify-center rounded-[18px] border border-white/8 bg-white/5 text-cyan-200 shadow-[0_14px_36px_-30px_rgba(56,189,248,0.16)] sm:size-12">
+            <Sparkles className="size-5" />
           </div>
 
           <div className="space-y-3">
-            <h2 className="font-heading text-xl font-semibold tracking-tight text-slate-50 sm:text-2xl">
-              Una dashboard dark più morbida, leggibile e immediata.
+            <h2 className="font-heading text-lg font-semibold tracking-tight text-slate-100 sm:text-[1.45rem]">
+              Dopo il consiglio, trovi tutto il resto in modo ordinato.
             </h2>
-            <p className="text-sm leading-7 text-slate-300">
-              Questa variante riporta Choiser verso un tema scuro premium,
-              alleggerendo i contrasti più duri e mantenendo ogni modulo
-              leggibile sia da desktop sia da smartphone.
+            <p className="text-sm leading-7 text-slate-300/88">
+              Random, giochi e tools restano subito accessibili, ma il primo
+              impatto della home ora è concentrato su un suggerimento rapido e
+              utile.
             </p>
           </div>
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2">
-          <div className="rounded-[22px] border border-white/8 bg-white/5 p-4">
+          <div className="rounded-[22px] border border-white/7 bg-white/[0.045] p-4">
             <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
               Moduli attivi
             </p>
-            <p className="mt-2 font-heading text-3xl font-semibold text-slate-50">
+            <p className="mt-2 font-heading text-[1.8rem] font-semibold text-slate-50">
               8
             </p>
           </div>
-          <div className="rounded-[22px] border border-white/8 bg-white/5 p-4">
+          <div className="rounded-[22px] border border-white/7 bg-white/[0.045] p-4">
             <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
               Pronta per mobile
             </p>
-            <p className="mt-2 font-heading text-3xl font-semibold text-slate-50">
+            <p className="mt-2 font-heading text-[1.8rem] font-semibold text-slate-50">
               100%
             </p>
           </div>
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2">
-          <div className="rounded-[22px] border border-white/8 bg-white/4 p-4">
+          <div className="rounded-[22px] border border-white/7 bg-white/[0.035] p-4">
             <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
               UX goal
             </p>
-            <p className="mt-2 text-sm leading-6 text-slate-300">
-              Più focus sull’azione iniziale, meno dispersione e lettura sempre
-              chiara.
+            <p className="mt-2 text-sm leading-6 text-slate-300/86">
+              Focus iniziale forte, poi percorso chiaro verso il resto
+              dell&apos;esperienza.
             </p>
           </div>
-          <div className="rounded-[22px] border border-white/8 bg-white/4 p-4">
+          <div className="rounded-[22px] border border-white/7 bg-white/[0.035] p-4">
             <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
               Feeling
             </p>
-            <p className="mt-2 text-sm leading-6 text-slate-300">
-              Gradienti freddi, glow leggeri e superfici scure più morbide.
+            <p className="mt-2 text-sm leading-6 text-slate-300/86">
+              Una dashboard dark leggibile, calma e ordinata, senza rumore
+              visivo in eccesso.
             </p>
           </div>
         </div>
