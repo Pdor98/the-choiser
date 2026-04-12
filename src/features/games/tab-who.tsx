@@ -195,14 +195,18 @@ export function TabWhoGame() {
 
       <div className="relative space-y-4">
         <div className="flex flex-wrap items-start justify-between gap-4">
-          <div className="space-y-2">
+          <div className={gameState === "idle" ? "space-y-2" : "space-y-1.5 sm:space-y-2"}>
             <p className="text-xs uppercase tracking-[0.22em] text-cyan-200/66">
               Word challenge
             </p>
             <h1 className="font-heading text-2xl font-semibold tracking-tight text-slate-50 sm:text-4xl">
               TAB-WHO ?
             </h1>
-            <p className="max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
+            <p
+              className={`max-w-2xl text-sm leading-6 text-slate-300 sm:text-base ${
+                gameState === "idle" ? "" : "hidden sm:block"
+              }`}
+            >
               Fai indovinare la parola principale senza usare i 5 taboo. Turno
               rapido da 60 secondi, punteggio live e controllo anche per carta
               sbagliata o taboo pronunciato.
@@ -317,8 +321,69 @@ export function TabWhoGame() {
               </div>
             </div>
           ) : (
-            <div className="space-y-4">
-              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="space-y-4 pb-32 md:pb-0">
+              {gameState === "playing" ? (
+                <div className="sticky top-[5.1rem] z-10 md:hidden">
+                  <div className="rounded-[24px] border border-white/8 bg-[linear-gradient(180deg,rgba(10,20,35,0.96),rgba(14,28,48,0.94))] p-3 shadow-[0_24px_54px_-38px_rgba(15,23,42,0.62)] backdrop-blur-xl">
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-[11px] uppercase tracking-[0.18em] text-slate-400">
+                          Timer
+                        </p>
+                        <p className="font-heading mt-1 text-3xl font-semibold text-slate-50">
+                          {timeLeft}s
+                        </p>
+                      </div>
+
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        icon={<Square className="size-4" />}
+                        onClick={finishTurn}
+                        className="min-h-10 px-3 text-[13px]"
+                      >
+                        Termina
+                      </Button>
+                    </div>
+
+                    <div className="mt-3 h-2 rounded-full bg-slate-200/12">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 transition-[width] duration-500"
+                        style={{ width: `${progress}%` }}
+                      />
+                    </div>
+
+                    <div className="mt-3 grid grid-cols-3 gap-2">
+                      <div className="rounded-[18px] border border-white/8 bg-white/6 px-3 py-2.5 text-center">
+                        <p className="text-[10px] uppercase tracking-[0.16em] text-slate-400">
+                          Punti
+                        </p>
+                        <p className="font-heading mt-1 text-2xl font-semibold text-slate-50">
+                          {score}
+                        </p>
+                      </div>
+                      <div className="rounded-[18px] border border-white/8 bg-white/6 px-3 py-2.5 text-center">
+                        <p className="text-[10px] uppercase tracking-[0.16em] text-slate-400">
+                          Errori
+                        </p>
+                        <p className="font-heading mt-1 text-2xl font-semibold text-rose-300">
+                          {mistakes}
+                        </p>
+                      </div>
+                      <div className="rounded-[18px] border border-white/8 bg-white/6 px-3 py-2.5 text-center">
+                        <p className="text-[10px] uppercase tracking-[0.16em] text-slate-400">
+                          Carte
+                        </p>
+                        <p className="font-heading mt-1 text-2xl font-semibold text-slate-50">
+                          {cardsSeen}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+
+              <div className="hidden gap-3 md:grid md:grid-cols-2 xl:grid-cols-4">
                 <div className="rounded-[22px] border border-white/8 bg-white/6 p-4 shadow-sm">
                   <div className="flex items-center gap-3">
                     <div className="flex size-10 items-center justify-center rounded-2xl bg-cyan-300/12 text-cyan-200">
@@ -388,22 +453,22 @@ export function TabWhoGame() {
                   className="rounded-[30px] border border-white/8 bg-[linear-gradient(180deg,rgba(11,21,37,0.96),rgba(15,29,50,0.94))] p-4 shadow-[0_30px_70px_-50px_rgba(37,99,235,0.22)] sm:p-5"
                 >
                   <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-stretch">
-                    <div className="rounded-[24px] border border-white/8 bg-[linear-gradient(180deg,rgba(16,31,53,0.96)_0%,rgba(12,24,42,0.94)_100%)] p-5 sm:p-6">
-                      <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
+                    <div className="rounded-[24px] border border-white/8 bg-[linear-gradient(180deg,rgba(16,31,53,0.96)_0%,rgba(12,24,42,0.94)_100%)] p-4 sm:p-6">
+                      <div className="flex h-full flex-col items-center justify-center gap-3 text-center sm:gap-4">
                         <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
                           Parola principale
                         </p>
-                        <h3 className="font-heading text-4xl font-semibold tracking-tight sm:text-5xl xl:text-7xl">
+                        <h3 className="font-heading text-3xl font-semibold tracking-tight sm:text-5xl xl:text-7xl">
                           {currentCard.parola}
                         </h3>
-                        <p className="max-w-md text-sm leading-6 text-slate-300">
+                        <p className="max-w-md text-sm leading-5 text-slate-300 sm:leading-6">
                           Descrivila senza mai pronunciare le parole nella colonna
                           a destra.
                         </p>
                       </div>
                     </div>
 
-                    <div className="rounded-[24px] border border-rose-400/18 bg-rose-400/10 p-4">
+                    <div className="rounded-[24px] border border-rose-400/18 bg-rose-400/10 p-3.5 sm:p-4">
                       <div className="flex items-center gap-3">
                         <div className="flex size-10 items-center justify-center rounded-2xl bg-rose-500 text-white">
                           <ShieldBan className="size-4" />
@@ -418,11 +483,11 @@ export function TabWhoGame() {
                         </div>
                       </div>
 
-                      <div className="mt-4 grid gap-2">
+                      <div className="mt-3 grid grid-cols-2 gap-2 xl:grid-cols-1">
                         {currentCard.taboo.map((item) => (
                           <div
                             key={item}
-                            className="rounded-2xl border border-rose-400/18 bg-rose-50/10 px-4 py-3 text-sm font-semibold text-rose-50 shadow-sm"
+                            className="rounded-2xl border border-rose-400/18 bg-rose-50/10 px-3 py-2.5 text-sm font-semibold text-rose-50 shadow-sm"
                           >
                             {item}
                           </div>
@@ -433,7 +498,7 @@ export function TabWhoGame() {
                 </motion.div>
               </AnimatePresence>
 
-              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              <div className="hidden gap-3 md:grid md:grid-cols-2 xl:grid-cols-4">
                 <Button
                   type="button"
                   icon={<CheckCircle2 className="size-4" />}
@@ -473,6 +538,43 @@ export function TabWhoGame() {
                   Termina turno
                 </Button>
               </div>
+
+              {gameState === "playing" ? (
+                <div className="fixed inset-x-3 bottom-3 z-30 md:hidden">
+                  <div className="rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(10,20,35,0.96),rgba(13,24,42,0.94))] p-3 shadow-[0_26px_70px_-38px_rgba(15,23,42,0.78)] backdrop-blur-xl">
+                    <div className="grid grid-cols-3 gap-2">
+                      <Button
+                        type="button"
+                        icon={<CheckCircle2 className="size-4" />}
+                        onClick={handleCorrect}
+                        disabled={gameState !== "playing"}
+                        className="min-h-[3.2rem] w-full justify-center px-2 text-[13px] bg-emerald-500 text-white hover:bg-emerald-400"
+                      >
+                        Corretto
+                      </Button>
+                      <Button
+                        type="button"
+                        icon={<TriangleAlert className="size-4" />}
+                        onClick={handleWrong}
+                        disabled={gameState !== "playing"}
+                        className="min-h-[3.2rem] w-full justify-center px-2 text-[13px] bg-rose-500 text-white hover:bg-rose-400"
+                      >
+                        Taboo
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="secondary"
+                        icon={<SkipForward className="size-4" />}
+                        onClick={handleSkip}
+                        disabled={gameState !== "playing"}
+                        className="min-h-[3.2rem] w-full justify-center px-2 text-[13px] border-white/10 bg-white/6 text-slate-50 hover:bg-white/10"
+                      >
+                        Salta
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ) : null}
 
               <div className="grid gap-3 xl:grid-cols-3">
                 <div className="rounded-[22px] border border-white/8 bg-white/5 p-4 shadow-sm">
