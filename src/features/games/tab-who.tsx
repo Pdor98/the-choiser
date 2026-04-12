@@ -189,52 +189,51 @@ export function TabWhoGame() {
   }
 
   return (
-    <Card className="relative overflow-hidden border-white/8 bg-[linear-gradient(180deg,rgba(10,20,35,0.96),rgba(14,28,48,0.92))] p-4 sm:p-5">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-r from-cyan-300/16 via-indigo-300/8 to-transparent" />
-      <div className="pointer-events-none absolute right-0 top-0 h-40 w-40 rounded-full bg-cyan-300/12 blur-3xl" />
+    <Card className="relative overflow-hidden p-4 sm:p-5">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-r from-amber-300/16 via-rose-300/10 to-transparent" />
 
-      <div className="relative space-y-4">
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <div className={gameState === "idle" ? "space-y-2" : "space-y-1.5 sm:space-y-2"}>
-            <p className="text-xs uppercase tracking-[0.22em] text-cyan-200/66">
+      <div className="relative space-y-4 pb-28 sm:pb-32 lg:pb-0">
+        <div
+          className={`flex flex-wrap items-start justify-between gap-4 ${
+            gameState === "playing" ? "hidden sm:flex" : ""
+          }`}
+        >
+          <div className="space-y-2">
+            <p className="text-xs uppercase tracking-[0.22em] text-amber-100/72">
               Word challenge
             </p>
-            <h1 className="font-heading text-2xl font-semibold tracking-tight text-slate-50 sm:text-4xl">
+            <h1 className="font-heading text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               TAB-WHO ?
             </h1>
-            <p
-              className={`max-w-2xl text-sm leading-6 text-slate-300 sm:text-base ${
-                gameState === "idle" ? "" : "hidden sm:block"
-              }`}
-            >
+            <p className="max-w-2xl text-sm leading-6 text-white/64 sm:text-base">
               Fai indovinare la parola principale senza usare i 5 taboo. Turno
               rapido da 60 secondi, punteggio live e controllo anche per carta
               sbagliata o taboo pronunciato.
             </p>
           </div>
 
-          <div className="flex size-11 items-center justify-center rounded-2xl border border-cyan-300/16 bg-white/6 text-cyan-200">
+          <div className="flex size-11 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-amber-100">
             <MessageCircle className="size-5" />
           </div>
         </div>
 
-        <div className="rounded-[30px] border border-white/8 bg-[linear-gradient(180deg,rgba(12,23,40,0.98)_0%,rgba(16,31,54,0.96)_100%)] p-4 text-slate-50 shadow-[0_40px_90px_-52px_rgba(37,99,235,0.3)] sm:p-5">
+        <div className="rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,253,249,1)_0%,rgba(255,246,232,0.99)_100%)] p-4 text-slate-950 shadow-[0_40px_90px_-50px_rgba(245,158,11,0.5)] sm:p-5">
           {gameState === "idle" ? (
             <div className="space-y-5">
               <div className="space-y-4 text-center">
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/8 bg-white/6 px-4 py-2 text-sm font-semibold text-slate-200 shadow-sm">
+                <div className="inline-flex items-center gap-2 rounded-full border border-slate-950/10 bg-white/85 px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm">
                   <ShieldBan className="size-4 text-rose-500" />
                   <span>{parole.length} carte pronte</span>
                 </div>
 
                 <div className="space-y-3">
-                  <p className="text-sm uppercase tracking-[0.28em] text-slate-400">
+                  <p className="text-sm uppercase tracking-[0.28em] text-slate-500">
                     Intro game
                   </p>
-                  <h2 className="font-heading text-4xl font-semibold tracking-tight sm:text-6xl">
+                  <h2 className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl">
                     TAB-WHO ?
                   </h2>
-                  <p className="mx-auto max-w-2xl text-base leading-7 text-slate-300">
+                  <p className="mx-auto max-w-2xl text-base leading-7 text-slate-600">
                     Avvia il turno, descrivi la parola e non farti scappare i
                     taboo. Prima di partire puoi cambiare la carta pronta quante
                     volte vuoi.
@@ -243,9 +242,9 @@ export function TabWhoGame() {
               </div>
 
               <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-stretch">
-                <div className="rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(16,31,53,0.94),rgba(11,22,39,0.92))] p-5 shadow-[0_20px_50px_-36px_rgba(37,99,235,0.22)]">
+                <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm">
                   <div className="space-y-3 text-center">
-                    <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
+                    <p className="text-xs uppercase tracking-[0.24em] text-slate-500">
                       Carta pronta
                     </p>
                     <h3 className="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">
@@ -257,7 +256,7 @@ export function TabWhoGame() {
                     {currentCard.taboo.map((item) => (
                       <div
                         key={item}
-                        className="rounded-2xl border border-rose-400/18 bg-rose-400/10 px-4 py-3 text-sm font-semibold text-rose-50"
+                        className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-slate-800"
                       >
                         {item}
                       </div>
@@ -266,22 +265,22 @@ export function TabWhoGame() {
                 </div>
 
                 <div className="grid gap-3">
-                  <div className="rounded-[24px] border border-white/8 bg-white/5 p-4 shadow-sm">
-                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+                  <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm">
+                    <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                       Regole rapide
                     </p>
-                    <div className="mt-3 space-y-2 text-sm leading-6 text-slate-300">
+                    <div className="mt-3 space-y-2 text-sm leading-6 text-slate-600">
                       <p>Corretto: +1 punto e nuova carta.</p>
                       <p>Sbagliata: nessun punto e carta persa.</p>
                       <p>Salta: passi oltre senza segnare.</p>
                     </div>
                   </div>
 
-                  <div className="rounded-[24px] border border-white/8 bg-white/5 p-4 shadow-sm">
-                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+                  <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm">
+                    <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                       Per The Choiser
                     </p>
-                    <p className="mt-3 text-sm leading-6 text-slate-300">
+                    <p className="mt-3 text-sm leading-6 text-slate-600">
                       Mini-gioco party, rapido da avviare e facile da estendere
                       con nuove carte nel dataset.
                     </p>
@@ -289,12 +288,12 @@ export function TabWhoGame() {
                 </div>
               </div>
 
-              <div className="grid gap-3 sm:flex sm:flex-wrap sm:items-center sm:justify-center">
+              <div className="flex flex-wrap items-center justify-center gap-3">
                 <Button
                   type="button"
                   icon={<Play className="size-4" />}
                   onClick={startGame}
-                  className="bg-slate-900 text-white hover:bg-slate-800"
+                  className="bg-slate-950 text-white hover:bg-slate-800"
                 >
                   Inizia Gioco
                 </Button>
@@ -303,7 +302,7 @@ export function TabWhoGame() {
                   variant="secondary"
                   icon={<Shuffle className="size-4" />}
                   onClick={loadPreviewCard}
-                  className="border-white/10 bg-white/6 text-slate-50 hover:bg-white/10"
+                  className="border-slate-200 bg-white text-slate-900 hover:bg-slate-100"
                 >
                   Nuova Parola
                 </Button>
@@ -312,7 +311,7 @@ export function TabWhoGame() {
                   className={buttonStyles({
                     variant: "ghost",
                     className:
-                      "border border-white/10 bg-white/5 text-slate-200 hover:bg-white/10 hover:text-slate-50",
+                      "border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-950",
                   })}
                 >
                   <House className="size-4" />
@@ -321,76 +320,63 @@ export function TabWhoGame() {
               </div>
             </div>
           ) : (
-            <div className="space-y-4 pb-32 md:pb-0">
-              {gameState === "playing" ? (
-                <div className="sticky top-[5.1rem] z-10 md:hidden">
-                  <div className="rounded-[24px] border border-white/8 bg-[linear-gradient(180deg,rgba(10,20,35,0.96),rgba(14,28,48,0.94))] p-3 shadow-[0_24px_54px_-38px_rgba(15,23,42,0.62)] backdrop-blur-xl">
-                    <div className="flex items-center justify-between gap-3">
-                      <div>
-                        <p className="text-[11px] uppercase tracking-[0.18em] text-slate-400">
-                          Timer
-                        </p>
-                        <p className="font-heading mt-1 text-3xl font-semibold text-slate-50">
-                          {timeLeft}s
-                        </p>
-                      </div>
-
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        icon={<Square className="size-4" />}
-                        onClick={finishTurn}
-                        className="min-h-10 px-3 text-[13px]"
-                      >
-                        Termina
-                      </Button>
-                    </div>
-
-                    <div className="mt-3 h-2 rounded-full bg-slate-200/12">
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 transition-[width] duration-500"
-                        style={{ width: `${progress}%` }}
-                      />
-                    </div>
-
-                    <div className="mt-3 grid grid-cols-3 gap-2">
-                      <div className="rounded-[18px] border border-white/8 bg-white/6 px-3 py-2.5 text-center">
-                        <p className="text-[10px] uppercase tracking-[0.16em] text-slate-400">
-                          Punti
-                        </p>
-                        <p className="font-heading mt-1 text-2xl font-semibold text-slate-50">
-                          {score}
-                        </p>
-                      </div>
-                      <div className="rounded-[18px] border border-white/8 bg-white/6 px-3 py-2.5 text-center">
-                        <p className="text-[10px] uppercase tracking-[0.16em] text-slate-400">
-                          Errori
-                        </p>
-                        <p className="font-heading mt-1 text-2xl font-semibold text-rose-300">
-                          {mistakes}
-                        </p>
-                      </div>
-                      <div className="rounded-[18px] border border-white/8 bg-white/6 px-3 py-2.5 text-center">
-                        <p className="text-[10px] uppercase tracking-[0.16em] text-slate-400">
-                          Carte
-                        </p>
-                        <p className="font-heading mt-1 text-2xl font-semibold text-slate-50">
-                          {cardsSeen}
-                        </p>
-                      </div>
-                    </div>
+            <div className="space-y-4">
+              <div className="sticky top-3 z-20 -mx-1 rounded-[24px] border border-slate-200/80 bg-white/92 p-3 shadow-[0_20px_50px_-35px_rgba(15,23,42,0.4)] backdrop-blur-sm sm:hidden">
+                <div className="grid grid-cols-4 gap-2">
+                  <div className="rounded-[18px] border border-slate-200 bg-white/90 px-3 py-2 shadow-sm">
+                    <p className="text-[10px] uppercase tracking-[0.16em] text-slate-500">
+                      Timer
+                    </p>
+                    <p className="font-heading mt-1 text-2xl font-semibold">
+                      {timeLeft}s
+                    </p>
                   </div>
+                  <div className="rounded-[18px] border border-slate-200 bg-white/90 px-3 py-2 shadow-sm">
+                    <p className="text-[10px] uppercase tracking-[0.16em] text-slate-500">
+                      Punti
+                    </p>
+                    <p className="font-heading mt-1 text-2xl font-semibold">
+                      {score}
+                    </p>
+                  </div>
+                  <div className="rounded-[18px] border border-slate-200 bg-white/90 px-3 py-2 shadow-sm">
+                    <p className="text-[10px] uppercase tracking-[0.16em] text-slate-500">
+                      Errori
+                    </p>
+                    <p className="font-heading mt-1 text-2xl font-semibold text-rose-600">
+                      {mistakes}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={finishTurn}
+                    disabled={gameState !== "playing"}
+                    className="rounded-[18px] border border-slate-200 bg-white/90 px-3 py-2 text-left shadow-sm transition duration-300 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    <p className="text-[10px] uppercase tracking-[0.16em] text-slate-500">
+                      Turno
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-slate-900">
+                      Termina
+                    </p>
+                  </button>
                 </div>
-              ) : null}
+                <div className="mt-3 h-2 rounded-full bg-slate-200">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 transition-[width] duration-500"
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
+              </div>
 
-              <div className="hidden gap-3 md:grid md:grid-cols-2 xl:grid-cols-4">
-                <div className="rounded-[22px] border border-white/8 bg-white/6 p-4 shadow-sm">
+              <div className="hidden gap-3 sm:grid sm:grid-cols-2 xl:grid-cols-4">
+                <div className="rounded-[22px] border border-slate-200 bg-white/90 p-4 shadow-sm">
                   <div className="flex items-center gap-3">
-                    <div className="flex size-10 items-center justify-center rounded-2xl bg-cyan-300/12 text-cyan-200">
+                    <div className="flex size-10 items-center justify-center rounded-2xl bg-slate-950 text-white">
                       <Clock3 className="size-4" />
                     </div>
                     <div>
-                      <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+                      <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                         Timer
                       </p>
                       <p className="font-heading mt-1 text-3xl font-semibold">
@@ -406,38 +392,38 @@ export function TabWhoGame() {
                   </div>
                 </div>
 
-                <div className="rounded-[22px] border border-white/8 bg-white/6 p-4 shadow-sm">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+                <div className="rounded-[22px] border border-slate-200 bg-white/90 p-4 shadow-sm">
+                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                     Punteggio
                   </p>
                   <p className="font-heading mt-3 text-4xl font-semibold">
                     {score}
                   </p>
-                  <p className="mt-2 text-sm text-slate-300">
+                  <p className="mt-2 text-sm text-slate-600">
                     +1 per ogni risposta corretta.
                   </p>
                 </div>
 
-                <div className="rounded-[22px] border border-white/8 bg-white/6 p-4 shadow-sm">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+                <div className="rounded-[22px] border border-slate-200 bg-white/90 p-4 shadow-sm">
+                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                     Sbagliate
                   </p>
                   <p className="font-heading mt-3 text-4xl font-semibold text-rose-600">
                     {mistakes}
                   </p>
-                  <p className="mt-2 text-sm text-slate-300">
+                  <p className="mt-2 text-sm text-slate-600">
                     Carte perse per errore o taboo.
                   </p>
                 </div>
 
-                <div className="rounded-[22px] border border-white/8 bg-white/6 p-4 shadow-sm">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+                <div className="rounded-[22px] border border-slate-200 bg-white/90 p-4 shadow-sm">
+                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                     Stato turno
                   </p>
-                  <p className="mt-3 text-base font-semibold text-slate-50">
+                  <p className="mt-3 text-base font-semibold text-slate-900">
                     {gameState === "finished" ? "Tempo finito!" : "Turno attivo"}
                   </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-300">
+                  <p className="mt-2 text-sm leading-6 text-slate-600">
                     {statusCopy}
                   </p>
                 </div>
@@ -450,25 +436,28 @@ export function TabWhoGame() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -12, scale: 0.98 }}
                   transition={{ duration: 0.24, ease: "easeOut" }}
-                  className="rounded-[30px] border border-white/8 bg-[linear-gradient(180deg,rgba(11,21,37,0.96),rgba(15,29,50,0.94))] p-4 shadow-[0_30px_70px_-50px_rgba(37,99,235,0.22)] sm:p-5"
+                  className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] sm:p-5"
                 >
-                  <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-stretch">
-                    <div className="rounded-[24px] border border-white/8 bg-[linear-gradient(180deg,rgba(16,31,53,0.96)_0%,rgba(12,24,42,0.94)_100%)] p-4 sm:p-6">
-                      <div className="flex h-full flex-col items-center justify-center gap-3 text-center sm:gap-4">
-                        <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
+                  <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-stretch">
+                    <div className="rounded-[24px] border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(248,250,252,1)_100%)] p-4 sm:p-6">
+                      <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
+                        <p className="text-xs uppercase tracking-[0.24em] text-slate-500">
                           Parola principale
                         </p>
-                        <h3 className="font-heading text-3xl font-semibold tracking-tight sm:text-5xl xl:text-7xl">
+                        <h3 className="font-heading text-4xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
                           {currentCard.parola}
                         </h3>
-                        <p className="max-w-md text-sm leading-5 text-slate-300 sm:leading-6">
+                        <p className="max-w-md text-sm leading-6 text-slate-600 sm:hidden">
+                          Descrivila senza usare i taboo.
+                        </p>
+                        <p className="hidden max-w-md text-sm leading-6 text-slate-600 sm:block">
                           Descrivila senza mai pronunciare le parole nella colonna
                           a destra.
                         </p>
                       </div>
                     </div>
 
-                    <div className="rounded-[24px] border border-rose-400/18 bg-rose-400/10 p-3.5 sm:p-4">
+                    <div className="rounded-[24px] border border-rose-200 bg-rose-50 p-4">
                       <div className="flex items-center gap-3">
                         <div className="flex size-10 items-center justify-center rounded-2xl bg-rose-500 text-white">
                           <ShieldBan className="size-4" />
@@ -477,17 +466,17 @@ export function TabWhoGame() {
                           <p className="text-xs uppercase tracking-[0.2em] text-rose-500">
                             Parole proibite
                           </p>
-                          <p className="mt-1 text-sm text-rose-100/80">
+                          <p className="mt-1 text-sm text-rose-700">
                             Se ne usi una, premi Sbagliata.
                           </p>
                         </div>
                       </div>
 
-                      <div className="mt-3 grid grid-cols-2 gap-2 xl:grid-cols-1">
+                      <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
                         {currentCard.taboo.map((item) => (
                           <div
                             key={item}
-                            className="rounded-2xl border border-rose-400/18 bg-rose-50/10 px-3 py-2.5 text-sm font-semibold text-rose-50 shadow-sm"
+                            className="rounded-2xl border border-rose-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm"
                           >
                             {item}
                           </div>
@@ -498,7 +487,7 @@ export function TabWhoGame() {
                 </motion.div>
               </AnimatePresence>
 
-              <div className="hidden gap-3 md:grid md:grid-cols-2 xl:grid-cols-4">
+              <div className="hidden gap-3 sm:grid sm:grid-cols-2 xl:grid-cols-4">
                 <Button
                   type="button"
                   icon={<CheckCircle2 className="size-4" />}
@@ -523,7 +512,7 @@ export function TabWhoGame() {
                   icon={<SkipForward className="size-4" />}
                   onClick={handleSkip}
                   disabled={gameState !== "playing"}
-                  className="w-full justify-center border-white/10 bg-white/6 text-slate-50 hover:bg-white/10"
+                  className="w-full justify-center border-slate-200 bg-white text-slate-900 hover:bg-slate-100"
                 >
                   Salta
                 </Button>
@@ -533,64 +522,58 @@ export function TabWhoGame() {
                   icon={<Square className="size-4" />}
                   onClick={finishTurn}
                   disabled={gameState !== "playing"}
-                  className="w-full justify-center border border-white/10 bg-white/5 text-slate-200 hover:bg-white/10 hover:text-slate-50"
+                  className="w-full justify-center border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-950"
                 >
                   Termina turno
                 </Button>
               </div>
 
-              {gameState === "playing" ? (
-                <div className="fixed inset-x-3 bottom-3 z-30 md:hidden">
-                  <div className="rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(10,20,35,0.96),rgba(13,24,42,0.94))] p-3 shadow-[0_26px_70px_-38px_rgba(15,23,42,0.78)] backdrop-blur-xl">
-                    <div className="grid grid-cols-3 gap-2">
-                      <Button
-                        type="button"
-                        icon={<CheckCircle2 className="size-4" />}
-                        onClick={handleCorrect}
-                        disabled={gameState !== "playing"}
-                        className="min-h-[3.2rem] w-full justify-center px-2 text-[13px] bg-emerald-500 text-white hover:bg-emerald-400"
-                      >
-                        Corretto
-                      </Button>
-                      <Button
-                        type="button"
-                        icon={<TriangleAlert className="size-4" />}
-                        onClick={handleWrong}
-                        disabled={gameState !== "playing"}
-                        className="min-h-[3.2rem] w-full justify-center px-2 text-[13px] bg-rose-500 text-white hover:bg-rose-400"
-                      >
-                        Taboo
-                      </Button>
-                      <Button
-                        type="button"
-                        variant="secondary"
-                        icon={<SkipForward className="size-4" />}
-                        onClick={handleSkip}
-                        disabled={gameState !== "playing"}
-                        className="min-h-[3.2rem] w-full justify-center px-2 text-[13px] border-white/10 bg-white/6 text-slate-50 hover:bg-white/10"
-                      >
-                        Salta
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ) : null}
+              <div className="fixed inset-x-3 bottom-3 z-30 grid grid-cols-3 gap-3 rounded-[28px] border border-slate-200/80 bg-white/92 p-3 shadow-[0_24px_70px_-35px_rgba(15,23,42,0.45)] backdrop-blur-sm sm:hidden">
+                <Button
+                  type="button"
+                  icon={<CheckCircle2 className="size-4" />}
+                  onClick={handleCorrect}
+                  disabled={gameState !== "playing"}
+                  className="w-full justify-center bg-emerald-500 text-white hover:bg-emerald-400"
+                >
+                  Corretto
+                </Button>
+                <Button
+                  type="button"
+                  icon={<TriangleAlert className="size-4" />}
+                  onClick={handleWrong}
+                  disabled={gameState !== "playing"}
+                  className="w-full justify-center bg-rose-500 text-white hover:bg-rose-400"
+                >
+                  Taboo
+                </Button>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  icon={<SkipForward className="size-4" />}
+                  onClick={handleSkip}
+                  disabled={gameState !== "playing"}
+                  className="w-full justify-center border-slate-200 bg-white text-slate-900 hover:bg-slate-100"
+                >
+                  Salta
+                </Button>
+              </div>
 
-              <div className="grid gap-3 xl:grid-cols-3">
-                <div className="rounded-[22px] border border-white/8 bg-white/5 p-4 shadow-sm">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+              <div className="hidden gap-3 lg:grid lg:grid-cols-3">
+                <div className="rounded-[22px] border border-slate-200 bg-white/82 p-4 shadow-sm">
+                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                     Regole rapide
                   </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-300">
+                  <p className="mt-2 text-sm leading-6 text-slate-600">
                     Corretto fa punto. Sbagliata segna errore. Salta non da ne
                     toglie punti.
                   </p>
                 </div>
-                <div className="rounded-[22px] border border-white/8 bg-white/5 p-4 shadow-sm">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+                <div className="rounded-[22px] border border-slate-200 bg-white/82 p-4 shadow-sm">
+                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                     Round stats
                   </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-300">
+                  <p className="mt-2 text-sm leading-6 text-slate-600">
                     Carte viste: <span className="font-semibold">{cardsSeen}</span>
                     <br />
                     Ultimo esito:{" "}
@@ -605,11 +588,11 @@ export function TabWhoGame() {
                     </span>
                   </p>
                 </div>
-                <div className="rounded-[22px] border border-white/8 bg-white/5 p-4 shadow-sm">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+                <div className="rounded-[22px] border border-slate-200 bg-white/82 p-4 shadow-sm">
+                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                     Dataset
                   </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-300">
+                  <p className="mt-2 text-sm leading-6 text-slate-600">
                     {parole.length} carte iniziali, con 5 taboo per parola e
                     categorie miste per partite veloci.
                   </p>
@@ -626,56 +609,56 @@ export function TabWhoGame() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 z-20 flex items-center justify-center bg-slate-950/48 p-4 backdrop-blur-sm"
+            className="absolute inset-0 z-20 flex items-center justify-center bg-slate-950/45 p-4 backdrop-blur-sm"
           >
             <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 12, scale: 0.98 }}
               transition={{ duration: 0.24, ease: "easeOut" }}
-              className="w-full max-w-lg rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(11,21,37,0.98),rgba(15,29,50,0.96))] p-6 text-center shadow-[0_32px_80px_-48px_rgba(37,99,235,0.28)]"
+              className="w-full max-w-lg rounded-[28px] border border-white/10 bg-slate-950/95 p-6 text-center shadow-[0_40px_100px_-60px_rgba(0,0,0,0.95)]"
             >
-              <div className="mx-auto flex size-14 items-center justify-center rounded-2xl bg-cyan-300/12 text-cyan-200">
+              <div className="mx-auto flex size-14 items-center justify-center rounded-2xl bg-amber-300/14 text-amber-100">
                 <Trophy className="size-6" />
               </div>
-              <p className="mt-5 text-xs uppercase tracking-[0.24em] text-slate-400">
+              <p className="mt-5 text-xs uppercase tracking-[0.24em] text-white/45">
                 Fine turno
               </p>
-              <h3 className="font-heading mt-3 text-4xl font-semibold text-slate-50">
+              <h3 className="font-heading mt-3 text-4xl font-semibold text-white">
                 Tempo finito!
               </h3>
-              <p className="mt-3 text-sm leading-7 text-slate-300">
+              <p className="mt-3 text-sm leading-7 text-white/64">
                 Hai chiuso il round con questo riepilogo:
               </p>
 
               <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                <div className="rounded-[20px] border border-white/8 bg-white/5 p-4">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+                <div className="rounded-[20px] border border-white/10 bg-white/6 p-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-white/40">
                     Punti
                   </p>
-                  <p className="font-heading mt-2 text-4xl font-semibold text-slate-50">
+                  <p className="font-heading mt-2 text-4xl font-semibold text-white">
                     {score}
                   </p>
                 </div>
-                <div className="rounded-[20px] border border-white/8 bg-white/5 p-4">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+                <div className="rounded-[20px] border border-white/10 bg-white/6 p-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-white/40">
                     Sbagliate
                   </p>
-                  <p className="font-heading mt-2 text-4xl font-semibold text-rose-600">
+                  <p className="font-heading mt-2 text-4xl font-semibold text-rose-200">
                     {mistakes}
                   </p>
                 </div>
-                <div className="rounded-[20px] border border-white/8 bg-white/5 p-4">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+                <div className="rounded-[20px] border border-white/10 bg-white/6 p-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-white/40">
                     Carte viste
                   </p>
-                  <p className="font-heading mt-2 text-4xl font-semibold text-slate-50">
+                  <p className="font-heading mt-2 text-4xl font-semibold text-white">
                     {cardsSeen}
                   </p>
                 </div>
               </div>
 
-              <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:justify-center">
+              <div className="mt-6 flex flex-wrap justify-center gap-3">
                 <Button
                   type="button"
                   icon={<Play className="size-4" />}
@@ -696,7 +679,7 @@ export function TabWhoGame() {
                   className={buttonStyles({
                     variant: "ghost",
                     className:
-                      "border border-white/10 bg-white/5 text-slate-200 hover:bg-white/10 hover:text-slate-50",
+                      "border border-white/10 bg-white/6 text-white/78 hover:bg-white/10 hover:text-white",
                   })}
                 >
                   <ArrowLeft className="size-4" />

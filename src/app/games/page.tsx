@@ -1,4 +1,11 @@
-import { Dices, MessageCircle, RotateCcw, Sparkles, Target } from "lucide-react";
+import {
+  Dices,
+  Flame,
+  MessageCircle,
+  RotateCcw,
+  Sparkles,
+  Target,
+} from "lucide-react";
 import Link from "next/link";
 
 import { PageHero } from "@/components/layout/page-hero";
@@ -7,6 +14,7 @@ import { BottleSpinGame } from "@/features/games/bottle-spin";
 import { DiceArenaGame } from "@/features/games/dice-arena";
 import { EliminationWheelGame } from "@/features/games/elimination-wheel";
 import { GuessTheNumberGame } from "@/features/games/guess-the-number";
+import { TruthOrDareGame } from "@/features/games/truth-or-dare";
 
 const gameSections = [
   {
@@ -20,6 +28,12 @@ const gameSections = [
     title: "Guess the Number",
     description: "Range libero, feedback visivo e storico dei tentativi.",
     icon: Target,
+  },
+  {
+    href: "#truth-or-dare",
+    title: "Obbligo o Verita",
+    description: "Modalita amici o piccante, con verita e obblighi pronti.",
+    icon: Flame,
   },
   {
     href: "#bottle-spin",
@@ -46,21 +60,21 @@ export default function GamesPage() {
     <div className="space-y-8">
       <PageHero
         badge="Games category"
-        title="Mini giochi rapidi con una presentazione più pulita, leggibile e pronta al replay."
-        description="Games raccoglie esperienze brevi ma curate: round veloci, input personalizzati, feedback chiari e un’estetica più coerente con il resto della dashboard."
+        title="Una collezione di mini giochi interattivi, veloci da avviare e piacevoli da rigiocare."
+        description="La sezione Games ora ospita piu esperienze: TAB-WHO ? per round rapidi in stile Taboo, Obbligo o Verita con modalita amici o piccante, indovinare un numero con feedback evoluto, far girare la bottiglia su scelte personalizzate, eliminare nomi con una ruota e lanciare dadi con setup variabile."
         aside={
           <Card className="p-5">
             <div className="flex items-start gap-4">
-              <div className="rounded-2xl border border-indigo-300/18 bg-white/6 p-3 text-indigo-200">
+              <div className="rounded-2xl border border-white/10 bg-white/8 p-3 text-amber-200">
                 <Dices className="size-5" />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
-                  Game collection
+                <p className="text-xs uppercase tracking-[0.18em] text-white/45">
+                  Six live games
                 </p>
-                <p className="mt-2 text-sm leading-7 text-slate-300">
-                  Cinque moduli con logiche distinte e interfacce più coerenti
-                  rendono la sezione più solida, più moderna e più facile da usare.
+                <p className="mt-2 text-sm leading-7 text-white/64">
+                  Sei moduli con input personalizzati, animazioni e logiche
+                  distinte rendono la sezione piu completa e versatile.
                 </p>
               </div>
             </div>
@@ -68,27 +82,22 @@ export default function GamesPage() {
         }
       />
 
-      <section className="grid auto-cols-[minmax(15.5rem,82vw)] grid-flow-col gap-3 overflow-x-auto pb-1 snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid-flow-row md:auto-cols-auto md:grid-cols-2 md:overflow-visible md:pb-0 xl:grid-cols-3 2xl:grid-cols-5">
+      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
         {gameSections.map((section) => {
           const Icon = section.icon;
 
           return (
-            <Link
-              key={section.href}
-              href={section.href}
-              className="group h-full snap-center md:min-w-0"
-            >
-              <Card className="relative h-full overflow-hidden border-white/8 bg-[linear-gradient(180deg,rgba(10,20,35,0.94),rgba(14,28,48,0.9))] p-4 transition duration-300 group-hover:-translate-y-1 group-hover:border-cyan-300/18 sm:p-5">
-                <div className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/24 to-transparent" />
+            <Link key={section.href} href={section.href} className="group h-full">
+              <Card className="h-full p-5 transition duration-300 group-hover:-translate-y-1 group-hover:border-white/16 group-hover:bg-white/8">
                 <div className="space-y-4">
-                  <div className="flex size-12 items-center justify-center rounded-2xl border border-cyan-300/16 bg-white/6 text-cyan-200">
+                  <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-white">
                     <Icon className="size-5" />
                   </div>
                   <div className="space-y-2">
-                    <h2 className="font-heading text-xl font-semibold text-slate-50">
+                    <h2 className="font-heading text-xl font-semibold text-white">
                       {section.title}
                     </h2>
-                    <p className="text-sm leading-7 text-slate-300">
+                    <p className="text-sm leading-7 text-white/60">
                       {section.description}
                     </p>
                   </div>
@@ -102,6 +111,9 @@ export default function GamesPage() {
       <div className="space-y-8">
         <div className="scroll-mt-52" id="guess-the-number">
           <GuessTheNumberGame />
+        </div>
+        <div className="scroll-mt-52" id="truth-or-dare">
+          <TruthOrDareGame />
         </div>
         <div className="scroll-mt-52" id="bottle-spin">
           <BottleSpinGame />

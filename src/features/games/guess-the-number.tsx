@@ -14,6 +14,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { ResponsiveControlPanel } from "@/components/ui/responsive-control-panel";
 
 type FeedbackTone = "default" | "warning" | "success";
 type GuessDirection = "higher" | "lower" | "correct" | null;
@@ -221,19 +222,19 @@ export function GuessTheNumberGame() {
   const directionMeta = getDirectionMeta(guessDirection);
 
   return (
-    <Card className="relative overflow-hidden p-5 sm:p-7">
+    <Card className="relative overflow-hidden p-6 sm:p-7">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-amber-300/16 to-transparent" />
-      <div className="relative grid gap-6 xl:grid-cols-[minmax(0,1fr)_280px]">
+      <div className="relative grid gap-6 lg:grid-cols-[minmax(0,1fr)_280px]">
         <div className="space-y-6">
           <div className="flex items-start justify-between gap-4">
             <div className="space-y-2">
               <p className="text-xs uppercase tracking-[0.22em] text-amber-200/70">
                 Guess the number
               </p>
-              <h2 className="font-heading text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+              <h2 className="font-heading text-3xl font-semibold tracking-tight text-white">
                 Indovina il numero segreto
               </h2>
-              <p className="max-w-xl text-sm leading-7 text-white/62">
+              <p className="hidden max-w-xl text-sm leading-7 text-white/62 lg:block">
                 Imposta il range che vuoi usare, poi prova a trovare il numero
                 segreto seguendo gli indizi.
               </p>
@@ -258,8 +259,8 @@ export function GuessTheNumberGame() {
               />
             </label>
 
-            <div className="grid gap-3 sm:flex sm:flex-wrap">
-              <Button type="submit" disabled={hasWon} className="w-full sm:w-auto">
+            <div className="flex flex-wrap gap-3">
+              <Button type="submit" disabled={hasWon}>
                 Invia tentativo
               </Button>
               <Button
@@ -267,7 +268,6 @@ export function GuessTheNumberGame() {
                 variant="secondary"
                 icon={<RotateCcw className="size-4" />}
                 onClick={() => resetGame()}
-                className="w-full sm:w-auto"
               >
                 Reset
               </Button>
@@ -290,7 +290,7 @@ export function GuessTheNumberGame() {
                       <p className="text-xs uppercase tracking-[0.18em] text-current/70">
                         Ultimo tentativo
                       </p>
-                      <p className="font-heading mt-2 text-4xl font-semibold tracking-tight text-current sm:text-5xl">
+                      <p className="font-heading mt-2 text-5xl font-semibold tracking-tight text-current">
                         {lastGuess}
                       </p>
                     </div>
@@ -319,7 +319,7 @@ export function GuessTheNumberGame() {
                 <p className="text-xs uppercase tracking-[0.18em] text-white/42">
                   Storico tentativi
                 </p>
-                <p className="mt-2 text-sm leading-6 text-white/58">
+                <p className="mt-2 hidden text-sm leading-6 text-white/58 sm:block">
                   Tieni traccia dei numeri gi{`\u00E0`} provati.
                 </p>
               </div>
@@ -359,24 +359,19 @@ export function GuessTheNumberGame() {
         </div>
 
         <div className="grid gap-4 self-start">
-          <form
-            className="rounded-[24px] border border-white/10 bg-slate-950/72 p-5"
-            onSubmit={(event) => {
-              event.preventDefault();
-              applyRange();
-            }}
+          <ResponsiveControlPanel
+            title="Range"
+            summary={`${range.min} - ${range.max}`}
+            className="rounded-[24px]"
           >
-            <div className="space-y-4">
-              <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-white/42">
-                  Range
-                </p>
-                <p className="mt-2 text-sm leading-6 text-white/58">
-                  Modificalo direttamente qui.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-3">
+            <form
+              className="space-y-4"
+              onSubmit={(event) => {
+                event.preventDefault();
+                applyRange();
+              }}
+            >
+              <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
                 <Input
                   type="number"
                   inputMode="numeric"
@@ -387,7 +382,7 @@ export function GuessTheNumberGame() {
                       min: event.target.value,
                     }))
                   }
-                  className="h-14 px-3 text-center font-heading text-xl font-semibold sm:text-2xl"
+                  className="h-14 px-3 text-center font-heading text-2xl font-semibold"
                 />
                 <span className="text-center font-heading text-3xl font-semibold text-white/55">
                   -
@@ -402,15 +397,15 @@ export function GuessTheNumberGame() {
                       max: event.target.value,
                     }))
                   }
-                  className="h-14 px-3 text-center font-heading text-xl font-semibold sm:text-2xl"
+                  className="h-14 px-3 text-center font-heading text-2xl font-semibold"
                 />
               </div>
 
               <Button type="submit" variant="secondary" className="w-full">
                 Applica range
               </Button>
-            </div>
-          </form>
+            </form>
+          </ResponsiveControlPanel>
           <div className="rounded-[24px] border border-white/10 bg-slate-950/72 p-5">
             <p className="text-xs uppercase tracking-[0.18em] text-white/42">
               Tentativi
@@ -427,6 +422,23 @@ export function GuessTheNumberGame() {
               {hasWon ? "Vittoria sbloccata. Premi reset per giocare di nuovo." : "Partita in corso. Segui gli indizi."}
             </p>
           </div>
+
+          <ResponsiveControlPanel
+            title="Spiegazioni"
+            summary="Come funziona"
+            className="lg:hidden"
+          >
+            <div className="space-y-3 text-sm leading-7 text-white/62">
+              <p>
+                Imposta il range che vuoi usare, poi prova a trovare il numero
+                seguendo gli indizi.
+              </p>
+              <p>
+                Se il numero e piu alto o piu basso lo vedi subito nel feedback,
+                mentre lo storico tiene traccia dei tentativi gia fatti.
+              </p>
+            </div>
+          </ResponsiveControlPanel>
         </div>
       </div>
     </Card>
