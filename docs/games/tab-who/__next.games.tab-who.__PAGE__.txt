@@ -2,5 +2,5 @@
 2:I[6982,["124","static/chunks/124-55d14cebe8fc13ce.js","544","static/chunks/544-72c6297ea2f8324e.js","500","static/chunks/500-c99b8dfd3de17c86.js","523","static/chunks/app/games/tab-who/page-b0da18ee7852c720.js"],"TabWhoGame"]
 3:I[484,[],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"MT1PshXyB4F-EThEonz-j"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"VbBLJcfefygBLya4hjCvo"}
 5:null

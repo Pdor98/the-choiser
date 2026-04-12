@@ -410,7 +410,7 @@ export function TimerTool() {
   return (
     <Card className="relative overflow-hidden border-white/8 bg-[linear-gradient(180deg,rgba(10,20,35,0.96),rgba(14,28,48,0.92))] p-5 sm:p-7">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-cyan-300/16 via-indigo-300/8 to-transparent" />
-      <div className="relative grid gap-6 xl:grid-cols-[320px_minmax(0,1fr)] xl:items-start xl:gap-8">
+      <div className="relative grid gap-6 pb-28 xl:grid-cols-[320px_minmax(0,1fr)] xl:items-start xl:gap-8 xl:pb-0">
         <div className="space-y-5">
           <div className="flex items-center justify-between">
             <div className="rounded-2xl border border-cyan-300/16 bg-white/6 p-3 text-cyan-200">
@@ -497,7 +497,7 @@ export function TimerTool() {
             />
           )}
 
-          <div className="grid gap-3 sm:grid-cols-3">
+          <div className="hidden gap-3 lg:grid lg:grid-cols-3">
             <Button
               icon={<Play className="size-4" />}
               onClick={startTimer}
@@ -569,6 +569,38 @@ export function TimerTool() {
               </div>
             </motion.div>
           </AnimatePresence>
+        </div>
+      </div>
+
+      <div className="fixed inset-x-3 bottom-3 z-30 lg:hidden">
+        <div className="rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(10,20,35,0.96),rgba(13,24,42,0.94))] p-3 shadow-[0_26px_70px_-38px_rgba(15,23,42,0.78)] backdrop-blur-xl">
+          <div className="grid grid-cols-3 gap-2">
+            <Button
+              icon={<Play className="size-4" />}
+              onClick={startTimer}
+              disabled={isRunning}
+              className="min-h-[3.2rem] w-full justify-center px-2 text-[13px]"
+            >
+              Start
+            </Button>
+            <Button
+              variant="secondary"
+              icon={<Pause className="size-4" />}
+              onClick={pauseTimer}
+              disabled={!isRunning}
+              className="min-h-[3.2rem] w-full justify-center px-2 text-[13px]"
+            >
+              Pause
+            </Button>
+            <Button
+              variant="secondary"
+              icon={<RotateCcw className="size-4" />}
+              onClick={resetTimer}
+              className="min-h-[3.2rem] w-full justify-center px-2 text-[13px]"
+            >
+              Reset
+            </Button>
+          </div>
         </div>
       </div>
     </Card>

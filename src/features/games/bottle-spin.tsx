@@ -65,7 +65,7 @@ export function BottleSpinGame() {
   return (
     <Card className="relative overflow-hidden p-4 sm:p-6 lg:p-7">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-cyan-300/14 to-transparent" />
-      <div className="relative space-y-6">
+      <div className="relative space-y-6 pb-28 lg:pb-0">
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-2">
             <p className="text-xs uppercase tracking-[0.22em] text-cyan-200/70">
@@ -174,7 +174,7 @@ export function BottleSpinGame() {
                   icon={<Play className="size-4" />}
                   onClick={spinBottle}
                   disabled={isSpinning}
-                  className="w-full"
+                  className="hidden w-full lg:inline-flex"
                 >
                   Gira bottiglia
                 </Button>
@@ -183,7 +183,7 @@ export function BottleSpinGame() {
                   variant="ghost"
                   icon={<RotateCcw className="size-4" />}
                   onClick={resetBoard}
-                  className="w-full"
+                  className="hidden w-full lg:inline-flex"
                 >
                   Reset
                 </Button>
@@ -232,6 +232,31 @@ export function BottleSpinGame() {
                   )}
                 </motion.div>
               </AnimatePresence>
+            </div>
+          </div>
+        </div>
+
+        <div className="fixed inset-x-3 bottom-3 z-30 lg:hidden">
+          <div className="rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(10,20,35,0.96),rgba(13,24,42,0.94))] p-3 shadow-[0_26px_70px_-38px_rgba(15,23,42,0.78)] backdrop-blur-xl">
+            <div className="grid grid-cols-2 gap-2">
+              <Button
+                type="button"
+                icon={<Play className="size-4" />}
+                onClick={spinBottle}
+                disabled={isSpinning}
+                className="min-h-[3.2rem] w-full justify-center"
+              >
+                Gira
+              </Button>
+              <Button
+                type="button"
+                variant="secondary"
+                icon={<RotateCcw className="size-4" />}
+                onClick={resetBoard}
+                className="min-h-[3.2rem] w-full justify-center"
+              >
+                Reset
+              </Button>
             </div>
           </div>
         </div>
