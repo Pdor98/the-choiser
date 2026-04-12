@@ -223,7 +223,7 @@ export function GuessTheNumberGame() {
   return (
     <Card className="relative overflow-hidden p-5 sm:p-7">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-amber-300/16 to-transparent" />
-      <div className="relative grid gap-6 lg:grid-cols-[minmax(0,1fr)_280px]">
+      <div className="relative grid gap-6 xl:grid-cols-[minmax(0,1fr)_280px]">
         <div className="space-y-6">
           <div className="flex items-start justify-between gap-4">
             <div className="space-y-2">

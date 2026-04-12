@@ -83,7 +83,7 @@ export function DailyAdvicePanel() {
       animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
       transition={{ duration: 0.55, ease: "easeOut" }}
     >
-      <Card className="relative overflow-hidden border-cyan-300/18 bg-[linear-gradient(135deg,rgba(8,16,30,0.99),rgba(9,21,39,0.98)_26%,rgba(12,29,49,0.97)_54%,rgba(18,38,66,0.96)_82%,rgba(26,48,84,0.94))] px-5 py-6 shadow-[0_40px_110px_-54px_rgba(37,99,235,0.5)] sm:px-8 sm:py-7 lg:px-10 lg:py-8">
+      <Card className="relative overflow-hidden border-cyan-300/18 bg-[linear-gradient(135deg,rgba(8,16,30,0.99),rgba(9,21,39,0.98)_26%,rgba(12,29,49,0.97)_54%,rgba(18,38,66,0.96)_82%,rgba(26,48,84,0.94))] px-4 py-5 shadow-[0_40px_110px_-54px_rgba(37,99,235,0.5)] sm:px-7 sm:py-6 lg:px-10 lg:py-8">
         <motion.div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 opacity-65"
@@ -110,9 +110,9 @@ export function DailyAdvicePanel() {
         <div className="pointer-events-none absolute -right-10 top-1/2 h-32 w-32 -translate-y-1/2 rounded-full bg-indigo-300/14 blur-3xl" />
         <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/36 to-transparent" />
 
-        <div className="relative mx-auto max-w-5xl space-y-5 text-center sm:space-y-6">
+        <div className="relative mx-auto max-w-5xl space-y-4 text-center sm:space-y-5 lg:space-y-6">
           <motion.div
-            className="mx-auto flex size-12 shrink-0 items-center justify-center rounded-[20px] border border-cyan-300/18 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] text-cyan-100 shadow-[0_18px_34px_-24px_rgba(34,211,238,0.42)] sm:size-14"
+            className="mx-auto flex size-11 shrink-0 items-center justify-center rounded-[20px] border border-cyan-300/18 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] text-cyan-100 shadow-[0_18px_34px_-24px_rgba(34,211,238,0.42)] sm:size-14"
             animate={
               shouldReduceMotion
                 ? undefined
@@ -168,7 +168,7 @@ export function DailyAdvicePanel() {
                 </p>
                 <p
                   aria-live="polite"
-                  className="mx-auto max-w-4xl text-balance font-heading text-[1.62rem] font-semibold leading-[1.22] text-slate-50 sm:text-[2.1rem] sm:leading-[1.18] lg:text-[2.62rem] lg:leading-[1.12]"
+                  className="mx-auto max-w-4xl text-balance font-heading text-[1.42rem] font-semibold leading-[1.24] text-slate-50 sm:text-[1.95rem] sm:leading-[1.18] lg:text-[2.45rem] lg:leading-[1.12]"
                 >
                   {advice.text}
                 </p>

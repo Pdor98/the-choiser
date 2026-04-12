@@ -7,11 +7,11 @@ import { RandomHub } from "@/features/random/random-hub";
 export default function RandomPage() {
   return (
     <div className="space-y-8">
-      <section className="grid gap-4 min-[1120px]:grid-cols-[minmax(0,1fr)_320px] min-[1120px]:items-end">
+      <section className="grid gap-5 min-[1200px]:grid-cols-[minmax(0,1fr)_320px] min-[1200px]:items-end">
         <div className="space-y-4">
           <SectionBadge>Random category</SectionBadge>
           <div className="space-y-3">
-            <h1 className="font-heading max-w-4xl text-balance text-2xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-[2.8rem]">
+            <h1 className="font-heading max-w-4xl text-balance text-2xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-[2.65rem]">
               Prima il prompt giusto per oggi, poi una risposta casuale al volo.
             </h1>
             <p className="max-w-3xl text-sm leading-7 text-slate-300/88 sm:text-base sm:leading-7">
@@ -22,7 +22,7 @@ export default function RandomPage() {
           </div>
         </div>
 
-        <Card className="p-5">
+        <Card className="p-4 sm:p-5">
           <div className="flex items-start gap-4">
             <div className="rounded-2xl border border-cyan-300/16 bg-white/6 p-3 text-cyan-200">
               <Dices className="size-5" />

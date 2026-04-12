@@ -1,16 +1,8 @@
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-
 import { CategoryCard } from "@/components/home/category-card";
 import { DailyAdvicePanel } from "@/components/home/daily-advice-panel";
 import { HighlightCard } from "@/components/home/highlight-card";
 import { HomeHeroPanel } from "@/components/home/home-hero-panel";
 import { ScrollFocusSection } from "@/components/layout/scroll-focus-section";
-import {
-  buttonStyles,
-  primaryButtonReadableStyle,
-} from "@/components/ui/button";
-import { SectionBadge } from "@/components/ui/section-badge";
 import { categories, homeHighlights } from "@/lib/site-content";
 
 export default function HomePage() {
@@ -22,55 +14,6 @@ export default function HomePage() {
 
       <ScrollFocusSection className="mx-auto max-w-5xl">
         <HomeHeroPanel />
-      </ScrollFocusSection>
-
-      <ScrollFocusSection className="space-y-5">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <SectionBadge>Scorciatoie Choiser</SectionBadge>
-            <h2 className="font-heading mt-3 text-xl font-semibold tracking-tight text-slate-100 sm:text-2xl">
-              Dopo il consiglio, scegli dove continuare
-            </h2>
-          </div>
-          <p className="max-w-2xl text-sm leading-7 text-slate-300/86">
-            La home ora parte da un’azione concreta e poi ti accompagna verso
-            generatori, giochi e strumenti senza dispersione.
-          </p>
-        </div>
-
-        <div className="grid gap-3 sm:flex sm:flex-wrap">
-          <Link
-            href="/random"
-            className={buttonStyles({ className: "w-full sm:w-auto" })}
-            style={primaryButtonReadableStyle}
-          >
-            <ArrowRight
-              className="size-4 text-slate-950"
-              style={primaryButtonReadableStyle}
-            />
-            <span className="text-slate-950" style={primaryButtonReadableStyle}>
-              Apri il consiglio di oggi
-            </span>
-          </Link>
-          <Link
-            href="/games/tab-who"
-            className={buttonStyles({
-              variant: "secondary",
-              className: "w-full sm:w-auto",
-            })}
-          >
-            <span>Vai a TAB-WHO ?</span>
-          </Link>
-          <Link
-            href="/tools"
-            className={buttonStyles({
-              variant: "ghost",
-              className: "w-full sm:w-auto",
-            })}
-          >
-            <span>Apri i tools</span>
-          </Link>
-        </div>
       </ScrollFocusSection>
 
       <ScrollFocusSection className="space-y-5">

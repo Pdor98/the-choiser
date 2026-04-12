@@ -72,12 +72,12 @@ function ResponseViewport({
   emptyText: string;
 }) {
   return (
-    <div className="relative mt-6 overflow-hidden rounded-[22px] border border-white/8 bg-[linear-gradient(180deg,rgba(18,31,53,0.9),rgba(11,22,39,0.9))] px-4 py-4 text-sm text-slate-300 sm:mt-7 sm:px-5 sm:py-5 lg:px-6 lg:py-6">
+    <div className="relative mt-6 overflow-hidden rounded-[22px] border border-white/8 bg-[linear-gradient(180deg,rgba(18,31,53,0.9),rgba(11,22,39,0.9))] px-3.5 py-4 text-sm text-slate-300 sm:mt-7 sm:px-5 sm:py-5 lg:px-6 lg:py-6">
       <div className="pointer-events-none absolute left-1/2 top-0 h-[5.5rem] w-40 -translate-x-1/2 rounded-full bg-cyan-300/10 blur-3xl" />
       <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/20 to-transparent" />
 
-      <div className="relative flex min-h-[136px] items-center justify-center sm:min-h-[150px] lg:min-h-[164px]">
-        <div className="w-full max-w-[15rem] rounded-[22px] border border-white/8 bg-white/[0.045] px-4 py-4 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:max-w-[17rem] sm:px-5 sm:py-5 lg:max-w-[18.5rem]">
+      <div className="relative flex min-h-[132px] items-center justify-center sm:min-h-[148px] lg:min-h-[164px]">
+        <div className="w-full max-w-[14.5rem] rounded-[22px] border border-white/8 bg-white/[0.045] px-4 py-4 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:max-w-[16.5rem] sm:px-5 sm:py-5 lg:max-w-[18rem]">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={value ?? "idle"}
@@ -85,7 +85,7 @@ function ResponseViewport({
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.985 }}
               transition={{ duration: 0.26, ease: "easeOut" }}
-              className="flex h-[96px] items-center justify-center sm:h-[104px] lg:h-[112px]"
+              className="flex h-[92px] items-center justify-center sm:h-[104px] lg:h-[112px]"
             >
               <p className="mx-auto max-w-full text-balance break-words font-heading text-[clamp(1rem,0.9rem+0.8vw,1.35rem)] font-semibold leading-[1.38] text-slate-100">
                 {value ?? emptyText}
@@ -110,7 +110,7 @@ function RandomModuleHeader({
   description: string;
 }) {
   return (
-    <div className="flex min-h-[11.75rem] flex-col text-center sm:min-h-[12.5rem] lg:min-h-[13rem]">
+    <div className="flex min-h-[10.75rem] flex-col text-center sm:min-h-[11.5rem] lg:min-h-[12.5rem]">
       <div className="mx-auto flex size-12 items-center justify-center rounded-[20px] border border-cyan-300/16 bg-white/6 p-3 text-cyan-200 shadow-[0_18px_42px_-30px_rgba(56,189,248,0.24)]">
         {icon}
       </div>
@@ -122,7 +122,7 @@ function RandomModuleHeader({
         <h2 className="font-heading text-[clamp(1.55rem,1.1rem+1vw,1.85rem)] font-semibold tracking-tight text-slate-50">
           {title}
         </h2>
-        <p className="mx-auto min-h-[3.5rem] max-w-[34rem] text-sm leading-7 text-slate-300/88 sm:min-h-[4rem]">
+        <p className="mx-auto min-h-[3.25rem] max-w-[34rem] text-sm leading-7 text-slate-300/88 sm:min-h-[3.75rem]">
           {description}
         </p>
       </div>
@@ -150,7 +150,7 @@ function RandomPrimaryCard({
   onAction: () => void;
 }) {
   return (
-    <Card className="relative flex h-full flex-col overflow-hidden border-white/8 bg-[linear-gradient(180deg,rgba(10,20,35,0.94),rgba(14,28,48,0.9))] p-5 sm:p-6 lg:p-7">
+    <Card className="relative flex h-full flex-col overflow-hidden border-white/8 bg-[linear-gradient(180deg,rgba(10,20,35,0.94),rgba(14,28,48,0.9))] p-4 sm:p-5 lg:p-6">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-cyan-200/10 via-transparent to-transparent" />
       <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/26 to-transparent" />
       <div className="pointer-events-none absolute right-0 top-0 h-28 w-28 rounded-full bg-sky-300/14 blur-3xl" />
@@ -209,7 +209,7 @@ export function RandomHub() {
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-5 min-[980px]:grid-cols-2 xl:gap-6">
+      <div className="grid gap-5 min-[1120px]:grid-cols-2 xl:gap-6">
         <RandomPrimaryCard
           icon={<Wand2 className="size-6" />}
           eyebrow="Today prompt"
@@ -246,7 +246,7 @@ export function RandomHub() {
       <Card className="relative overflow-hidden border-white/8 bg-[linear-gradient(180deg,rgba(9,18,33,0.9),rgba(12,24,42,0.88))] p-5 sm:p-6">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-r from-cyan-300/10 to-transparent" />
 
-        <div className="relative grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+        <div className="relative grid gap-5 xl:grid-cols-[minmax(0,1fr)_auto] xl:items-end">
           <div className="space-y-4">
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -292,18 +292,18 @@ export function RandomHub() {
             </div>
           </div>
 
-          <div className="grid gap-3 sm:flex sm:flex-wrap lg:flex-col lg:items-stretch">
+          <div className="grid gap-3 sm:flex sm:flex-wrap xl:flex-col xl:items-stretch">
             <Button
               icon={<Sparkles className="size-4" />}
               onClick={() => setNumber(getRandomNumber())}
-              className="w-full lg:min-w-[14rem]"
+              className="w-full sm:min-w-[12rem] xl:min-w-[14rem]"
             >
               Genera numero
             </Button>
             <Button
               variant="secondary"
               onClick={() => setNumber(null)}
-              className="w-full lg:min-w-[14rem]"
+              className="w-full sm:min-w-[12rem] xl:min-w-[14rem]"
             >
               Reset
             </Button>

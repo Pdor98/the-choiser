@@ -387,13 +387,13 @@ export function TabWhoGame() {
                   transition={{ duration: 0.24, ease: "easeOut" }}
                   className="rounded-[30px] border border-white/8 bg-[linear-gradient(180deg,rgba(11,21,37,0.96),rgba(15,29,50,0.94))] p-4 shadow-[0_30px_70px_-50px_rgba(37,99,235,0.22)] sm:p-5"
                 >
-                  <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-stretch">
+                  <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-stretch">
                     <div className="rounded-[24px] border border-white/8 bg-[linear-gradient(180deg,rgba(16,31,53,0.96)_0%,rgba(12,24,42,0.94)_100%)] p-5 sm:p-6">
                       <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
                         <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
                           Parola principale
                         </p>
-                        <h3 className="font-heading text-4xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
+                        <h3 className="font-heading text-4xl font-semibold tracking-tight sm:text-5xl xl:text-7xl">
                           {currentCard.parola}
                         </h3>
                         <p className="max-w-md text-sm leading-6 text-slate-300">
@@ -474,7 +474,7 @@ export function TabWhoGame() {
                 </Button>
               </div>
 
-              <div className="grid gap-3 lg:grid-cols-3">
+              <div className="grid gap-3 xl:grid-cols-3">
                 <div className="rounded-[22px] border border-white/8 bg-white/5 p-4 shadow-sm">
                   <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
                     Regole rapide

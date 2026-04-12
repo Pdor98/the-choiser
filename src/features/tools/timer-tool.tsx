@@ -410,7 +410,7 @@ export function TimerTool() {
   return (
     <Card className="relative overflow-hidden border-white/8 bg-[linear-gradient(180deg,rgba(10,20,35,0.96),rgba(14,28,48,0.92))] p-5 sm:p-7">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-cyan-300/16 via-indigo-300/8 to-transparent" />
-      <div className="relative grid gap-6 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start lg:gap-8">
+      <div className="relative grid gap-6 xl:grid-cols-[320px_minmax(0,1fr)] xl:items-start xl:gap-8">
         <div className="space-y-5">
           <div className="flex items-center justify-between">
             <div className="rounded-2xl border border-cyan-300/16 bg-white/6 p-3 text-cyan-200">
@@ -436,7 +436,7 @@ export function TimerTool() {
 
           <ViewModeToggle viewMode={viewMode} onChange={setViewMode} />
 
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 xl:grid-cols-2">
             {timerPresets.map((preset) => {
               const isSelected = preset === selectedSeconds;
               return (
@@ -497,12 +497,12 @@ export function TimerTool() {
             />
           )}
 
-          <div className="grid gap-3 sm:flex sm:flex-wrap">
+          <div className="grid gap-3 sm:grid-cols-3">
             <Button
               icon={<Play className="size-4" />}
               onClick={startTimer}
               disabled={isRunning}
-              className="w-full sm:w-auto"
+              className="w-full"
             >
               Start
             </Button>
@@ -511,7 +511,7 @@ export function TimerTool() {
               icon={<Pause className="size-4" />}
               onClick={pauseTimer}
               disabled={!isRunning}
-              className="w-full sm:w-auto"
+              className="w-full"
             >
               Pause
             </Button>
@@ -519,7 +519,7 @@ export function TimerTool() {
               variant="secondary"
               icon={<RotateCcw className="size-4" />}
               onClick={resetTimer}
-              className="w-full sm:w-auto"
+              className="w-full"
             >
               Reset
             </Button>
