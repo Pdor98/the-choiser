@@ -32,7 +32,7 @@ const gameSections = [
   {
     href: "#truth-or-dare",
     title: "Obbligo o Verita",
-    description: "Modalita amici o piccante, con verita e obblighi pronti.",
+    description: "Verita o obbligo in un unico gioco, con modalita Spicy 🔥 in lavorazione.",
     icon: Flame,
   },
   {
@@ -61,7 +61,7 @@ export default function GamesPage() {
       <PageHero
         badge="Games category"
         title="Una collezione di mini giochi interattivi, veloci da avviare e piacevoli da rigiocare."
-        description="La sezione Games ora ospita piu esperienze: TAB-WHO ? per round rapidi in stile Taboo, Obbligo o Verita con modalita amici o piccante, indovinare un numero con feedback evoluto, far girare la bottiglia su scelte personalizzate, eliminare nomi con una ruota e lanciare dadi con setup variabile."
+        description="La sezione Games ora ospita piu esperienze: TAB-WHO ? per round rapidi in stile Taboo, Obbligo o Verita con verita e obblighi pronti e una modalita Spicy 🔥 in lavorazione, indovinare un numero con feedback evoluto, far girare la bottiglia su scelte personalizzate, eliminare nomi con una ruota e lanciare dadi con setup variabile."
         aside={
           <Card className="p-5">
             <div className="flex items-start gap-4">
