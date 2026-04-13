@@ -15,9 +15,9 @@ export function AppShell({ children }: AppShellProps) {
       <div className="pointer-events-none absolute right-[-10rem] top-16 h-[24rem] w-[24rem] rounded-full bg-indigo-400/12 blur-3xl" />
       <div className="pointer-events-none absolute bottom-[-12rem] left-1/2 h-[24rem] w-[24rem] -translate-x-1/2 rounded-full bg-cyan-300/10 blur-3xl" />
 
-      <div className="relative mx-auto flex min-h-screen w-full max-w-[90rem] flex-col gap-5 px-3.5 py-3.5 sm:gap-8 sm:px-6 sm:py-6 lg:px-8 xl:px-10">
+      <div className="relative mx-auto flex min-h-screen w-full max-w-[90rem] flex-col gap-6 px-3.5 py-3.5 sm:gap-8 sm:px-6 sm:py-6 lg:px-8 xl:px-10">
         <SiteHeader />
-        <main className="flex-1 pb-10 pt-1 sm:pb-12 sm:pt-2">{children}</main>
+        <main className="flex-1 pb-10 pt-2 sm:pb-12 sm:pt-3">{children}</main>
       </div>
     </div>
   );

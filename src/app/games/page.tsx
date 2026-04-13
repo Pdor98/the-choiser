@@ -109,19 +109,19 @@ export default function GamesPage() {
       </section>
 
       <div className="space-y-8">
-        <div className="scroll-mt-52" id="guess-the-number">
+        <div className="scroll-mt-6 sm:scroll-mt-8" id="guess-the-number">
           <GuessTheNumberGame />
         </div>
-        <div className="scroll-mt-52" id="truth-or-dare">
+        <div className="scroll-mt-6 sm:scroll-mt-8" id="truth-or-dare">
           <TruthOrDareGame />
         </div>
-        <div className="scroll-mt-52" id="bottle-spin">
+        <div className="scroll-mt-6 sm:scroll-mt-8" id="bottle-spin">
           <BottleSpinGame />
         </div>
-        <div className="scroll-mt-52" id="elimination-wheel">
+        <div className="scroll-mt-6 sm:scroll-mt-8" id="elimination-wheel">
           <EliminationWheelGame />
         </div>
-        <div className="scroll-mt-52" id="dice-arena">
+        <div className="scroll-mt-6 sm:scroll-mt-8" id="dice-arena">
           <DiceArenaGame />
         </div>
       </div>
