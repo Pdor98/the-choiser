@@ -79,8 +79,9 @@ export function TruthOrDareGame() {
   const [spicyBannerVisible, setSpicyBannerVisible] = useState(false);
 
   const promptPool = truthOrDarePrompts[mode][promptType];
-  const modeLabel = "Normale";
+  const modeLabel = mode === "spicy" ? "Spicy 🔥" : "Normale";
   const promptTypeLabel = promptType === "truth" ? "Verita" : "Obbligo";
+  const isSpicyLocked = mode === "spicy";
 
   const helperCopy = useMemo(() => {
     if (promptType === "truth") {
@@ -93,17 +94,23 @@ export function TruthOrDareGame() {
   function handleModeSelect(nextMode: TruthOrDareMode) {
     if (nextMode === "spicy") {
       setSpicyBannerVisible(true);
-      setMode("normal");
+      setMode("spicy");
+      setCurrentPrompt(null);
       setOpenPanel(null);
       return;
     }
 
     setSpicyBannerVisible(false);
     setMode("normal");
+    setCurrentPrompt(null);
     setOpenPanel(null);
   }
 
   function revealPrompt() {
+    if (isSpicyLocked || promptPool.length === 0) {
+      return;
+    }
+
     const nextPrompt = pickPrompt(promptPool, currentPrompt);
     setCurrentPrompt(nextPrompt);
     setPromptVersion((current) => current + 1);
@@ -155,7 +162,9 @@ export function TruthOrDareGame() {
                     className="mx-auto max-w-[20ch] text-balance font-heading text-[clamp(1.6rem,2.6vw,2.35rem)] font-semibold leading-[1.22] tracking-tight text-white"
                   >
                     {currentPrompt ??
-                      "Scegli modalita e tipo, poi premi Mostra domanda per far partire il turno."}
+                      (isSpicyLocked
+                        ? "La modalita Spicy e in lavorazione. Torna presto per provarla."
+                        : "Scegli modalita e tipo, poi premi Mostra domanda per far partire il turno.")}
                   </motion.p>
                 </AnimatePresence>
 
@@ -368,7 +377,7 @@ export function TruthOrDareGame() {
                   <div className="rounded-[22px] border border-amber-200/20 bg-amber-300/10 px-4 py-4 text-sm leading-6 text-amber-50">
                     <div className="flex items-start gap-3">
                       <Flame className="mt-0.5 size-4 shrink-0 text-amber-200/90" />
-                      <p>stiamo lavorando per voi per fare tutto al meglo</p>
+                      <p>Stiamo lavorando per offrirti una modalita Spicy fatta al meglio.</p>
                     </div>
                   </div>
                 ) : null}
@@ -378,6 +387,7 @@ export function TruthOrDareGame() {
                   className="w-full"
                   icon={<Shuffle className="size-4" />}
                   onClick={revealPrompt}
+                  disabled={isSpicyLocked}
                 >
                   Mostra domanda
                 </Button>
