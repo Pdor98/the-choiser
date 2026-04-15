@@ -302,7 +302,7 @@ export function TabWhoGame() {
                   variant="secondary"
                   icon={<Shuffle className="size-4" />}
                   onClick={loadPreviewCard}
-                  className="border-slate-200 bg-white text-slate-900 hover:bg-slate-100"
+                  className="!border-slate-200 !bg-white !text-slate-900 shadow-sm hover:!bg-slate-100 hover:!text-slate-950"
                 >
                   Nuova Parola
                 </Button>
@@ -512,7 +512,7 @@ export function TabWhoGame() {
                   icon={<SkipForward className="size-4" />}
                   onClick={handleSkip}
                   disabled={gameState !== "playing"}
-                  className="w-full justify-center border-slate-200 bg-white text-slate-900 hover:bg-slate-100"
+                  className="w-full justify-center !border-slate-200 !bg-white !text-slate-900 shadow-sm hover:!bg-slate-100 hover:!text-slate-950"
                 >
                   Salta
                 </Button>
@@ -522,7 +522,7 @@ export function TabWhoGame() {
                   icon={<Square className="size-4" />}
                   onClick={finishTurn}
                   disabled={gameState !== "playing"}
-                  className="w-full justify-center border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-950"
+                  className="w-full justify-center !border !border-slate-200 !bg-white !text-slate-700 shadow-sm hover:!bg-slate-100 hover:!text-slate-950"
                 >
                   Termina turno
                 </Button>
@@ -553,7 +553,7 @@ export function TabWhoGame() {
                   icon={<SkipForward className="size-4" />}
                   onClick={handleSkip}
                   disabled={gameState !== "playing"}
-                  className="w-full justify-center border-slate-200 bg-white text-slate-900 hover:bg-slate-100"
+                  className="w-full justify-center !border-slate-200 !bg-white !text-slate-900 shadow-sm hover:!bg-slate-100 hover:!text-slate-950"
                 >
                   Salta
                 </Button>
