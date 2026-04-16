@@ -326,16 +326,14 @@ export function TabWhoGame() {
                 >
                   Inizia Gioco
                 </Button>
-                <Button
-                  type="button"
-                  variant="secondary"
-                  icon={<Shuffle className="size-4" />}
-                  onClick={loadPreviewCard}
-                  className="!border-slate-200 !bg-white !text-slate-900 shadow-sm hover:!bg-slate-100 hover:!text-slate-950"
-                  style={lightActionButtonStyle}
-                >
-                  Nuova Parola
-                </Button>
+              <Button
+                type="button"
+                icon={<Shuffle className="size-4" />}
+                onClick={loadPreviewCard}
+                className="bg-slate-950 text-white hover:bg-slate-800"
+              >
+                Nuova Parola
+              </Button>
                 <Link
                   href="/"
                   className={buttonStyles({
