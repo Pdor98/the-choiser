@@ -717,6 +717,7 @@ export function TabWhoGame() {
                   variant="secondary"
                   icon={<RotateCcw className="size-4" />}
                   onClick={resetToIntro}
+                  className="!border-white/16 !bg-white !text-slate-950 shadow-sm hover:!bg-slate-100 hover:!text-slate-950"
                 >
                   Nuova partita
                 </Button>
