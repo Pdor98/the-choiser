@@ -23,7 +23,7 @@ import { Button, buttonStyles } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { parole, type TabWhoCard } from "@/features/games/tab-who-data";
 
-const turnDuration = 60;
+const durationOptions = [30, 60, 180] as const;
 
 function shuffleDeck(cards: TabWhoCard[]) {
   const nextCards = [...cards];
@@ -57,12 +57,14 @@ export function TabWhoGame() {
   const [cardIndex, setCardIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [mistakes, setMistakes] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(turnDuration);
+  const [selectedDuration, setSelectedDuration] =
+    useState<(typeof durationOptions)[number]>(60);
+  const [timeLeft, setTimeLeft] = useState(60);
   const [gameState, setGameState] = useState<GameState>("idle");
   const [lastAction, setLastAction] = useState<LastAction>(null);
 
   const currentCard = deck[cardIndex] ?? deck[0];
-  const progress = (timeLeft / turnDuration) * 100;
+  const progress = (timeLeft / selectedDuration) * 100;
   const cardsSeen = gameState === "idle" ? 0 : cardIndex + 1;
 
   const statusCopy = useMemo(() => {
@@ -130,7 +132,7 @@ export function TabWhoGame() {
   function startGame() {
     setScore(0);
     setMistakes(0);
-    setTimeLeft(turnDuration);
+    setTimeLeft(selectedDuration);
     setLastAction(null);
     setGameState("playing");
   }
@@ -140,7 +142,7 @@ export function TabWhoGame() {
     setCardIndex(0);
     setScore(0);
     setMistakes(0);
-    setTimeLeft(turnDuration);
+    setTimeLeft(selectedDuration);
     setLastAction(null);
     setGameState("playing");
   }
@@ -150,7 +152,7 @@ export function TabWhoGame() {
     setCardIndex(0);
     setScore(0);
     setMistakes(0);
-    setTimeLeft(turnDuration);
+    setTimeLeft(selectedDuration);
     setLastAction(null);
     setGameState("idle");
   }
@@ -234,14 +236,13 @@ export function TabWhoGame() {
                     TAB-WHO ?
                   </h2>
                   <p className="mx-auto max-w-2xl text-base leading-7 text-slate-600">
-                    Avvia il turno, descrivi la parola e non farti scappare i
-                    taboo. Prima di partire puoi cambiare la carta pronta quante
-                    volte vuoi.
+                    Scegli il tempo del round, controlla la carta pronta e fai
+                    partire il turno quando vuoi.
                   </p>
                 </div>
               </div>
 
-              <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-stretch">
+              <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_280px] xl:items-stretch">
                 <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm">
                   <div className="space-y-3 text-center">
                     <p className="text-xs uppercase tracking-[0.24em] text-slate-500">
@@ -267,22 +268,44 @@ export function TabWhoGame() {
                 <div className="grid gap-3">
                   <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm">
                     <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
-                      Regole rapide
+                      Durata turno
                     </p>
-                    <div className="mt-3 space-y-2 text-sm leading-6 text-slate-600">
-                      <p>Corretto: +1 punto e nuova carta.</p>
-                      <p>Sbagliata: nessun punto e carta persa.</p>
-                      <p>Salta: passi oltre senza segnare.</p>
+                    <div className="mt-3 grid grid-cols-3 gap-2">
+                      {durationOptions.map((option) => {
+                        const isActive = selectedDuration === option;
+
+                        return (
+                          <button
+                            key={option}
+                            type="button"
+                            onClick={() => {
+                              setSelectedDuration(option);
+                              setTimeLeft(option);
+                            }}
+                            className={`rounded-2xl border px-3 py-3 text-sm font-semibold transition duration-300 ${
+                              isActive
+                                ? "border-amber-300 bg-amber-50 text-slate-950 shadow-sm"
+                                : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50"
+                            }`}
+                          >
+                            {option}s
+                          </button>
+                        );
+                      })}
                     </div>
+                    <p className="mt-3 text-sm leading-6 text-slate-600">
+                      Scegli un round rapido da 30 secondi, classico da 60 o piu
+                      lungo da 180.
+                    </p>
                   </div>
 
                   <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm">
                     <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
-                      Per The Choiser
+                      Prima di partire
                     </p>
                     <p className="mt-3 text-sm leading-6 text-slate-600">
-                      Mini-gioco party, rapido da avviare e facile da estendere
-                      con nuove carte nel dataset.
+                      Puoi cambiare la carta pronta tutte le volte che vuoi
+                      prima di avviare il round.
                     </p>
                   </div>
                 </div>
@@ -317,6 +340,29 @@ export function TabWhoGame() {
                   <House className="size-4" />
                   <span>Torna a The Choiser</span>
                 </Link>
+              </div>
+
+              <div className="grid gap-3 lg:grid-cols-2">
+                <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm">
+                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
+                    Regole rapide
+                  </p>
+                  <div className="mt-3 space-y-2 text-sm leading-6 text-slate-600">
+                    <p>Corretto: +1 punto e nuova carta.</p>
+                    <p>Sbagliata: nessun punto e carta persa.</p>
+                    <p>Prossima parola: passi oltre senza segnare.</p>
+                  </div>
+                </div>
+
+                <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm">
+                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
+                    Per The Choiser
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">
+                    Mini-gioco party, rapido da avviare e facile da estendere
+                    con nuove carte nel dataset.
+                  </p>
+                </div>
               </div>
             </div>
           ) : (
@@ -514,7 +560,7 @@ export function TabWhoGame() {
                   disabled={gameState !== "playing"}
                   className="w-full justify-center !border-slate-200 !bg-white !text-slate-900 shadow-sm hover:!bg-slate-100 hover:!text-slate-950"
                 >
-                  Salta
+                  Prossima parola
                 </Button>
                 <Button
                   type="button"
@@ -555,7 +601,7 @@ export function TabWhoGame() {
                   disabled={gameState !== "playing"}
                   className="w-full justify-center !border-slate-200 !bg-white !text-slate-900 shadow-sm hover:!bg-slate-100 hover:!text-slate-950"
                 >
-                  Salta
+                  Prossima
                 </Button>
               </div>
 
