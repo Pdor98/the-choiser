@@ -14,3 +14,4 @@ pnpm-debug.log*
 .env.test.local
 .env.production.local
 tsconfig.tsbuildinfo
+.codex-tools/
