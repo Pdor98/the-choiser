@@ -1,6 +1,7 @@
 1:"$Sreact.fragment"
-2:I[7990,["124","static/chunks/124-55d14cebe8fc13ce.js","544","static/chunks/544-72c6297ea2f8324e.js","500","static/chunks/500-c99b8dfd3de17c86.js","523","static/chunks/app/games/tab-who/page-17357c3ed86cc285.js"],"TabWhoGame"]
-3:I[484,[],"OutletBoundary"]
-4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"pgGkA-N32_1dz1NpbAT7C"}
-5:null
+2:I[7990,["353","static/chunks/353-b2cf33f695b2db60.js","544","static/chunks/544-72c6297ea2f8324e.js","523","static/chunks/app/games/tab-who/page-24de234b695db032.js"],"TabWhoGame"]
+3:I[4743,["353","static/chunks/353-b2cf33f695b2db60.js","544","static/chunks/544-72c6297ea2f8324e.js","523","static/chunks/app/games/tab-who/page-24de234b695db032.js"],"PageExitBar"]
+4:I[484,[],"OutletBoundary"]
+5:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"space-y-8","children":[["$","$L2",null,{}],["$","$L3",null,{"description":"Quando chiudi un round puoi tornare alla home o spostarti subito su un’altra sezione senza perdere tempo."}]]}],null,["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"PpRSFDHrVuLaK07SB6Je9"}
+6:null

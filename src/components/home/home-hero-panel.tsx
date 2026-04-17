@@ -74,11 +74,6 @@ export function HomeHeroPanel() {
             <h2 className="font-heading text-lg font-semibold tracking-tight text-slate-100 sm:text-[1.35rem]">
               Indeciso tra due opzioni?
             </h2>
-            <p className="max-w-3xl text-sm leading-6 text-slate-300/88 sm:leading-7">
-              Scrivi due alternative e lascia che Choiser scelga una direzione
-              rapida per te. Perfetto per dubbi veloci, scelte leggere o
-              semplici blocchi da sbloccare.
-            </p>
           </div>
         </div>
 
@@ -107,15 +102,6 @@ export function HomeHeroPanel() {
                   aria-label="Seconda opzione"
                 />
               </div>
-            </div>
-
-            <div className="rounded-[22px] border border-white/7 bg-white/[0.04] p-4">
-              <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
-                Quando usarlo
-              </p>
-              <p className="mt-2 text-sm leading-6 text-slate-300/86">
-                Cena, film, pausa, prossima mossa, piccole decisioni del giorno.
-              </p>
             </div>
 
             <Button
@@ -160,6 +146,27 @@ export function HomeHeroPanel() {
                 </AnimatePresence>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-2">
+          <div className="rounded-[22px] border border-white/7 bg-white/[0.04] p-4">
+            <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+              Quando usarlo
+            </p>
+            <p className="mt-2 text-sm leading-6 text-slate-300/86">
+              Cena, film, pausa, prossima mossa, piccole decisioni del giorno.
+            </p>
+          </div>
+          <div className="rounded-[22px] border border-white/7 bg-white/[0.04] p-4">
+            <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+              Perche funziona
+            </p>
+            <p className="mt-2 text-sm leading-6 text-slate-300/86">
+              Scrivi due alternative e lascia che Choiser scelga una direzione
+              rapida per te. Perfetto per dubbi veloci, scelte leggere o
+              semplici blocchi da sbloccare.
+            </p>
           </div>
         </div>
       </div>

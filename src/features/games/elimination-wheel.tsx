@@ -96,10 +96,6 @@ export function EliminationWheelGame() {
             <h2 className="font-heading text-3xl font-semibold tracking-tight text-white">
               Ruota a eliminazione automatica
             </h2>
-            <p className="max-w-2xl text-sm leading-7 text-white/62">
-              Inserisci i nomi, gira la ruota e lascia che a ogni round venga
-              eliminato automaticamente un partecipante finché resta il vincitore.
-            </p>
           </div>
           <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-pink-200">
             <Users className="size-5" />
@@ -296,6 +292,22 @@ export function EliminationWheelGame() {
                 </p>
               )}
             </div>
+
+            <ResponsiveControlPanel
+              title="Spiegazioni"
+              summary="Come funziona"
+            >
+              <div className="space-y-3 text-sm leading-7 text-white/62">
+                <p>
+                  Carica i partecipanti, gira la ruota e lascia che venga
+                  eliminato un nome a ogni spin.
+                </p>
+                <p>
+                  Stato, eliminati e vincitore restano tutti sotto ai controlli,
+                  così il flusso è più rapido anche durante una serata di gruppo.
+                </p>
+              </div>
+            </ResponsiveControlPanel>
           </div>
         </div>
       </div>

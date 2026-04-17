@@ -96,10 +96,6 @@ export function DiceArenaGame() {
               <h2 className="font-heading text-3xl font-semibold tracking-tight text-white">
                 Lancia i dadi con setup personalizzato
               </h2>
-              <p className="hidden max-w-2xl text-sm leading-7 text-white/62 lg:block">
-                Scegli quanti dadi usare, il tipo di dado e ottieni un totale
-                immediato con cronologia degli ultimi lanci.
-              </p>
             </div>
           <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-emerald-200">
             <Dices className="size-5" />
@@ -262,11 +258,7 @@ export function DiceArenaGame() {
               </AnimatePresence>
             </ResponsiveControlPanel>
 
-            <ResponsiveControlPanel
-              title="Spiegazioni"
-              summary="Come funziona"
-              className="lg:hidden"
-            >
+            <ResponsiveControlPanel title="Spiegazioni" summary="Come funziona">
               <div className="space-y-3 text-sm leading-7 text-white/62">
                 <p>
                   Scegli quanti dadi usare e il tipo di dado, poi lancia per

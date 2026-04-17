@@ -102,15 +102,13 @@ function RandomModuleHeader({
   icon,
   eyebrow,
   title,
-  description,
 }: {
   icon: ReactNode;
   eyebrow: string;
   title: string;
-  description: string;
 }) {
   return (
-    <div className="flex min-h-[10.75rem] flex-col text-center sm:min-h-[11.5rem] lg:min-h-[12.5rem]">
+    <div className="flex min-h-[7.75rem] flex-col text-center sm:min-h-[8.25rem] lg:min-h-[8.75rem]">
       <div className="mx-auto flex size-12 items-center justify-center rounded-[20px] border border-cyan-300/16 bg-white/6 p-3 text-cyan-200 shadow-[0_18px_42px_-30px_rgba(56,189,248,0.24)]">
         {icon}
       </div>
@@ -122,9 +120,6 @@ function RandomModuleHeader({
         <h2 className="font-heading text-[clamp(1.55rem,1.1rem+1vw,1.85rem)] font-semibold tracking-tight text-slate-50">
           {title}
         </h2>
-        <p className="mx-auto min-h-[3.25rem] max-w-[34rem] text-sm leading-7 text-slate-300/88 sm:min-h-[3.75rem]">
-          {description}
-        </p>
       </div>
     </div>
   );
@@ -160,7 +155,6 @@ function RandomPrimaryCard({
           icon={icon}
           eyebrow={eyebrow}
           title={title}
-          description={description}
         />
 
         <div className="flex-1">{children}</div>
@@ -168,6 +162,10 @@ function RandomPrimaryCard({
         <Button icon={buttonIcon} onClick={onAction} className="mt-6 w-full">
           {buttonLabel}
         </Button>
+
+        <p className="mt-4 text-center text-sm leading-7 text-slate-300/88">
+          {description}
+        </p>
       </div>
     </Card>
   );
