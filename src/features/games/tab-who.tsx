@@ -19,17 +19,17 @@ import {
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
-import { Button, buttonStyles } from "@/components/ui/button";
+import {
+  Button,
+  buttonStyles,
+  primaryButtonReadableStyle,
+} from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { parole, type TabWhoCard } from "@/features/games/tab-who-data";
 
 const durationOptions = [30, 60, 180] as const;
-const lightActionButtonStyle = {
-  color: "#0f172a",
-  WebkitTextFillColor: "#0f172a",
-  background: "#ffffff",
-  borderColor: "#e2e8f0",
-};
+const darkPrimaryActionClass =
+  "bg-slate-950 !text-white hover:bg-slate-800 hover:!text-white [&>*]:!text-white disabled:!opacity-100 disabled:!text-white disabled:[&>*]:!text-white";
 
 function shuffleDeck(cards: TabWhoCard[]) {
   const nextCards = [...cards];
@@ -213,11 +213,6 @@ export function TabWhoGame() {
             <h1 className="font-heading text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               TAB-WHO ?
             </h1>
-            <p className="max-w-2xl text-sm leading-6 text-white/64 sm:text-base">
-              Fai indovinare la parola principale senza usare i 5 taboo. Turno
-              rapido da 60 secondi, punteggio live e controllo anche per carta
-              sbagliata o taboo pronunciato.
-            </p>
           </div>
 
           <div className="flex size-11 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-amber-100">
@@ -241,10 +236,6 @@ export function TabWhoGame() {
                   <h2 className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl">
                     TAB-WHO ?
                   </h2>
-                  <p className="mx-auto max-w-2xl text-base leading-7 text-slate-600">
-                    Scegli il tempo del round, controlla la carta pronta e fai
-                    partire il turno quando vuoi.
-                  </p>
                 </div>
               </div>
 
@@ -305,15 +296,6 @@ export function TabWhoGame() {
                     </p>
                   </div>
 
-                  <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm">
-                    <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
-                      Prima di partire
-                    </p>
-                    <p className="mt-3 text-sm leading-6 text-slate-600">
-                      Puoi cambiare la carta pronta tutte le volte che vuoi
-                      prima di avviare il round.
-                    </p>
-                  </div>
                 </div>
               </div>
 
@@ -322,20 +304,22 @@ export function TabWhoGame() {
                   type="button"
                   icon={<Play className="size-4" />}
                   onClick={startGame}
-                  className="bg-slate-950 text-white hover:bg-slate-800"
+                  className={darkPrimaryActionClass}
                 >
                   Inizia Gioco
                 </Button>
-              <Button
-                type="button"
-                icon={<Shuffle className="size-4" />}
-                onClick={loadPreviewCard}
-                className="bg-slate-950 text-white hover:bg-slate-800"
-              >
-                Nuova Parola
-              </Button>
+                <Button
+                  type="button"
+                  icon={<Shuffle className="size-4" />}
+                  onClick={loadPreviewCard}
+                  className={darkPrimaryActionClass}
+                  style={primaryButtonReadableStyle}
+                >
+                  Nuova Parola
+                </Button>
                 <Link
-                  href="/"
+                  href="/#top"
+                  scroll
                   className={buttonStyles({
                     variant: "ghost",
                     className:
@@ -347,7 +331,17 @@ export function TabWhoGame() {
                 </Link>
               </div>
 
-              <div className="grid gap-3 lg:grid-cols-2">
+              <div className="grid gap-3 xl:grid-cols-3">
+                <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm">
+                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
+                    Prima di partire
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">
+                    Controlla la carta pronta, scegli la durata e avvia il
+                    turno solo quando il gruppo è pronto.
+                  </p>
+                </div>
+
                 <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm">
                   <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                     Regole rapide
@@ -559,11 +553,11 @@ export function TabWhoGame() {
                 </Button>
                 <Button
                   type="button"
-                  variant="secondary"
                   icon={<SkipForward className="size-4" />}
                   onClick={handleSkip}
                   disabled={gameState !== "playing"}
-                  className="w-full justify-center !border-slate-200 !bg-white !text-slate-900 shadow-sm hover:!bg-slate-100 hover:!text-slate-950"
+                  className={`w-full justify-center ${darkPrimaryActionClass}`}
+                  style={primaryButtonReadableStyle}
                 >
                   Prossima parola
                 </Button>
@@ -600,11 +594,11 @@ export function TabWhoGame() {
                 </Button>
                 <Button
                   type="button"
-                  variant="secondary"
                   icon={<SkipForward className="size-4" />}
                   onClick={handleSkip}
                   disabled={gameState !== "playing"}
-                  className="w-full justify-center !border-slate-200 !bg-white !text-slate-900 shadow-sm hover:!bg-slate-100 hover:!text-slate-950"
+                  className={`w-full justify-center ${darkPrimaryActionClass}`}
+                  style={primaryButtonReadableStyle}
                 >
                   Prossima
                 </Button>
@@ -719,14 +713,25 @@ export function TabWhoGame() {
                 </Button>
                 <Button
                   type="button"
-                  variant="secondary"
                   icon={<RotateCcw className="size-4" />}
                   onClick={resetToIntro}
-                  className="!border-white/16 !bg-white !text-slate-950 shadow-sm hover:!bg-slate-100 hover:!text-slate-950"
-                  style={lightActionButtonStyle}
+                  className={darkPrimaryActionClass}
+                  style={primaryButtonReadableStyle}
                 >
                   Nuova partita
                 </Button>
+                <Link
+                  href="/#top"
+                  scroll
+                  className={buttonStyles({
+                    variant: "secondary",
+                    className:
+                      "border-white/16 bg-white/8 text-white hover:bg-white/12 hover:text-white",
+                  })}
+                >
+                  <House className="size-4" />
+                  <span>Torna alla Home</span>
+                </Link>
                 <Link
                   href="/games"
                   className={buttonStyles({

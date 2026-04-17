@@ -5,7 +5,7 @@ import { SectionBadge } from "@/components/ui/section-badge";
 type PageHeroProps = {
   badge: string;
   title: string;
-  description: string;
+  description?: string;
   aside?: ReactNode;
 };
 
@@ -23,9 +23,11 @@ export function PageHero({
           <h1 className="font-heading max-w-5xl text-balance text-2xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl xl:text-6xl">
             {title}
           </h1>
-          <p className="max-w-3xl text-sm leading-7 text-slate-300 sm:text-base sm:leading-7 lg:text-lg lg:leading-8">
-            {description}
-          </p>
+          {description ? (
+            <p className="max-w-3xl text-sm leading-7 text-slate-300 sm:text-base sm:leading-7 lg:text-lg lg:leading-8">
+              {description}
+            </p>
+          ) : null}
         </div>
       </div>
 

@@ -429,10 +429,6 @@ export function TimerTool() {
             <h2 className="font-heading text-3xl font-semibold tracking-tight text-white">
               Countdown con suono finale e vista clessidra
             </h2>
-            <p className="text-sm leading-7 text-white/66">
-              Scegli i secondi, imposta la visualizzazione che preferisci e
-              lascia che il timer ti segnali la fine con un suono breve e chiaro.
-            </p>
           </div>
 
           <ResponsiveControlPanel
@@ -466,23 +462,6 @@ export function TimerTool() {
                     </button>
                   );
                 })}
-              </div>
-
-              <div className="rounded-[24px] border border-white/10 bg-white/[0.05] p-4">
-                <div className="flex items-start gap-3">
-                  <div className="mt-0.5 flex size-10 items-center justify-center rounded-2xl bg-emerald-300/12 text-emerald-100">
-                    <Volume2 className="size-4" />
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-sm font-semibold text-white">
-                      Suono finale attivo
-                    </p>
-                    <p className="text-sm leading-7 text-white/62">
-                      Il suono viene generato via Web Audio API solo allo scadere del
-                      timer e non parte durante pausa o reset.
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
           </ResponsiveControlPanel>
@@ -574,6 +553,27 @@ export function TimerTool() {
               </div>
             </motion.div>
           </AnimatePresence>
+
+          <ResponsiveControlPanel
+            title="Spiegazioni"
+            summary="Come funziona il timer"
+          >
+            <div className="space-y-3 text-sm leading-7 text-white/62">
+              <p>
+                Scegli i secondi, imposta la visualizzazione che preferisci e
+                avvia subito il countdown.
+              </p>
+              <div className="flex items-start gap-3 rounded-[22px] border border-white/10 bg-white/[0.05] p-4">
+                <div className="mt-0.5 flex size-10 items-center justify-center rounded-2xl bg-emerald-300/12 text-emerald-100">
+                  <Volume2 className="size-4" />
+                </div>
+                <p className="text-sm leading-7 text-white/62">
+                  Il suono finale parte solo allo scadere del timer e non viene
+                  attivato durante pausa o reset.
+                </p>
+              </div>
+            </div>
+          </ResponsiveControlPanel>
         </div>
       </div>
     </Card>

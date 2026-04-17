@@ -130,10 +130,6 @@ export function TruthOrDareGame() {
             <h2 className="font-heading text-3xl font-semibold tracking-tight text-white">
               Obbligo o Verita 🔥
             </h2>
-            <p className="max-w-2xl text-sm leading-7 text-white/62">
-              Un solo gioco, due scelte chiare. Decidi prima tra verita e
-              obbligo, poi scegli la modalita disponibile per il turno.
-            </p>
           </div>
 
           <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-fuchsia-200">
@@ -168,9 +164,6 @@ export function TruthOrDareGame() {
                   </motion.p>
                 </AnimatePresence>
 
-                <p className="mx-auto max-w-xl text-sm leading-6 text-white/50">
-                  {helperCopy}
-                </p>
               </div>
             </div>
           </div>
@@ -396,6 +389,19 @@ export function TruthOrDareGame() {
                   Prompt pronti: {promptPool.length} per {modeLabel.toLowerCase()} ·{" "}
                   {promptTypeLabel.toLowerCase()}.
                 </p>
+
+                <div className="rounded-[22px] border border-white/10 bg-white/[0.05] p-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-white/42">
+                    Come funziona
+                  </p>
+                  <div className="mt-3 space-y-2 text-sm leading-6 text-white/62">
+                    <p>
+                      Scegli prima tra verita e obbligo, poi imposta la
+                      modalita disponibile per il turno.
+                    </p>
+                    <p>{helperCopy}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

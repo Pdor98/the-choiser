@@ -234,10 +234,6 @@ export function GuessTheNumberGame() {
               <h2 className="font-heading text-3xl font-semibold tracking-tight text-white">
                 Indovina il numero segreto
               </h2>
-              <p className="hidden max-w-xl text-sm leading-7 text-white/62 lg:block">
-                Imposta il range che vuoi usare, poi prova a trovare il numero
-                segreto seguendo gli indizi.
-              </p>
             </div>
             <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-amber-200">
               {hasWon ? <Trophy className="size-5" /> : <Target className="size-5" />}
@@ -426,7 +422,6 @@ export function GuessTheNumberGame() {
           <ResponsiveControlPanel
             title="Spiegazioni"
             summary="Come funziona"
-            className="lg:hidden"
           >
             <div className="space-y-3 text-sm leading-7 text-white/62">
               <p>
