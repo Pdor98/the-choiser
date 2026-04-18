@@ -934,7 +934,7 @@ export function TimerTool() {
     <Card className="relative overflow-hidden p-6 sm:p-7">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-emerald-300/16 to-transparent" />
       <div className="relative grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start">
-        <div className="order-2 space-y-5 lg:order-1">
+        <div className="order-1 space-y-5 lg:order-1">
           <div className="flex items-center justify-between">
             <div className="rounded-2xl border border-white/10 bg-white/8 p-3 text-emerald-200">
               <TimerReset className="size-5" />
@@ -989,7 +989,7 @@ export function TimerTool() {
           </ResponsiveControlPanel>
         </div>
 
-        <div className="order-1 space-y-5 lg:order-2">
+        <div className="order-2 space-y-5 lg:order-2">
           {viewMode === "classic" ? (
             <ClassicTimerDisplay
               timeLabel={timeLabel}
@@ -1112,7 +1112,9 @@ export function TimerTool() {
               </div>
             </motion.div>
           </AnimatePresence>
+        </div>
 
+        <div className="order-3 lg:col-start-2">
           <ResponsiveControlPanel
             title="Spiegazioni"
             summary="Come funziona il timer"
