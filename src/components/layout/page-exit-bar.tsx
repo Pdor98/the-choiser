@@ -56,7 +56,7 @@ export function PageExitBar({
         </div>
 
         <div className="flex justify-center">
-          <div className="w-fit max-w-full overflow-x-auto rounded-[22px] border border-white/8 bg-[linear-gradient(180deg,rgba(9,18,33,0.88),rgba(13,25,44,0.88))] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:overflow-visible md:rounded-[26px] md:p-2">
+          <div className="touch-scroll-x w-fit max-w-full overflow-x-auto rounded-[22px] border border-white/8 bg-[linear-gradient(180deg,rgba(9,18,33,0.88),rgba(13,25,44,0.88))] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:overflow-visible md:rounded-[26px] md:p-2">
             <div className="inline-flex min-w-max snap-x snap-mandatory items-center justify-center gap-1.5 md:flex-wrap md:gap-2">
             {navigationLinks.map((link) => {
               const isActive = currentPage.href === link.href;

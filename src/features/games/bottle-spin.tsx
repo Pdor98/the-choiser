@@ -186,7 +186,7 @@ export function BottleSpinGame() {
                 })}
 
                 <motion.div
-                  className="absolute left-1/2 top-1/2 h-[58%] w-[68px] -translate-x-1/2 -translate-y-1/2 origin-center will-change-transform sm:w-[74px]"
+                  className="absolute left-1/2 top-1/2 h-[64%] w-[78px] -translate-x-1/2 -translate-y-1/2 origin-center will-change-transform sm:w-[86px]"
                   animate={{ rotate: rotation }}
                   transition={
                     isSpinning
@@ -222,21 +222,9 @@ export function BottleSpinGame() {
                         ? { duration: 0.9, repeat: Infinity, ease: "easeInOut" }
                         : { duration: 0.24 }
                     }
-                    className="relative flex h-full w-full items-start justify-center"
+                    className="relative flex h-full w-full items-center justify-center"
                   >
-                    <div className="absolute left-1/2 top-0 h-[5%] w-[10%] -translate-x-1/2 rounded-[4px] border border-white/18 bg-slate-900/98 shadow-[0_10px_24px_-14px_rgba(0,0,0,0.88)]" />
-                    <div className="absolute left-1/2 top-[4%] h-[18%] w-[20%] -translate-x-1/2 rounded-[10px_10px_14px_14px] border border-emerald-100/22 bg-[linear-gradient(180deg,rgba(187,247,208,0.55),rgba(22,163,74,0.86))] shadow-[0_14px_30px_-18px_rgba(16,185,129,0.44)]" />
-                    <div className="absolute left-1/2 top-[18%] h-[8%] w-[30%] -translate-x-1/2 rounded-full border border-emerald-100/20 bg-[linear-gradient(180deg,rgba(167,243,208,0.74),rgba(5,150,105,0.72))]" />
-                    <div className="absolute left-1/2 top-[20%] h-[14%] w-[56%] -translate-x-1/2 rounded-[38px_38px_18px_18px] border border-emerald-100/18 bg-[linear-gradient(180deg,rgba(34,197,94,0.34),rgba(6,95,70,0.62))]" />
-                    <div className="absolute top-[30%] h-[56%] w-full rounded-[28px_28px_22px_22px] border border-emerald-100/24 bg-[linear-gradient(180deg,rgba(16,185,129,0.56),rgba(5,46,22,0.9)_30%,rgba(6,78,59,0.88)_66%,rgba(16,185,129,0.64)_100%)] shadow-[0_22px_54px_-28px_rgba(16,185,129,0.38)]">
-                      <div className="absolute inset-x-[18%] top-[10%] h-[60%] rounded-[20px_20px_16px_16px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(0,0,0,0.22))]" />
-                      <div className="absolute inset-x-[15%] bottom-[9%] h-[26%] rounded-[16px_16px_20px_20px] bg-[linear-gradient(180deg,rgba(245,158,11,0.76),rgba(180,83,9,0.94))]" />
-                      <div className="absolute inset-x-[15%] bottom-[34%] h-[2%] bg-white/14" />
-                      <div className="absolute left-[17%] top-[10%] h-[64%] w-[12%] rounded-full bg-white/38 blur-[4px]" />
-                      <div className="absolute left-[52%] top-[16%] h-[50%] w-[8%] -translate-x-1/2 rounded-full bg-white/12 blur-[3px]" />
-                      <div className="absolute inset-x-[24%] top-[20%] h-[14%] rounded-[10px] border border-white/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.02))]" />
-                      <div className="absolute inset-x-[8%] bottom-[2%] h-[11%] rounded-full border border-emerald-100/20 bg-[linear-gradient(180deg,rgba(16,185,129,0.82),rgba(4,120,87,0.98))]" />
-                    </div>
+                    <BottleIllustration />
                   </motion.div>
                 </motion.div>
 
@@ -368,5 +356,33 @@ export function BottleSpinGame() {
         </div>
       </div>
     </Card>
+  );
+}
+
+function BottleIllustration() {
+  return (
+    <svg
+      viewBox="0 0 100 300"
+      preserveAspectRatio="xMidYMid meet"
+      aria-hidden="true"
+      className="h-full w-full overflow-visible drop-shadow-[0_22px_36px_rgba(6,24,20,0.42)]"
+    >
+      <path
+        d="
+          M50 28
+          C42.8 28, 37.8 32.5, 37.8 37.5
+          L37.8 44
+          C37.8 50.5, 28.8 61.5, 24.2 80
+          L24.2 200
+          C24.2 229, 75.8 229, 75.8 200
+          L75.8 80
+          C71.2 61.5, 62.2 50.5, 62.2 44
+          L62.2 37.5
+          C62.2 32.5, 57.2 28, 50 28
+          Z
+        "
+        fill="#2f7a5f"
+      />
+    </svg>
   );
 }

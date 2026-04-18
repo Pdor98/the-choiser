@@ -133,6 +133,30 @@ export default function GamesPage() {
       </div>
 
       <PageExitBar description="Hai finito con un gioco? Torna alla home o passa subito a Random, Games o Tools senza risalire tutta la pagina." />
+
+      <Card className="p-5 sm:p-6">
+        <div className="flex items-start gap-4">
+          <div className="rounded-2xl border border-white/10 bg-white/8 p-3 text-amber-200">
+            <Dices className="size-5" />
+          </div>
+          <div className="space-y-2">
+            <p className="text-xs uppercase tracking-[0.18em] text-white/45">
+              Panoramica games
+            </p>
+            <p className="text-sm leading-7 text-white/64">
+              La sezione Games ospita piu esperienze: TAB-WHO ? per round
+              rapidi in stile Taboo, Obbligo o Verita con verita e obblighi
+              pronti e una modalita Spicy 🔥 in lavorazione, indovinare un
+              numero con feedback evoluto, far girare la bottiglia su scelte
+              personalizzate, eliminare nomi con una ruota e lanciare dadi con
+              setup variabile.
+            </p>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/8 bg-white/5 px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] text-amber-100">
+              Sei moduli attivi
+            </div>
+          </div>
+        </div>
+      </Card>
     </div>
   );
 }

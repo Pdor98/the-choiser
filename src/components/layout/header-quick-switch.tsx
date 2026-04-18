@@ -28,7 +28,7 @@ export function HeaderQuickSwitch() {
       </div>
 
       <div className="flex w-full items-center justify-center">
-        <div className="w-full overflow-x-auto px-1.5 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:px-2">
+        <div className="touch-scroll-x w-full overflow-x-auto px-1.5 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:px-2">
           <div className="flex min-w-full items-center justify-center">
             <nav
               aria-label="Primary"

@@ -13,7 +13,7 @@ export function MainNav() {
   return (
     <nav
       aria-label="Primary"
-      className="flex w-full min-w-0 items-center justify-start overflow-x-auto rounded-full border border-white/8 bg-slate-950/75 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:w-auto md:justify-end"
+      className="touch-scroll-x flex w-full min-w-0 items-center justify-start overflow-x-auto rounded-full border border-white/8 bg-slate-950/75 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:w-auto md:justify-end"
     >
       <div className="flex min-w-max items-center gap-1.5">
         {navigationLinks.map((link) => {
