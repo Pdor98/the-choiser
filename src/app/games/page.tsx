@@ -90,6 +90,26 @@ export default function GamesPage() {
         })}
       </section>
 
+      <div className="space-y-8">
+        <div className="scroll-mt-6 sm:scroll-mt-8" id="guess-the-number">
+          <GuessTheNumberGame />
+        </div>
+        <div className="scroll-mt-6 sm:scroll-mt-8" id="truth-or-dare">
+          <TruthOrDareGame />
+        </div>
+        <div className="scroll-mt-6 sm:scroll-mt-8" id="bottle-spin">
+          <BottleSpinGame />
+        </div>
+        <div className="scroll-mt-6 sm:scroll-mt-8" id="elimination-wheel">
+          <EliminationWheelGame />
+        </div>
+        <div className="scroll-mt-6 sm:scroll-mt-8" id="dice-arena">
+          <DiceArenaGame />
+        </div>
+      </div>
+
+      <PageExitBar description="Hai finito con un gioco? Torna alla home o passa subito a Random, Games o Tools senza risalire tutta la pagina." />
+
       <Card className="p-5 sm:p-6">
         <div className="flex items-start gap-4">
           <div className="rounded-2xl border border-white/10 bg-white/8 p-3 text-amber-200">
@@ -113,26 +133,6 @@ export default function GamesPage() {
           </div>
         </div>
       </Card>
-
-      <div className="space-y-8">
-        <div className="scroll-mt-6 sm:scroll-mt-8" id="guess-the-number">
-          <GuessTheNumberGame />
-        </div>
-        <div className="scroll-mt-6 sm:scroll-mt-8" id="truth-or-dare">
-          <TruthOrDareGame />
-        </div>
-        <div className="scroll-mt-6 sm:scroll-mt-8" id="bottle-spin">
-          <BottleSpinGame />
-        </div>
-        <div className="scroll-mt-6 sm:scroll-mt-8" id="elimination-wheel">
-          <EliminationWheelGame />
-        </div>
-        <div className="scroll-mt-6 sm:scroll-mt-8" id="dice-arena">
-          <DiceArenaGame />
-        </div>
-      </div>
-
-      <PageExitBar description="Hai finito con un gioco? Torna alla home o passa subito a Random, Games o Tools senza risalire tutta la pagina." />
     </div>
   );
 }
