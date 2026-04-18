@@ -1,5 +1,4 @@
 import {
-  Dices,
   Flame,
   MessageCircle,
   RotateCcw,
@@ -12,7 +11,6 @@ import { PageExitBar } from "@/components/layout/page-exit-bar";
 import { PageHero } from "@/components/layout/page-hero";
 import { Card } from "@/components/ui/card";
 import { BottleSpinGame } from "@/features/games/bottle-spin";
-import { DiceArenaGame } from "@/features/games/dice-arena";
 import { EliminationWheelGame } from "@/features/games/elimination-wheel";
 import { GuessTheNumberGame } from "@/features/games/guess-the-number";
 import { TruthOrDareGame } from "@/features/games/truth-or-dare";
@@ -47,12 +45,6 @@ const gameSections = [
     title: "Elimination Wheel",
     description: "Gira la ruota e i nomi escono automaticamente.",
     icon: RotateCcw,
-  },
-  {
-    href: "#dice-arena",
-    title: "Dice Arena",
-    description: "Lancio dadi con setup personalizzato e cronologia.",
-    icon: Dices,
   },
 ] as const;
 
@@ -103,9 +95,6 @@ export default function GamesPage() {
         <div className="scroll-mt-6 sm:scroll-mt-8" id="elimination-wheel">
           <EliminationWheelGame />
         </div>
-        <div className="scroll-mt-6 sm:scroll-mt-8" id="dice-arena">
-          <DiceArenaGame />
-        </div>
       </div>
 
       <PageExitBar description="Hai finito con un gioco? Torna alla home o passa subito a Random, Games o Tools senza risalire tutta la pagina." />
@@ -113,7 +102,7 @@ export default function GamesPage() {
       <Card className="p-5 sm:p-6">
         <div className="flex items-start gap-4">
           <div className="rounded-2xl border border-white/10 bg-white/8 p-3 text-amber-200">
-            <Dices className="size-5" />
+            <MessageCircle className="size-5" />
           </div>
           <div className="space-y-2">
             <p className="text-xs uppercase tracking-[0.18em] text-white/45">
@@ -124,11 +113,10 @@ export default function GamesPage() {
               rapidi in stile Taboo, Obbligo o Verita con verita e obblighi
               pronti e una modalita Spicy 🔥 in lavorazione, indovinare un
               numero con feedback evoluto, far girare la bottiglia su scelte
-              personalizzate, eliminare nomi con una ruota e lanciare dadi con
-              setup variabile.
+              personalizzate ed eliminare nomi con una ruota.
             </p>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/8 bg-white/5 px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] text-amber-100">
-              Sei moduli attivi
+              Cinque moduli attivi
             </div>
           </div>
         </div>
