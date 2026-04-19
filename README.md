@@ -66,6 +66,23 @@ http://localhost:3000
 
 Questo e il modo migliore per modificare pagine, componenti e logica del progetto.
 
+## Lavorare in Docker sulla stessa porta
+
+Se vuoi tenere il progetto sempre disponibile su `http://localhost:3000` tramite container, usa:
+
+```bash
+npm run docker:up
+```
+
+Questo flusso monta il codice locale dentro `choiser-sim` e usa Next.js in sviluppo, quindi le modifiche in `src/` vengono riflesse nella stessa istanza Docker senza dover ricostruire ogni volta la build di produzione.
+
+Comandi utili:
+
+```bash
+npm run docker:logs
+npm run docker:down
+```
+
 ## Testare in locale la versione GitHub Pages
 
 Quando vuoi controllare esattamente cosa verra pubblicato online:
@@ -157,3 +174,4 @@ La presenza di `docs/.nojekyll` evita problemi con il deploy statico.
 - `out/` e solo una cartella temporanea di export locale
 - il link a `TAB-WHO ?` e gia collegato sia dalla home sia dalla sezione Games
 - per controllare il risultato finale su telefono, usa il link pubblico GitHub Pages dopo il push su `main`
+- per il workflow operativo locale e di chiusura sessione, vedi `SESSION_WORKFLOW.md`

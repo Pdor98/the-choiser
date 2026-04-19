@@ -8,7 +8,11 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ResponsiveControlPanel } from "@/components/ui/responsive-control-panel";
 import { Textarea } from "@/components/ui/textarea";
-import { bottleDefaultChoices, parseEntryInput } from "@/features/games/shared";
+import {
+  bottleDefaultChoices,
+  parseEntryInput,
+  roundGeometryValue,
+} from "@/features/games/shared";
 
 export function BottleSpinGame() {
   const [draftChoices, setDraftChoices] = useState(
@@ -143,18 +147,18 @@ export function BottleSpinGame() {
                 }
                 className="group relative mx-auto block aspect-square w-full max-w-[440px] touch-manipulation rounded-full transition duration-300 active:scale-[0.99] disabled:cursor-not-allowed"
               >
-                <div className="absolute inset-0 rounded-full bg-[conic-gradient(from_180deg,rgba(34,211,238,0.18),rgba(59,130,246,0.08),rgba(99,102,241,0.18),rgba(14,165,233,0.08),rgba(34,211,238,0.18))] opacity-85 blur-[2px] transition duration-300 group-hover:opacity-100" />
-                <div className="absolute inset-2 rounded-full border border-cyan-200/12 bg-[radial-gradient(circle_at_center,_rgba(34,211,238,0.28),_rgba(6,13,24,0.96)_62%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_34px_80px_-48px_rgba(0,0,0,0.98)]" />
-                <div className="absolute inset-5 rounded-full border border-white/8 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.09),_rgba(7,11,25,0.96)_70%)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)]" />
-                <div className="absolute inset-[15%] rounded-full border border-cyan-200/10 bg-[radial-gradient(circle_at_center,_rgba(15,23,42,0.12),_rgba(2,6,23,0.74))]" />
-                <div className="absolute inset-[11%] rounded-full border border-white/6" />
-                <div className="absolute inset-[9%] rounded-full border border-cyan-200/10 opacity-0 transition duration-300 group-hover:opacity-100 group-active:opacity-100" />
+                <div className="absolute inset-0 rounded-full border border-cyan-200/10 bg-[radial-gradient(circle_at_center,_rgba(17,31,50,0.98),_rgba(8,16,30,0.98)_60%,_rgba(2,6,18,1)_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_34px_80px_-48px_rgba(0,0,0,0.98)]" />
+                <div className="absolute inset-[7%] rounded-full border border-white/6 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.03),_rgba(255,255,255,0)_58%)]" />
 
                 {choices.map((choice, index) => {
                   const angle =
                     (-90 + index * (360 / choices.length)) * (Math.PI / 180);
-                  const x = 50 + Math.cos(angle) * orbitRadiusX;
-                  const y = 50 + Math.sin(angle) * orbitRadiusY;
+                  const x = roundGeometryValue(
+                    50 + Math.cos(angle) * orbitRadiusX,
+                  );
+                  const y = roundGeometryValue(
+                    50 + Math.sin(angle) * orbitRadiusY,
+                  );
                   const isSelected = !isSpinning && selectedChoice === choice;
 
                   return (
@@ -186,7 +190,7 @@ export function BottleSpinGame() {
                 })}
 
                 <motion.div
-                  className="absolute left-1/2 top-1/2 h-[64%] w-[78px] -translate-x-1/2 -translate-y-1/2 origin-center will-change-transform sm:w-[86px]"
+                  className="absolute left-1/2 top-1/2 h-[64%] w-[82px] -translate-x-1/2 -translate-y-1/2 origin-center will-change-transform sm:w-[90px]"
                   animate={{ rotate: rotation }}
                   transition={
                     isSpinning
@@ -230,10 +234,7 @@ export function BottleSpinGame() {
 
                 <div className="pointer-events-none absolute left-1/2 top-[3.2%] h-0 w-0 -translate-x-1/2 border-l-[8px] border-r-[8px] border-t-[13px] border-l-transparent border-r-transparent border-t-cyan-200 drop-shadow-[0_0_10px_rgba(165,243,252,0.6)]" />
                 <div className="pointer-events-none absolute left-1/2 top-[6.1%] h-1 w-8 -translate-x-1/2 rounded-full bg-cyan-200/24 blur-sm" />
-                <div className="pointer-events-none absolute left-1/2 top-1/2 size-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/12 bg-slate-950 shadow-[0_0_0_10px_rgba(255,255,255,0.04),0_0_0_22px_rgba(34,211,238,0.03)]" />
-                <div className="pointer-events-none absolute inset-0 rounded-full opacity-0 transition duration-300 group-hover:opacity-100 group-active:opacity-100">
-                  <div className="absolute inset-[14%] rounded-full border border-cyan-200/16 shadow-[0_0_0_1px_rgba(34,211,238,0.1),0_0_34px_-20px_rgba(34,211,238,0.55)]" />
-                </div>
+                <div className="pointer-events-none absolute left-1/2 top-1/2 size-6 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/14 bg-white/80 shadow-[0_0_0_3px_rgba(2,6,23,0.86),0_8px_18px_-14px_rgba(255,255,255,0.5)]" />
               </motion.button>
 
               <div className="flex justify-center">
@@ -365,8 +366,22 @@ function BottleIllustration() {
       viewBox="0 0 100 300"
       preserveAspectRatio="xMidYMid meet"
       aria-hidden="true"
-      className="h-full w-full overflow-visible drop-shadow-[0_22px_36px_rgba(6,24,20,0.42)]"
+      className="h-full w-full overflow-visible drop-shadow-[0_18px_28px_rgba(3,10,20,0.34)]"
     >
+      <defs>
+        <linearGradient
+          id="bottle-body-gradient"
+          x1="24.2"
+          y1="28"
+          x2="75.8"
+          y2="228"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0%" stopColor="#4fa889" />
+          <stop offset="55%" stopColor="#2f7a5f" />
+          <stop offset="100%" stopColor="#214f40" />
+        </linearGradient>
+      </defs>
       <path
         d="
           M50 28
@@ -381,7 +396,9 @@ function BottleIllustration() {
           C62.2 32.5, 57.2 28, 50 28
           Z
         "
-        fill="#2f7a5f"
+        fill="url(#bottle-body-gradient)"
+        stroke="rgba(236,253,245,0.18)"
+        strokeWidth="2"
       />
     </svg>
   );

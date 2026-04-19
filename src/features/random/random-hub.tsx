@@ -11,11 +11,15 @@ import { instantAnswers, randomActivities } from "@/lib/site-content";
 
 function getDayIndex() {
   const now = new Date();
-  const start = new Date(now.getFullYear(), 0, 0);
-  const diff = now.getTime() - start.getTime();
+  const start = Date.UTC(now.getUTCFullYear(), 0, 0);
+  const today = Date.UTC(
+    now.getUTCFullYear(),
+    now.getUTCMonth(),
+    now.getUTCDate(),
+  );
   const oneDay = 1000 * 60 * 60 * 24;
 
-  return Math.floor(diff / oneDay);
+  return Math.floor((today - start) / oneDay);
 }
 
 function getNextRandomItem(items: string[], previous?: string) {

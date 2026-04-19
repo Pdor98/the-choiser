@@ -82,7 +82,9 @@ export function EliminationWheelGame() {
   }
 
   const winner = activeNames.length === 1 ? activeNames[0] : null;
+  const displayedRotation = winner ? 0 : wheelRotation;
   const segmentAngle = activeNames.length > 0 ? 360 / activeNames.length : 360;
+  const canSpin = !isSpinning && activeNames.length > 1;
 
   return (
     <Card className="relative overflow-hidden p-6 sm:p-7">
@@ -108,7 +110,7 @@ export function EliminationWheelGame() {
               <div className="absolute left-1/2 top-0 z-20 h-0 w-0 -translate-x-1/2 border-l-[14px] border-r-[14px] border-t-[24px] border-l-transparent border-r-transparent border-t-pink-200 drop-shadow-[0_0_14px_rgba(244,114,182,0.8)]" />
 
               <motion.div
-                animate={{ rotate: wheelRotation }}
+                animate={{ rotate: displayedRotation }}
                 transition={
                   isSpinning
                     ? { duration: 4, ease: [0.14, 0.88, 0.2, 1] }
@@ -132,6 +134,7 @@ export function EliminationWheelGame() {
                   setPendingElimination(null);
 
                   if (nextNames.length === 1) {
+                    setWheelRotation(0);
                     setFeedback(`${nextNames[0]} resta in gioco ed è il vincitore finale.`);
                     return;
                   }
@@ -144,63 +147,104 @@ export function EliminationWheelGame() {
                   viewBox="0 0 240 240"
                   className="size-full drop-shadow-[0_30px_70px_rgba(0,0,0,0.55)]"
                 >
-                  {activeNames.map((name, index) => {
-                    const startAngle = index * segmentAngle;
-                    const endAngle = startAngle + segmentAngle;
-                    const centerAngle = startAngle + segmentAngle / 2;
-                    const path = describeWheelSegment(
-                      120,
-                      120,
-                      108,
-                      startAngle,
-                      endAngle,
-                    );
-                    const labelPosition = polarToCartesian(
-                      120,
-                      120,
-                      68,
-                      centerAngle,
-                    );
+                  {winner ? (
+                    <g>
+                      <circle
+                        cx="120"
+                        cy="120"
+                        r="108"
+                        fill={wheelSegmentColors[0]}
+                        fillOpacity={0.92}
+                        stroke="rgba(255,255,255,0.24)"
+                        strokeWidth="1.2"
+                      />
+                      <text
+                        x="120"
+                        y="120"
+                        fill="rgba(6,10,20,0.9)"
+                        fontSize="18"
+                        fontWeight="700"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        {winner.length > 16 ? `${winner.slice(0, 16)}…` : winner}
+                      </text>
+                    </g>
+                  ) : (
+                    activeNames.map((name, index) => {
+                      const startAngle = index * segmentAngle;
+                      const endAngle = startAngle + segmentAngle;
+                      const centerAngle = startAngle + segmentAngle / 2;
+                      const path = describeWheelSegment(
+                        120,
+                        120,
+                        108,
+                        startAngle,
+                        endAngle,
+                      );
+                      const labelPosition = polarToCartesian(
+                        120,
+                        120,
+                        68,
+                        centerAngle,
+                      );
 
-                    return (
-                      <g key={name}>
-                        <path
-                          d={path}
-                          fill={wheelSegmentColors[index % wheelSegmentColors.length]}
-                          fillOpacity={0.9}
-                          stroke="rgba(255,255,255,0.24)"
-                          strokeWidth="1.2"
-                        />
-                        <text
-                          x={labelPosition.x}
-                          y={labelPosition.y}
-                          fill="rgba(6,10,20,0.88)"
-                          fontSize="10"
-                          fontWeight="700"
-                          textAnchor="middle"
-                          dominantBaseline="middle"
-                        >
-                          {name.length > 10 ? `${name.slice(0, 10)}…` : name}
-                        </text>
-                      </g>
-                    );
-                  })}
-                  <circle
-                    cx="120"
-                    cy="120"
-                    r="30"
-                    fill="#070b19"
-                    stroke="rgba(255,255,255,0.15)"
-                    strokeWidth="1.2"
-                  />
-                  <circle
-                    cx="120"
-                    cy="120"
-                    r="10"
-                    fill="rgba(255,255,255,0.78)"
-                  />
+                      return (
+                        <g key={name}>
+                          <path
+                            d={path}
+                            fill={wheelSegmentColors[index % wheelSegmentColors.length]}
+                            fillOpacity={0.9}
+                            stroke="rgba(255,255,255,0.24)"
+                            strokeWidth="1.2"
+                          />
+                          <text
+                            x={labelPosition.x}
+                            y={labelPosition.y}
+                            fill="rgba(6,10,20,0.88)"
+                            fontSize="10"
+                            fontWeight="700"
+                            textAnchor="middle"
+                            dominantBaseline="middle"
+                          >
+                            {name.length > 10 ? `${name.slice(0, 10)}…` : name}
+                          </text>
+                        </g>
+                      );
+                    })
+                  )}
                 </svg>
               </motion.div>
+
+              {winner ? (
+                <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 flex h-[34%] min-h-[118px] w-[34%] min-w-[118px] max-h-[156px] max-w-[156px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-emerald-200/24 bg-[radial-gradient(circle_at_center,rgba(15,23,42,0.96),rgba(2,6,23,0.92))] shadow-[0_0_0_10px_rgba(255,255,255,0.04),0_18px_42px_-30px_rgba(0,0,0,0.95)]">
+                  <div className="px-3 text-center">
+                    <p className="text-[9px] font-semibold uppercase tracking-[0.24em] text-emerald-100/62 sm:text-[10px]">
+                      Vincitore
+                    </p>
+                    <p className="font-heading mt-2 text-balance text-base font-semibold leading-tight text-white sm:text-lg">
+                      {winner.length > 18 ? `${winner.slice(0, 18)}…` : winner}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <motion.button
+                  type="button"
+                  onClick={spinWheel}
+                  disabled={!canSpin}
+                  aria-label="Gira la ruota toccando il centro"
+                  whileHover={canSpin ? { scale: 1.03 } : undefined}
+                  whileTap={canSpin ? { scale: 0.97 } : undefined}
+                  className="group absolute left-1/2 top-1/2 z-30 flex h-[24%] min-h-[84px] w-[24%] min-w-[84px] max-h-[108px] max-w-[108px] -translate-x-1/2 -translate-y-1/2 touch-manipulation items-center justify-center rounded-full border border-white/12 bg-slate-950 shadow-[0_0_0_10px_rgba(255,255,255,0.04),0_0_0_22px_rgba(244,114,182,0.04),0_18px_42px_-30px_rgba(0,0,0,0.95)] transition duration-300 active:scale-[0.98] disabled:cursor-not-allowed"
+                >
+                  <div className="absolute inset-[10%] rounded-full border border-white/10 bg-[radial-gradient(circle_at_center,rgba(15,23,42,0.96),rgba(2,6,23,0.92))] transition duration-300 group-hover:border-pink-200/24 group-hover:shadow-[0_0_24px_-12px_rgba(244,114,182,0.55)]" />
+                  <div className="relative flex items-center justify-center text-center">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/52">
+                      Spin
+                    </span>
+                  </div>
+                </motion.button>
+              )}
             </div>
           </div>
 
@@ -223,7 +267,7 @@ export function EliminationWheelGame() {
                   type="button"
                   icon={<Play className="size-4" />}
                   onClick={spinWheel}
-                  disabled={isSpinning || activeNames.length <= 1}
+                  disabled={!canSpin}
                 >
                   Gira la ruota
                 </Button>
