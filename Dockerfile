@@ -6,6 +6,14 @@ COPY package.json package-lock.json ./
 
 RUN npm ci
 
+FROM node:22-alpine AS dev
+
+WORKDIR /app
+
+COPY --from=deps /app/node_modules ./node_modules
+
+CMD ["node", "./node_modules/next/dist/bin/next", "dev", "--hostname", "0.0.0.0", "--port", "3000"]
+
 FROM node:22-alpine AS builder
 
 WORKDIR /app

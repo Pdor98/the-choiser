@@ -21,10 +21,14 @@ function generateDiceRoll(count: number, sides: number) {
   return Array.from({ length: count }, () => Math.floor(Math.random() * sides) + 1);
 }
 
+function createDicePreview(count: number, sides: number) {
+  return Array.from({ length: count }, (_, index) => (index % sides) + 1);
+}
+
 export function DiceArenaGame() {
   const [diceCount, setDiceCount] = useState(2);
   const [diceSides, setDiceSides] = useState(6);
-  const [diceValues, setDiceValues] = useState(() => generateDiceRoll(2, 6));
+  const [diceValues, setDiceValues] = useState(() => createDicePreview(2, 6));
   const [isRolling, setIsRolling] = useState(false);
   const [history, setHistory] = useState<DiceHistoryItem[]>([]);
   const [feedback, setFeedback] = useState(

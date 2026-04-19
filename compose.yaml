@@ -1,0 +1,19 @@
+services:
+  choiser-sim:
+    container_name: choiser-sim
+    build:
+      context: .
+      target: dev
+    environment:
+      NODE_ENV: development
+      WATCHPACK_POLLING: "true"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - choiser_node_modules:/app/node_modules
+      - choiser_next_cache:/app/.next
+
+volumes:
+  choiser_node_modules:
+  choiser_next_cache:

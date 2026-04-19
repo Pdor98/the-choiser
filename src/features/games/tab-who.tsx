@@ -59,7 +59,7 @@ type GameState = "idle" | "playing" | "finished";
 type LastAction = "skip" | "correct" | "wrong" | null;
 
 export function TabWhoGame() {
-  const [deck, setDeck] = useState(() => createPreparedDeck());
+  const [deck, setDeck] = useState(() => [...parole]);
   const [cardIndex, setCardIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [mistakes, setMistakes] = useState(0);

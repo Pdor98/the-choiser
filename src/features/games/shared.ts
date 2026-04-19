@@ -50,6 +50,10 @@ export function parseEntryInput(raw: string, maxEntries = 12) {
   return entries;
 }
 
+export function roundGeometryValue(value: number, precision = 3) {
+  return Number(value.toFixed(precision));
+}
+
 export function polarToCartesian(
   centerX: number,
   centerY: number,
@@ -59,8 +63,8 @@ export function polarToCartesian(
   const angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180;
 
   return {
-    x: centerX + radius * Math.cos(angleInRadians),
-    y: centerY + radius * Math.sin(angleInRadians),
+    x: roundGeometryValue(centerX + radius * Math.cos(angleInRadians)),
+    y: roundGeometryValue(centerY + radius * Math.sin(angleInRadians)),
   };
 }
 
@@ -76,9 +80,9 @@ export function describeWheelSegment(
   const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
 
   return [
-    `M ${centerX} ${centerY}`,
+    `M ${roundGeometryValue(centerX)} ${roundGeometryValue(centerY)}`,
     `L ${start.x} ${start.y}`,
-    `A ${radius} ${radius} 0 ${largeArcFlag} 0 ${end.x} ${end.y}`,
+    `A ${roundGeometryValue(radius)} ${roundGeometryValue(radius)} 0 ${largeArcFlag} 0 ${end.x} ${end.y}`,
     "Z",
   ].join(" ");
 }
