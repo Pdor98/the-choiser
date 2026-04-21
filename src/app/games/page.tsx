@@ -277,7 +277,8 @@ export default function GamesPage() {
         return;
       }
 
-      window.history.replaceState(null, "", `#${targetId}`);
+      const currentPath = `${window.location.pathname}${window.location.search}`;
+      window.history.replaceState(null, "", `${currentPath}#${targetId}`);
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   }
@@ -291,7 +292,11 @@ export default function GamesPage() {
     if (openGameTarget === targetId) {
       setOpenGameTarget(null);
       setFocusedGameTarget(null);
-      window.history.replaceState(null, "", "/games");
+      window.history.replaceState(
+        null,
+        "",
+        `${window.location.pathname}${window.location.search}`,
+      );
       return;
     }
 
