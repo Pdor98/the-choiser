@@ -72,7 +72,7 @@ export function HomeHeroPanel() {
 
           <div className="space-y-3">
             <h2 className="font-heading text-lg font-semibold tracking-tight text-slate-100 sm:text-[1.35rem]">
-              Indeciso tra due opzioni?
+              Non riuscite a decidere?
             </h2>
           </div>
         </div>
@@ -82,7 +82,7 @@ export function HomeHeroPanel() {
             <div className="grid gap-3 sm:grid-cols-2">
               <div className="space-y-2">
                 <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
-                  Opzione A
+                  Prima idea
                 </p>
                 <Input
                   value={optionA}
@@ -93,7 +93,7 @@ export function HomeHeroPanel() {
               </div>
               <div className="space-y-2">
                 <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
-                  Opzione B
+                  Seconda idea
                 </p>
                 <Input
                   value={optionB}
@@ -110,7 +110,7 @@ export function HomeHeroPanel() {
               className="w-full"
               disabled={!canChoose}
             >
-              Decidi per me
+              Scegli tu, Choiser
             </Button>
           </div>
 
@@ -134,13 +134,16 @@ export function HomeHeroPanel() {
                     className="space-y-3"
                   >
                     <p className="text-xs uppercase tracking-[0.2em] text-slate-400">
-                      {decision ? "Choiser sceglie" : "In attesa"}
+                      {decision
+                        ? "Choiser sceglie"
+                        : "Scrivi le opzioni e lascia fare a noi"}
                     </p>
                     <p className="font-heading text-[clamp(1.4rem,1.05rem+1vw,2.1rem)] font-semibold leading-tight text-slate-50">
-                      {decision ?? "Inserisci due opzioni e lascia decidere Choiser."}
+                      {decision ??
+                        "Quando il gruppo non si mette d'accordo su niente — pizza o sushi, film o gioco, uscire o restare — scrivi le due opzioni e lascia che Choiser spezzi il pareggio."}
                     </p>
                     <p className="mx-auto max-w-[20rem] text-sm leading-6 text-slate-300/86">
-                      {decision ? note : "Un mini tool utile e leggero per sbloccare i dubbi piu rapidi senza uscire dalla home."}
+                      {decision ? note : "Niente discussioni. Solo una risposta."}
                     </p>
                   </motion.div>
                 </AnimatePresence>
@@ -155,17 +158,15 @@ export function HomeHeroPanel() {
               Quando usarlo
             </p>
             <p className="mt-2 text-sm leading-6 text-slate-300/86">
-              Cena, film, pausa, prossima mossa, piccole decisioni del giorno.
+              Cosa ordinare, dove andare, chi paga il prossimo giro, cosa guardare stanotte.
             </p>
           </div>
           <div className="rounded-[22px] border border-white/7 bg-white/[0.04] p-4">
             <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
-              Perche funziona
+              Perché funziona
             </p>
             <p className="mt-2 text-sm leading-6 text-slate-300/86">
-              Scrivi due alternative e lascia che Choiser scelga una direzione
-              rapida per te. Perfetto per dubbi veloci, scelte leggere o
-              semplici blocchi da sbloccare.
+              Perché a volte non serve ragionare — serve qualcuno che decida. Choiser lo fa in un secondo, senza drammi e senza favoritismi. Il gruppo va avanti. La serata continua.
             </p>
           </div>
         </div>

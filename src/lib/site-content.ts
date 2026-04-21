@@ -65,8 +65,8 @@ export const categories: Category[] = [
     href: "/random",
     title: "Random",
     description:
-      "Generatori smart per rompere l'indecisione con un risultato immediato e visivamente coinvolgente.",
-    eyebrow: "Scelte rapide",
+      "Quando nessuno ha voglia di scegliere, Random decide per voi. Veloce, visivo e sempre sorprendente.",
+    eyebrow: "Lascia decidere il caso",
     icon: Dices,
     accentClassName:
       "from-sky-200/65 via-cyan-100/45 to-transparent shadow-sky-200/40",
@@ -75,8 +75,8 @@ export const categories: Category[] = [
     href: "/games",
     title: "Games",
     description:
-      "Mini esperienze leggere, reattive e divertenti per giocare quando vuoi staccare un attimo.",
-    eyebrow: "Giochi veloci",
+      "Obbligo o Verità, la bottiglia, la ruota, le sfide — tutto pronto, tutto immediato. Basta scegliere un gioco e iniziare.",
+    eyebrow: "La serata vera inizia qui",
     icon: Gamepad2,
     accentClassName:
       "from-indigo-200/55 via-fuchsia-100/40 to-transparent shadow-indigo-200/36",
@@ -85,8 +85,8 @@ export const categories: Category[] = [
     href: "/tools",
     title: "Tools",
     description:
-      "Utility essenziali con un'interfaccia pulita, pensate per essere utili davvero anche su mobile.",
-    eyebrow: "Strumenti utili",
+      "Timer, note, convertitori — tutto quello che serve durante una serata senza aprire mille app diverse.",
+    eyebrow: "Piccoli strumenti, grandi comodità",
     icon: TimerReset,
     accentClassName:
       "from-emerald-200/58 via-cyan-100/40 to-transparent shadow-emerald-200/36",
@@ -95,21 +95,21 @@ export const categories: Category[] = [
 
 export const homeHighlights = [
   {
-    title: "Decisioni più veloci",
+    title: "Niente più 'boh, non so'",
     description:
-      "Riduci l'attrito iniziale con generatori rapidi e micro-esperienze pensate per agire subito.",
+      "Choiser taglia i tempi morti. In pochi secondi avete un'idea, una scelta o un gioco già pronto. La serata non aspetta.",
     icon: Sparkles,
   },
   {
-    title: "Esperienza giocosa",
+    title: "Si ride. Si gioca. Si resta.",
     description:
-      "Interazioni animate, feedback chiari e un tono leggero rendono ogni sezione piacevole da usare.",
+      "Ogni gioco è pensato per creare momenti, non per riempire il tempo. La differenza si sente dalla prima partita.",
     icon: Joystick,
   },
   {
-    title: "Navigazione semplice",
+    title: "Tutto dove ti aspetti",
     description:
-      "Categorie ben separate e componenti riusabili mantengono l'app scalabile e facile da estendere.",
+      "Apri Choiser, scegli la sezione, inizia. Non servono spiegazioni, non servono tutorial. È già tutto pronto per voi.",
     icon: Compass,
   },
 ];
@@ -119,7 +119,7 @@ export const adviceLeadIns = [
   "Un'idea per rompere la routine:",
   "Se vuoi cambiare ritmo, prova questo:",
   "Piccolo cambio, grande effetto:",
-  "Per dare un tono diverso alla giornata:",
+  "Stasera prova qualcosa di diverso:",
 ];
 
 export const randomActivities = [

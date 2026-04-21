@@ -5,6 +5,12 @@ import { ArrowUpRight } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
 
+const categoryCtaLabels: Record<string, string> = {
+  Random: "Scopri Random",
+  Games: "Entra in Games",
+  Tools: "Esplora Tools",
+};
+
 type CategoryCardProps = {
   href: Route;
   title: string;
@@ -22,6 +28,8 @@ export function CategoryCard({
   icon: Icon,
   accentClassName,
 }: CategoryCardProps) {
+  const ctaLabel = categoryCtaLabels[title] ?? "Scopri";
+
   return (
     <Link href={href} className="group h-full">
       <Card className="relative flex h-full flex-col justify-between overflow-hidden border-white/8 bg-[linear-gradient(180deg,rgba(10,20,35,0.94),rgba(14,28,48,0.9))] p-5 transition duration-500 hover:-translate-y-1.5 hover:border-cyan-300/18 hover:bg-[linear-gradient(180deg,rgba(12,24,42,0.96),rgba(16,31,54,0.92))] sm:p-6">
@@ -55,7 +63,7 @@ export function CategoryCard({
         </div>
 
         <div className="relative mt-7 flex flex-col items-start gap-3 rounded-[22px] border border-white/8 bg-white/5 px-4 py-3 text-sm text-slate-300 sm:mt-8 sm:flex-row sm:items-center sm:justify-between">
-          <span>Apri sezione</span>
+          <span>{ctaLabel}</span>
           <span className="rounded-full border border-cyan-300/16 bg-cyan-300/10 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-cyan-100">
             Focus
           </span>
