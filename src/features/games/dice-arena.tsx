@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Dices, Play, RotateCcw } from "lucide-react";
+import { ChevronDown, Dices, Play, RotateCcw } from "lucide-react";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -31,8 +31,9 @@ export function DiceArenaGame() {
   const [diceValues, setDiceValues] = useState(() => createDicePreview(2, 6));
   const [isRolling, setIsRolling] = useState(false);
   const [history, setHistory] = useState<DiceHistoryItem[]>([]);
+  const [isQuickSetupOpen, setIsQuickSetupOpen] = useState(false);
   const [feedback, setFeedback] = useState(
-    "Scegli quanti dadi lanciare e il tipo di dado, poi fai partire il roll.",
+    "Tocca il badge dei dadi per cambiare setup, poi fai partire il roll.",
   );
 
   const total = diceValues.reduce((sum, value) => sum + value, 0);
@@ -42,11 +43,13 @@ export function DiceArenaGame() {
   function updateDiceCount(nextCount: number) {
     setDiceCount(nextCount);
     setDiceValues(generateDiceRoll(nextCount, diceSides));
+    setFeedback(`Setup aggiornato: ${nextCount} dadi con d${diceSides}.`);
   }
 
   function updateDiceSides(nextSides: number) {
     setDiceSides(nextSides);
     setDiceValues(generateDiceRoll(diceCount, nextSides));
+    setFeedback(`Setup aggiornato: ${diceCount} dadi con d${nextSides}.`);
   }
 
   function resetHistory() {
@@ -55,7 +58,10 @@ export function DiceArenaGame() {
     setDiceValues(generateDiceRoll(2, 6));
     setHistory([]);
     setIsRolling(false);
-    setFeedback("Configurazione resettata. Pronto per un nuovo lancio.");
+    setIsQuickSetupOpen(false);
+    setFeedback(
+      "Configurazione resettata. Puoi cambiare setup dal badge in alto e rilanciare subito.",
+    );
   }
 
   function rollDice() {
@@ -141,83 +147,109 @@ export function DiceArenaGame() {
                     {total}
                   </p>
                 </div>
-                <div className="rounded-full border border-white/10 bg-white/6 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/62">
-                  {diceCount} dadi · d{diceSides}
-                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsQuickSetupOpen((current) => !current)}
+                  disabled={isRolling}
+                  aria-expanded={isQuickSetupOpen}
+                  aria-controls="dice-quick-setup"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/6 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/62 transition duration-300 hover:border-emerald-300/24 hover:bg-white/10 hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  <span>
+                    {diceCount} dadi · d{diceSides}
+                  </span>
+                  <ChevronDown
+                    className={`size-3.5 transition duration-300 ${
+                      isQuickSetupOpen ? "rotate-180 text-emerald-200" : ""
+                    }`}
+                  />
+                </button>
               </div>
               <p className="mt-3 text-sm leading-6 text-white/58">{feedback}</p>
+
+              <AnimatePresence initial={false}>
+                {isQuickSetupOpen ? (
+                  <motion.div
+                    id="dice-quick-setup"
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.22, ease: "easeOut" }}
+                    className="mt-4 rounded-[22px] border border-emerald-300/16 bg-white/[0.04] p-4"
+                  >
+                    <div className="space-y-4">
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.18em] text-white/42">
+                          Numero di dadi
+                        </p>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {diceCountOptions.map((option) => (
+                            <button
+                              key={`quick-count-${option}`}
+                              type="button"
+                              onClick={() => updateDiceCount(option)}
+                              className={`rounded-full border px-4 py-2 text-sm font-semibold transition duration-300 ${
+                                diceCount === option
+                                  ? "border-emerald-200/45 bg-emerald-300/16 text-white"
+                                  : "border-white/10 bg-white/6 text-white/68 hover:bg-white/10 hover:text-white"
+                              }`}
+                            >
+                              {option}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.18em] text-white/42">
+                          Tipo di dado
+                        </p>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {diceSidesOptions.map((option) => (
+                            <button
+                              key={`quick-sides-${option}`}
+                              type="button"
+                              onClick={() => updateDiceSides(option)}
+                              className={`rounded-full border px-4 py-2 text-sm font-semibold transition duration-300 ${
+                                diceSides === option
+                                  ? "border-emerald-200/45 bg-emerald-300/16 text-white"
+                                  : "border-white/10 bg-white/6 text-white/68 hover:bg-white/10 hover:text-white"
+                              }`}
+                            >
+                              d{option}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ) : null}
+              </AnimatePresence>
+
+              <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+                <Button
+                  type="button"
+                  icon={<Play className="size-4" />}
+                  onClick={rollDice}
+                  disabled={isRolling}
+                  className="min-h-14 w-full sm:flex-1"
+                >
+                  {isRolling ? "Sto lanciando..." : "Lancia subito"}
+                </Button>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  icon={<RotateCcw className="size-4" />}
+                  onClick={resetHistory}
+                  className="min-h-14 w-full sm:w-auto"
+                >
+                  Reset
+                </Button>
+              </div>
             </div>
           </div>
 
           <div className="space-y-4">
-            <ResponsiveControlPanel
-              title="Setup"
-              summary={`${diceCount} dadi · d${diceSides}`}
-            >
-              <div className="space-y-4">
-                <div>
-                  <p className="text-sm font-medium text-white/72">
-                    Numero di dadi
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {diceCountOptions.map((option) => (
-                      <button
-                        key={option}
-                        type="button"
-                        onClick={() => updateDiceCount(option)}
-                        className={`rounded-full border px-4 py-2 text-sm font-semibold transition duration-300 ${
-                          diceCount === option
-                            ? "border-emerald-200/45 bg-emerald-300/16 text-white"
-                            : "border-white/10 bg-white/6 text-white/68 hover:bg-white/10 hover:text-white"
-                        }`}
-                      >
-                        {option}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <p className="text-sm font-medium text-white/72">Tipo di dado</p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {diceSidesOptions.map((option) => (
-                      <button
-                        key={option}
-                        type="button"
-                        onClick={() => updateDiceSides(option)}
-                        className={`rounded-full border px-4 py-2 text-sm font-semibold transition duration-300 ${
-                          diceSides === option
-                            ? "border-emerald-200/45 bg-emerald-300/16 text-white"
-                            : "border-white/10 bg-white/6 text-white/68 hover:bg-white/10 hover:text-white"
-                        }`}
-                      >
-                        d{option}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </ResponsiveControlPanel>
-
-            <div className="hidden flex-wrap gap-3 lg:flex">
-              <Button
-                type="button"
-                icon={<Play className="size-4" />}
-                onClick={rollDice}
-                disabled={isRolling}
-              >
-                Lancia dadi
-              </Button>
-              <Button
-                type="button"
-                variant="secondary"
-                icon={<RotateCcw className="size-4" />}
-                onClick={resetHistory}
-              >
-                Reset
-              </Button>
-            </div>
-
             <ResponsiveControlPanel
               title="Storico lanci"
               summary={
@@ -265,8 +297,8 @@ export function DiceArenaGame() {
             <ResponsiveControlPanel title="Spiegazioni" summary="Come funziona">
               <div className="space-y-3 text-sm leading-7 text-white/62">
                 <p>
-                  Scegli quanti dadi usare e il tipo di dado, poi lancia per
-                  ottenere subito il totale.
+                  Tocca il badge con il numero di dadi e le facce per cambiare
+                  setup al volo, poi lancia per ottenere subito il totale.
                 </p>
                 <p>
                   Lo storico salva gli ultimi risultati, cosi puoi continuare la
@@ -277,26 +309,6 @@ export function DiceArenaGame() {
           </div>
         </div>
 
-        <div className="fixed inset-x-3 bottom-3 z-30 grid grid-cols-2 gap-3 rounded-[28px] border border-white/10 bg-slate-950/88 p-3 shadow-[0_24px_70px_-40px_rgba(0,0,0,0.95)] backdrop-blur-xl lg:hidden">
-          <Button
-            type="button"
-            icon={<Play className="size-4" />}
-            onClick={rollDice}
-            disabled={isRolling}
-            className="w-full"
-          >
-            Lancia
-          </Button>
-          <Button
-            type="button"
-            variant="secondary"
-            icon={<RotateCcw className="size-4" />}
-            onClick={resetHistory}
-            className="w-full"
-          >
-            Reset
-          </Button>
-        </div>
       </div>
     </Card>
   );

@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Dice5, RefreshCw, Sparkles, Wand2 } from "lucide-react";
 import type { ReactNode } from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -58,15 +58,9 @@ function getInstantAnswer(previous?: string) {
   return getNextRandomItem(instantAnswers, previous);
 }
 
-function getDailyInstantAnswer() {
-  return instantAnswers[getDayIndex() % instantAnswers.length];
-}
-
 function getRandomNumber() {
   return Math.floor(Math.random() * 100) + 1;
 }
-
-const INSTANT_ANSWER_STORAGE_KEY = "choiser-random-instant-answer";
 
 function ResponseViewport({
   value,
@@ -177,36 +171,13 @@ function RandomPrimaryCard({
 
 export function RandomHub() {
   const [todayPrompt, setTodayPrompt] = useState(() => getTodayPrompt());
-  const [instantAnswer, setInstantAnswer] = useState(() => getDailyInstantAnswer());
+  const [instantAnswer, setInstantAnswer] = useState<string | null>(null);
   const [number, setNumber] = useState<number | null>(null);
 
-  useEffect(() => {
-    try {
-      const storedAnswer = window.localStorage.getItem(
-        INSTANT_ANSWER_STORAGE_KEY,
-      );
-
-      if (storedAnswer && instantAnswers.includes(storedAnswer)) {
-        const frameId = window.requestAnimationFrame(() => {
-          setInstantAnswer(storedAnswer);
-        });
-
-        return () => window.cancelAnimationFrame(frameId);
-      }
-    } catch {
-      // Ignore localStorage issues and keep the daily fallback.
-    }
-  }, []);
-
   function handleInstantAnswer() {
-    const nextAnswer = getInstantAnswer(instantAnswer ?? undefined);
-    setInstantAnswer(nextAnswer);
-
-    try {
-      window.localStorage.setItem(INSTANT_ANSWER_STORAGE_KEY, nextAnswer);
-    } catch {
-      // Ignore storage issues and keep the in-memory value.
-    }
+    setInstantAnswer((currentAnswer) =>
+      getInstantAnswer(currentAnswer ?? undefined),
+    );
   }
 
   return (

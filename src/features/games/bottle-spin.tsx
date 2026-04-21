@@ -148,7 +148,6 @@ export function BottleSpinGame() {
                 className="group relative mx-auto block aspect-square w-full max-w-[440px] touch-manipulation rounded-full transition duration-300 active:scale-[0.99] disabled:cursor-not-allowed"
               >
                 <div className="absolute inset-0 rounded-full border border-cyan-200/10 bg-[radial-gradient(circle_at_center,_rgba(17,31,50,0.98),_rgba(8,16,30,0.98)_60%,_rgba(2,6,18,1)_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_34px_80px_-48px_rgba(0,0,0,0.98)]" />
-                <div className="absolute inset-[7%] rounded-full border border-white/6 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.03),_rgba(255,255,255,0)_58%)]" />
 
                 {choices.map((choice, index) => {
                   const angle =
@@ -218,23 +217,23 @@ export function BottleSpinGame() {
                   <motion.div
                     animate={
                       isSpinning
-                        ? { scale: [1, 1.03, 1], y: [0, -3, 0] }
+                        ? { scale: [1, 1.015, 1], y: [0, -1.5, 0] }
                         : { scale: 1, y: 0 }
                     }
                     transition={
                       isSpinning
-                        ? { duration: 0.9, repeat: Infinity, ease: "easeInOut" }
+                        ? { duration: 1.1, repeat: Infinity, ease: "easeInOut" }
                         : { duration: 0.24 }
                     }
                     className="relative flex h-full w-full items-center justify-center"
                   >
+                    <div className="pointer-events-none absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/7 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),rgba(255,255,255,0.02)_48%,rgba(255,255,255,0)_72%)] shadow-[0_18px_38px_-28px_rgba(0,0,0,0.9)]" />
                     <BottleIllustration />
                   </motion.div>
                 </motion.div>
 
-                <div className="pointer-events-none absolute left-1/2 top-[3.2%] h-0 w-0 -translate-x-1/2 border-l-[8px] border-r-[8px] border-t-[13px] border-l-transparent border-r-transparent border-t-cyan-200 drop-shadow-[0_0_10px_rgba(165,243,252,0.6)]" />
-                <div className="pointer-events-none absolute left-1/2 top-[6.1%] h-1 w-8 -translate-x-1/2 rounded-full bg-cyan-200/24 blur-sm" />
-                <div className="pointer-events-none absolute left-1/2 top-1/2 size-6 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/14 bg-white/80 shadow-[0_0_0_3px_rgba(2,6,23,0.86),0_8px_18px_-14px_rgba(255,255,255,0.5)]" />
+                <div className="pointer-events-none absolute left-1/2 top-[3.2%] h-0 w-0 -translate-x-1/2 border-l-[8px] border-r-[8px] border-t-[13px] border-l-transparent border-r-transparent border-t-cyan-200/88 drop-shadow-[0_0_6px_rgba(165,243,252,0.28)]" />
+                <div className="pointer-events-none absolute left-1/2 top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-white/22 shadow-[0_0_0_2px_rgba(2,6,23,0.78)]" />
               </motion.button>
 
               <div className="flex justify-center">

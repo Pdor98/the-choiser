@@ -161,16 +161,43 @@ function HourglassGlyph({ className }: { className?: string }) {
   );
 }
 
+function TimerValue({
+  timeLabel,
+  toneClassName,
+}: {
+  timeLabel: string;
+  toneClassName: string;
+}) {
+  return (
+    <span className="inline-flex min-w-[5ch] justify-start tabular-nums">
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={timeLabel}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+          className={toneClassName}
+        >
+          {timeLabel}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+}
+
 function ClassicTimerDisplay({
   timeLabel,
   selectedSeconds,
   progress,
   visualState,
+  isCritical,
 }: {
   timeLabel: string;
   selectedSeconds: number;
   progress: number;
   visualState: TimerVisualState;
+  isCritical: boolean;
 }) {
   const isWarning = visualState === "warning";
   const isFinished = visualState === "finished";
@@ -219,15 +246,19 @@ function ClassicTimerDisplay({
           </p>
           <motion.p
             animate={
-              isWarning
-                ? { scale: [1, 1.025, 1], opacity: [1, 0.82, 1] }
+              isCritical
+                ? { scale: [1, 1.018, 1], opacity: [1, 0.88, 1] }
+                : isWarning
+                  ? { scale: [1, 1.012, 1], opacity: [1, 0.92, 1] }
                 : isFinished
                   ? { scale: [1, 1.05, 1] }
                   : { scale: 1, opacity: 1 }
             }
             transition={
-              isWarning
-                ? { duration: 0.9, repeat: Infinity, ease: "easeInOut" }
+              isCritical
+                ? { duration: 0.68, repeat: Infinity, ease: "easeInOut" }
+                : isWarning
+                  ? { duration: 1.1, repeat: Infinity, ease: "easeInOut" }
                 : isFinished
                   ? { duration: 1.15, repeat: Infinity, ease: "easeInOut" }
                   : { duration: 0.24 }
@@ -242,7 +273,10 @@ function ClassicTimerDisplay({
                     : "text-white"
             }`}
           >
-            {timeLabel}
+            <TimerValue
+              timeLabel={timeLabel}
+              toneClassName="inline-block text-inherit"
+            />
           </motion.p>
         </div>
         <div className="space-y-2 text-right">
@@ -269,7 +303,9 @@ function ClassicTimerDisplay({
           >
             {isFinished
               ? "Tempo finito"
-              : isWarning
+              : isCritical
+                ? "Ultimi 5 secondi"
+                : isWarning
                 ? "Ultimi secondi"
                 : isPaused
                   ? "In pausa"
@@ -291,14 +327,15 @@ function ClassicTimerDisplay({
                   ? "bg-gradient-to-r from-violet-300 via-cyan-300 to-white"
                   : "bg-gradient-to-r from-emerald-300 via-cyan-300 to-white"
           }`}
+          style={{ width: `${progress * 100}%` }}
           animate={{
-            width: `${progress * 100}%`,
-            opacity: isWarning ? [0.9, 1, 0.9] : 1,
+            opacity: isCritical ? [0.88, 1, 0.88] : isWarning ? [0.94, 1, 0.94] : 1,
           }}
           transition={{
-            width: { duration: 0.22, ease: "easeOut" },
-            opacity: isWarning
-              ? { duration: 0.85, repeat: Infinity, ease: "easeInOut" }
+            opacity: isCritical
+              ? { duration: 0.68, repeat: Infinity, ease: "easeInOut" }
+              : isWarning
+                ? { duration: 1, repeat: Infinity, ease: "easeInOut" }
               : { duration: 0.24 },
           }}
         />
@@ -325,6 +362,7 @@ function HourglassDisplay({
   isRunning,
   hasFinished,
   visualState,
+  isCritical,
 }: {
   timeLabel: string;
   selectedSeconds: number;
@@ -332,6 +370,7 @@ function HourglassDisplay({
   isRunning: boolean;
   hasFinished: boolean;
   visualState: TimerVisualState;
+  isCritical: boolean;
 }) {
   const isWarning = visualState === "warning";
   const isFinished = visualState === "finished";
@@ -380,15 +419,19 @@ function HourglassDisplay({
           </p>
           <motion.p
             animate={
-              isWarning
-                ? { scale: [1, 1.025, 1], opacity: [1, 0.82, 1] }
+              isCritical
+                ? { scale: [1, 1.018, 1], opacity: [1, 0.88, 1] }
+                : isWarning
+                  ? { scale: [1, 1.012, 1], opacity: [1, 0.92, 1] }
                 : isFinished
                   ? { scale: [1, 1.05, 1] }
                   : { scale: 1, opacity: 1 }
             }
             transition={
-              isWarning
-                ? { duration: 0.9, repeat: Infinity, ease: "easeInOut" }
+              isCritical
+                ? { duration: 0.68, repeat: Infinity, ease: "easeInOut" }
+                : isWarning
+                  ? { duration: 1.1, repeat: Infinity, ease: "easeInOut" }
                 : isFinished
                   ? { duration: 1.15, repeat: Infinity, ease: "easeInOut" }
                   : { duration: 0.24 }
@@ -403,7 +446,10 @@ function HourglassDisplay({
                     : "text-white"
             }`}
           >
-            {timeLabel}
+            <TimerValue
+              timeLabel={timeLabel}
+              toneClassName="inline-block text-inherit"
+            />
           </motion.p>
           <div
             className={`mt-3 inline-flex items-center rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${
@@ -420,7 +466,9 @@ function HourglassDisplay({
           >
             {isFinished
               ? "Tempo finito"
-              : isWarning
+              : isCritical
+                ? "Ultimi 5 secondi"
+                : isWarning
                 ? "Ultimi secondi"
                 : isPaused
                   ? "In pausa"
@@ -432,15 +480,21 @@ function HourglassDisplay({
 
         <motion.div
           animate={
-            isWarning
-              ? { scale: [1, 1.02, 1] }
+            isCritical
+              ? { scale: [1, 1.012, 1] }
+              : isWarning
+                ? { scale: [1, 1.008, 1] }
               : isFinished
                 ? { scale: [1, 1.04, 1] }
                 : { scale: 1 }
           }
           transition={
-            isWarning || isFinished
-              ? { duration: 0.9, repeat: Infinity, ease: "easeInOut" }
+            isCritical || isWarning || isFinished
+              ? {
+                  duration: isCritical ? 0.72 : 1,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }
               : { duration: 0.24 }
           }
         >
@@ -448,6 +502,7 @@ function HourglassDisplay({
             progress={progress}
             isRunning={isRunning}
             hasFinished={hasFinished}
+            isCritical={isCritical}
           />
         </motion.div>
 
@@ -478,10 +533,12 @@ function HourglassIllustration({
   progress,
   isRunning,
   hasFinished,
+  isCritical,
 }: {
   progress: number;
   isRunning: boolean;
   hasFinished: boolean;
+  isCritical: boolean;
 }) {
   const normalizedProgress = clamp(progress, 0, 1);
   const topAmount = 1 - normalizedProgress;
@@ -502,12 +559,19 @@ function HourglassIllustration({
       className="relative h-[260px] w-[180px] sm:h-[300px] sm:w-[210px]"
       animate={
         streamVisible
-          ? { y: [0, -2, 0], scale: [1, 1.01, 1] }
+          ? {
+              y: isCritical ? [0, -1.8, 0] : [0, -1.2, 0],
+              scale: isCritical ? [1, 1.008, 1] : [1, 1.004, 1],
+            }
           : { y: 0, scale: 1 }
       }
       transition={
         streamVisible
-          ? { duration: 1.2, ease: "easeInOut", repeat: Infinity }
+          ? {
+              duration: isCritical ? 0.74 : 1.3,
+              ease: "easeInOut",
+              repeat: Infinity,
+            }
           : { duration: 0.24 }
       }
     >
@@ -524,20 +588,26 @@ function HourglassIllustration({
             <stop offset="100%" stopColor="#0a1222" stopOpacity="0.98" />
           </linearGradient>
           <radialGradient id="hourglass-halo" cx="50%" cy="50%" r="52%">
-            <stop offset="0%" stopColor="#67e8f9" stopOpacity="0.1" />
-            <stop offset="70%" stopColor="#67e8f9" stopOpacity="0.03" />
+            <stop offset="0%" stopColor="#67e8f9" stopOpacity="0.07" />
+            <stop offset="70%" stopColor="#67e8f9" stopOpacity="0.02" />
             <stop offset="100%" stopColor="#67e8f9" stopOpacity="0" />
           </radialGradient>
           <linearGradient id="hourglass-glass" x1="92" y1="42" x2="152" y2="272">
-            <stop offset="0%" stopColor="#f8fdff" stopOpacity="0.18" />
-            <stop offset="22%" stopColor="#dbeafe" stopOpacity="0.1" />
-            <stop offset="60%" stopColor="#93c5fd" stopOpacity="0.06" />
-            <stop offset="100%" stopColor="#f8fdff" stopOpacity="0.14" />
+            <stop offset="0%" stopColor="#f8fdff" stopOpacity="0.16" />
+            <stop offset="22%" stopColor="#dbeafe" stopOpacity="0.09" />
+            <stop offset="60%" stopColor="#93c5fd" stopOpacity="0.045" />
+            <stop offset="100%" stopColor="#f8fdff" stopOpacity="0.12" />
           </linearGradient>
           <linearGradient id="hourglass-glass-core" x1="120" y1="46" x2="120" y2="270">
             <stop offset="0%" stopColor="#eff6ff" stopOpacity="0.06" />
             <stop offset="48%" stopColor="#ffffff" stopOpacity="0.015" />
             <stop offset="100%" stopColor="#eff6ff" stopOpacity="0.045" />
+          </linearGradient>
+          <linearGradient id="hourglass-glass-reflection" x1="95" y1="54" x2="145" y2="248">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.18" />
+            <stop offset="18%" stopColor="#ffffff" stopOpacity="0.08" />
+            <stop offset="52%" stopColor="#ffffff" stopOpacity="0.025" />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
           </linearGradient>
           <linearGradient id="hourglass-edge" x1="120" y1="44" x2="120" y2="270">
             <stop offset="0%" stopColor="#ffffff" stopOpacity="0.35" />
@@ -563,8 +633,17 @@ function HourglassIllustration({
             <stop offset="0%" stopColor="#fff7d6" stopOpacity="0.66" />
             <stop offset="100%" stopColor="#fff7d6" stopOpacity="0" />
           </linearGradient>
+          <linearGradient id="hourglass-stream" x1="120" y1="148" x2="120" y2="188">
+            <stop offset="0%" stopColor="#fff4bf" stopOpacity="0.2" />
+            <stop offset="18%" stopColor="#fde68a" stopOpacity="0.9" />
+            <stop offset="60%" stopColor="#fbbf24" stopOpacity="0.78" />
+            <stop offset="100%" stopColor="#d97706" stopOpacity="0.34" />
+          </linearGradient>
           <filter id="hourglass-soft-glow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="5" />
+          </filter>
+          <filter id="hourglass-stream-glow" x="-80%" y="-20%" width="260%" height="180%">
+            <feGaussianBlur stdDeviation="1.2" />
           </filter>
           <path
             id="hourglass-glass-shape"
@@ -586,6 +665,18 @@ function HourglassIllustration({
           fill="url(#hourglass-halo)"
           filter="url(#hourglass-soft-glow)"
         />
+        {isCritical ? (
+          <motion.ellipse
+            cx="120"
+            cy="184"
+            rx="68"
+            ry="94"
+            fill="rgba(251,191,36,0.12)"
+            filter="url(#hourglass-soft-glow)"
+            animate={{ opacity: [0.12, 0.28, 0.12] }}
+            transition={{ duration: 0.7, repeat: Infinity, ease: "easeInOut" }}
+          />
+        ) : null}
 
         <path
           d="M70 26C83 19 99 17 120 17C141 17 157 19 170 26L165 36C154 31 140 29 120 29C100 29 86 31 75 36Z"
@@ -616,6 +707,7 @@ function HourglassIllustration({
 
         <use href="#hourglass-glass-shape" fill="url(#hourglass-glass)" />
         <use href="#hourglass-glass-shape" fill="url(#hourglass-glass-core)" />
+        <use href="#hourglass-glass-shape" fill="url(#hourglass-glass-reflection)" />
 
         {topAmount > 0.015 ? (
           <g clipPath="url(#hourglass-top-clip)">
@@ -638,33 +730,50 @@ function HourglassIllustration({
         {streamVisible ? (
           <>
             <motion.path
-              d="M120 148C120 154 119.5 160 120 167C120.5 174 120 180 120 185"
-              stroke="url(#hourglass-sand)"
-              strokeWidth="2.6"
+              d="M120 148C120 155 119.2 161 120 168C120.8 175 120.2 182 120 189"
+              stroke="url(#hourglass-stream)"
+              strokeWidth="4.8"
               strokeLinecap="round"
-              animate={{ opacity: [0.3, 0.9, 0.45] }}
+              filter="url(#hourglass-stream-glow)"
+              animate={{ opacity: [0.18, 0.34, 0.2] }}
               transition={{
-                duration: 0.62,
+                duration: 0.64,
                 ease: "easeInOut",
                 repeat: Infinity,
               }}
             />
-            {[0, 1, 2, 3].map((grain) => (
+            <motion.path
+              d="M120 148C120 155 119.65 161.5 120 168.5C120.35 175.5 120 182 120 188"
+              stroke="url(#hourglass-stream)"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              animate={{
+                opacity: isCritical ? [0.45, 0.96, 0.52] : [0.32, 0.84, 0.42],
+                strokeWidth: isCritical ? [2.05, 2.55, 2.05] : [1.95, 2.35, 1.95],
+              }}
+              transition={{
+                duration: isCritical ? 0.52 : 0.68,
+                ease: "easeInOut",
+                repeat: Infinity,
+              }}
+            />
+            {[0, 1, 2, 3, 4, 5].map((grain) => (
               <motion.circle
                 key={grain}
-                cx={120 + (grain - 1.5) * 1.6}
+                cx={120 + (grain - 2.5) * 0.9}
                 cy={152}
-                r={grain === 1 || grain === 2 ? 1.55 : 1.1}
+                r={grain % 2 === 0 ? 0.85 : 1.05}
                 fill="#fde68a"
                 animate={{
-                  cy: [151, 165, 180],
-                  opacity: [0, 0.92, 0],
+                  cy: [150, 164, 178, 188],
+                  opacity: [0, 0.86, 0.48, 0],
+                  scale: [0.88, 1, 0.92, 0.84],
                 }}
                 transition={{
-                  duration: 0.78,
+                  duration: isCritical ? 0.46 : 0.58,
                   ease: "linear",
                   repeat: Infinity,
-                  delay: grain * 0.13,
+                  delay: grain * 0.09,
                 }}
               />
             ))}
@@ -734,6 +843,8 @@ export function TimerTool() {
   const audioContextRef = useRef<AudioContext | null>(null);
   const didPlayCompletionSoundRef = useRef(false);
   const endTimestampRef = useRef<number | null>(null);
+  const animationFrameRef = useRef<number | null>(null);
+  const lastCommittedFrameRef = useRef(0);
 
   const selectedDurationMs = selectedSeconds * 1000;
   const remainingSeconds = remainingMs > 0 ? Math.ceil(remainingMs / 1000) : 0;
@@ -746,6 +857,8 @@ export function TimerTool() {
     !isRunning && !hasFinished && remainingMs > 0 && remainingMs < selectedDurationMs;
   const isEnding =
     isRunning && remainingMs > 0 && remainingMs <= warningThresholdMs;
+  const isCritical =
+    isRunning && remainingMs > 0 && remainingMs <= 5_000;
   const visualState = getTimerVisualState({
     isRunning,
     hasFinished,
@@ -791,28 +904,21 @@ export function TimerTool() {
           return;
         }
 
-        // A short three-note chime keeps the notification clear without feeling harsh.
+        // A short two-note chime keeps the notification clear without feeling harsh.
         const tones = [
           {
-            frequency: 784,
+            frequency: 783.99,
             startOffset: 0,
-            duration: 0.18,
-            gain: 0.11,
+            duration: 0.16,
+            gain: 0.08,
             type: "sine",
           },
           {
-            frequency: 1046.5,
-            startOffset: 0.15,
-            duration: 0.24,
-            gain: 0.14,
-            type: "triangle",
-          },
-          {
-            frequency: 1318.5,
-            startOffset: 0.32,
+            frequency: 1174.66,
+            startOffset: 0.1,
             duration: 0.28,
             gain: 0.1,
-            type: "sine",
+            type: "triangle",
           },
         ];
 
@@ -846,16 +952,20 @@ export function TimerTool() {
       return;
     }
 
-    const tick = () => {
+    const tick = (now: number) => {
       if (!endTimestampRef.current) {
         return;
       }
 
-      const nextRemaining = Math.max(endTimestampRef.current - performance.now(), 0);
+      const nextRemaining = Math.max(endTimestampRef.current - now, 0);
 
       if (nextRemaining <= 0) {
         setRemainingMs(0);
         endTimestampRef.current = null;
+        if (animationFrameRef.current) {
+          window.cancelAnimationFrame(animationFrameRef.current);
+          animationFrameRef.current = null;
+        }
         setIsRunning(false);
         setHasFinished(true);
 
@@ -868,18 +978,33 @@ export function TimerTool() {
         return;
       }
 
-      setRemainingMs(nextRemaining);
+      if (now - lastCommittedFrameRef.current >= 32) {
+        lastCommittedFrameRef.current = now;
+        setRemainingMs(nextRemaining);
+      }
+
+      animationFrameRef.current = window.requestAnimationFrame(tick);
     };
 
-    tick();
-    const intervalId = window.setInterval(tick, 100);
+    animationFrameRef.current = window.requestAnimationFrame((now) => {
+      lastCommittedFrameRef.current = 0;
+      tick(now);
+    });
 
-    return () => window.clearInterval(intervalId);
+    return () => {
+      if (animationFrameRef.current) {
+        window.cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+      }
+    };
   }, [isRunning, playFinishSound]);
 
   useEffect(() => {
     return () => {
       endTimestampRef.current = null;
+      if (animationFrameRef.current) {
+        window.cancelAnimationFrame(animationFrameRef.current);
+      }
       void audioContextRef.current?.close().catch(() => {
         // Ignore close failures on unsupported browsers.
       });
@@ -891,6 +1016,7 @@ export function TimerTool() {
       hasFinished || remainingMs <= 0 ? selectedDurationMs : remainingMs;
 
     didPlayCompletionSoundRef.current = false;
+    lastCommittedFrameRef.current = 0;
     setHasFinished(false);
     setRemainingMs(nextDuration);
     endTimestampRef.current = performance.now() + nextDuration;
@@ -908,12 +1034,20 @@ export function TimerTool() {
       ? Math.max(endTimestampRef.current - performance.now(), 0)
       : remainingMs;
 
+    if (animationFrameRef.current) {
+      window.cancelAnimationFrame(animationFrameRef.current);
+      animationFrameRef.current = null;
+    }
     endTimestampRef.current = null;
     setRemainingMs(nextRemaining);
     setIsRunning(false);
   }
 
   function resetTimer() {
+    if (animationFrameRef.current) {
+      window.cancelAnimationFrame(animationFrameRef.current);
+      animationFrameRef.current = null;
+    }
     endTimestampRef.current = null;
     didPlayCompletionSoundRef.current = false;
     setIsRunning(false);
@@ -922,6 +1056,10 @@ export function TimerTool() {
   }
 
   function handlePresetSelect(preset: number) {
+    if (animationFrameRef.current) {
+      window.cancelAnimationFrame(animationFrameRef.current);
+      animationFrameRef.current = null;
+    }
     endTimestampRef.current = null;
     didPlayCompletionSoundRef.current = false;
     setSelectedSeconds(preset);
@@ -996,6 +1134,7 @@ export function TimerTool() {
               selectedSeconds={selectedSeconds}
               progress={progress}
               visualState={visualState}
+              isCritical={isCritical}
             />
           ) : (
             <HourglassDisplay
@@ -1005,15 +1144,16 @@ export function TimerTool() {
               isRunning={isRunning}
               hasFinished={hasFinished}
               visualState={visualState}
+              isCritical={isCritical}
             />
           )}
 
-          <div className="grid gap-3 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             <Button
               icon={<Play className="size-4" />}
               onClick={startTimer}
               disabled={isRunning}
-              className="w-full"
+              className="col-span-2 min-h-14 w-full sm:col-span-1"
             >
               {hasFinished ? "Ricomincia" : isPaused ? "Riprendi" : "Avvia"}
             </Button>
@@ -1022,7 +1162,7 @@ export function TimerTool() {
               icon={<Pause className="size-4" />}
               onClick={pauseTimer}
               disabled={!isRunning}
-              className="w-full"
+              className="min-h-14 w-full"
             >
               Pausa
             </Button>
@@ -1030,7 +1170,7 @@ export function TimerTool() {
               variant="secondary"
               icon={<RotateCcw className="size-4" />}
               onClick={resetTimer}
-              className="w-full"
+              className="min-h-14 w-full"
             >
               Reset
             </Button>
@@ -1076,7 +1216,9 @@ export function TimerTool() {
                   <p className="text-sm font-semibold text-white">
                     {hasFinished
                       ? "Tempo scaduto"
-                      : isEnding
+                      : isCritical
+                        ? `Ultimi ${Math.max(remainingSeconds, 1)} secondi`
+                        : isEnding
                         ? `Ultimi ${Math.max(remainingSeconds, 1)} secondi`
                         : isRunning
                           ? "Countdown in corso"
@@ -1086,13 +1228,15 @@ export function TimerTool() {
                   </p>
                   <p className="text-sm leading-7 text-white/62">
                     {hasFinished
-                      ? "Il timer è arrivato a zero. Il suono finale parte subito e puoi ricominciare con un tocco."
-                      : isEnding
-                        ? "Il countdown entra nella fase finale: il display si scalda e l'urgenza cresce in modo graduale."
+                      ? "Il timer si chiude con un piccolo chime pulito, una lieve vibrazione e uno stato finale chiaro che ti fa capire subito che il countdown è concluso."
+                      : isCritical
+                        ? "Negli ultimi cinque secondi il ritmo visivo accelera appena: il timer resta elegante, ma diventa più presente e impossibile da perdere."
+                        : isEnding
+                          ? "Il countdown entra nella fase finale con un avviso progressivo: il display si scalda poco a poco senza diventare aggressivo."
                         : isRunning
                           ? viewMode === "hourglass"
-                            ? "La clessidra resta sincronizzata in tempo reale con il countdown e continua a scorrere finché non metti in pausa."
-                            : "Il countdown procede in tempo reale e diventa più evidente man mano che si avvicina allo zero."
+                            ? "La clessidra resta sincronizzata in tempo reale con il countdown: vetro più leggero, sabbia continua e flusso centrale sempre leggibile."
+                            : "Il countdown procede in modo più fluido, con numeri grandi, leggibili e aggiornamenti senza scatti percepibili."
                           : isPaused
                             ? "Il tempo è congelato esattamente dove ti sei fermato. Puoi riprendere subito oppure resettare."
                             : "Scegli i secondi, passa da timer classico a clessidra quando vuoi e avvia il conto alla rovescia."}
@@ -1100,7 +1244,9 @@ export function TimerTool() {
                   <p className="text-[11px] uppercase tracking-[0.18em] text-white/42">
                     {hasFinished
                       ? "Stato finale"
-                      : isEnding
+                      : isCritical
+                        ? "Fase finale attiva"
+                        : isEnding
                         ? "Avviso progressivo attivo"
                         : isPaused
                           ? "Sessione sospesa"
@@ -1131,8 +1277,8 @@ export function TimerTool() {
                 <p className="text-sm leading-7 text-white/62">
                   Il suono finale parte solo allo scadere del timer e non viene
                   attivato durante pausa o reset. Negli ultimi secondi il timer
-                  aggiunge un feedback visivo progressivo per segnalare che il
-                  tempo sta finendo.
+                  aggiunge un feedback visivo progressivo e la clessidra passa a
+                  un flusso più presente per segnalare che il tempo sta finendo.
                 </p>
               </div>
             </div>
