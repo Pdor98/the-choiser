@@ -1,3 +1,4 @@
+import type { Route } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -27,12 +28,12 @@ export function EditorialCTAButton({
   children,
   variant = "primary",
 }: {
-  href: string;
+  href: Route;
   children: ReactNode;
   variant?: "primary" | "secondary";
 }) {
   return (
-    <a
+    <Link
       href={href}
       className={
         variant === "primary"
@@ -41,7 +42,7 @@ export function EditorialCTAButton({
       }
     >
       {children}
-    </a>
+    </Link>
   );
 }
 
