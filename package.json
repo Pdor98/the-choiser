@@ -14,6 +14,7 @@
     "docker:logs": "docker compose logs -f choiser-sim",
     "lint": "node_modules/node/bin/node ./node_modules/eslint/bin/eslint.js .",
     "typecheck": "node_modules/node/bin/node ./node_modules/typescript/bin/tsc --noEmit",
+    "session:resume": "node_modules/node/bin/node ./scripts/session-resume.mjs",
     "export:pages": "node_modules/node/bin/node ./scripts/export-github-pages.mjs",
     "preview:pages": "node_modules/node/bin/node ./scripts/preview-github-pages.mjs",
     "release:check": "npm run lint && npm run typecheck && npm run export:pages"

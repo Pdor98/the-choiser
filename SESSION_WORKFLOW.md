@@ -69,6 +69,20 @@ Quando chiudiamo la sessione, il closeout standard deve essere:
 4. push su GitHub
 5. se la modifica va pubblicata online, aggiornamento di `docs/` e pubblicazione
 
+## Continuita sessione
+
+Per evitare di perdere contesto quando Codex apre una chat nuova:
+
+1. leggere `AGENTS.md`
+2. leggere `SESSION_STATE.md`
+3. eseguire `npm run session:resume` se la vecchia chat non e visibile
+
+Questo permette di recuperare:
+
+- percorso dei transcript locali di Codex
+- ultimi prompt utente rilevanti per Choiser
+- regole operative gia concordate per questa repo
+
 ## Regola pratica
 
 Quando finisce una modifica, condividere sempre il link diretto della pagina da verificare.
