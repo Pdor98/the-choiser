@@ -139,10 +139,10 @@ export function DailyAdvicePanel() {
           <div className="min-w-0 space-y-4">
             <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
               <SectionBadge className="border-cyan-300/18 bg-white/6 text-cyan-100/82 shadow-[0_12px_24px_-22px_rgba(56,189,248,0.34)]">
-                Consiglio del giorno
+                Cosa fare stasera?
               </SectionBadge>
               <p className="text-[10px] uppercase tracking-[0.24em] text-slate-400/72 sm:text-[11px]">
-                Un solo spunto, subito utile
+                Un&apos;idea per accendere la serata
               </p>
             </div>
 
@@ -188,7 +188,7 @@ export function DailyAdvicePanel() {
               onClick={handleGenerateAdvice}
               className="group min-h-[3.2rem] w-full px-6 text-[15px] shadow-[0_22px_52px_-30px_rgba(56,189,248,0.36)] sm:w-auto sm:min-w-[12rem]"
             >
-              Genera nuovo
+              Un&apos;altra idea
             </Button>
           </div>
         </div>

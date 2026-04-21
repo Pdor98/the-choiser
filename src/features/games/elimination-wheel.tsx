@@ -21,14 +21,48 @@ type PendingElimination = {
   name: string;
 } | null;
 
+type ConfettiParticle = {
+  id: number;
+  color: string;
+  left: number;
+  top: number;
+  size: number;
+  drift: number;
+  rise: number;
+  fall: number;
+  rotate: number;
+  delay: number;
+  duration: number;
+};
+
+function createCelebrationParticles() {
+  return Array.from({ length: 16 }, (_, index) => ({
+    id: index,
+    color: wheelSegmentColors[index % wheelSegmentColors.length],
+    left: 16 + ((index * 17) % 68),
+    top: 36 + ((index * 9) % 16),
+    size: 6 + (index % 4),
+    drift: -36 + ((index * 11) % 72),
+    rise: 18 + (index % 5) * 10,
+    fall: 72 + (index % 6) * 12,
+    rotate: -120 + ((index * 39) % 240),
+    delay: (index % 6) * 0.03,
+    duration: 1.05 + (index % 4) * 0.1,
+  }));
+}
+
 export function EliminationWheelGame() {
   const [draftNames, setDraftNames] = useState(wheelDefaultNames.join("\n"));
+  const [lineupNames, setLineupNames] = useState(wheelDefaultNames);
   const [activeNames, setActiveNames] = useState(wheelDefaultNames);
   const [eliminatedNames, setEliminatedNames] = useState<string[]>([]);
   const [wheelRotation, setWheelRotation] = useState(0);
   const [pendingElimination, setPendingElimination] =
     useState<PendingElimination>(null);
   const [isSpinning, setIsSpinning] = useState(false);
+  const [celebrationParticles, setCelebrationParticles] = useState<
+    ConfettiParticle[]
+  >([]);
   const [feedback, setFeedback] = useState(
     "Carica i nomi, gira la ruota e lascia che venga eliminato un nome a ogni spin.",
   );
@@ -41,44 +75,75 @@ export function EliminationWheelGame() {
       return;
     }
 
+    setLineupNames(nextNames);
     setActiveNames(nextNames);
     setEliminatedNames([]);
     setWheelRotation(0);
     setPendingElimination(null);
     setIsSpinning(false);
+    setCelebrationParticles([]);
     setFeedback(`${nextNames.length} nomi caricati. Puoi lanciare la ruota.`);
   }
 
   function resetWheel() {
     setDraftNames(wheelDefaultNames.join("\n"));
+    setLineupNames(wheelDefaultNames);
     setActiveNames(wheelDefaultNames);
     setEliminatedNames([]);
     setWheelRotation(0);
     setPendingElimination(null);
     setIsSpinning(false);
+    setCelebrationParticles([]);
     setFeedback("Ruota resettata. Pronta per un nuovo torneo.");
   }
 
-  function spinWheel() {
-    if (isSpinning || activeNames.length <= 1) {
+  function triggerSpin(names = activeNames, baseRotation = wheelRotation) {
+    if (isSpinning || names.length <= 1) {
       return;
     }
 
-    const selectedIndex = Math.floor(Math.random() * activeNames.length);
-    const segmentAngle = 360 / activeNames.length;
+    const selectedIndex = Math.floor(Math.random() * names.length);
+    const segmentAngle = 360 / names.length;
     const chosenCenter = selectedIndex * segmentAngle + segmentAngle / 2;
     const desiredRotation = (360 - chosenCenter) % 360;
-    const currentRotation = ((wheelRotation % 360) + 360) % 360;
+    const currentRotation = ((baseRotation % 360) + 360) % 360;
     const nextRotation =
-      wheelRotation + 360 * 7 + ((desiredRotation - currentRotation + 360) % 360);
+      baseRotation + 360 * 7 + ((desiredRotation - currentRotation + 360) % 360);
 
     setPendingElimination({
       index: selectedIndex,
-      name: activeNames[selectedIndex],
+      name: names[selectedIndex],
     });
     setIsSpinning(true);
+    setCelebrationParticles([]);
     setFeedback("La ruota sta girando...");
     setWheelRotation(nextRotation);
+  }
+
+  function spinWheel() {
+    triggerSpin(activeNames, wheelRotation);
+  }
+
+  function restartRoundFromWinner() {
+    if (isSpinning || !winner || lineupNames.length <= 1) {
+      return;
+    }
+
+    const nextNames = [...lineupNames];
+
+    setActiveNames(nextNames);
+    setEliminatedNames([]);
+    setWheelRotation(0);
+    setPendingElimination(null);
+    setIsSpinning(false);
+    setCelebrationParticles([]);
+    setFeedback("Nuovo giro in partenza...");
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        triggerSpin(nextNames, 0);
+      });
+    });
   }
 
   const winner = activeNames.length === 1 ? activeNames[0] : null;
@@ -135,7 +200,10 @@ export function EliminationWheelGame() {
 
                   if (nextNames.length === 1) {
                     setWheelRotation(0);
-                    setFeedback(`${nextNames[0]} resta in gioco ed è il vincitore finale.`);
+                    setCelebrationParticles(createCelebrationParticles());
+                    setFeedback(
+                      `${nextNames[0]} resta in gioco ed è il vincitore finale. Tocca il suo nome per ripartire subito.`,
+                    );
                     return;
                   }
 
@@ -217,16 +285,58 @@ export function EliminationWheelGame() {
               </motion.div>
 
               {winner ? (
-                <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 flex h-[34%] min-h-[118px] w-[34%] min-w-[118px] max-h-[156px] max-w-[156px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-emerald-200/24 bg-[radial-gradient(circle_at_center,rgba(15,23,42,0.96),rgba(2,6,23,0.92))] shadow-[0_0_0_10px_rgba(255,255,255,0.04),0_18px_42px_-30px_rgba(0,0,0,0.95)]">
-                  <div className="px-3 text-center">
-                    <p className="text-[9px] font-semibold uppercase tracking-[0.24em] text-emerald-100/62 sm:text-[10px]">
-                      Vincitore
-                    </p>
-                    <p className="font-heading mt-2 text-balance text-base font-semibold leading-tight text-white sm:text-lg">
-                      {winner.length > 18 ? `${winner.slice(0, 18)}…` : winner}
-                    </p>
+                <>
+                  <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden">
+                    {celebrationParticles.map((particle) => (
+                      <motion.span
+                        key={`${winner}-${particle.id}`}
+                        className="absolute rounded-[2px]"
+                        style={{
+                          left: `${particle.left}%`,
+                          top: `${particle.top}%`,
+                          width: particle.size,
+                          height: particle.size * 1.6,
+                          backgroundColor: particle.color,
+                          boxShadow: `0 0 18px -10px ${particle.color}`,
+                        }}
+                        initial={{ opacity: 0, x: 0, y: 0, rotate: 0, scale: 0.8 }}
+                        animate={{
+                          opacity: [0, 1, 1, 0],
+                          x: [0, particle.drift],
+                          y: [0, -particle.rise, particle.fall],
+                          rotate: [0, particle.rotate],
+                          scale: [0.8, 1, 0.92],
+                        }}
+                        transition={{
+                          duration: particle.duration,
+                          delay: particle.delay,
+                          ease: "easeOut",
+                        }}
+                      />
+                    ))}
                   </div>
-                </div>
+
+                  <motion.button
+                    type="button"
+                    onClick={restartRoundFromWinner}
+                    aria-label={`Riparti subito con ${winner}`}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="absolute left-1/2 top-1/2 z-30 flex h-[34%] min-h-[118px] w-[34%] min-w-[118px] max-h-[156px] max-w-[156px] -translate-x-1/2 -translate-y-1/2 touch-manipulation items-center justify-center rounded-full border border-emerald-200/24 bg-[radial-gradient(circle_at_center,rgba(15,23,42,0.96),rgba(2,6,23,0.92))] shadow-[0_0_0_10px_rgba(255,255,255,0.04),0_18px_42px_-30px_rgba(0,0,0,0.95)] transition duration-300 hover:border-emerald-200/34 hover:shadow-[0_0_0_10px_rgba(255,255,255,0.04),0_20px_46px_-28px_rgba(16,185,129,0.28)]"
+                  >
+                    <div className="px-3 text-center">
+                      <p className="text-[9px] font-semibold uppercase tracking-[0.24em] text-emerald-100/62 sm:text-[10px]">
+                        Vincitore
+                      </p>
+                      <p className="font-heading mt-2 text-balance text-base font-semibold leading-tight text-white sm:text-lg">
+                        {winner.length > 18 ? `${winner.slice(0, 18)}…` : winner}
+                      </p>
+                      <p className="mt-2 text-[10px] uppercase tracking-[0.2em] text-emerald-100/58">
+                        Tocca per ripartire
+                      </p>
+                    </div>
+                  </motion.button>
+                </>
               ) : (
                 <motion.button
                   type="button"
@@ -297,19 +407,28 @@ export function EliminationWheelGame() {
                     transition={{ duration: 0.24, ease: "easeOut" }}
                     className="mt-4 rounded-[24px] border border-emerald-300/24 bg-emerald-300/10 p-4"
                   >
-                    <div className="flex items-center gap-3">
-                      <div className="flex size-10 items-center justify-center rounded-2xl bg-emerald-300/12 text-emerald-50">
-                        <Trophy className="size-4" />
+                    <button
+                      type="button"
+                      onClick={restartRoundFromWinner}
+                      className="group w-full touch-manipulation text-left"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="flex size-10 items-center justify-center rounded-2xl bg-emerald-300/12 text-emerald-50">
+                          <Trophy className="size-4" />
+                        </div>
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.18em] text-emerald-100/70">
+                            Vincitore
+                          </p>
+                          <p className="font-heading mt-1 text-2xl font-semibold text-white transition duration-300 group-hover:text-emerald-50 group-hover:drop-shadow-[0_0_16px_rgba(16,185,129,0.26)]">
+                            {winner}
+                          </p>
+                          <p className="mt-1 text-[11px] uppercase tracking-[0.18em] text-emerald-100/54">
+                            Tocca per ripartire
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-xs uppercase tracking-[0.18em] text-emerald-100/70">
-                          Vincitore
-                        </p>
-                        <p className="font-heading mt-1 text-2xl font-semibold text-white">
-                          {winner}
-                        </p>
-                      </div>
-                    </div>
+                    </button>
                   </motion.div>
                 ) : null}
               </AnimatePresence>

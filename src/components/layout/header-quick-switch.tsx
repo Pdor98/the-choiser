@@ -15,7 +15,7 @@ export function HeaderQuickSwitch() {
       <div className="relative flex flex-col items-center gap-2.5 text-center sm:gap-3">
         <div className="space-y-1">
           <p className="text-[10px] uppercase tracking-[0.28em] text-cyan-200/58 sm:text-[11px] sm:tracking-[0.3em]">
-            Navigation hub
+            Il posto dove inizia la serata
           </p>
           <h2 className="font-heading text-lg font-semibold tracking-tight text-slate-50 sm:text-3xl">
             {currentPage.headerTitle}

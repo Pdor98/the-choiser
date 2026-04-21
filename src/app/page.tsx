@@ -47,8 +47,8 @@ export default function HomePage() {
 
       <HomeScrollStage className="space-y-8 sm:space-y-10">
         <EditorialSectionHeader
-          title="Scegli come vuoi iniziare"
-          description="Tre direzioni principali organizzano l'esperienza: una per lasciarti guidare dal caso, una per giocare insieme, una per fare in fretta senza perdere eleganza."
+          title="Cosa vuoi fare stasera?"
+          description="Che siate in due o in dieci, indecisi o carichi, Choiser ha sempre qualcosa pronto per voi."
         />
 
         <div className="grid gap-5 lg:grid-cols-3">
@@ -94,7 +94,7 @@ export default function HomePage() {
       <HomeScrollStage className="space-y-8 sm:space-y-10">
         <EditorialSectionHeader
           title="Perché Choiser"
-          description="Un'esperienza pensata per essere immediata quando vuoi agire, ma abbastanza curata da restare memorabile anche quando stai solo cercando il tono giusto per la serata."
+          description="Fatto per stare insieme. Costruito per divertirsi."
         />
 
         <div className="grid gap-5 md:grid-cols-3">
