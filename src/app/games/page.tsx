@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  ArrowRight,
+  ArrowDown,
   ChevronDown,
   ChevronRight,
   Flame,
@@ -325,7 +325,7 @@ export default function GamesPage() {
           <div className="editorial-reveal editorial-reveal-delay-3 mt-10 flex justify-center">
             <EditorialCTAButton href="/games#games-arcade">
               <span>Inizia a giocare</span>
-              <ArrowRight className="size-4" />
+              <ArrowDown className="size-4" />
             </EditorialCTAButton>
           </div>
         </div>
@@ -586,7 +586,7 @@ export default function GamesPage() {
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <EditorialCTAButton href="/games#games-arcade">
               <span>Entra in Games</span>
-              <ArrowRight className="size-4" />
+              <ArrowDown className="size-4" />
             </EditorialCTAButton>
             <Link
               href="/"
