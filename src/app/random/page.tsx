@@ -1,4 +1,7 @@
-import { ArrowRight, Compass, Dices, Sparkles, Zap } from "lucide-react";
+"use client";
+
+import { ArrowDown, Compass, Dices, Sparkles, Zap } from "lucide-react";
+import { useRef, type MouseEvent } from "react";
 
 import {
   EditorialCTAButton,
@@ -10,6 +13,34 @@ import { Card } from "@/components/ui/card";
 import { RandomHub } from "@/features/random/random-hub";
 
 export default function RandomPage() {
+  const randomLabRef = useRef<HTMLElement | null>(null);
+
+  function handleRandomJump(event: MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+
+    const element = randomLabRef.current ?? document.getElementById("random-lab");
+
+    if (!element) {
+      return;
+    }
+
+    const headerElement = document.querySelector("header");
+    const headerHeight =
+      headerElement instanceof HTMLElement
+        ? headerElement.getBoundingClientRect().height
+        : 0;
+
+    const targetTop =
+      element.getBoundingClientRect().top + window.scrollY - headerHeight - 18;
+
+    const currentPath = `${window.location.pathname}${window.location.search}`;
+    window.history.replaceState(null, "", `${currentPath}#random-lab`);
+    window.scrollTo({
+      top: Math.max(targetTop, 0),
+      behavior: "smooth",
+    });
+  }
+
   return (
     <div className="space-y-20 pb-10 sm:space-y-24 lg:space-y-28">
       <section className="relative isolate overflow-hidden rounded-[36px] border border-white/8 bg-[#0a0a0a] px-5 py-20 shadow-[0_30px_90px_-56px_rgba(15,23,42,0.9)] sm:px-8 sm:py-24 lg:px-12 lg:py-32">
@@ -22,28 +53,40 @@ export default function RandomPage() {
             Random · Choiser
           </p>
           <h1 className="editorial-reveal editorial-reveal-delay-1 font-heading mx-auto mt-6 max-w-4xl text-balance text-[clamp(3.2rem,8vw,4.4rem)] font-bold tracking-[-0.04em] text-slate-50">
-            Lascia spazio al caso.
+            Il caso e il miglior arbitro che conosca.
           </h1>
           <p className="editorial-reveal editorial-reveal-delay-2 mx-auto mt-6 max-w-[36rem] text-balance text-[1.05rem] leading-8 text-slate-400 sm:text-[1.18rem]">
-            Prompt quotidiani, risposte istantanee e piccoli segnali eleganti
-            per quando vuoi smettere di pensarci troppo e lasciarti guidare.
+            Non ha preferiti, non si offende, non litiga. Decide e basta.
           </p>
           <div className="editorial-reveal editorial-reveal-delay-3 mt-10 flex justify-center">
-            <EditorialCTAButton href="/random#random-lab">
+            <EditorialCTAButton
+              href="/random#random-lab"
+              onClick={handleRandomJump}
+              ariaControls="random-lab"
+            >
               <span>Apri Random</span>
-              <ArrowRight className="size-4" />
+              <ArrowDown className="size-4" />
             </EditorialCTAButton>
           </div>
         </div>
       </section>
 
-      <section id="random-lab" className="scroll-mt-28 space-y-8 sm:space-y-10">
+      <section
+        id="random-lab"
+        ref={randomLabRef}
+        className="scroll-mt-28 space-y-8 sm:space-y-10"
+      >
         <EditorialSectionHeader
           title="Apri Random"
           description="Se vuoi usarlo subito, qui sotto trovi tutta la sezione pronta, senza passaggi intermedi."
         />
 
         <RandomHub />
+
+        <p className="mx-auto max-w-3xl text-center text-sm leading-7 text-slate-400 sm:text-base">
+          Non e barare - e delegare. E a volte delegare al caso e la cosa piu
+          saggia che si possa fare in una serata.
+        </p>
       </section>
 
       <section className="space-y-8 sm:space-y-10">

@@ -3,5 +3,5 @@
 3:I[4743,["653","static/chunks/653-f681b3f04154ea5d.js","544","static/chunks/544-72c6297ea2f8324e.js","523","static/chunks/app/games/tab-who/page-2053c5e21b642817.js"],"PageExitBar"]
 4:I[484,[],"OutletBoundary"]
 5:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"space-y-8","children":[["$","$L2",null,{}],["$","$L3",null,{"description":"Quando chiudi un round puoi tornare alla home o spostarti subito su un’altra sezione senza perdere tempo."}]]}],null,["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"C8Ye-n6U4IP50yJcTJcD1"}
+0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"space-y-8","children":[["$","$L2",null,{}],["$","$L3",null,{"description":"Quando chiudi un round puoi tornare alla home o spostarti subito su un’altra sezione senza perdere tempo."}]]}],null,["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"xj8-TsX24Bh2fgva02WBc"}
 6:null

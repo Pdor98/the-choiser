@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 
 import {
   EditorialCTAButton,
@@ -132,13 +132,15 @@ const carouselQuotes = [
   "Le migliori serate non si pianificano. Si innescano.",
   "Un gioco può dire più di mille presentazioni.",
   "Non serve conoscersi da anni. Basta una domanda giusta.",
-  "Il momento in cui tutti ridono insieme - quello è il gioco che ha vinto.",
-  "Osare un po' è sempre la scelta giusta.",
-  "Ogni risposta rivela qualcosa. Ogni sfida avvicina.",
   "La serata perfetta inizia con: a chi tocca?",
+  "Stasera non serve un piano. Serve Choiser.",
+  "Il momento in cui tutti ridono insieme - quello e il gioco che ha vinto.",
   "Non è solo un gioco. È il modo in cui ti ricorderanno.",
   "Il ghiaccio si rompe in un secondo. Basta il gioco giusto.",
   "Giocare insieme è la forma più onesta di conoscersi.",
+  "Avete gia la compagnia. Ci pensiamo noi al resto.",
+  "Ogni risposta rivela qualcosa. Ogni sfida avvicina.",
+  "Una serata con i giochi giusti vale dieci cene formali.",
 ] as const;
 
 const steps = [
@@ -251,6 +253,7 @@ export default function GamesPage() {
   const [focusedGameTarget, setFocusedGameTarget] =
     useState<InternalGameTarget | null>(null);
   const focusTimerRef = useRef<number | null>(null);
+  const gamesArcadeRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -315,6 +318,33 @@ export default function GamesPage() {
     scrollToGamePanel(targetId);
   }
 
+  function handleHeroArcadeJump(event: MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+
+    const element =
+      gamesArcadeRef.current ?? document.getElementById("games-arcade");
+
+    if (!element) {
+      return;
+    }
+
+    const headerElement = document.querySelector("header");
+    const headerHeight =
+      headerElement instanceof HTMLElement
+        ? headerElement.getBoundingClientRect().height
+        : 0;
+
+    const targetTop =
+      element.getBoundingClientRect().top + window.scrollY - headerHeight - 18;
+
+    const currentPath = `${window.location.pathname}${window.location.search}`;
+    window.history.replaceState(null, "", `${currentPath}#games-arcade`);
+    window.scrollTo({
+      top: Math.max(targetTop, 0),
+      behavior: "smooth",
+    });
+  }
+
   function toggleGamePanel(targetId: InternalGameTarget) {
     if (openGameTarget === targetId) {
       setOpenGameTarget(null);
@@ -343,22 +373,33 @@ export default function GamesPage() {
             Games · Choiser
           </p>
           <h1 className="editorial-reveal editorial-reveal-delay-1 font-heading mx-auto mt-6 max-w-4xl text-balance text-[clamp(3.5rem,9vw,4.5rem)] font-bold tracking-[-0.04em] text-slate-50">
-            Gioca. Scopri. Connettiti.
+            Games non e una raccolta di giochini.
           </h1>
           <p className="editorial-reveal editorial-reveal-delay-2 mx-auto mt-6 max-w-[35rem] text-balance text-[1.05rem] leading-8 text-slate-400 sm:text-[1.18rem]">
-            Una raccolta di mini giochi pensati per animare ogni serata,
-            rompere il ghiaccio e creare momenti che non dimentichi.
+            E il motivo per cui quella serata che sembrava uguale alle altre
+            non lo e stata. Ogni gioco e pensato per un momento specifico:
+            rompere il ghiaccio, alzare il livello, conoscersi meglio, ridere
+            senza motivo. Scegliete quello che fa per voi - o lasciate che
+            decida la ruota.
           </p>
           <div className="editorial-reveal editorial-reveal-delay-3 mt-10 flex justify-center">
-            <EditorialCTAButton href="/games#games-arcade">
-              <span>Inizia a giocare</span>
+            <EditorialCTAButton
+              href="/games#games-arcade"
+              onClick={handleHeroArcadeJump}
+              ariaControls="games-arcade"
+            >
+              <span>Un gioco. Adesso.</span>
               <ArrowDown className="size-4" />
             </EditorialCTAButton>
           </div>
         </div>
       </section>
 
-      <section id="games-arcade" className="scroll-mt-28 space-y-8 sm:space-y-10">
+      <section
+        id="games-arcade"
+        ref={gamesArcadeRef}
+        className="scroll-mt-28 space-y-8 sm:space-y-10"
+      >
         <EditorialSectionHeader
           title="Apri e gioca"
           description="Le card qui sopra sono il vero hub di accesso: scegli un gioco e apri solo quello che ti serve, nel momento in cui ti serve."
@@ -611,8 +652,12 @@ export default function GamesPage() {
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <EditorialCTAButton href="/games#games-arcade">
-              <span>Entra in Games</span>
+            <EditorialCTAButton
+              href="/games#games-arcade"
+              onClick={handleHeroArcadeJump}
+              ariaControls="games-arcade"
+            >
+              <span>Un gioco. Adesso.</span>
               <ArrowDown className="size-4" />
             </EditorialCTAButton>
             <Link

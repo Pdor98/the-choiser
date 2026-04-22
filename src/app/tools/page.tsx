@@ -1,4 +1,7 @@
-import { ArrowRight, Dices, Hourglass, SlidersHorizontal, TimerReset } from "lucide-react";
+"use client";
+
+import { ArrowDown, Dices, Hourglass, SlidersHorizontal, TimerReset } from "lucide-react";
+import { useRef, type MouseEvent } from "react";
 
 import {
   EditorialCTAButton,
@@ -11,6 +14,34 @@ import { DiceArenaGame } from "@/features/games/dice-arena";
 import { TimerTool } from "@/features/tools/timer-tool";
 
 export default function ToolsPage() {
+  const toolsDeckRef = useRef<HTMLElement | null>(null);
+
+  function handleToolsJump(event: MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+
+    const element = toolsDeckRef.current ?? document.getElementById("tools-deck");
+
+    if (!element) {
+      return;
+    }
+
+    const headerElement = document.querySelector("header");
+    const headerHeight =
+      headerElement instanceof HTMLElement
+        ? headerElement.getBoundingClientRect().height
+        : 0;
+
+    const targetTop =
+      element.getBoundingClientRect().top + window.scrollY - headerHeight - 18;
+
+    const currentPath = `${window.location.pathname}${window.location.search}`;
+    window.history.replaceState(null, "", `${currentPath}#tools-deck`);
+    window.scrollTo({
+      top: Math.max(targetTop, 0),
+      behavior: "smooth",
+    });
+  }
+
   return (
     <div className="space-y-20 pb-10 sm:space-y-24 lg:space-y-28">
       <section className="relative isolate overflow-hidden rounded-[36px] border border-white/8 bg-[#0a0a0a] px-5 py-20 shadow-[0_30px_90px_-56px_rgba(15,23,42,0.9)] sm:px-8 sm:py-24 lg:px-12 lg:py-32">
@@ -23,22 +54,30 @@ export default function ToolsPage() {
             Tools · Choiser
           </p>
           <h1 className="editorial-reveal editorial-reveal-delay-1 font-heading mx-auto mt-6 max-w-4xl text-balance text-[clamp(3.2rem,8vw,4.4rem)] font-bold tracking-[-0.04em] text-slate-50">
-            Meno attrito. Più controllo.
+            Piccoli strumenti che fanno la differenza.
           </h1>
           <p className="editorial-reveal editorial-reveal-delay-2 mx-auto mt-6 max-w-[36rem] text-balance text-[1.05rem] leading-8 text-slate-400 sm:text-[1.18rem]">
-            Strumenti essenziali con una presenza discreta, pronti quando ti
-            servono davvero e invisibili quando hai già tutto sotto controllo.
+            Non fanno rumore, non si mettono in mezzo - ma quando ne hai
+            bisogno, ci sono.
           </p>
           <div className="editorial-reveal editorial-reveal-delay-3 mt-10 flex justify-center">
-            <EditorialCTAButton href="/tools#tools-deck">
+            <EditorialCTAButton
+              href="/tools#tools-deck"
+              onClick={handleToolsJump}
+              ariaControls="tools-deck"
+            >
               <span>Apri Tools</span>
-              <ArrowRight className="size-4" />
+              <ArrowDown className="size-4" />
             </EditorialCTAButton>
           </div>
         </div>
       </section>
 
-      <section id="tools-deck" className="scroll-mt-28 space-y-8 sm:space-y-10">
+      <section
+        id="tools-deck"
+        ref={toolsDeckRef}
+        className="scroll-mt-28 space-y-8 sm:space-y-10"
+      >
         <EditorialSectionHeader
           title="Apri Tools"
           description="Qui sotto trovi i moduli già attivi, pronti da usare senza cambiare contesto."
