@@ -4,7 +4,6 @@ import {
   ArrowDown,
   ChevronDown,
   ChevronRight,
-  Flag,
   Flame,
   RotateCcw,
   Sparkles,
@@ -23,7 +22,6 @@ import { PageExitBar } from "@/components/layout/page-exit-bar";
 import { BottleSpinGame } from "@/features/games/bottle-spin";
 import { EliminationWheelGame } from "@/features/games/elimination-wheel";
 import { GuessTheNumberGame } from "@/features/games/guess-the-number";
-import { HorseRaceGame } from "@/features/games/horse-race";
 import { TruthOrDareGame } from "@/features/games/truth-or-dare";
 
 const whyCards = [
@@ -106,17 +104,6 @@ const showcaseCards = [
       "group-hover:border-sky-300/34 group-hover:shadow-[0_24px_70px_-34px_rgba(59,130,246,0.34)]",
   },
   {
-    icon: "🏇",
-    title: "Corsa dei Cavalli",
-    description:
-      "Scegli il tuo cavallo e guarda la gara accendersi tra sorpassi, strappi e colpi di scena.",
-    href: "/games#horse-race",
-    label: "Games",
-    targetId: "horse-race",
-    glowClassName:
-      "group-hover:border-amber-300/34 group-hover:shadow-[0_24px_70px_-34px_rgba(251,191,36,0.34)]",
-  },
-  {
     icon: "🔢",
     title: "Indovina il Numero",
     description: "Range libero, feedback evoluto, storico tentativi.",
@@ -168,15 +155,13 @@ type InternalGameTarget =
   | "guess-the-number"
   | "truth-or-dare"
   | "bottle-spin"
-  | "elimination-wheel"
-  | "horse-race";
+  | "elimination-wheel";
 
 const internalGameTargets = [
   "guess-the-number",
   "truth-or-dare",
   "bottle-spin",
   "elimination-wheel",
-  "horse-race",
 ] as const satisfies readonly InternalGameTarget[];
 
 const gamePanels = [
@@ -227,18 +212,6 @@ const gamePanels = [
       "bg-sky-300/[0.06] shadow-[0_26px_80px_-48px_rgba(59,130,246,0.28)]",
     focusedClassName: "ring-1 ring-sky-300/20",
     render: () => <EliminationWheelGame />,
-  },
-  {
-    id: "horse-race",
-    icon: Flag,
-    eyebrow: "Horse Race",
-    title: "Corsa dei Cavalli",
-    description:
-      "Da 2 a 10 cavalli, un pronostico e una corsa piena di ritmo. Aprilo quando vuoi un party game rapido e imprevedibile.",
-    activeClassName:
-      "bg-amber-300/[0.06] shadow-[0_26px_80px_-48px_rgba(251,191,36,0.28)]",
-    focusedClassName: "ring-1 ring-amber-300/20",
-    render: () => <HorseRaceGame />,
   },
 ] as const;
 

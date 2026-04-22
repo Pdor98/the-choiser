@@ -105,11 +105,13 @@ input {
 }
 
 .home-scroll-stage {
+  --home-scroll-presence: 0;
+  --home-scroll-focus: 0;
   transform-origin: center top;
   will-change: opacity, transform, filter;
-  opacity: 0.76;
-  filter: saturate(0.92);
-  transform: translate3d(0, 18px, 0) scale(0.988);
+  opacity: 0.34;
+  filter: saturate(0.86) contrast(0.96);
+  transform: translate3d(0, 24px, 0) scale(0.984);
   transition:
     opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
     transform 620ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -122,14 +124,21 @@ input {
 }
 
 .home-scroll-stage[data-home-scroll-entered="true"] {
-  opacity: 0.84;
-  transform: translate3d(0, 0, 0) scale(0.994);
+  opacity: calc(
+    0.72 + (var(--home-scroll-presence, 0) * 0.12) +
+      (var(--home-scroll-focus, 0) * 0.08)
+  );
+  filter: saturate(calc(0.9 + (var(--home-scroll-focus, 0) * 0.08)))
+    contrast(calc(0.98 + (var(--home-scroll-focus, 0) * 0.04)));
+  transform:
+    translate3d(0, calc((1 - var(--home-scroll-presence, 0)) * 14px), 0)
+    scale(calc(0.989 + (var(--home-scroll-focus, 0) * 0.009)));
 }
 
 .home-scroll-stage[data-home-scroll-active="true"] {
   opacity: 1;
   filter: saturate(1) contrast(1.02);
-  transform: translate3d(0, 0, 0) scale(1);
+  transform: translate3d(0, 0, 0) scale(1.002);
 }
 
 .home-scroll-stage-hero {
@@ -143,7 +152,7 @@ input {
 .home-scroll-panel {
   --home-scroll-delay: 0ms;
   opacity: 0;
-  transform: translate3d(0, 20px, 0);
+  transform: translate3d(0, 20px, 0) scale(0.988);
   transition:
     opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
     transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -152,19 +161,21 @@ input {
 }
 
 .home-scroll-stage[data-home-scroll-entered="true"] .home-scroll-panel {
-  opacity: 0.92;
-  transform: translate3d(0, 0, 0);
+  opacity: calc(0.74 + (var(--home-scroll-presence, 0) * 0.18));
+  transform:
+    translate3d(0, calc((1 - var(--home-scroll-presence, 0)) * 12px), 0)
+    scale(calc(0.992 + (var(--home-scroll-focus, 0) * 0.008)));
 }
 
 .home-scroll-stage[data-home-scroll-active="true"] .home-scroll-panel {
   opacity: 1;
-  transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 @media (max-width: 767px) {
   .home-scroll-stage {
-    opacity: 0.9;
-    transform: translate3d(0, 10px, 0) scale(0.996);
+    opacity: 0.5;
+    transform: translate3d(0, 12px, 0) scale(0.994);
     transition-duration: 420ms;
   }
 
@@ -174,8 +185,13 @@ input {
   }
 
   .home-scroll-stage[data-home-scroll-entered="true"] {
-    opacity: 0.96;
-    transform: translate3d(0, 0, 0) scale(0.998);
+    opacity: calc(
+      0.84 + (var(--home-scroll-presence, 0) * 0.08) +
+        (var(--home-scroll-focus, 0) * 0.05)
+    );
+    transform:
+      translate3d(0, calc((1 - var(--home-scroll-presence, 0)) * 8px), 0)
+      scale(calc(0.996 + (var(--home-scroll-focus, 0) * 0.004)));
   }
 
   .home-scroll-stage-hero {
@@ -186,8 +202,15 @@ input {
   }
 
   .home-scroll-panel {
-    transform: translate3d(0, 12px, 0);
+    transform: translate3d(0, 12px, 0) scale(0.994);
     transition-duration: 380ms;
+  }
+
+  .home-scroll-stage[data-home-scroll-entered="true"] .home-scroll-panel {
+    opacity: calc(0.86 + (var(--home-scroll-presence, 0) * 0.1));
+    transform:
+      translate3d(0, calc((1 - var(--home-scroll-presence, 0)) * 6px), 0)
+      scale(calc(0.996 + (var(--home-scroll-focus, 0) * 0.003)));
   }
 }
 

@@ -1,0 +1,114 @@
+# Copia E Incolla Per ChatGPT
+
+Incolla questo testo in una nuova chat quando vuoi continuare il lavoro su Choiser senza perdere contesto.
+
+---
+
+Sto lavorando sul progetto **Choiser**.
+
+## Contesto progetto
+
+- Repo locale: `/Users/Davide/Projects/Choiser-local`
+- Repo GitHub: `https://github.com/Pdor98/the-choiser.git`
+- Sito live: `https://pdor98.github.io/the-choiser/`
+- Branch di lavoro: `develop`
+- Stack: Next.js + React + TypeScript + Tailwind CSS + Framer Motion
+
+## Stile del progetto
+
+Choiser deve restare:
+
+- dark
+- minimale
+- premium
+- pulito
+- mobile-first
+
+Le pagine devono essere coerenti tra loro:
+
+- `Home`: piu fredda / blu
+- `Games`: viola-blu
+- `Tools`: verde controllato
+- `Random`: piu calda / burgundy, ma solo come accento elegante
+
+## Regola importante di collaborazione
+
+Se non capisci bene la modifica che sto chiedendo:
+
+- fermati
+- non fare molti tentativi a caso
+- riallineati con me
+
+Se serve, usa questo formato:
+
+- adesso succede:
+- io lo voglio cosi:
+- non voglio che:
+- voglio che:
+- all'inizio:
+- durante:
+- alla fine:
+
+Una modifica alla volta.
+
+## Stato attuale importante
+
+Le ultime modifiche **locali** non ancora pubblicate sono:
+
+1. `Home`
+- e stata impostata una `scroll-driven animation v1`
+- e una base elegante e leggera
+- file coinvolti:
+  - `/Users/Davide/Projects/Choiser-local/src/components/home/home-scroll-stage.tsx`
+  - `/Users/Davide/Projects/Choiser-local/src/app/globals.css`
+
+2. `Random`
+- la pagina e stata riequilibrata per avere una identita `burgundy / wine red` piu soft
+- il nero deve restare dominante
+- il rosso deve essere una luce centrale, non uno sfondo pieno
+- file coinvolti:
+  - `/Users/Davide/Projects/Choiser-local/src/app/random/page.tsx`
+  - `/Users/Davide/Projects/Choiser-local/src/features/random/random-hub.tsx`
+
+3. `Games`
+- la `Corsa dei cavalli` deve restare **nascosta** dalla pagina `Games`
+- il file del gioco puo restare nel repo per tornarci in futuro
+- file coinvolto:
+  - `/Users/Davide/Projects/Choiser-local/src/app/games/page.tsx`
+
+4. `Continuita tra chat`
+- sono stati aggiunti file di memoria progetto e handoff
+- file coinvolti:
+  - `/Users/Davide/Projects/Choiser-local/AGENTS.md`
+  - `/Users/Davide/Projects/Choiser-local/SESSION_STATE.md`
+  - `/Users/Davide/Projects/Choiser-local/SESSION_WORKFLOW.md`
+  - `/Users/Davide/Projects/Choiser-local/PROJECT_MEMORY.md`
+  - `/Users/Davide/Projects/Choiser-local/WORKING_RULES.md`
+  - `/Users/Davide/Projects/Choiser-local/CHATGPT_HANDOFF_TEMPLATE.md`
+
+## Cose da non reinterpretare
+
+- `Random` non deve diventare rosso dominante: il rosso deve essere solo un accento soffuso
+- `Corsa dei cavalli` per ora non va rilanciata dentro `Games`
+- se una modifica visiva non e chiara, meglio fermarsi che andare a tentativi
+
+## Cosa fare prima di iniziare
+
+Leggi questi file:
+
+- `/Users/Davide/Projects/Choiser-local/AGENTS.md`
+- `/Users/Davide/Projects/Choiser-local/SESSION_STATE.md`
+- `/Users/Davide/Projects/Choiser-local/PROJECT_MEMORY.md`
+- `/Users/Davide/Projects/Choiser-local/WORKING_RULES.md`
+- `/Users/Davide/Projects/Choiser-local/SESSION_WORKFLOW.md`
+
+## Richiesta per questa chat
+
+Non cambiare nulla in modo aggressivo.
+Mantieni coerenza con Choiser.
+Se non sei sicuro di aver capito, fermati e chiedi riallineamento con il formato:
+
+- adesso succede:
+- io lo voglio cosi:
+
+---

@@ -75,13 +75,27 @@ Per evitare di perdere contesto quando Codex apre una chat nuova:
 
 1. leggere `AGENTS.md`
 2. leggere `SESSION_STATE.md`
-3. eseguire `npm run session:resume` se la vecchia chat non e visibile
+3. leggere `PROJECT_MEMORY.md`
+4. leggere `WORKING_RULES.md`
+5. eseguire `npm run session:resume` se la vecchia chat non e visibile
 
 Questo permette di recuperare:
 
 - percorso dei transcript locali di Codex
 - ultimi prompt utente rilevanti per Choiser
 - regole operative gia concordate per questa repo
+- decisioni progettuali da non perdere
+
+## Passaggio a ChatGPT app
+
+Non esiste una sincronizzazione diretta tra questa chat e la ChatGPT app.
+
+Per passare il contesto in modo pulito:
+
+1. leggere `PROJECT_MEMORY.md`
+2. leggere `WORKING_RULES.md`
+3. copiare `CHATGPT_HANDOFF_TEMPLATE.md`
+4. compilare lo stato reale prima di incollarlo nell'altra chat
 
 ## Regola pratica
 

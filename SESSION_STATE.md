@@ -24,6 +24,12 @@ Last updated: 2026-04-21
 
 - Work locally in this repo by default.
 - Do not make the user reconstruct old context if it can be recovered locally.
+- If a requested visual change is not being understood well, stop and realign instead of pushing multiple speculative edits.
+- Prefer clarification formats like:
+  - `adesso succede / io lo voglio cosi`
+  - `non voglio / voglio`
+  - `all'inizio / durante / alla fine`
+  - one change at a time
 - When closing a session, the standard expectation is:
   - backup to iCloud
   - final local verification of the requested change
@@ -35,6 +41,9 @@ Last updated: 2026-04-21
 
 - Workflow reference: `SESSION_WORKFLOW.md`
 - Repo-level startup rules for future Codex sessions: `AGENTS.md`
+- Durable project memory: `PROJECT_MEMORY.md`
+- Working communication rules: `WORKING_RULES.md`
+- ChatGPT app bridge template: `CHATGPT_HANDOFF_TEMPLATE.md`
 - Resume helper: `npm run session:resume`
 
 ## Known Codex Session Files
@@ -59,6 +68,8 @@ Last updated: 2026-04-21
 
 1. Read `SESSION_WORKFLOW.md`.
 2. Read `SESSION_STATE.md`.
-3. Run `git status`.
-4. If old chat context is missing, run `npm run session:resume`.
-5. Continue from recovered repo context before asking the user to repeat prior instructions.
+3. Read `PROJECT_MEMORY.md`.
+4. Read `WORKING_RULES.md`.
+5. Run `git status`.
+6. If old chat context is missing, run `npm run session:resume`.
+7. Continue from recovered repo context before asking the user to repeat prior instructions.

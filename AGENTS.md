@@ -8,7 +8,9 @@ At the start of every new Codex session in this repo:
 
 1. Read `SESSION_WORKFLOW.md`.
 2. Read `SESSION_STATE.md`.
-3. If the conversation context looks incomplete, run `npm run session:resume`.
+3. Read `PROJECT_MEMORY.md`.
+4. Read `WORKING_RULES.md`.
+5. If the conversation context looks incomplete, run `npm run session:resume`.
 
 ## Repo Identity
 
@@ -21,8 +23,12 @@ At the start of every new Codex session in this repo:
 - Work locally in this repository by default.
 - Avoid asking the user to restate old context if it can be recovered from repo files or local Codex session logs.
 - When a session is ending, follow the closeout workflow in `SESSION_WORKFLOW.md`.
-- Keep `SESSION_STATE.md` updated when the project state or workflow changes in a meaningful way.
+- Keep `SESSION_STATE.md`, `PROJECT_MEMORY.md`, and `WORKING_RULES.md` updated when the project state or workflow changes in a meaningful way.
 
 ## Continuity
 
-If Codex opens in a fresh chat and the old thread is not visible in the UI, treat `SESSION_STATE.md` plus `npm run session:resume` as the continuity source of truth before asking the user to repeat anything.
+If Codex opens in a fresh chat and the old thread is not visible in the UI, treat `SESSION_STATE.md`, `PROJECT_MEMORY.md`, `WORKING_RULES.md`, plus `npm run session:resume` as the continuity source of truth before asking the user to repeat anything.
+
+## ChatGPT App Handoff
+
+If the user wants to continue work inside the ChatGPT app, prepare or reference `CHATGPT_HANDOFF_TEMPLATE.md` so the project context can be pasted there cleanly.
