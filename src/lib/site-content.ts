@@ -65,7 +65,7 @@ export const categories: Category[] = [
     href: "/random",
     title: "Random",
     description:
-      "Quando nessuno ha voglia di scegliere, Random decide per voi. Veloce, visivo e sempre sorprendente.",
+      "Quando il gruppo non riesce a mettersi d'accordo su niente, Random lo fa per voi. Veloce, casuale, inappellabile.",
     eyebrow: "Lascia decidere il caso",
     icon: Dices,
     accentClassName:
@@ -75,7 +75,7 @@ export const categories: Category[] = [
     href: "/games",
     title: "Games",
     description:
-      "Obbligo o Verità, la bottiglia, la ruota, le sfide — tutto pronto, tutto immediato. Basta scegliere un gioco e iniziare.",
+      "Obbligo o Verità, la bottiglia, TAB-WHO?, la ruota, le sfide ose. Ogni gioco e gia carico, gia configurato, gia pronto. Voi dovete solo sedervi e iniziare a giocare.",
     eyebrow: "La serata vera inizia qui",
     icon: Gamepad2,
     accentClassName:
@@ -85,7 +85,7 @@ export const categories: Category[] = [
     href: "/tools",
     title: "Tools",
     description:
-      "Timer, note, convertitori — tutto quello che serve durante una serata senza aprire mille app diverse.",
+      "Timer, convertitori, note al volo. Tutto quello che serve durante una serata senza aprire mille app diverse e perdere il filo.",
     eyebrow: "Piccoli strumenti, grandi comodità",
     icon: TimerReset,
     accentClassName:
@@ -97,19 +97,19 @@ export const homeHighlights = [
   {
     title: "Niente più 'boh, non so'",
     description:
-      "Choiser taglia i tempi morti. In pochi secondi avete un'idea, una scelta o un gioco già pronto. La serata non aspetta.",
+      "Quante serate sono finite ancora prima di iniziare, bloccate su 'ma cosa facciamo?'. Choiser taglia quel momento. In dieci secondi avete una direzione - un gioco, una scelta, un'idea. La serata puo finalmente iniziare.",
     icon: Sparkles,
   },
   {
     title: "Si ride. Si gioca. Si resta.",
     description:
-      "Ogni gioco è pensato per creare momenti, non per riempire il tempo. La differenza si sente dalla prima partita.",
+      "Non stiamo parlando di passare il tempo davanti a uno schermo. Ogni gioco in Choiser e pensato per farvi guardare negli occhi, ridere, scoprire qualcosa di nuovo l'uno dell'altro. Quello schermo serve solo per darvi il la - poi ci pensate voi.",
     icon: Joystick,
   },
   {
     title: "Tutto dove ti aspetti",
     description:
-      "Apri Choiser, scegli la sezione, inizia. Non servono spiegazioni, non servono tutorial. È già tutto pronto per voi.",
+      "Non serve spiegare niente a nessuno. Non servono account, download o tutorial. Apri il link, scegli da dove partire, inizia. Choiser e pensato per funzionare nel tempo tra un bicchiere e l'altro.",
     icon: Compass,
   },
 ];

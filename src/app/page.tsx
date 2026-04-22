@@ -28,11 +28,13 @@ export default function HomePage() {
             Choiser
           </p>
           <h1 className="editorial-reveal editorial-reveal-delay-1 font-heading mx-auto mt-6 max-w-4xl text-balance text-[clamp(3.4rem,8vw,4.7rem)] font-bold tracking-[-0.04em] text-slate-50">
-            Scegli meglio. Vivi meglio.
+            Perche le serate migliori non si pianificano. Si innescano.
           </h1>
           <p className="editorial-reveal editorial-reveal-delay-2 mx-auto mt-6 max-w-[38rem] text-balance text-[1.05rem] leading-8 text-slate-400 sm:text-[1.18rem]">
-            Un posto solo per rompere l&apos;indecisione, dare ritmo alle serate e
-            trovare in pochi secondi il gioco, il caso o lo strumento giusto.
+            Choiser e nato per quei momenti in cui siete tutti insieme, nessuno
+            ha voglia di decidere, e la serata rischia di non decollare mai.
+            Giochi, scelte rapide, strumenti utili - tutto pronto, tutto
+            gratis, tutto in un posto solo.
           </p>
           <div className="editorial-reveal editorial-reveal-delay-3 mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <EditorialCTAButton href="/games">
@@ -93,8 +95,8 @@ export default function HomePage() {
 
       <HomeScrollStage className="space-y-8 sm:space-y-10">
         <EditorialSectionHeader
-          title="Perché Choiser"
-          description="Fatto per stare insieme. Costruito per divertirsi."
+          title="Fatto per stare insieme. Nato da una serata tra amici."
+          description="Choiser e nato da una domanda semplice: perche ogni volta che siamo in gruppo, l'unica cosa su cui non riusciamo a metterci d'accordo e cosa fare? Questa pagina e la risposta. Un posto per smettere di discutere e iniziare a divertirsi."
         />
 
         <div className="grid gap-5 md:grid-cols-3">
@@ -130,6 +132,31 @@ export default function HomePage() {
         </div>
       </HomeScrollStage>
 
+      <HomeScrollStage className="relative isolate overflow-hidden rounded-[36px] border border-white/8 bg-[linear-gradient(180deg,rgba(8,12,20,0.96),rgba(11,17,29,0.94))] px-5 py-14 shadow-[0_30px_90px_-56px_rgba(15,23,42,0.9)] sm:px-8 sm:py-16 lg:px-12">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(201,126,247,0.16),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.12),transparent_40%)]" />
+        <div className="relative mx-auto max-w-4xl text-center">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-slate-500">
+            Manifesto
+          </p>
+          <h2 className="font-heading mx-auto mt-6 max-w-3xl text-balance text-[clamp(2.2rem,5vw,3.6rem)] font-semibold tracking-[-0.04em] text-slate-50">
+            Choiser non e un&apos;app. E una scusa per stare insieme meglio.
+          </h2>
+          <p className="mx-auto mt-6 max-w-3xl text-balance text-base leading-8 text-slate-300 sm:text-lg">
+            L&apos;abbiamo costruito perche ci sembrava assurdo che con tutto
+            quello che esiste online, non ci fosse un posto semplice, immediato
+            e fatto apposta per una serata tra amici. Non un social, non un
+            gioco da scaricare, non qualcosa da spiegare. Solo uno spazio in
+            cui arrivate in cinque, aprite Choiser, e la serata prende forma da
+            sola.
+          </p>
+          <p className="mx-auto mt-6 max-w-2xl text-balance text-sm italic leading-7 text-slate-400 sm:text-base">
+            C&apos;e un momento preciso in ogni serata in cui tutto potrebbe
+            andare in mille direzioni diverse. Choiser esiste per trasformare
+            quel momento in qualcosa di bello.
+          </p>
+        </div>
+      </HomeScrollStage>
+
       <HomeScrollStage className="space-y-8 sm:space-y-10">
         <EditorialSectionHeader
           title="Inizia subito"
@@ -157,7 +184,10 @@ export default function HomePage() {
       </HomeScrollStage>
 
       <HomeScrollStage as="div">
-        <PageExitBar description="Quando hai scelto da dove partire, puoi passare a Random, Games o Tools senza perdere il filo dell'esperienza." />
+        <PageExitBar
+          title="Stasera avete gia tutto quello che serve. Mancava solo il posto giusto da cui partire."
+          description="Nessun account. Nessun download. Solo voi, uno schermo e una serata da vivere."
+        />
       </HomeScrollStage>
     </div>
   );
