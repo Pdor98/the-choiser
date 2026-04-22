@@ -33,6 +33,8 @@ export function HomeScrollStage({
   const [hasEntered, setHasEntered] = useState(variant === "hero");
   const [isActive, setIsActive] = useState(variant === "hero");
   const [heroProgress, setHeroProgress] = useState(0);
+  const [presence, setPresence] = useState(variant === "hero" ? 1 : 0);
+  const [focusStrength, setFocusStrength] = useState(variant === "hero" ? 1 : 0);
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -51,42 +53,67 @@ export function HomeScrollStage({
       return;
     }
 
-    const isMobile = window.innerWidth < 768;
-    const thresholds = [0, 0.08, 0.16, 0.28, 0.4, 0.56];
+    let frameId: number | null = null;
 
-    const updateSectionState = (entry: IntersectionObserverEntry) => {
+    const measure = () => {
+      frameId = null;
+
       const viewportHeight = window.innerHeight || 1;
-      const focalTop = viewportHeight * (isMobile ? 0.24 : 0.22);
-      const focalBottom = viewportHeight * (isMobile ? 0.84 : 0.76);
-      const hasPresence = entry.isIntersecting || entry.intersectionRatio > 0.05;
-      const isInFocusBand =
-        entry.boundingClientRect.top <= focalBottom &&
-        entry.boundingClientRect.bottom >= focalTop;
+      const isMobile = window.innerWidth < 768;
+      const rect = element.getBoundingClientRect();
+      const visibleTop = Math.max(rect.top, 0);
+      const visibleBottom = Math.min(rect.bottom, viewportHeight);
+      const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+      const stageHeight = Math.max(rect.height, 1);
+      const normalizedHeight = Math.min(stageHeight, viewportHeight * (isMobile ? 0.96 : 0.9));
+      const nextPresence = clamp(visibleHeight / Math.max(normalizedHeight, 1), 0, 1);
+      const stageCenter = rect.top + rect.height / 2;
+      const focalPoint = viewportHeight * (isMobile ? 0.5 : 0.48);
+      const focusRange = viewportHeight * (isMobile ? 0.72 : 0.78);
+      const nextFocusStrength = clamp(
+        1 - Math.abs(stageCenter - focalPoint) / Math.max(focusRange, 1),
+        0,
+        1,
+      );
+      const nextHasPresence =
+        nextPresence > 0.08 || (rect.top < viewportHeight * 0.82 && rect.bottom > 0);
+      const nextIsActive = nextPresence > 0.12 && nextFocusStrength > (isMobile ? 0.5 : 0.56);
 
-      if (hasPresence) {
+      if (nextHasPresence) {
         setHasEntered(true);
       }
 
-      setIsActive(hasPresence && isInFocusBand);
+      setPresence((currentPresence) =>
+        Math.abs(currentPresence - nextPresence) > 0.01 ? nextPresence : currentPresence,
+      );
+      setFocusStrength((currentFocusStrength) =>
+        Math.abs(currentFocusStrength - nextFocusStrength) > 0.01
+          ? nextFocusStrength
+          : currentFocusStrength,
+      );
+      setIsActive(nextIsActive);
     };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const nextEntry = entries[0];
+    const requestMeasure = () => {
+      if (frameId !== null) {
+        return;
+      }
 
-        if (nextEntry) {
-          updateSectionState(nextEntry);
-        }
-      },
-      {
-        threshold: thresholds,
-        rootMargin: isMobile ? "0px 0px -8% 0px" : "0px 0px -12% 0px",
-      },
-    );
+      frameId = window.requestAnimationFrame(measure);
+    };
 
-    observer.observe(element);
+    requestMeasure();
+    window.addEventListener("scroll", requestMeasure, { passive: true });
+    window.addEventListener("resize", requestMeasure);
 
-    return () => observer.disconnect();
+    return () => {
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
+
+      window.removeEventListener("scroll", requestMeasure);
+      window.removeEventListener("resize", requestMeasure);
+    };
   }, [variant]);
 
   useEffect(() => {
@@ -143,8 +170,14 @@ export function HomeScrollStage({
       ? ({
           ...style,
           "--home-hero-progress": heroProgress,
+          "--home-scroll-presence": presence,
+          "--home-scroll-focus": focusStrength,
         } as CSSProperties)
-      : style;
+      : ({
+          ...style,
+          "--home-scroll-presence": presence,
+          "--home-scroll-focus": focusStrength,
+        } as CSSProperties);
 
   return (
     <Component
