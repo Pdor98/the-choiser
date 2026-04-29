@@ -2,7 +2,13 @@
   "name": "CustodeAI WhatsApp MVP",
   "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bullseye",
   "forwardPorts": [8000],
-  "postCreateCommand": "pip install -r requirements.txt",
+  "portsAttributes": {
+    "8000": {
+      "label": "CustodeAI FastAPI",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "bash scripts/setup_dev.sh",
   "customizations": {
     "vscode": {
       "settings": {

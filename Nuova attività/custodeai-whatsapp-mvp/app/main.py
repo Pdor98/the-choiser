@@ -12,6 +12,14 @@ from app.ai.extractor import OpenAIExtractor
 from app.config import Settings, get_settings
 from app.db import create_engine_and_session_factory
 from app.models import Base, Reminder
+from app.schemas import (
+    DocumentListResponse,
+    HealthResponse,
+    ReminderCreateResponse,
+    ReminderDispatchResponse,
+    ReminderListResponse,
+    WebhookAckResponse,
+)
 from app.services.processor import BotProcessor
 from app.services.reminders import ReminderService, ReminderWorker
 from app.whatsapp.client import WhatsAppClient
@@ -60,7 +68,7 @@ def create_app(settings: Optional[Settings] = None) -> FastAPI:
 
     app = FastAPI(title=app_settings.app_name, version="0.2.0", lifespan=lifespan)
 
-    @app.get("/health")
+    @app.get("/health", response_model=HealthResponse)
     def health():
         return {"status": "ok"}
 
@@ -74,7 +82,7 @@ def create_app(settings: Optional[Settings] = None) -> FastAPI:
             return challenge
         raise HTTPException(status_code=403, detail="Webhook verification failed")
 
-    @app.post("/webhooks/whatsapp")
+    @app.post("/webhooks/whatsapp", response_model=WebhookAckResponse)
     async def receive_whatsapp_webhook(request: Request, background_tasks: BackgroundTasks):
         raw_body = await request.body()
         _ensure_valid_signature_or_raise(
@@ -87,11 +95,11 @@ def create_app(settings: Optional[Settings] = None) -> FastAPI:
         background_tasks.add_task(request.app.state.processor.process_webhook_payload, payload)
         return {"status": "ok"}
 
-    @app.get("/documents")
+    @app.get("/documents", response_model=DocumentListResponse)
     def list_documents(limit: int = Query(default=50, ge=1, le=100)):
         return {"items": app.state.processor.get_documents(limit=limit)}
 
-    @app.get("/reminders")
+    @app.get("/reminders", response_model=ReminderListResponse)
     def list_reminders(limit: int = Query(default=50, ge=1, le=100)):
         with app.state.session_factory() as session:
             reminders = list(session.query(Reminder).order_by(Reminder.created_at.desc()).limit(limit))
@@ -111,7 +119,7 @@ def create_app(settings: Optional[Settings] = None) -> FastAPI:
                 ]
             }
 
-    @app.post("/documents/{document_id}/reminders")
+    @app.post("/documents/{document_id}/reminders", response_model=ReminderCreateResponse)
     def create_reminder(document_id: str):
         try:
             result = app.state.reminder_service.create_reminder_for_document(document_id)
@@ -124,7 +132,7 @@ def create_app(settings: Optional[Settings] = None) -> FastAPI:
             "remind_at": result.remind_at.isoformat() if result.remind_at else None,
         }
 
-    @app.post("/reminders/dispatch")
+    @app.post("/reminders/dispatch", response_model=ReminderDispatchResponse)
     def dispatch_reminders():
         sent_count = app.state.reminder_service.dispatch_due_reminders()
         return {"status": "ok", "sent_count": sent_count}

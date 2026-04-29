@@ -132,7 +132,7 @@ def test_text_message_processing_without_openai_key(client, monkeypatch):
     assert any("CustodeAI ha salvato il documento." in body for _, body in sent_messages)
 
 
-def test_env_does_not_exist_or_is_gitignored():
+def test_env_is_gitignored():
     project_root = PROJECT_ROOT
     env_file = project_root / ".env"
     gitignore = (project_root / ".gitignore").read_text(encoding="utf-8")

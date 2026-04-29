@@ -75,3 +75,41 @@ def test_parse_image_message_payload():
     assert events[0].media_id == "media-image-1"
     assert events[0].mime_type == "image/jpeg"
     assert events[0].text == "scontrino supermercato"
+
+
+def test_parse_document_message_payload():
+    payload = {
+        "entry": [
+            {
+                "changes": [
+                    {
+                        "value": {
+                            "contacts": [{"wa_id": "393331234567", "profile": {"name": "Mario"}}],
+                            "messages": [
+                                {
+                                    "from": "393331234567",
+                                    "id": "wamid-doc-1",
+                                    "timestamp": "1710000000",
+                                    "type": "document",
+                                    "document": {
+                                        "id": "media-doc-1",
+                                        "mime_type": "application/pdf",
+                                        "filename": "bolletta.pdf",
+                                        "caption": "bolletta luce",
+                                    },
+                                }
+                            ],
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+
+    events = WhatsAppWebhookParser().parse(payload)
+
+    assert len(events) == 1
+    assert events[0].event_type == "document"
+    assert events[0].media_id == "media-doc-1"
+    assert events[0].file_name == "bolletta.pdf"
+    assert events[0].mime_type == "application/pdf"

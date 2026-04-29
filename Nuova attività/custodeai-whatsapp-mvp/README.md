@@ -17,17 +17,25 @@ CustodeAI e un assistente che riceve messaggi WhatsApp, immagini e PDF, estrae i
 - crea promemoria se trova una data di scadenza
 - invia un riepilogo all'utente su WhatsApp
 
+## Cosa serve prima di iniziare
+
+- un account GitHub
+- accesso a GitHub Codespaces
+- un account Meta Developers con WhatsApp Cloud API
+- una chiave `OPENAI_API_KEY` se vuoi l'analisi AI completa
+- i valori Meta:
+  - `WHATSAPP_ACCESS_TOKEN`
+  - `WHATSAPP_PHONE_NUMBER_ID`
+  - `META_APP_SECRET`
+
 ## Come avviarlo in locale
 
 Apri il terminale dentro la cartella del progetto e lancia:
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
 cp .env.example .env
-python scripts/init_db.py
-python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
+bash scripts/setup_dev.sh
+bash scripts/start_dev.sh
 ```
 
 Server atteso:
@@ -45,12 +53,9 @@ Server atteso:
 6. Esegui:
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
 cp .env.example .env
-python scripts/init_db.py
-python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
+bash scripts/setup_dev.sh
+bash scripts/start_dev.sh
 ```
 
 7. Apri la tab `Ports`.
@@ -74,12 +79,14 @@ cp .env.example .env
 
 Compila i campi principali:
 
+- `PUBLIC_BASE_URL`
 - `WHATSAPP_VERIFY_TOKEN`
 - `WHATSAPP_ACCESS_TOKEN`
 - `WHATSAPP_PHONE_NUMBER_ID`
 - `META_APP_SECRET`
 - `OPENAI_API_KEY`
-- `PUBLIC_BASE_URL`
+
+Metti in `PUBLIC_BASE_URL` l'URL pubblico di Codespaces quando la porta `8000` diventa pubblica.
 
 Importante:
 
@@ -121,7 +128,7 @@ Da sapere:
 Con il server avviato:
 
 ```bash
-curl http://127.0.0.1:8000/health
+bash scripts/check_health.sh
 ```
 
 Risultato atteso:
@@ -168,16 +175,15 @@ Oppure invia:
 
 ### Il server non parte
 
-- controlla di aver attivato `.venv`
-- esegui di nuovo `pip install -r requirements.txt`
-- esegui `python scripts/init_db.py`
+- esegui di nuovo `bash scripts/setup_dev.sh`
+- poi rilancia `bash scripts/start_dev.sh`
 
 ### /health non risponde con status ok
 
 - verifica di aver avviato esattamente:
 
 ```bash
-python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
+bash scripts/start_dev.sh
 ```
 
 ### Meta non verifica il webhook
@@ -204,3 +210,11 @@ python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
 - non committare token, chiavi API o database locali
 - non salvare log con dati personali
 - la firma `X-Hub-Signature-256` viene verificata se `META_APP_SECRET` e configurato
+
+## Comandi rapidi in Codespaces
+
+```bash
+cp .env.example .env
+bash scripts/setup_dev.sh
+bash scripts/start_dev.sh
+```
