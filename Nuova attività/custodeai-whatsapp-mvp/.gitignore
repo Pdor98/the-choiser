@@ -1,0 +1,12 @@
+.env
+.venv/
+custodeai.db
+*.db
+uploads/
+__pycache__/
+.pytest_cache/
+custodeai.log
+.DS_Store
+.coverage
+htmlcov/
+
