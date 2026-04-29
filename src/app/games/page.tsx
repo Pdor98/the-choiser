@@ -121,11 +121,11 @@ const carouselQuotes = [
   "Non serve conoscersi da anni. Basta una domanda giusta.",
   "La serata perfetta inizia con: a chi tocca?",
   "Stasera non serve un piano. Serve Choiser.",
-  "Il momento in cui tutti ridono insieme - quello e il gioco che ha vinto.",
+  "Il momento in cui tutti ridono insieme: quello è il gioco che ha vinto.",
   "Non è solo un gioco. È il modo in cui ti ricorderanno.",
   "Il ghiaccio si rompe in un secondo. Basta il gioco giusto.",
   "Giocare insieme è la forma più onesta di conoscersi.",
-  "Avete gia la compagnia. Ci pensiamo noi al resto.",
+  "Avete già la compagnia. Ci pensiamo noi al resto.",
   "Ogni risposta rivela qualcosa. Ogni sfida avvicina.",
   "Una serata con i giochi giusti vale dieci cene formali.",
 ] as const;
@@ -346,13 +346,13 @@ export default function GamesPage() {
             Games · Choiser
           </p>
           <h1 className="editorial-reveal editorial-reveal-delay-1 font-heading mx-auto mt-6 max-w-4xl text-balance text-[clamp(3.5rem,9vw,4.5rem)] font-bold tracking-[-0.04em] text-slate-50">
-            Games non e una raccolta di giochini.
+            Games non è una raccolta di giochini.
           </h1>
           <p className="editorial-reveal editorial-reveal-delay-2 mx-auto mt-6 max-w-[35rem] text-balance text-[1.05rem] leading-8 text-slate-400 sm:text-[1.18rem]">
-            E il motivo per cui quella serata che sembrava uguale alle altre
-            non lo e stata. Ogni gioco e pensato per un momento specifico:
+            È il motivo per cui quella serata che sembrava uguale alle altre
+            non lo è stata. Ogni gioco è pensato per un momento specifico:
             rompere il ghiaccio, alzare il livello, conoscersi meglio, ridere
-            senza motivo. Scegliete quello che fa per voi - o lasciate che
+            senza motivo. Scegliete quello che fa per voi, oppure lasciate che
             decida la ruota.
           </p>
           <div className="editorial-reveal editorial-reveal-delay-3 mt-10 flex justify-center">
@@ -645,7 +645,7 @@ export default function GamesPage() {
 
       <EditorialFooter />
 
-      <PageExitBar description="Quando hai finito puoi continuare a giocare, cambiare sezione o tornare alla home senza perdere il ritmo della serata." />
+      <PageExitBar description="Quando hai finito puoi continuare a giocare, cambiare sezione o tornare alla Home senza perdere il ritmo della serata." />
     </div>
   );
 }

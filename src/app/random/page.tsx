@@ -347,7 +347,8 @@ export default function RandomPage() {
 
       <EditorialFooter />
 
-      <PageExitBar description="Quando hai finito con un prompt o una risposta casuale, puoi tornare alla home o cambiare sezione senza fare scroll all’indietro." />
+      <PageExitBar description="Quando hai finito con un prompt o una risposta casuale, puoi tornare alla Home o cambiare sezione senza fare scroll all’indietro." />
+      
     </div>
   );
 }

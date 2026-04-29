@@ -252,7 +252,7 @@ export function BottleSpinGame() {
                     {isSpinning
                       ? "Aspetta lo stop finale"
                       : hasEnoughChoices
-                        ? "La bottiglia e pronta a scegliere"
+                        ? "La bottiglia è pronta a scegliere"
                         : "Aggiungi almeno due scelte"}
                   </p>
                 </div>

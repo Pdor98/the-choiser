@@ -216,7 +216,7 @@ export function RandomHub({
           >
             <RandomPrimaryCard
               icon={<Wand2 className="size-6" />}
-              eyebrow="Today prompt"
+              eyebrow="Prompt del giorno"
               title="Cosa fare oggi?"
               description="Un suggerimento semplice e realistico per darti una direzione oggi senza pensarci troppo."
               buttonLabel="Genera nuovo"
@@ -283,7 +283,7 @@ export function RandomHub({
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="text-xs uppercase tracking-[0.22em] text-slate-400">
-                      Extra random
+                      Caso puro
                     </p>
                     <h3 className="font-heading mt-2 text-xl font-semibold text-slate-50 sm:text-2xl">
                       Numero casuale da 1 a 100

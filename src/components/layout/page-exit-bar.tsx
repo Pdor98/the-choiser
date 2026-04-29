@@ -16,7 +16,7 @@ type PageExitBarProps = {
 
 export function PageExitBar({
   title = "Hai finito qui?",
-  description = "Torna subito alla home o passa a un altro modulo senza dover risalire tutta la pagina.",
+  description = "Torna subito alla Home o passa a un altro modulo senza dover risalire tutta la pagina.",
 }: PageExitBarProps) {
   const pathname = usePathname();
   const currentPage = getActiveNavigation(pathname);

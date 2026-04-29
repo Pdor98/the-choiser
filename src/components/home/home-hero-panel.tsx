@@ -12,9 +12,9 @@ import { SectionBadge } from "@/components/ui/section-badge";
 const decisionNotes = [
   "Prima mossa leggera: parti da qui e vedi come ti senti.",
   "Se sei bloccato, lascia che sia l'azione a sbloccare il resto.",
-  "Quando le opzioni sono vicine, scegliere in fretta aiuta piu di ottimizzare.",
+  "Quando le opzioni sono vicine, scegliere in fretta aiuta più che ottimizzare.",
   "Provala senza pensarci troppo: il feedback arriva dopo il primo passo.",
-  "Questa sembra la direzione piu semplice da accendere adesso.",
+  "Questa sembra la direzione più semplice da accendere adesso.",
 ];
 
 function getRandomItem(items: string[], previous?: string) {

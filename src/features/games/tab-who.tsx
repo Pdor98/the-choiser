@@ -291,7 +291,7 @@ export function TabWhoGame() {
                       })}
                     </div>
                     <p className="mt-3 text-sm leading-6 text-slate-600">
-                      Scegli un round rapido da 30 secondi, classico da 60 o piu
+                      Scegli un round rapido da 30 secondi, classico da 60 o più
                       lungo da 180.
                     </p>
                   </div>

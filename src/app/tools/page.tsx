@@ -57,7 +57,7 @@ export default function ToolsPage() {
             Piccoli strumenti che fanno la differenza.
           </h1>
           <p className="editorial-reveal editorial-reveal-delay-2 mx-auto mt-6 max-w-[36rem] text-balance text-[1.05rem] leading-8 text-slate-400 sm:text-[1.18rem]">
-            Non fanno rumore, non si mettono in mezzo - ma quando ne hai
+            Non fanno rumore, non si mettono in mezzo, ma quando ne hai
             bisogno, ci sono.
           </p>
           <div className="editorial-reveal editorial-reveal-delay-3 mt-10 flex justify-center">
@@ -173,7 +173,7 @@ export default function ToolsPage() {
           </div>
           <div>
             <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
-              Utility deck
+              Kit utility
             </p>
             <p className="mt-2 text-sm leading-7 text-slate-300">
               Timer e dadi convivono in una sezione più chiara: preset rapidi,
@@ -186,7 +186,7 @@ export default function ToolsPage() {
 
       <EditorialFooter />
 
-      <PageExitBar description="Quando hai finito con timer o dadi puoi tornare alla home o aprire un’altra sezione senza risalire fino all’header." />
+      <PageExitBar description="Quando hai finito con timer o dadi puoi tornare alla Home o aprire un’altra sezione senza risalire fino all’header." />
     </div>
   );
 }

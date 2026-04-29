@@ -79,7 +79,7 @@ export function EditorialFooter() {
         </Link>
       </nav>
       <p className="mt-5 text-center text-xs uppercase tracking-[0.24em] text-slate-500">
-        Choiser - Perche ogni serata merita un buon inizio.
+        Choiser — Perché ogni serata merita un buon inizio.
       </p>
     </footer>
   );

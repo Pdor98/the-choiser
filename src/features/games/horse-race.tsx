@@ -214,7 +214,7 @@ export function HorseRaceGame() {
     setHorses(nextHorses);
     prepareRace(
       nextHorses,
-      `${boundedCount} cavalli ai box. La griglia e pronta per una corsa piena di sorpassi.`,
+      `${boundedCount} cavalli ai box. La griglia è pronta per una corsa piena di sorpassi.`,
     );
   }
 
@@ -257,7 +257,7 @@ export function HorseRaceGame() {
     setRaceDistance(nextDistance);
     prepareRace(
       horses,
-      `Traguardo impostato su ${formatRaceDistance(nextDistance)}. La gara e pronta per una corsa piu ${nextDistance > defaultRaceDistance ? "lunga" : nextDistance < defaultRaceDistance ? "secca" : "bilanciata"}.`,
+      `Traguardo impostato su ${formatRaceDistance(nextDistance)}. La gara è pronta per una corsa più ${nextDistance > defaultRaceDistance ? "lunga" : nextDistance < defaultRaceDistance ? "secca" : "bilanciata"}.`,
     );
   }
 
@@ -750,7 +750,7 @@ export function HorseRaceGame() {
                         Distanza del traguardo
                       </p>
                       <p className="mt-1 text-xs leading-6 text-white/52">
-                        Scegli quanto vuoi tirarla lunga: sprint veloce o gara con piu suspense.
+                        Scegli quanto vuoi tirarla lunga: sprint veloce o gara con più suspense.
                       </p>
                     </div>
                     <div className="flex min-w-[102px] flex-col items-center justify-center rounded-[24px] border border-amber-300/18 bg-[linear-gradient(180deg,rgba(251,191,36,0.08),rgba(15,23,42,0.74))] px-3 py-2 text-center shadow-[0_20px_40px_-32px_rgba(251,191,36,0.9)]">
@@ -824,7 +824,7 @@ export function HorseRaceGame() {
                 <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
                   <p className="text-sm font-semibold text-white">Cavalli in pista</p>
                   <p className="mt-1 text-xs leading-6 text-white/52">
-                    La griglia e pronta: quando vuoi, fai partire la gara e guarda come si compone il finale.
+                    La griglia è pronta: quando vuoi, fai partire la gara e guarda come si compone il finale.
                   </p>
 
                   <div className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-3 xl:grid-cols-2">
