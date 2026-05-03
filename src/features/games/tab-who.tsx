@@ -24,12 +24,6 @@ import { Card } from "@/components/ui/card";
 import { parole, type TabWhoCard } from "@/features/games/tab-who-data";
 
 const durationOptions = [30, 60, 180] as const;
-const lightActionButtonStyle = {
-  color: "#0f172a",
-  WebkitTextFillColor: "#0f172a",
-  background: "#ffffff",
-  borderColor: "#e2e8f0",
-};
 
 function shuffleDeck(cards: TabWhoCard[]) {
   const nextCards = [...cards];
@@ -719,11 +713,9 @@ export function TabWhoGame() {
                 </Button>
                 <Button
                   type="button"
-                  variant="secondary"
                   icon={<RotateCcw className="size-4" />}
                   onClick={resetToIntro}
-                  className="!border-white/16 !bg-white !text-slate-950 shadow-sm hover:!bg-slate-100 hover:!text-slate-950"
-                  style={lightActionButtonStyle}
+                  className="bg-slate-950 text-white hover:bg-slate-800"
                 >
                   Nuova partita
                 </Button>

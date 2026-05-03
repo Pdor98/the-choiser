@@ -1,0 +1,459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C90A622EB475FE9BE4A5F8B /* JarvisPersonalAssistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96ECE97741E55629A169DAA /* JarvisPersonalAssistantApp.swift */; };
+		482C012FC8E8550D82726FB3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF4EC1488A5A269F399A36 /* ContentView.swift */; };
+		6C9B6CA37D81505399919183 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7C4732AD4C5A40BF179B07 /* ChatMessage.swift */; };
+		4CBDAC7D9E15570BB2C3EF9C /* PendingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779853BBF63151E79AE4FF4B /* PendingAction.swift */; };
+		722CB4E122E457FD9D3F17F6 /* OpenAIResponsesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0635C722CA53459E3F549C /* OpenAIResponsesClient.swift */; };
+		477827B0143353309CEE21A7 /* SystemPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9539E96A9BE534CB630DE33 /* SystemPrompt.swift */; };
+		F43DC702737B522D8FFB072C /* ToolSchemas.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB57F8908259B38AADF243 /* ToolSchemas.swift */; };
+		96F73995A2CE50CF924489B5 /* AssistantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BDC270FB315A7DB539A23B /* AssistantViewModel.swift */; };
+		188AAA9FA23956489E94EEA4 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7AD50DB4E54F1B6947217 /* CalendarService.swift */; };
+		78A07964E2455F70ACCB89ED /* ContactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12968EBE209456CA92716C79 /* ContactsService.swift */; };
+		D4462AF789705270A078B35F /* DateParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF702C78395FA28FA7DAA3 /* DateParsing.swift */; };
+		50D819B46B205A2FB7B134CA /* ExternalDraftService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50284888F75C90B01EDFAE /* ExternalDraftService.swift */; };
+		4117E67020755468BB84E791 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40087D76F865806BD8F0650 /* KeychainStore.swift */; };
+		4D34107C20BE57E2A2B1AAA1 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302AF40C95695FC3888648AF /* SettingsStore.swift */; };
+		FC40CA7557115F83BD19BA7A /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F11DD709B3C5012825F2A41 /* SpeechRecognizer.swift */; };
+		CDDCE36690E359B18F18A26C /* SpeechSpeaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C371778F77B5052B2886A6D /* SpeechSpeaker.swift */; };
+		C1E4631EBD2B55C5BBB36DCF /* ToolExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4167313EDB952AFAAC7EF6C /* ToolExecutor.swift */; };
+		05706AA8CB2054A09A8A8D93 /* JarvisAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1459840D45491821116EB /* JarvisAppIntents.swift */; };
+		91702FA759CF5FB6B3FD6A69 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BB80FC99425335854E95CA /* MessageBubble.swift */; };
+		6A6BC1B231E25E2999F422BD /* PendingActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D500062BDAD573FADD61EDB /* PendingActionsView.swift */; };
+		C69B137362AA584B845E7C60 /* SettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F135050359B05541AF87756F /* SettingsPanel.swift */; };
+		4FA1BB7459E6526F933B6778 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47A606550CE953A8973373C5 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F96ECE97741E55629A169DAA /* JarvisPersonalAssistantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JarvisPersonalAssistantApp.swift; sourceTree = "<group>"; };
+		A5EF4EC1488A5A269F399A36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6E7C4732AD4C5A40BF179B07 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		779853BBF63151E79AE4FF4B /* PendingAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingAction.swift; sourceTree = "<group>"; };
+		0D0635C722CA53459E3F549C /* OpenAIResponsesClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIResponsesClient.swift; sourceTree = "<group>"; };
+		D9539E96A9BE534CB630DE33 /* SystemPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemPrompt.swift; sourceTree = "<group>"; };
+		FFEB57F8908259B38AADF243 /* ToolSchemas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolSchemas.swift; sourceTree = "<group>"; };
+		A1BDC270FB315A7DB539A23B /* AssistantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantViewModel.swift; sourceTree = "<group>"; };
+		0DC7AD50DB4E54F1B6947217 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		12968EBE209456CA92716C79 /* ContactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsService.swift; sourceTree = "<group>"; };
+		98DF702C78395FA28FA7DAA3 /* DateParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParsing.swift; sourceTree = "<group>"; };
+		0E50284888F75C90B01EDFAE /* ExternalDraftService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDraftService.swift; sourceTree = "<group>"; };
+		D40087D76F865806BD8F0650 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		302AF40C95695FC3888648AF /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		3F11DD709B3C5012825F2A41 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
+		4C371778F77B5052B2886A6D /* SpeechSpeaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSpeaker.swift; sourceTree = "<group>"; };
+		D4167313EDB952AFAAC7EF6C /* ToolExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolExecutor.swift; sourceTree = "<group>"; };
+		86F1459840D45491821116EB /* JarvisAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JarvisAppIntents.swift; sourceTree = "<group>"; };
+		99BB80FC99425335854E95CA /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
+		4D500062BDAD573FADD61EDB /* PendingActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingActionsView.swift; sourceTree = "<group>"; };
+		F135050359B05541AF87756F /* SettingsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPanel.swift; sourceTree = "<group>"; };
+		8D6439B608DC5960835D4534 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47A606550CE953A8973373C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		922159A6D7E353CBA8E7A0F8 /* JarvisPersonalAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JarvisPersonalAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		227C3B688F025866999A2AB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		49053B1066F95C348FAAB04F = {
+			isa = PBXGroup;
+			children = (
+				5B32C96D71655542A06F0D2E /* JarvisPersonalAssistant */,
+				6978739FCD4156AABD9D9EAA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6978739FCD4156AABD9D9EAA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				922159A6D7E353CBA8E7A0F8 /* JarvisPersonalAssistant.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5B32C96D71655542A06F0D2E /* JarvisPersonalAssistant */ = {
+			isa = PBXGroup;
+			children = (
+				F96ECE97741E55629A169DAA /* JarvisPersonalAssistantApp.swift */,
+				A5EF4EC1488A5A269F399A36 /* ContentView.swift */,
+				8D6439B608DC5960835D4534 /* Info.plist */,
+				47A606550CE953A8973373C5 /* Assets.xcassets */,
+				1B419EE65523528B816A3E86 /* Models */,
+				980A1CD38FEA5AD6A2FE0B9A /* OpenAI */,
+				3A5B43941A1D56E78BBD4540 /* Services */,
+				A2F749E628705ED9B6BC14AD /* Intents */,
+				D706C110433753FEBECF5D33 /* Views */,
+			);
+			path = JarvisPersonalAssistant;
+			sourceTree = "<group>";
+		};
+		1B419EE65523528B816A3E86 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6E7C4732AD4C5A40BF179B07 /* ChatMessage.swift */,
+				779853BBF63151E79AE4FF4B /* PendingAction.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		980A1CD38FEA5AD6A2FE0B9A /* OpenAI */ = {
+			isa = PBXGroup;
+			children = (
+				0D0635C722CA53459E3F549C /* OpenAIResponsesClient.swift */,
+				D9539E96A9BE534CB630DE33 /* SystemPrompt.swift */,
+				FFEB57F8908259B38AADF243 /* ToolSchemas.swift */,
+			);
+			path = OpenAI;
+			sourceTree = "<group>";
+		};
+		3A5B43941A1D56E78BBD4540 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A1BDC270FB315A7DB539A23B /* AssistantViewModel.swift */,
+				0DC7AD50DB4E54F1B6947217 /* CalendarService.swift */,
+				12968EBE209456CA92716C79 /* ContactsService.swift */,
+				98DF702C78395FA28FA7DAA3 /* DateParsing.swift */,
+				0E50284888F75C90B01EDFAE /* ExternalDraftService.swift */,
+				D40087D76F865806BD8F0650 /* KeychainStore.swift */,
+				302AF40C95695FC3888648AF /* SettingsStore.swift */,
+				3F11DD709B3C5012825F2A41 /* SpeechRecognizer.swift */,
+				4C371778F77B5052B2886A6D /* SpeechSpeaker.swift */,
+				D4167313EDB952AFAAC7EF6C /* ToolExecutor.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A2F749E628705ED9B6BC14AD /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				86F1459840D45491821116EB /* JarvisAppIntents.swift */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
+		D706C110433753FEBECF5D33 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				99BB80FC99425335854E95CA /* MessageBubble.swift */,
+				4D500062BDAD573FADD61EDB /* PendingActionsView.swift */,
+				F135050359B05541AF87756F /* SettingsPanel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		498BDAC5D5CA56CC9DBF847B /* JarvisPersonalAssistant */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3947981D52D95DFF972D5F10 /* Build configuration list for PBXNativeTarget "JarvisPersonalAssistant" */;
+			buildPhases = (
+				91BD5F09B5AB529288DA275E /* Sources */,
+				227C3B688F025866999A2AB8 /* Frameworks */,
+				AF9FD77C56A0588C8DBDA43D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JarvisPersonalAssistant;
+			productName = JarvisPersonalAssistant;
+			productReference = 922159A6D7E353CBA8E7A0F8 /* JarvisPersonalAssistant.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		64D27450B45B5AE5AE6B3436 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					498BDAC5D5CA56CC9DBF847B = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 88BF638A5C85551FBA948FAE /* Build configuration list for PBXProject "JarvisPersonalAssistant" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 49053B1066F95C348FAAB04F;
+			productRefGroup = 6978739FCD4156AABD9D9EAA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				498BDAC5D5CA56CC9DBF847B /* JarvisPersonalAssistant */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AF9FD77C56A0588C8DBDA43D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FA1BB7459E6526F933B6778 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		91BD5F09B5AB529288DA275E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C90A622EB475FE9BE4A5F8B /* JarvisPersonalAssistantApp.swift in Sources */,
+				482C012FC8E8550D82726FB3 /* ContentView.swift in Sources */,
+				6C9B6CA37D81505399919183 /* ChatMessage.swift in Sources */,
+				4CBDAC7D9E15570BB2C3EF9C /* PendingAction.swift in Sources */,
+				722CB4E122E457FD9D3F17F6 /* OpenAIResponsesClient.swift in Sources */,
+				477827B0143353309CEE21A7 /* SystemPrompt.swift in Sources */,
+				F43DC702737B522D8FFB072C /* ToolSchemas.swift in Sources */,
+				96F73995A2CE50CF924489B5 /* AssistantViewModel.swift in Sources */,
+				188AAA9FA23956489E94EEA4 /* CalendarService.swift in Sources */,
+				78A07964E2455F70ACCB89ED /* ContactsService.swift in Sources */,
+				D4462AF789705270A078B35F /* DateParsing.swift in Sources */,
+				50D819B46B205A2FB7B134CA /* ExternalDraftService.swift in Sources */,
+				4117E67020755468BB84E791 /* KeychainStore.swift in Sources */,
+				4D34107C20BE57E2A2B1AAA1 /* SettingsStore.swift in Sources */,
+				FC40CA7557115F83BD19BA7A /* SpeechRecognizer.swift in Sources */,
+				CDDCE36690E359B18F18A26C /* SpeechSpeaker.swift in Sources */,
+				C1E4631EBD2B55C5BBB36DCF /* ToolExecutor.swift in Sources */,
+				05706AA8CB2054A09A8A8D93 /* JarvisAppIntents.swift in Sources */,
+				91702FA759CF5FB6B3FD6A69 /* MessageBubble.swift in Sources */,
+				6A6BC1B231E25E2999F422BD /* PendingActionsView.swift in Sources */,
+				C69B137362AA584B845E7C60 /* SettingsPanel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		99FE90FF036252DCB9853EA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("DEBUG=1", "$(inherited)");
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		137BB13ECF985AFBA070F521 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+												GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+								SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		02E84A3FE9A957D6B814BEF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = JarvisPersonalAssistant/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = it.personal.jarvis.JarvisPersonalAssistant;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22E3F2269ADD53C4B27BD198 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = JarvisPersonalAssistant/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = it.personal.jarvis.JarvisPersonalAssistant;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		88BF638A5C85551FBA948FAE /* Build configuration list for PBXProject "JarvisPersonalAssistant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99FE90FF036252DCB9853EA7 /* Debug */,
+				137BB13ECF985AFBA070F521 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3947981D52D95DFF972D5F10 /* Build configuration list for PBXNativeTarget "JarvisPersonalAssistant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02E84A3FE9A957D6B814BEF3 /* Debug */,
+				22E3F2269ADD53C4B27BD198 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 64D27450B45B5AE5AE6B3436 /* Project object */;
+}

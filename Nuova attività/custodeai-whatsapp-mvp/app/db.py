@@ -31,3 +31,18 @@ def create_engine_and_session_factory(database_url: str, echo: bool = False):
         expire_on_commit=False,
     )
     return engine, session_factory
+
+
+def init_db(database_url: str = "", echo: bool = False):
+    if not database_url:
+        from app.config import get_settings
+
+        settings = get_settings()
+        database_url = settings.database_url
+        echo = settings.sqlalchemy_echo
+
+    from app.models import Base
+
+    engine, session_factory = create_engine_and_session_factory(database_url, echo=echo)
+    Base.metadata.create_all(bind=engine)
+    return engine, session_factory

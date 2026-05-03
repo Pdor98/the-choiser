@@ -1,0 +1,30 @@
+import sys
+from pathlib import Path
+
+import pytest
+from fastapi.testclient import TestClient
+
+API_ROOT = Path(__file__).resolve().parents[1]
+if str(API_ROOT) not in sys.path:
+    sys.path.insert(0, str(API_ROOT))
+
+from app.core.config import Settings
+from app.main import create_app
+
+
+@pytest.fixture
+def test_settings(tmp_path: Path):
+    return Settings(
+        database_url="sqlite:///{0}".format(tmp_path / "custodeai-test.db"),
+        storage_dir=str(tmp_path / "storage"),
+        telegram_bot_token="test-token",
+        openai_api_key="test-openai-key",
+        scheduler_poll_seconds=300,
+    )
+
+
+@pytest.fixture
+def client(test_settings):
+    app = create_app(test_settings)
+    with TestClient(app) as test_client:
+        yield test_client

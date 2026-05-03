@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <key>CFBundleDisplayName</key>
+    <string>JARVIS</string>
+    <key>CFBundleName</key>
+    <string>$(PRODUCT_NAME)</string>
+    <key>CFBundlePackageType</key>
+    <string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsLocalNetworking</key>
+        <true/>
+    </dict>
+    <key>NSCalendarsUsageDescription</key>
+    <string>JARVIS usa il calendario solo per creare eventi che confermi esplicitamente.</string>
+    <key>NSCalendarsFullAccessUsageDescription</key>
+    <string>JARVIS richiede accesso completo al calendario per creare eventi confermati da te.</string>
+    <key>NSRemindersUsageDescription</key>
+    <string>JARVIS usa Promemoria solo per creare attività che confermi esplicitamente.</string>
+    <key>NSRemindersFullAccessUsageDescription</key>
+    <string>JARVIS richiede accesso ai promemoria per creare attività confermate da te.</string>
+    <key>NSContactsUsageDescription</key>
+    <string>JARVIS cerca contatti per preparare bozze messaggi o email, senza inviarle automaticamente.</string>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>JARVIS usa il riconoscimento vocale per trasformare le tue richieste vocali in testo.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>JARVIS usa il microfono solo quando avvii la dettatura.</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>whatsapp</string>
+    </array>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+</dict>
+</plist>
