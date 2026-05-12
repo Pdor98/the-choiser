@@ -1,6 +1,6 @@
 # Session State
 
-Last updated: 2026-04-21
+Last updated: 2026-05-12
 
 ## Project Identity
 
@@ -19,6 +19,16 @@ Last updated: 2026-04-21
 - Tailwind CSS 4
 - Framer Motion
 - Docker workflow on `http://localhost:3000`
+
+## Latest Published State
+
+- Published online on 2026-05-12 from `main` commit `c5a3b5d`.
+- Live Games URL: `https://pdor98.github.io/the-choiser/games/`
+- Added the Games module `Chi è più probabile che…?` as an internal panel opened by `/games#most-likely`.
+- The new game data lives in `src/features/games/most-likely-data.ts` with three modes: `normal`, `spicy`, `deep`.
+- The new game UI lives in `src/features/games/most-likely.tsx`.
+- `docs/` was regenerated with `scripts/export-github-pages.mjs` and pushed to `main` for GitHub Pages.
+- Note: on 2026-05-12, `origin/develop` had been force-updated to unrelated `CustodeAI` commits. Do not force-push local `develop` over it without first checking repo intent.
 
 ## Durable User Preferences
 

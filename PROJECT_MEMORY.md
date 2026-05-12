@@ -1,11 +1,12 @@
 # Project Memory
 
-Ultimo aggiornamento: 2026-04-22
+Ultimo aggiornamento: 2026-05-12
 
 ## Identita progetto
 
 - Nome: Choiser / The Choiser
 - Sezioni principali: Home, Random, Games, Tools
+- Games attivi: TAB-WHO?, Chi è più probabile che…?, Obbligo o Verità, Gira la Bottiglia, Ruota Elimina-Nomi, Indovina il Numero
 - Stack: Next.js, React, TypeScript, Tailwind CSS, Framer Motion
 - Repo locale: `/Users/Davide/Projects/Choiser-local`
 - Repo remoto: `https://github.com/Pdor98/the-choiser.git`
@@ -25,6 +26,9 @@ Ultimo aggiornamento: 2026-04-22
 - La `Corsa dei cavalli` per ora deve restare nascosta dalla pagina `Games`; il file puo restare nel repo per un eventuale ritorno futuro.
 - Le pagine top-level devono essere coerenti tra loro come struttura e comportamento, cambiando solo il tono cromatico o il contenuto dove richiesto.
 - I CTA hero su `Games`, `Random` e `Tools` devono comportarsi in modo coerente anche su mobile.
+- `Chi è più probabile che…?` è un gioco sociale semplice nella pagina `Games`, aperto da `/games#most-likely`, con modalità `Normale`, `Piccante soft` e `Deep`.
+- Le domande di `Chi è più probabile che…?` devono restare facili da espandere negli array `mostLikelyNormal`, `mostLikelySpicy`, `mostLikelyDeep`.
+- Su `origin/develop` è stato rilevato un force update con commit non Choiser/CustodeAI; non fare force push su quel branch senza verifica esplicita.
 
 ## Continuita operativa
 
