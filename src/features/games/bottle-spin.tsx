@@ -62,7 +62,7 @@ export function BottleSpinGame() {
     setRotation(0);
     setSpinDuration(4.6);
     setIsSpinning(false);
-    setFeedback("Board resettata. La bottiglia è pronta per un nuovo giro.");
+    setFeedback("Tutto resettato. La bottiglia è pronta per un nuovo giro.");
   }
 
   function spinBottle() {

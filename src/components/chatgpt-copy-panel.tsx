@@ -35,7 +35,7 @@ export function ChatGptCopyPanel({ content }: ChatGptCopyPanelProps) {
             Copia il contesto e continua senza perdere il filo.
           </h1>
           <p className="mx-auto mt-6 max-w-[40rem] text-balance text-[1rem] leading-8 text-slate-400 sm:text-[1.08rem]">
-            Qui sotto trovi il testo pronto da incollare in ChatGPT app.
+            Qui sotto trovi il testo pronto da incollare nell&apos;app ChatGPT.
             Nessun riassunto a mano, nessun pezzo importante perso per strada.
           </p>
           <div className="mt-10 flex justify-center">

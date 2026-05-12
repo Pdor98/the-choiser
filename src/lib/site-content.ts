@@ -164,7 +164,7 @@ export const instantAnswers = [
   "Il futuro ti sorride su questo.",
   "La risposta è scritta nel vento - ed è sì.",
   "Tutte le strade portano nella stessa direzione.",
-  "Conta su di esso.",
+  "Contaci.",
   "Favorevole. Molto favorevole.",
   "Chi non risica non rosica - e tu vincerai.",
 

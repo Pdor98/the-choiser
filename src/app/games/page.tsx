@@ -8,6 +8,7 @@ import {
   RotateCcw,
   Sparkles,
   Target,
+  Users,
 } from "lucide-react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
@@ -22,6 +23,7 @@ import { PageExitBar } from "@/components/layout/page-exit-bar";
 import { BottleSpinGame } from "@/features/games/bottle-spin";
 import { EliminationWheelGame } from "@/features/games/elimination-wheel";
 import { GuessTheNumberGame } from "@/features/games/guess-the-number";
+import { MostLikelyGame } from "@/features/games/most-likely";
 import { TruthOrDareGame } from "@/features/games/truth-or-dare";
 
 const whyCards = [
@@ -56,7 +58,7 @@ const whyCards = [
     emoji: "🪩",
     title: "Un ritmo naturale",
     description:
-      "Ruote, bottiglia, taboo e sfide tengono viva la serata senza forzature.",
+      "Ruote, bottiglia, tabù e sfide tengono viva la serata senza forzature.",
   },
 ] as const;
 
@@ -71,6 +73,16 @@ const showcaseCards = [
     targetId: null,
     glowClassName:
       "group-hover:border-fuchsia-300/32 group-hover:shadow-[0_24px_70px_-34px_rgba(217,70,239,0.34)]",
+  },
+  {
+    icon: "👥",
+    title: "Chi è più probabile che…?",
+    description: "Domande rapide per scoprire come ti vede il gruppo.",
+    href: "/games#most-likely",
+    label: "Games",
+    targetId: "most-likely",
+    glowClassName:
+      "group-hover:border-amber-300/32 group-hover:shadow-[0_24px_70px_-34px_rgba(251,191,36,0.3)]",
   },
   {
     icon: "🔥",
@@ -153,12 +165,14 @@ const steps = [
 
 type InternalGameTarget =
   | "guess-the-number"
+  | "most-likely"
   | "truth-or-dare"
   | "bottle-spin"
   | "elimination-wheel";
 
 const internalGameTargets = [
   "guess-the-number",
+  "most-likely",
   "truth-or-dare",
   "bottle-spin",
   "elimination-wheel",
@@ -176,6 +190,18 @@ const gamePanels = [
       "bg-cyan-300/[0.06] shadow-[0_26px_80px_-48px_rgba(34,211,238,0.28)]",
     focusedClassName: "ring-1 ring-cyan-300/20",
     render: () => <GuessTheNumberGame />,
+  },
+  {
+    id: "most-likely",
+    icon: Users,
+    eyebrow: "Most Likely",
+    title: "Chi è più probabile che…?",
+    description:
+      "Domande rapide per far scegliere al gruppo chi rispecchia meglio ogni situazione.",
+    activeClassName:
+      "bg-amber-300/[0.06] shadow-[0_26px_80px_-48px_rgba(251,191,36,0.24)]",
+    focusedClassName: "ring-1 ring-amber-300/20",
+    render: () => <MostLikelyGame />,
   },
   {
     id: "truth-or-dare",
