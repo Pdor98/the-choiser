@@ -301,7 +301,7 @@ export function DiceArenaGame() {
                   setup al volo, poi lancia per ottenere subito il totale.
                 </p>
                 <p>
-                  Lo storico salva gli ultimi risultati, cosi puoi continuare la
+                  Lo storico salva gli ultimi risultati, così puoi continuare la
                   partita senza perdere il ritmo.
                 </p>
               </div>

@@ -62,7 +62,7 @@ export function BottleSpinGame() {
     setRotation(0);
     setSpinDuration(4.6);
     setIsSpinning(false);
-    setFeedback("Board resettata. La bottiglia è pronta per un nuovo giro.");
+    setFeedback("Tutto resettato. La bottiglia è pronta per un nuovo giro.");
   }
 
   function spinBottle() {
@@ -252,7 +252,7 @@ export function BottleSpinGame() {
                     {isSpinning
                       ? "Aspetta lo stop finale"
                       : hasEnoughChoices
-                        ? "La bottiglia e pronta a scegliere"
+                        ? "La bottiglia è pronta a scegliere"
                         : "Aggiungi almeno due scelte"}
                   </p>
                 </div>

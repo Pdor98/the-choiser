@@ -5,7 +5,7 @@ export default function TabWhoPage() {
   return (
     <div className="space-y-8">
       <TabWhoGame />
-      <PageExitBar description="Quando chiudi un round puoi tornare alla home o spostarti subito su un’altra sezione senza perdere tempo." />
+      <PageExitBar description="Quando chiudi un round puoi tornare alla Home o spostarti subito su un’altra sezione senza perdere tempo." />
     </div>
   );
 }

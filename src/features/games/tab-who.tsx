@@ -75,7 +75,7 @@ export function TabWhoGame() {
 
   const statusCopy = useMemo(() => {
     if (gameState === "finished") {
-      return "Tempo finito! Il turno e concluso.";
+      return "Tempo finito! Il turno è concluso.";
     }
 
     if (lastAction === "correct") {
@@ -83,14 +83,14 @@ export function TabWhoGame() {
     }
 
     if (lastAction === "wrong") {
-      return "Carta sbagliata o taboo pronunciato. Nessun punto assegnato.";
+      return "Carta sbagliata o parola proibita pronunciata. Nessun punto assegnato.";
     }
 
     if (lastAction === "skip") {
       return "Carta saltata. Passi subito alla parola successiva.";
     }
 
-    return "Descrivi la parola grande senza pronunciare nessuna delle 5 parole proibite.";
+    return "Descrivi la parola principale senza pronunciare nessuna delle 5 parole proibite.";
   }, [gameState, lastAction]);
 
   useEffect(() => {
@@ -208,10 +208,10 @@ export function TabWhoGame() {
         >
           <div className="space-y-2">
             <p className="text-xs uppercase tracking-[0.22em] text-amber-100/72">
-              Word challenge
+              Gioco di parole
             </p>
             <h1 className="font-heading text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              TAB-WHO ?
+              TAB-WHO?
             </h1>
           </div>
 
@@ -231,10 +231,10 @@ export function TabWhoGame() {
 
                 <div className="space-y-3">
                   <p className="text-sm uppercase tracking-[0.28em] text-slate-500">
-                    Intro game
+                    Prima del turno
                   </p>
                   <h2 className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl">
-                    TAB-WHO ?
+                    TAB-WHO?
                   </h2>
                 </div>
               </div>
@@ -291,7 +291,7 @@ export function TabWhoGame() {
                       })}
                     </div>
                     <p className="mt-3 text-sm leading-6 text-slate-600">
-                      Scegli un round rapido da 30 secondi, classico da 60 o piu
+                      Scegli un round rapido da 30 secondi, classico da 60 o più
                       lungo da 180.
                     </p>
                   </div>
@@ -306,7 +306,7 @@ export function TabWhoGame() {
                   onClick={startGame}
                   className={darkPrimaryActionClass}
                 >
-                  Inizia Gioco
+                  Inizia il gioco
                 </Button>
                 <Button
                   type="button"
@@ -315,7 +315,7 @@ export function TabWhoGame() {
                   className={darkPrimaryActionClass}
                   style={primaryButtonReadableStyle}
                 >
-                  Nuova Parola
+                  Nuova parola
                 </Button>
                 <Link
                   href="/#top"
@@ -457,7 +457,7 @@ export function TabWhoGame() {
                     {mistakes}
                   </p>
                   <p className="mt-2 text-sm text-slate-600">
-                    Carte perse per errore o taboo.
+                    Carte perse per errore o parola proibita.
                   </p>
                 </div>
 
@@ -493,7 +493,7 @@ export function TabWhoGame() {
                           {currentCard.parola}
                         </h3>
                         <p className="max-w-md text-sm leading-6 text-slate-600 sm:hidden">
-                          Descrivila senza usare i taboo.
+                          Descrivila senza usare le parole proibite.
                         </p>
                         <p className="hidden max-w-md text-sm leading-6 text-slate-600 sm:block">
                           Descrivila senza mai pronunciare le parole nella colonna
@@ -512,7 +512,7 @@ export function TabWhoGame() {
                             Parole proibite
                           </p>
                           <p className="mt-1 text-sm text-rose-700">
-                            Se ne usi una, premi Sbagliata.
+                            Se ne usi una, premi Errore / Tabù.
                           </p>
                         </div>
                       </div>
@@ -549,7 +549,7 @@ export function TabWhoGame() {
                   disabled={gameState !== "playing"}
                   className="w-full justify-center bg-rose-500 text-white hover:bg-rose-400"
                 >
-                  Sbagliata / Taboo
+                  Errore / Tabù
                 </Button>
                 <Button
                   type="button"
@@ -590,7 +590,7 @@ export function TabWhoGame() {
                   disabled={gameState !== "playing"}
                   className="w-full justify-center bg-rose-500 text-white hover:bg-rose-400"
                 >
-                  Taboo
+                  Tabù
                 </Button>
                 <Button
                   type="button"
@@ -610,13 +610,13 @@ export function TabWhoGame() {
                     Regole rapide
                   </p>
                   <p className="mt-2 text-sm leading-6 text-slate-600">
-                    Corretto fa punto. Sbagliata segna errore. Salta non da ne
-                    toglie punti.
+                    Corretto assegna un punto. Sbagliata segna un errore.
+                    Salta non dà né toglie punti.
                   </p>
                 </div>
                 <div className="rounded-[22px] border border-slate-200 bg-white/82 p-4 shadow-sm">
                   <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
-                    Round stats
+                    Statistiche del round
                   </p>
                   <p className="mt-2 text-sm leading-6 text-slate-600">
                     Carte viste: <span className="font-semibold">{cardsSeen}</span>
@@ -638,8 +638,8 @@ export function TabWhoGame() {
                     Dataset
                   </p>
                   <p className="mt-2 text-sm leading-6 text-slate-600">
-                    {parole.length} carte iniziali, con 5 taboo per parola e
-                    categorie miste per partite veloci.
+                    {parole.length} carte iniziali, con 5 parole proibite per
+                    carta e categorie miste per partite veloci.
                   </p>
                 </div>
               </div>

@@ -429,8 +429,8 @@ export function GuessTheNumberGame() {
                 seguendo gli indizi.
               </p>
               <p>
-                Se il numero e piu alto o piu basso lo vedi subito nel feedback,
-                mentre lo storico tiene traccia dei tentativi gia fatti.
+                Se il numero è più alto o più basso lo vedi subito nel feedback,
+                mentre lo storico tiene traccia dei tentativi già fatti.
               </p>
             </div>
           </ResponsiveControlPanel>

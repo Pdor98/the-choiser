@@ -2,7 +2,6 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  ChevronDown,
   Flame,
   MessageCircle,
   Shuffle,
@@ -40,16 +39,21 @@ const modeOptions: Array<{
   value: TruthOrDareMode;
   label: string;
   description: string;
+  available: boolean;
+  badge?: string;
 }> = [
   {
     value: "normal",
     label: "Normale",
-    description: "Prompt piu leggeri, sociali e adatti al gruppo.",
+    description: "Prompt più leggeri, sociali e adatti al gruppo.",
+    available: true,
   },
   {
     value: "spicy",
-    label: "Spicy 🔥",
-    description: "Verita e obblighi piu audaci, sempre mischiati senza ordine fisso.",
+    label: "Piccante 🔥",
+    description: "Più audace e diretto. Tornerà disponibile in una fase successiva.",
+    available: false,
+    badge: "Presto",
   },
 ];
 
@@ -60,8 +64,8 @@ const promptTypeOptions: Array<{
 }> = [
   {
     value: "truth",
-    label: "Verita",
-    description: "Domande dirette, sincere e piu personali.",
+    label: "Verità",
+    description: "Domande dirette, sincere e più personali.",
   },
   {
     value: "dare",
@@ -70,18 +74,81 @@ const promptTypeOptions: Array<{
   },
 ];
 
+function SelectionGroup<T extends string>({
+  label,
+  options,
+  value,
+  onSelect,
+  accent = "cyan",
+}: {
+  label: string;
+  options: Array<{
+    value: T;
+    label: string;
+    description: string;
+    available?: boolean;
+    badge?: string;
+  }>;
+  value: T;
+  onSelect: (nextValue: T, isAvailable: boolean) => void;
+  accent?: "cyan" | "fuchsia";
+}) {
+  const activeClassName =
+    accent === "fuchsia"
+      ? "border-fuchsia-200/28 bg-fuchsia-300/12 text-white shadow-[0_20px_45px_-28px_rgba(217,70,239,0.55)]"
+      : "border-cyan-200/28 bg-cyan-300/10 text-white shadow-[0_20px_45px_-28px_rgba(34,211,238,0.48)]";
+
+  return (
+    <div>
+      <p className="text-xs uppercase tracking-[0.18em] text-white/42">
+        {label}
+      </p>
+      <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+        {options.map((option) => {
+          const isActive = value === option.value;
+          const isAvailable = option.available ?? true;
+
+          return (
+            <button
+              key={option.value}
+              type="button"
+              onClick={() => onSelect(option.value, isAvailable)}
+              aria-pressed={isActive}
+              className={`rounded-[22px] border px-4 py-4 text-left transition duration-300 ${
+                isActive
+                  ? activeClassName
+                  : "border-white/10 bg-white/6 text-white/68 hover:border-white/16 hover:bg-white/10 hover:text-white"
+              } ${!isAvailable ? "opacity-82" : ""}`}
+            >
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-base font-semibold">{option.label}</p>
+                {option.badge ? (
+                  <span className="rounded-full border border-white/10 bg-white/6 px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-white/62">
+                    {option.badge}
+                  </span>
+                ) : null}
+              </div>
+              <p className="mt-1 text-sm leading-6 opacity-75">
+                {option.description}
+              </p>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export function TruthOrDareGame() {
   const [mode, setMode] = useState<TruthOrDareMode>("normal");
   const [promptType, setPromptType] = useState<TruthOrDarePromptType>("truth");
   const [currentPrompt, setCurrentPrompt] = useState<string | null>(null);
   const [promptVersion, setPromptVersion] = useState(0);
-  const [openPanel, setOpenPanel] = useState<"mode" | "type" | null>(null);
   const [spicyBannerVisible, setSpicyBannerVisible] = useState(false);
 
   const promptPool = truthOrDarePrompts[mode][promptType];
-  const modeLabel = mode === "spicy" ? "Spicy 🔥" : "Normale";
-  const promptTypeLabel = promptType === "truth" ? "Verita" : "Obbligo";
-  const isSpicyLocked = mode === "spicy";
+  const modeLabel = mode === "spicy" ? "Piccante 🔥" : "Normale";
+  const promptTypeLabel = promptType === "truth" ? "Verità" : "Obbligo";
 
   const helperCopy = useMemo(() => {
     if (promptType === "truth") {
@@ -94,27 +161,22 @@ export function TruthOrDareGame() {
   function handleModeSelect(nextMode: TruthOrDareMode) {
     if (nextMode === "spicy") {
       setSpicyBannerVisible(true);
-      setMode("spicy");
-      setCurrentPrompt(null);
-      setOpenPanel(null);
       return;
     }
 
     setSpicyBannerVisible(false);
     setMode("normal");
     setCurrentPrompt(null);
-    setOpenPanel(null);
   }
 
   function revealPrompt() {
-    if (isSpicyLocked || promptPool.length === 0) {
+    if (promptPool.length === 0) {
       return;
     }
 
     const nextPrompt = pickPrompt(promptPool, currentPrompt);
     setCurrentPrompt(nextPrompt);
     setPromptVersion((current) => current + 1);
-    setOpenPanel(null);
   }
 
   return (
@@ -125,10 +187,10 @@ export function TruthOrDareGame() {
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-2">
             <p className="text-xs uppercase tracking-[0.22em] text-fuchsia-200/70">
-              Party prompt
+              Gioco party
             </p>
             <h2 className="font-heading text-3xl font-semibold tracking-tight text-white">
-              Obbligo o Verita 🔥
+              Obbligo o Verità 🔥
             </h2>
           </div>
 
@@ -158,9 +220,7 @@ export function TruthOrDareGame() {
                     className="mx-auto max-w-[20ch] text-balance font-heading text-[clamp(1.6rem,2.6vw,2.35rem)] font-semibold leading-[1.22] tracking-tight text-white"
                   >
                     {currentPrompt ??
-                      (isSpicyLocked
-                        ? "La modalita Spicy e in lavorazione. Torna presto per provarla."
-                        : "Scegli modalita e tipo, poi premi Mostra domanda per far partire il turno.")}
+                      "Scegli verità o obbligo, imposta il tono del turno e poi tocca Nuova domanda."}
                   </motion.p>
                 </AnimatePresence>
 
@@ -171,206 +231,36 @@ export function TruthOrDareGame() {
           <div className="order-2 space-y-4 lg:order-2">
             <div className="rounded-[28px] border border-white/10 bg-slate-950/72 p-5">
               <div className="space-y-5">
-                <div className="space-y-3 lg:hidden">
-                  <div className="space-y-2">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setOpenPanel((current) =>
-                          current === "mode" ? null : "mode",
-                        )
-                      }
-                      className="flex w-full items-center justify-between rounded-[22px] border border-white/10 bg-white/6 px-4 py-4 text-left transition duration-300 hover:border-white/16 hover:bg-white/10"
-                    >
-                      <div>
-                        <p className="text-[11px] uppercase tracking-[0.2em] text-white/42">
-                          Scelta
-                        </p>
-                        <p className="mt-1 text-base font-semibold text-white">
-                          {promptTypeLabel}
-                        </p>
-                      </div>
-                      <ChevronDown
-                        className={`size-4 text-white/56 transition duration-300 ${
-                          openPanel === "mode" ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
+                <SelectionGroup
+                  label="Scelta"
+                  options={promptTypeOptions}
+                  value={promptType}
+                  onSelect={(nextType) => {
+                    setPromptType(nextType);
+                    setCurrentPrompt(null);
+                  }}
+                />
 
-                    <AnimatePresence initial={false}>
-                      {openPanel === "mode" ? (
-                        <motion.div
-                          initial={{ opacity: 0, y: -8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -8 }}
-                          transition={{ duration: 0.22, ease: "easeOut" }}
-                          className="grid gap-3"
-                        >
-                          {promptTypeOptions.map((option) => {
-                            const isActive = promptType === option.value;
+                <SelectionGroup
+                  label="Intensità"
+                  options={modeOptions}
+                  value={mode}
+                  accent="fuchsia"
+                  onSelect={(nextMode, isAvailable) => {
+                    if (!isAvailable) {
+                      setSpicyBannerVisible(true);
+                      return;
+                    }
 
-                            return (
-                              <button
-                                key={option.value}
-                                type="button"
-                                onClick={() => {
-                                  setPromptType(option.value);
-                                  setCurrentPrompt(null);
-                                  setOpenPanel("type");
-                                }}
-                                className={`rounded-[22px] border px-4 py-4 text-left transition duration-300 ${
-                                  isActive
-                                    ? "border-cyan-200/28 bg-cyan-300/10 text-white shadow-[0_20px_45px_-28px_rgba(34,211,238,0.48)]"
-                                    : "border-white/10 bg-white/6 text-white/68 hover:border-white/16 hover:bg-white/10 hover:text-white"
-                                }`}
-                              >
-                                <p className="text-base font-semibold">{option.label}</p>
-                                <p className="mt-1 text-sm leading-6 opacity-75">
-                                  {option.description}
-                                </p>
-                              </button>
-                            );
-                          })}
-                        </motion.div>
-                      ) : null}
-                    </AnimatePresence>
-                  </div>
-
-                  <div className="space-y-2">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setOpenPanel((current) =>
-                          current === "type" ? null : "type",
-                        )
-                      }
-                      className="flex w-full items-center justify-between rounded-[22px] border border-white/10 bg-white/6 px-4 py-4 text-left transition duration-300 hover:border-white/16 hover:bg-white/10"
-                    >
-                      <div>
-                        <p className="text-[11px] uppercase tracking-[0.2em] text-white/42">
-                          Intensita
-                        </p>
-                        <p className="mt-1 text-base font-semibold text-white">
-                          {modeLabel}
-                        </p>
-                      </div>
-                      <ChevronDown
-                        className={`size-4 text-white/56 transition duration-300 ${
-                          openPanel === "type" ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-
-                    <AnimatePresence initial={false}>
-                      {openPanel === "type" ? (
-                        <motion.div
-                          initial={{ opacity: 0, y: -8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -8 }}
-                          transition={{ duration: 0.22, ease: "easeOut" }}
-                          className="grid gap-3"
-                        >
-                          {modeOptions.map((option) => {
-                            const isActive = mode === option.value;
-
-                            return (
-                              <button
-                                key={option.value}
-                                type="button"
-                                onClick={() => {
-                                  handleModeSelect(option.value);
-                                  setCurrentPrompt(null);
-                                }}
-                                className={`rounded-[22px] border px-4 py-4 text-left transition duration-300 ${
-                                  isActive
-                                    ? "border-fuchsia-200/28 bg-fuchsia-300/12 text-white shadow-[0_20px_45px_-28px_rgba(217,70,239,0.55)]"
-                                    : "border-white/10 bg-white/6 text-white/68 hover:border-white/16 hover:bg-white/10 hover:text-white"
-                                }`}
-                              >
-                                <p className="text-base font-semibold">{option.label}</p>
-                                <p className="mt-1 text-sm leading-6 opacity-75">
-                                  {option.description}
-                                </p>
-                              </button>
-                            );
-                          })}
-                        </motion.div>
-                      ) : null}
-                    </AnimatePresence>
-                  </div>
-                </div>
-
-                <div className="hidden space-y-3 lg:block">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.18em] text-white/42">
-                      Scelta
-                    </p>
-                    <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                      {promptTypeOptions.map((option) => {
-                        const isActive = promptType === option.value;
-
-                        return (
-                          <button
-                            key={option.value}
-                            type="button"
-                            onClick={() => {
-                              setPromptType(option.value);
-                              setCurrentPrompt(null);
-                            }}
-                            className={`rounded-[22px] border px-4 py-4 text-left transition duration-300 ${
-                              isActive
-                                ? "border-cyan-200/28 bg-cyan-300/10 text-white shadow-[0_20px_45px_-28px_rgba(34,211,238,0.48)]"
-                                : "border-white/10 bg-white/6 text-white/68 hover:border-white/16 hover:bg-white/10 hover:text-white"
-                            }`}
-                          >
-                            <p className="text-base font-semibold">{option.label}</p>
-                            <p className="mt-1 text-sm leading-6 opacity-75">
-                              {option.description}
-                            </p>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.18em] text-white/42">
-                      Intensita
-                    </p>
-                    <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                      {modeOptions.map((option) => {
-                        const isActive = mode === option.value;
-
-                        return (
-                            <button
-                              key={option.value}
-                              type="button"
-                              onClick={() => {
-                                handleModeSelect(option.value);
-                                setCurrentPrompt(null);
-                              }}
-                              className={`rounded-[22px] border px-4 py-4 text-left transition duration-300 ${
-                                isActive
-                                  ? "border-fuchsia-200/28 bg-fuchsia-300/12 text-white shadow-[0_20px_45px_-28px_rgba(217,70,239,0.55)]"
-                                : "border-white/10 bg-white/6 text-white/68 hover:border-white/16 hover:bg-white/10 hover:text-white"
-                            }`}
-                          >
-                            <p className="text-base font-semibold">{option.label}</p>
-                            <p className="mt-1 text-sm leading-6 opacity-75">
-                              {option.description}
-                            </p>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
+                    handleModeSelect(nextMode);
+                  }}
+                />
 
                 {spicyBannerVisible ? (
                   <div className="rounded-[22px] border border-amber-200/20 bg-amber-300/10 px-4 py-4 text-sm leading-6 text-amber-50">
                     <div className="flex items-start gap-3">
                       <Flame className="mt-0.5 size-4 shrink-0 text-amber-200/90" />
-                      <p>Stiamo lavorando per offrirti una modalita Spicy fatta al meglio.</p>
+                      <p>La modalità Piccante arriverà più avanti. Per ora puoi continuare a usare la modalità Normale senza interrompere il turno.</p>
                     </div>
                   </div>
                 ) : null}
@@ -380,9 +270,8 @@ export function TruthOrDareGame() {
                   className="w-full"
                   icon={<Shuffle className="size-4" />}
                   onClick={revealPrompt}
-                  disabled={isSpicyLocked}
                 >
-                  Mostra domanda
+                  Nuova domanda
                 </Button>
 
                 <p className="text-xs leading-6 text-white/40">
@@ -396,8 +285,8 @@ export function TruthOrDareGame() {
                   </p>
                   <div className="mt-3 space-y-2 text-sm leading-6 text-white/62">
                     <p>
-                      Scegli prima tra verita e obbligo, poi imposta la
-                      modalita disponibile per il turno.
+                      Scegli prima tra verità e obbligo, poi imposta la
+                      modalità disponibile per il turno.
                     </p>
                     <p>{helperCopy}</p>
                   </div>

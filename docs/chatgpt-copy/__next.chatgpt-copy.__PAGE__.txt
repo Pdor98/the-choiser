@@ -1,5 +1,5 @@
 1:"$Sreact.fragment"
-2:I[23,["124","static/chunks/124-55d14cebe8fc13ce.js","924","static/chunks/app/chatgpt-copy/page-6240d656abea672d.js"],"ChatGptCopyPanel"]
+2:I[23,["124","static/chunks/124-55d14cebe8fc13ce.js","924","static/chunks/app/chatgpt-copy/page-f3cfdd13288c00be.js"],"ChatGptCopyPanel"]
 5:I[484,[],"OutletBoundary"]
 6:"$Sreact.suspense"
 3:Tcff,# Copia E Incolla Per ChatGPT
@@ -116,6 +116,6 @@ Se non sei sicuro di aver capito, fermati e chiedi riallineamento con il formato
 - io lo voglio cosi:
 
 ---
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"content":"$3"}],null,"$L4"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"5xgXWOst3hXlsEzbN_3Ih"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"content":"$3"}],null,"$L4"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"XZB3O6UqlL_Zv-S5fSu85"}
 4:["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]
 7:null
