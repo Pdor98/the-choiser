@@ -1,22 +1,26 @@
-import type { CSSProperties } from "react";
-
 import {
   EditorialCTAButton,
   EditorialFooter,
   EditorialSectionHeader,
 } from "@/components/layout/editorial-elements";
+import {
+  AnimatedCard,
+  AnimatedSection,
+  ScrollHero,
+  StaggerContainer,
+} from "@/components/layout/motion-system";
 import { PageExitBar } from "@/components/layout/page-exit-bar";
 import { Card } from "@/components/ui/card";
 import { DailyAdvicePanel } from "@/components/home/daily-advice-panel";
 import { HomeHeroPanel } from "@/components/home/home-hero-panel";
-import { HomeScrollStage } from "@/components/home/home-scroll-stage";
+import { HomeScrollSpotlight } from "@/components/home/home-scroll-spotlight";
 import { categories, homeHighlights } from "@/lib/site-content";
 
 export default function HomePage() {
   return (
     <div className="space-y-20 pb-10 sm:space-y-24 lg:space-y-28">
-      <HomeScrollStage
-        variant="hero"
+      <ScrollHero
+        glowClassName="bg-cyan-300/18"
         className="relative isolate overflow-hidden rounded-[36px] border border-white/8 bg-[#0a0a0a] px-5 py-20 shadow-[0_30px_90px_-56px_rgba(15,23,42,0.9)] sm:px-8 sm:py-24 lg:px-12 lg:py-32"
       >
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(18,44,84,0.46),transparent_34%),radial-gradient(circle_at_center,rgba(56,189,248,0.14),transparent_58%),linear-gradient(180deg,rgba(10,10,10,0.22),rgba(10,10,10,0.8))]" />
@@ -45,31 +49,28 @@ export default function HomePage() {
             </EditorialCTAButton>
           </div>
         </div>
-      </HomeScrollStage>
+      </ScrollHero>
 
-      <HomeScrollStage className="space-y-8 sm:space-y-10">
+      <HomeScrollSpotlight />
+
+      <AnimatedSection className="space-y-8 sm:space-y-10">
         <EditorialSectionHeader
           title="Cosa vuoi fare stasera?"
           description="Che siate in due o in dieci, indecisi o carichi, Choiser ha sempre qualcosa pronto per voi."
         />
 
-        <div className="grid gap-5 lg:grid-cols-3">
-          {categories.map((category, index) => {
+        <StaggerContainer className="grid gap-5 lg:grid-cols-3">
+          {categories.map((category) => {
             const Icon = category.icon;
 
             return (
-              <div
+              <AnimatedCard
                 key={category.href}
-                className="home-scroll-panel"
-                style={
-                  {
-                    "--home-scroll-delay": `${index * 70}ms`,
-                  } as CSSProperties
-                }
+                className="h-full"
               >
                 <a
                   href={category.href}
-                  className="group relative block overflow-hidden rounded-[32px] border border-white/8 bg-[linear-gradient(180deg,rgba(10,17,29,0.96),rgba(14,24,40,0.92))] p-6 shadow-[0_24px_70px_-50px_rgba(15,23,42,0.9)] transition duration-300 hover:-translate-y-1 hover:border-white/16 hover:bg-[linear-gradient(180deg,rgba(11,20,34,0.98),rgba(15,27,46,0.94))]"
+                  className="group relative block h-full overflow-hidden rounded-[32px] border border-white/8 bg-[linear-gradient(180deg,rgba(10,17,29,0.96),rgba(14,24,40,0.92))] p-6 shadow-[0_24px_70px_-50px_rgba(15,23,42,0.9)] transition duration-300 hover:-translate-y-1 hover:border-white/16 hover:bg-[linear-gradient(180deg,rgba(11,20,34,0.98),rgba(15,27,46,0.94))]"
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.04),transparent_42%)] opacity-0 transition duration-300 group-hover:opacity-100" />
                   <div className="relative">
@@ -87,33 +88,28 @@ export default function HomePage() {
                     </p>
                   </div>
                 </a>
-              </div>
+              </AnimatedCard>
             );
           })}
-        </div>
-      </HomeScrollStage>
+        </StaggerContainer>
+      </AnimatedSection>
 
-      <HomeScrollStage className="space-y-8 sm:space-y-10">
+      <AnimatedSection className="space-y-8 sm:space-y-10">
         <EditorialSectionHeader
           title="Fatto per stare insieme. Nato da una serata tra amici."
           description="Choiser è nato da una domanda semplice: perché ogni volta che siamo in gruppo, l'unica cosa su cui non riusciamo a metterci d'accordo è cosa fare? Questa pagina è la risposta. Un posto per smettere di discutere e iniziare a divertirsi."
         />
 
-        <div className="grid gap-5 md:grid-cols-3">
-          {homeHighlights.map((highlight, index) => {
+        <StaggerContainer className="grid gap-5 md:grid-cols-3">
+          {homeHighlights.map((highlight) => {
             const Icon = highlight.icon;
 
             return (
-              <div
+              <AnimatedCard
                 key={highlight.title}
-                className="home-scroll-panel"
-                style={
-                  {
-                    "--home-scroll-delay": `${index * 70}ms`,
-                  } as CSSProperties
-                }
+                className="h-full"
               >
-                <Card className="p-6">
+                <Card className="h-full p-6">
                   <div className="flex h-full flex-col">
                     <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-cyan-200">
                       <Icon className="size-5" />
@@ -126,13 +122,13 @@ export default function HomePage() {
                     </p>
                   </div>
                 </Card>
-              </div>
+              </AnimatedCard>
             );
           })}
-        </div>
-      </HomeScrollStage>
+        </StaggerContainer>
+      </AnimatedSection>
 
-      <HomeScrollStage className="relative isolate overflow-hidden rounded-[36px] border border-white/8 bg-[linear-gradient(180deg,rgba(8,12,20,0.96),rgba(11,17,29,0.94))] px-5 py-14 shadow-[0_30px_90px_-56px_rgba(15,23,42,0.9)] sm:px-8 sm:py-16 lg:px-12">
+      <AnimatedSection className="relative isolate overflow-hidden rounded-[36px] border border-white/8 bg-[linear-gradient(180deg,rgba(8,12,20,0.96),rgba(11,17,29,0.94))] px-5 py-14 shadow-[0_30px_90px_-56px_rgba(15,23,42,0.9)] sm:px-8 sm:py-16 lg:px-12">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(201,126,247,0.16),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.12),transparent_40%)]" />
         <div className="relative mx-auto max-w-4xl text-center">
           <p className="text-[11px] uppercase tracking-[0.3em] text-slate-500">
@@ -155,40 +151,34 @@ export default function HomePage() {
             quel momento in qualcosa di bello.
           </p>
         </div>
-      </HomeScrollStage>
+      </AnimatedSection>
 
-      <HomeScrollStage className="space-y-8 sm:space-y-10">
+      <AnimatedSection className="space-y-8 sm:space-y-10">
         <EditorialSectionHeader
           title="Inizia subito"
           description="Se vuoi entrare direttamente nel flusso, qui sotto trovi due ingressi rapidi: uno per farti suggerire un punto di partenza, uno per orientarti tra le sezioni con un colpo d'occhio."
         />
 
-        <div className="grid gap-5 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-          <div
-            className="home-scroll-panel"
-            style={{ "--home-scroll-delay": "0ms" } as CSSProperties}
-          >
+        <StaggerContainer className="grid gap-5 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+          <AnimatedCard className="h-full">
             <DailyAdvicePanel />
-          </div>
-          <div
-            className="home-scroll-panel"
-            style={{ "--home-scroll-delay": "90ms" } as CSSProperties}
-          >
+          </AnimatedCard>
+          <AnimatedCard className="h-full">
             <HomeHeroPanel />
-          </div>
-        </div>
-      </HomeScrollStage>
+          </AnimatedCard>
+        </StaggerContainer>
+      </AnimatedSection>
 
-      <HomeScrollStage as="div">
+      <AnimatedSection>
         <EditorialFooter />
-      </HomeScrollStage>
+      </AnimatedSection>
 
-      <HomeScrollStage as="div">
+      <AnimatedSection>
         <PageExitBar
           title="Stasera avete già tutto quello che serve. Mancava solo il posto giusto da cui partire."
           description="Nessun account. Nessun download. Solo voi, uno schermo e una serata da vivere."
         />
-      </HomeScrollStage>
+      </AnimatedSection>
     </div>
   );
 }
