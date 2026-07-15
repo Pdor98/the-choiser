@@ -25,28 +25,19 @@ import {
   primaryButtonReadableStyle,
 } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { parole, type TabWhoCard } from "@/features/games/tab-who-data";
+import { parole } from "@/features/games/tab-who-data";
+import {
+  durationOptions,
+  type TabWhoGameState as GameState,
+  type TabWhoLastAction as LastAction,
+  shuffleTabWhoDeck,
+} from "@/features/games/tab-who-shared";
 
-const durationOptions = [30, 60, 180] as const;
 const darkPrimaryActionClass =
   "bg-slate-950 !text-white hover:bg-slate-800 hover:!text-white [&>*]:!text-white disabled:!opacity-100 disabled:!text-white disabled:[&>*]:!text-white";
 
-function shuffleDeck(cards: TabWhoCard[]) {
-  const nextCards = [...cards];
-
-  for (let index = nextCards.length - 1; index > 0; index -= 1) {
-    const swapIndex = Math.floor(Math.random() * (index + 1));
-    [nextCards[index], nextCards[swapIndex]] = [
-      nextCards[swapIndex],
-      nextCards[index],
-    ];
-  }
-
-  return nextCards;
-}
-
 function createPreparedDeck(excludeWord?: string) {
-  const nextDeck = shuffleDeck(parole);
+  const nextDeck = shuffleTabWhoDeck(parole);
 
   if (excludeWord && nextDeck.length > 1 && nextDeck[0]?.parola === excludeWord) {
     [nextDeck[0], nextDeck[1]] = [nextDeck[1], nextDeck[0]];
@@ -54,9 +45,6 @@ function createPreparedDeck(excludeWord?: string) {
 
   return nextDeck;
 }
-
-type GameState = "idle" | "playing" | "finished";
-type LastAction = "skip" | "correct" | "wrong" | null;
 
 export function TabWhoGame() {
   const [deck, setDeck] = useState(() => [...parole]);

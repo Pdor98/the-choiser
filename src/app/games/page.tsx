@@ -19,12 +19,7 @@ import {
   EditorialFooter,
   EditorialSectionHeader,
 } from "@/components/layout/editorial-elements";
-import {
-  AnimatedCard,
-  AnimatedSection,
-  ScrollHero,
-  StaggerContainer,
-} from "@/components/layout/motion-system";
+import { GamesScrollStory } from "@/components/home/games-scroll-story";
 import { PageExitBar } from "@/components/layout/page-exit-bar";
 import { BottleSpinGame } from "@/features/games/bottle-spin";
 import { EliminationWheelGame } from "@/features/games/elimination-wheel";
@@ -367,10 +362,7 @@ export default function GamesPage() {
 
   return (
     <div className="space-y-20 pb-10 sm:space-y-24 lg:space-y-28">
-      <ScrollHero
-        glowClassName="bg-violet-300/18"
-        className="relative isolate overflow-hidden rounded-[36px] border border-white/8 bg-[#0a0a0a] px-5 py-20 shadow-[0_30px_90px_-56px_rgba(15,23,42,0.9)] sm:px-8 sm:py-24 lg:px-12 lg:py-32"
-      >
+      <section className="relative isolate overflow-hidden rounded-[36px] border border-white/8 bg-[#0a0a0a] px-5 py-20 shadow-[0_30px_90px_-56px_rgba(15,23,42,0.9)] sm:px-8 sm:py-24 lg:px-12 lg:py-32">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(26,5,51,0.92),transparent_36%),radial-gradient(circle_at_center,rgba(59,130,246,0.16),transparent_60%),linear-gradient(180deg,rgba(10,10,10,0.2),rgba(10,10,10,0.78))]" />
         <div className="pointer-events-none absolute inset-x-16 top-0 h-px bg-gradient-to-r from-transparent via-white/18 to-transparent" />
         <div className="pointer-events-none absolute left-1/2 top-10 h-48 w-48 -translate-x-1/2 rounded-full bg-violet-400/16 blur-3xl sm:h-64 sm:w-64" />
@@ -401,9 +393,11 @@ export default function GamesPage() {
             </EditorialCTAButton>
           </div>
         </div>
-      </ScrollHero>
+      </section>
 
-      <AnimatedSection
+      <GamesScrollStory />
+
+      <section
         id="games-arcade"
         ref={gamesArcadeRef}
         className="scroll-mt-28 space-y-8 sm:space-y-10"
@@ -413,63 +407,28 @@ export default function GamesPage() {
           description="Le card qui sopra sono il vero hub di accesso: scegli un gioco e apri solo quello che ti serve, nel momento in cui ti serve."
         />
 
-        <StaggerContainer className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {showcaseCards.map((card) => {
             const isActive = card.targetId !== null && openGameTarget === card.targetId;
 
             if (card.targetId) {
               return (
-                <AnimatedCard
+                <button
                   key={card.title}
-                  className="h-full"
-                >
-                  <button
-                    type="button"
-                    onClick={() => openGamePanel(card.targetId)}
-                    aria-pressed={isActive}
-                    className={`group h-full rounded-[30px] border border-white/6 bg-[#111111] p-5 text-left transition duration-300 hover:-translate-y-1 ${card.glowClassName} ${
-                      isActive
-                        ? "border-white/14 bg-white/[0.06] shadow-[0_24px_70px_-34px_rgba(34,211,238,0.18)]"
-                        : ""
-                    }`}
-                  >
-                    <div className="flex h-full flex-col">
-                      <div className="flex items-start justify-between gap-4">
-                        <span className="text-3xl">{card.icon}</span>
-                        <span className="rounded-full border border-white/8 bg-white/[0.04] px-2.5 py-1 text-[10px] uppercase tracking-[0.24em] text-slate-400">
-                          {isActive ? "Aperto" : card.label}
-                        </span>
-                      </div>
-                      <h3 className="mt-6 text-xl font-semibold text-slate-50">
-                        {card.title}
-                      </h3>
-                      <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">
-                        {card.description}
-                      </p>
-                      <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-slate-200">
-                        <span>Apri il gioco</span>
-                        <ChevronRight className="size-4 transition duration-300 group-hover:translate-x-0.5" />
-                      </div>
-                    </div>
-                  </button>
-                </AnimatedCard>
-              );
-            }
-
-            return (
-              <AnimatedCard
-                key={card.title}
-                className="h-full"
-              >
-                <Link
-                  href={card.href}
-                  className={`group flex h-full flex-col rounded-[30px] border border-white/6 bg-[#111111] p-5 transition duration-300 hover:-translate-y-1 ${card.glowClassName}`}
+                  type="button"
+                  onClick={() => openGamePanel(card.targetId)}
+                  aria-pressed={isActive}
+                  className={`group rounded-[30px] border border-white/6 bg-[#111111] p-5 text-left transition duration-300 hover:-translate-y-1 ${card.glowClassName} ${
+                    isActive
+                      ? "border-white/14 bg-white/[0.06] shadow-[0_24px_70px_-34px_rgba(34,211,238,0.18)]"
+                      : ""
+                  }`}
                 >
                   <div className="flex h-full flex-col">
                     <div className="flex items-start justify-between gap-4">
                       <span className="text-3xl">{card.icon}</span>
                       <span className="rounded-full border border-white/8 bg-white/[0.04] px-2.5 py-1 text-[10px] uppercase tracking-[0.24em] text-slate-400">
-                        {card.label}
+                        {isActive ? "Aperto" : card.label}
                       </span>
                     </div>
                     <h3 className="mt-6 text-xl font-semibold text-slate-50">
@@ -479,102 +438,126 @@ export default function GamesPage() {
                       {card.description}
                     </p>
                     <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-slate-200">
-                      <span>Apri</span>
+                      <span>Apri il gioco</span>
                       <ChevronRight className="size-4 transition duration-300 group-hover:translate-x-0.5" />
                     </div>
                   </div>
-                </Link>
-              </AnimatedCard>
+                </button>
+              );
+            }
+
+            return (
+              <Link
+                key={card.title}
+                href={card.href}
+                className={`group rounded-[30px] border border-white/6 bg-[#111111] p-5 transition duration-300 hover:-translate-y-1 ${card.glowClassName}`}
+              >
+                <div className="flex h-full flex-col">
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="text-3xl">{card.icon}</span>
+                    <span className="rounded-full border border-white/8 bg-white/[0.04] px-2.5 py-1 text-[10px] uppercase tracking-[0.24em] text-slate-400">
+                      {card.label}
+                    </span>
+                  </div>
+                  <h3 className="mt-6 text-xl font-semibold text-slate-50">
+                    {card.title}
+                  </h3>
+                  <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">
+                    {card.description}
+                  </p>
+                  <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-slate-200">
+                    <span>Apri</span>
+                    <ChevronRight className="size-4 transition duration-300 group-hover:translate-x-0.5" />
+                  </div>
+                </div>
+              </Link>
             );
           })}
-        </StaggerContainer>
+        </div>
 
-        <StaggerContainer className="space-y-8" staggerChildren={0.08}>
+        <div className="space-y-8">
           {gamePanels.map((panel) => {
             const Icon = panel.icon;
             const isOpen = openGameTarget === panel.id;
             const isFocused = focusedGameTarget === panel.id;
 
             return (
-              <AnimatedCard
+              <article
                 key={panel.id}
+                id={`game-panel-${panel.id}`}
+                className={`scroll-mt-28 rounded-[34px] border border-white/8 bg-[linear-gradient(180deg,rgba(12,18,30,0.94),rgba(14,22,36,0.96))] p-2 transition duration-500 sm:scroll-mt-32 ${
+                  isOpen ? panel.activeClassName : ""
+                } ${isFocused ? panel.focusedClassName : ""}`}
               >
-                <article
-                  id={`game-panel-${panel.id}`}
-                  className={`scroll-mt-28 rounded-[34px] border border-white/8 bg-[linear-gradient(180deg,rgba(12,18,30,0.94),rgba(14,22,36,0.96))] p-2 transition duration-500 sm:scroll-mt-32 ${
-                    isOpen ? panel.activeClassName : ""
-                  } ${isFocused ? panel.focusedClassName : ""}`}
+                <button
+                  type="button"
+                  onClick={() => toggleGamePanel(panel.id)}
+                  aria-expanded={isOpen}
+                  className="group flex w-full items-start justify-between gap-4 rounded-[28px] px-4 py-5 text-left sm:px-5"
                 >
-                  <button
-                    type="button"
-                    onClick={() => toggleGamePanel(panel.id)}
-                    aria-expanded={isOpen}
-                    className="group flex w-full items-start justify-between gap-4 rounded-[28px] px-4 py-5 text-left sm:px-5"
-                  >
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-3">
-                        <div className="flex size-11 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-white">
-                          <Icon className="size-4.5" />
-                        </div>
-                        <div>
-                          <p className="text-[11px] uppercase tracking-[0.24em] text-slate-500">
-                            {panel.eyebrow}
-                          </p>
-                          <h3 className="mt-2 font-heading text-2xl font-semibold text-slate-50">
-                            {panel.title}
-                          </h3>
-                        </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-3">
+                      <div className="flex size-11 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-white">
+                        <Icon className="size-4.5" />
                       </div>
-                      <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-400">
-                        {panel.description}
-                      </p>
-                    </div>
-
-                    <div className="flex shrink-0 items-center gap-3">
-                      <span className="rounded-full border border-white/8 bg-white/[0.04] px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-slate-400">
-                        {isOpen ? "Aperto" : "Scopri"}
-                      </span>
-                      <div className="flex size-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-slate-300 transition duration-300 group-hover:border-white/16 group-hover:text-white">
-                        <ChevronDown
-                          className={`size-4 transition duration-300 ${
-                            isOpen ? "rotate-180" : ""
-                          }`}
-                        />
+                      <div>
+                        <p className="text-[11px] uppercase tracking-[0.24em] text-slate-500">
+                          {panel.eyebrow}
+                        </p>
+                        <h3 className="mt-2 font-heading text-2xl font-semibold text-slate-50">
+                          {panel.title}
+                        </h3>
                       </div>
                     </div>
-                  </button>
+                    <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-400">
+                      {panel.description}
+                    </p>
+                  </div>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen ? (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.28, ease: "easeOut" }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-1 pb-1 pt-2">{panel.render()}</div>
-                      </motion.div>
-                    ) : null}
-                  </AnimatePresence>
-                </article>
-              </AnimatedCard>
+                  <div className="flex shrink-0 items-center gap-3">
+                    <span className="rounded-full border border-white/8 bg-white/[0.04] px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-slate-400">
+                      {isOpen ? "Aperto" : "Scopri"}
+                    </span>
+                    <div className="flex size-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-slate-300 transition duration-300 group-hover:border-white/16 group-hover:text-white">
+                      <ChevronDown
+                        className={`size-4 transition duration-300 ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </div>
+                  </div>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen ? (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.28, ease: "easeOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-1 pb-1 pt-2">{panel.render()}</div>
+                    </motion.div>
+                  ) : null}
+                </AnimatePresence>
+              </article>
             );
           })}
-        </StaggerContainer>
-      </AnimatedSection>
+        </div>
+      </section>
 
-      <AnimatedSection className="space-y-8 sm:space-y-10">
+      <section className="space-y-8 sm:space-y-10">
         <EditorialSectionHeader
           title="Perché Games?"
           description="Una sezione pensata per partire in fretta, coinvolgere subito e lasciare il centro della scena alle persone con cui stai giocando."
         />
 
-        <StaggerContainer className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {whyCards.map((card) => (
-            <AnimatedCard
+            <article
               key={card.title}
-              className="group relative h-full overflow-hidden rounded-[30px] border border-white/7 bg-white/[0.03] p-5 shadow-[0_18px_54px_-42px_rgba(15,23,42,0.82)] backdrop-blur-xl transition duration-300 hover:scale-[1.02] hover:border-violet-300/26 hover:shadow-[0_22px_70px_-40px_rgba(168,85,247,0.24)] sm:p-6"
+              className="group relative overflow-hidden rounded-[30px] border border-white/7 bg-white/[0.03] p-5 shadow-[0_18px_54px_-42px_rgba(15,23,42,0.82)] backdrop-blur-xl transition duration-300 hover:scale-[1.02] hover:border-violet-300/26 hover:shadow-[0_22px_70px_-40px_rgba(168,85,247,0.24)] sm:p-6"
             >
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.05),transparent_48%)] opacity-0 transition duration-300 group-hover:opacity-100" />
               <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/18 to-transparent" />
@@ -587,12 +570,12 @@ export default function GamesPage() {
                   {card.description}
                 </p>
               </div>
-            </AnimatedCard>
+            </article>
           ))}
-        </StaggerContainer>
-      </AnimatedSection>
+        </div>
+      </section>
 
-      <AnimatedSection className="relative overflow-hidden rounded-[36px] border border-white/8 bg-[linear-gradient(180deg,rgba(8,8,10,0.94),rgba(12,14,22,0.96))] px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
+      <section className="relative overflow-hidden rounded-[36px] border border-white/8 bg-[linear-gradient(180deg,rgba(8,8,10,0.94),rgba(12,14,22,0.96))] px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.16),transparent_42%),radial-gradient(circle_at_bottom,rgba(59,130,246,0.12),transparent_48%)]" />
 
         <div className="relative mx-auto max-w-4xl text-center">
@@ -625,19 +608,19 @@ export default function GamesPage() {
             </div>
           </div>
         </div>
-      </AnimatedSection>
+      </section>
 
-      <AnimatedSection className="space-y-8 sm:space-y-10">
+      <section className="space-y-8 sm:space-y-10">
         <EditorialSectionHeader
           title="Tre passi, zero attrito"
           description="Una sequenza così semplice che dopo il primo giro smetti di pensarci e inizi a giocare davvero."
         />
 
-        <StaggerContainer className="grid gap-4 lg:grid-cols-3">
+        <div className="grid gap-4 lg:grid-cols-3">
           {steps.map((step) => (
-            <AnimatedCard
+            <article
               key={step.number}
-              className="relative h-full overflow-hidden rounded-[30px] border border-white/7 bg-[linear-gradient(180deg,rgba(11,16,24,0.94),rgba(14,20,31,0.96))] px-5 py-6 shadow-[0_20px_56px_-42px_rgba(15,23,42,0.82)] sm:px-6 sm:py-7"
+              className="relative overflow-hidden rounded-[30px] border border-white/7 bg-[linear-gradient(180deg,rgba(11,16,24,0.94),rgba(14,20,31,0.96))] px-5 py-6 shadow-[0_20px_56px_-42px_rgba(15,23,42,0.82)] sm:px-6 sm:py-7"
             >
               <span className="pointer-events-none absolute right-4 top-2 font-heading text-[4.75rem] font-semibold tracking-[-0.08em] text-white/[0.05] sm:text-[5.75rem]">
                 {step.number}
@@ -653,12 +636,12 @@ export default function GamesPage() {
                   {step.description}
                 </p>
               </div>
-            </AnimatedCard>
+            </article>
           ))}
-        </StaggerContainer>
-      </AnimatedSection>
+        </div>
+      </section>
 
-      <AnimatedSection className="relative overflow-hidden rounded-[36px] border border-violet-300/10 bg-[linear-gradient(135deg,#1a0533_0%,#111426_46%,#0a1628_100%)] px-5 py-16 shadow-[0_30px_96px_-56px_rgba(76,29,149,0.78)] sm:px-8 sm:py-20 lg:px-12">
+      <section className="relative overflow-hidden rounded-[36px] border border-violet-300/10 bg-[linear-gradient(135deg,#1a0533_0%,#111426_46%,#0a1628_100%)] px-5 py-16 shadow-[0_30px_96px_-56px_rgba(76,29,149,0.78)] sm:px-8 sm:py-20 lg:px-12">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.24),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.18),transparent_36%)]" />
 
         <div className="relative mx-auto max-w-4xl text-center">
@@ -687,15 +670,11 @@ export default function GamesPage() {
             </Link>
           </div>
         </div>
-      </AnimatedSection>
+      </section>
 
-      <AnimatedSection>
-        <EditorialFooter />
-      </AnimatedSection>
+      <EditorialFooter />
 
-      <AnimatedSection>
-        <PageExitBar description="Quando hai finito puoi continuare a giocare, cambiare sezione o tornare alla Home senza perdere il ritmo della serata." />
-      </AnimatedSection>
+      <PageExitBar description="Quando hai finito puoi continuare a giocare, cambiare sezione o tornare alla Home senza perdere il ritmo della serata." />
     </div>
   );
 }

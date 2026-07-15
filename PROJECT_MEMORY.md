@@ -1,6 +1,6 @@
 # Project Memory
 
-Ultimo aggiornamento: 2026-05-12
+Ultimo aggiornamento: 2026-07-15
 
 ## Identita progetto
 
@@ -28,6 +28,10 @@ Ultimo aggiornamento: 2026-05-12
 - I CTA hero su `Games`, `Random` e `Tools` devono comportarsi in modo coerente anche su mobile.
 - `Chi è più probabile che…?` è un gioco sociale semplice nella pagina `Games`, aperto da `/games#most-likely`, con modalità `Normale`, `Piccante soft` e `Deep`.
 - Le domande di `Chi è più probabile che…?` devono restare facili da espandere negli array `mostLikelyNormal`, `mostLikelySpicy`, `mostLikelyDeep`.
+- `TAB-WHO?` ha ora due modalità:
+  - `Solo rapido` dentro la pagina gioco
+  - `Stanza locale` con codice e sincronizzazione multi-dispositivo via API Next locali
+- La modalità `Stanza locale` funziona in sviluppo / runtime Next, ma non deve apparire nella build GitHub Pages statica.
 - Su `origin/develop` è stato rilevato un force update con commit non Choiser/CustodeAI; non fare force push su quel branch senza verifica esplicita.
 
 ## Continuita operativa

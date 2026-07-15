@@ -8,12 +8,7 @@ import {
   EditorialFooter,
   EditorialSectionHeader,
 } from "@/components/layout/editorial-elements";
-import {
-  AnimatedCard,
-  AnimatedSection,
-  ScrollHero,
-  StaggerContainer,
-} from "@/components/layout/motion-system";
+import { RandomScrollStory } from "@/components/home/random-scroll-story";
 import { PageExitBar } from "@/components/layout/page-exit-bar";
 import { Card } from "@/components/ui/card";
 import { RandomHub, type RandomModuleTarget } from "@/features/random/random-hub";
@@ -151,10 +146,7 @@ export default function RandomPage() {
 
   return (
     <div className="space-y-20 pb-10 sm:space-y-24 lg:space-y-28">
-      <ScrollHero
-        glowClassName="bg-[#a8243e]/18"
-        className="relative isolate overflow-hidden rounded-[36px] border border-white/8 bg-[#0a0a0a] px-5 py-20 shadow-[0_30px_90px_-56px_rgba(24,16,20,0.82)] sm:px-8 sm:py-24 lg:px-12 lg:py-32"
-      >
+      <section className="relative isolate overflow-hidden rounded-[36px] border border-white/8 bg-[#0a0a0a] px-5 py-20 shadow-[0_30px_90px_-56px_rgba(24,16,20,0.82)] sm:px-8 sm:py-24 lg:px-12 lg:py-32">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(58,7,20,0.46),transparent_34%),radial-gradient(circle_at_center,rgba(123,18,48,0.12),transparent_58%),linear-gradient(180deg,rgba(10,10,10,0.22),rgba(10,10,10,0.8))]" />
         <div className="pointer-events-none absolute left-1/2 top-12 h-52 w-52 -translate-x-1/2 rounded-full bg-[rgba(168,36,62,0.12)] blur-3xl sm:h-72 sm:w-72" />
         <div className="pointer-events-none absolute left-1/2 top-28 h-64 w-64 -translate-x-1/2 rounded-full bg-[#7b1230]/8 blur-3xl sm:h-88 sm:w-88" />
@@ -182,9 +174,11 @@ export default function RandomPage() {
             </EditorialCTAButton>
           </div>
         </div>
-      </ScrollHero>
+      </section>
 
-      <AnimatedSection
+      <RandomScrollStory />
+
+      <section
         id="random-lab"
         ref={randomLabRef}
         className="scroll-mt-28 space-y-8 sm:space-y-10"
@@ -194,73 +188,63 @@ export default function RandomPage() {
           description="Tre ingressi chiari, un solo principio: prima capisci cosa ti serve, poi lo apri e lo usi subito."
         />
 
-        <StaggerContainer className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {randomAccessCards.map((card) => {
             const Icon = card.icon;
             const isActive = focusedTarget === card.targetId;
 
             return (
-              <AnimatedCard
+              <button
                 key={card.targetId}
-                className="h-full"
+                type="button"
+                onClick={() => openRandomModule(card.targetId)}
+                aria-pressed={isActive}
+                className={`group rounded-[30px] border p-5 text-left transition duration-300 hover:-translate-y-1 ${
+                  isActive
+                    ? "border-[#a8243e]/18 bg-[linear-gradient(180deg,rgba(11,20,34,0.98),rgba(15,27,46,0.94))] shadow-[0_24px_70px_-40px_rgba(15,23,42,0.34)]"
+                    : "border-white/7 bg-[linear-gradient(180deg,rgba(10,17,29,0.96),rgba(14,24,40,0.92))] shadow-[0_24px_70px_-50px_rgba(15,23,42,0.9)] hover:border-[#a8243e]/14 hover:shadow-[0_24px_70px_-42px_rgba(15,23,42,0.72)]"
+                }`}
               >
-                <button
-                  type="button"
-                  onClick={() => openRandomModule(card.targetId)}
-                  aria-pressed={isActive}
-                  className={`group h-full rounded-[30px] border p-5 text-left transition duration-300 hover:-translate-y-1 ${
-                    isActive
-                      ? "border-[#a8243e]/18 bg-[linear-gradient(180deg,rgba(11,20,34,0.98),rgba(15,27,46,0.94))] shadow-[0_24px_70px_-40px_rgba(15,23,42,0.34)]"
-                      : "border-white/7 bg-[linear-gradient(180deg,rgba(10,17,29,0.96),rgba(14,24,40,0.92))] shadow-[0_24px_70px_-50px_rgba(15,23,42,0.9)] hover:border-[#a8243e]/14 hover:shadow-[0_24px_70px_-42px_rgba(15,23,42,0.72)]"
-                  }`}
-                >
-                  <div className="flex h-full flex-col">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-[#c88fa1]">
-                        <Icon className="size-5" />
-                      </div>
-                      <span className="rounded-full border border-white/8 bg-white/[0.04] px-2.5 py-1 text-[10px] uppercase tracking-[0.24em] text-slate-400">
-                        {isActive ? "Attivo" : card.eyebrow}
-                      </span>
+                <div className="flex h-full flex-col">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-[#c88fa1]">
+                      <Icon className="size-5" />
                     </div>
-                    <h3 className="mt-6 text-xl font-semibold text-slate-50">
-                      {card.title}
-                    </h3>
-                    <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">
-                      {card.description}
-                    </p>
-                    <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-slate-200">
-                      <span>Vai al modulo</span>
-                      <ArrowDown className="size-4 transition duration-300 group-hover:translate-y-0.5" />
-                    </div>
+                    <span className="rounded-full border border-white/8 bg-white/[0.04] px-2.5 py-1 text-[10px] uppercase tracking-[0.24em] text-slate-400">
+                      {isActive ? "Attivo" : card.eyebrow}
+                    </span>
                   </div>
-                </button>
-              </AnimatedCard>
+                  <h3 className="mt-6 text-xl font-semibold text-slate-50">
+                    {card.title}
+                  </h3>
+                  <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">
+                    {card.description}
+                  </p>
+                  <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-slate-200">
+                    <span>Vai al modulo</span>
+                    <ArrowDown className="size-4 transition duration-300 group-hover:translate-y-0.5" />
+                  </div>
+                </div>
+              </button>
             );
           })}
-        </StaggerContainer>
+        </div>
 
-        <StaggerContainer className="space-y-6" staggerChildren={0.12}>
-          <AnimatedCard>
-            <RandomHub focusedTarget={focusedTarget} />
-          </AnimatedCard>
+        <RandomHub focusedTarget={focusedTarget} />
 
-          <AnimatedCard>
-            <p className="mx-auto max-w-3xl text-center text-sm leading-7 text-slate-400 sm:text-base">
-              Un ingresso rapido, un gesto chiaro, una risposta subito leggibile:
-              Random deve servirti in fretta, non farti perdere tempo.
-            </p>
-          </AnimatedCard>
-        </StaggerContainer>
-      </AnimatedSection>
+        <p className="mx-auto max-w-3xl text-center text-sm leading-7 text-slate-400 sm:text-base">
+          Un ingresso rapido, un gesto chiaro, una risposta subito leggibile:
+          Random deve servirti in fretta, non farti perdere tempo.
+        </p>
+      </section>
 
-      <AnimatedSection className="space-y-8 sm:space-y-10">
+      <section className="space-y-8 sm:space-y-10">
         <EditorialSectionHeader
           title="Cosa trovi dentro"
           description="Una sezione compatta che alterna ispirazione, gioco leggero e casualità pura senza costringerti a preparare nulla."
         />
 
-        <StaggerContainer className="grid gap-4 lg:grid-cols-3">
+        <div className="grid gap-4 lg:grid-cols-3">
           {[
             {
               title: "Cosa fare oggi?",
@@ -278,9 +262,9 @@ export default function RandomPage() {
                 "Da 1 a 100, immediato e leggibile. Quando ti serve solo lasciare decidere il caso.",
             },
           ].map((item) => (
-            <AnimatedCard
+            <article
               key={item.title}
-              className="h-full rounded-[30px] border border-white/7 bg-[linear-gradient(180deg,rgba(10,17,29,0.96),rgba(14,24,40,0.92))] p-6 shadow-[0_24px_70px_-50px_rgba(15,23,42,0.9)]"
+              className="rounded-[30px] border border-white/7 bg-[linear-gradient(180deg,rgba(10,17,29,0.96),rgba(14,24,40,0.92))] p-6 shadow-[0_24px_70px_-50px_rgba(15,23,42,0.9)]"
             >
               <p className="text-[11px] uppercase tracking-[0.28em] text-slate-500">
                 Modulo
@@ -291,18 +275,18 @@ export default function RandomPage() {
               <p className="mt-4 text-sm leading-7 text-slate-400">
                 {item.description}
               </p>
-            </AnimatedCard>
+            </article>
           ))}
-        </StaggerContainer>
-      </AnimatedSection>
+        </div>
+      </section>
 
-      <AnimatedSection className="space-y-8 sm:space-y-10">
+      <section className="space-y-8 sm:space-y-10">
         <EditorialSectionHeader
           title="Perché Random?"
           description="Perché a volte non ti serve una spiegazione in più. Ti serve solo un segnale chiaro, un numero, un'idea o una risposta abbastanza netta da farti muovere."
         />
 
-        <StaggerContainer className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-3">
           {[
             {
               icon: Compass,
@@ -323,58 +307,50 @@ export default function RandomPage() {
                 "Sul divano, fuori casa, durante una pausa. Apri, usi, continui.",
             },
           ].map((item) => (
-            <AnimatedCard
+            <Card
               key={item.title}
-              className="h-full"
+              className="p-6"
             >
-              <Card className="h-full p-6">
-                <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-[#c88fa1]">
-                  <item.icon className="size-5" />
-                </div>
-                <h2 className="mt-6 text-xl font-semibold text-slate-50">
-                  {item.title}
-                </h2>
-                <p className="mt-3 text-sm leading-7 text-slate-400">
-                  {item.description}
-                </p>
-              </Card>
-            </AnimatedCard>
-          ))}
-        </StaggerContainer>
-      </AnimatedSection>
-
-      <AnimatedSection>
-        <Card className="p-4 sm:p-5">
-          <div className="flex items-start gap-4">
-            <div className="rounded-2xl border border-white/10 bg-white/8 p-3 text-[#c88fa1]">
-              <Dices className="size-5" />
-            </div>
-
-            <div className="space-y-2">
-              <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
-                Nuova struttura
-              </p>
-              <p className="text-sm leading-7 text-slate-300">
-                La pagina Random parte da un suggerimento concreto su cosa fare
-                oggi e affianca un piccolo libro delle risposte, elegante e
-                rapido, da aprire quando vuoi un segnale in più.
-              </p>
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/8 bg-white/5 px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] text-slate-300">
-                <Sparkles className="size-3.5" />
-                Mobile-ready
+              <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-[#c88fa1]">
+                <item.icon className="size-5" />
               </div>
+              <h2 className="mt-6 text-xl font-semibold text-slate-50">
+                {item.title}
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-slate-400">
+                {item.description}
+              </p>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <Card className="p-4 sm:p-5">
+        <div className="flex items-start gap-4">
+          <div className="rounded-2xl border border-white/10 bg-white/8 p-3 text-[#c88fa1]">
+            <Dices className="size-5" />
+          </div>
+
+          <div className="space-y-2">
+            <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+              Nuova struttura
+            </p>
+            <p className="text-sm leading-7 text-slate-300">
+              La pagina Random parte da un suggerimento concreto su cosa fare
+              oggi e affianca un piccolo libro delle risposte, elegante e
+              rapido, da aprire quando vuoi un segnale in più.
+            </p>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/8 bg-white/5 px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] text-slate-300">
+              <Sparkles className="size-3.5" />
+              Mobile-ready
             </div>
           </div>
-        </Card>
-      </AnimatedSection>
+        </div>
+      </Card>
 
-      <AnimatedSection>
-        <EditorialFooter />
-      </AnimatedSection>
+      <EditorialFooter />
 
-      <AnimatedSection>
-        <PageExitBar description="Quando hai finito con un prompt o una risposta casuale, puoi tornare alla Home o cambiare sezione senza fare scroll all’indietro." />
-      </AnimatedSection>
+      <PageExitBar description="Quando hai finito con un prompt o una risposta casuale, puoi tornare alla Home o cambiare sezione senza fare scroll all’indietro." />
       
     </div>
   );

@@ -8,12 +8,7 @@ import {
   EditorialFooter,
   EditorialSectionHeader,
 } from "@/components/layout/editorial-elements";
-import {
-  AnimatedCard,
-  AnimatedSection,
-  ScrollHero,
-  StaggerContainer,
-} from "@/components/layout/motion-system";
+import { ToolsScrollStory } from "@/components/home/tools-scroll-story";
 import { PageExitBar } from "@/components/layout/page-exit-bar";
 import { Card } from "@/components/ui/card";
 import { DiceArenaGame } from "@/features/games/dice-arena";
@@ -50,10 +45,7 @@ export default function ToolsPage() {
 
   return (
     <div className="space-y-20 pb-10 sm:space-y-24 lg:space-y-28">
-      <ScrollHero
-        glowClassName="bg-emerald-300/16"
-        className="relative isolate overflow-hidden rounded-[36px] border border-white/8 bg-[#0a0a0a] px-5 py-20 shadow-[0_30px_90px_-56px_rgba(15,23,42,0.9)] sm:px-8 sm:py-24 lg:px-12 lg:py-32"
-      >
+      <section className="relative isolate overflow-hidden rounded-[36px] border border-white/8 bg-[#0a0a0a] px-5 py-20 shadow-[0_30px_90px_-56px_rgba(15,23,42,0.9)] sm:px-8 sm:py-24 lg:px-12 lg:py-32">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(18,66,48,0.4),transparent_34%),radial-gradient(circle_at_center,rgba(34,197,94,0.1),transparent_58%),linear-gradient(180deg,rgba(10,10,10,0.22),rgba(10,10,10,0.8))]" />
         <div className="pointer-events-none absolute left-1/2 top-12 h-52 w-52 -translate-x-1/2 rounded-full bg-emerald-300/12 blur-3xl sm:h-72 sm:w-72" />
         <div className="pointer-events-none absolute left-1/2 top-28 h-64 w-64 -translate-x-1/2 rounded-full bg-cyan-300/10 blur-3xl sm:h-88 sm:w-88" />
@@ -80,9 +72,11 @@ export default function ToolsPage() {
             </EditorialCTAButton>
           </div>
         </div>
-      </ScrollHero>
+      </section>
 
-      <AnimatedSection
+      <ToolsScrollStory />
+
+      <section
         id="tools-deck"
         ref={toolsDeckRef}
         className="scroll-mt-28 space-y-8 sm:space-y-10"
@@ -92,23 +86,17 @@ export default function ToolsPage() {
           description="Qui sotto trovi i moduli già attivi, pronti da usare senza cambiare contesto."
         />
 
-        <StaggerContainer className="space-y-8" staggerChildren={0.12}>
-          <AnimatedCard>
-            <TimerTool />
-          </AnimatedCard>
-          <AnimatedCard>
-            <DiceArenaGame />
-          </AnimatedCard>
-        </StaggerContainer>
-      </AnimatedSection>
+        <TimerTool />
+        <DiceArenaGame />
+      </section>
 
-      <AnimatedSection className="space-y-8 sm:space-y-10">
+      <section className="space-y-8 sm:space-y-10">
         <EditorialSectionHeader
           title="Cosa trovi dentro"
           description="Un piccolo deck di utility che fanno poche cose, ma le fanno bene: misurano il tempo, lanciano il caso, ti aiutano a decidere in fretta."
         />
 
-        <StaggerContainer className="grid gap-4 lg:grid-cols-2">
+        <div className="grid gap-4 lg:grid-cols-2">
           {[
             {
               title: "Timer",
@@ -121,9 +109,9 @@ export default function ToolsPage() {
                 "Scegli il tipo di dado, il numero di lanci e lascia che il risultato si componga da solo.",
             },
           ].map((item) => (
-            <AnimatedCard
+            <article
               key={item.title}
-              className="h-full rounded-[30px] border border-white/7 bg-[linear-gradient(180deg,rgba(10,17,29,0.96),rgba(14,24,40,0.92))] p-6 shadow-[0_24px_70px_-50px_rgba(15,23,42,0.9)]"
+              className="rounded-[30px] border border-white/7 bg-[linear-gradient(180deg,rgba(10,17,29,0.96),rgba(14,24,40,0.92))] p-6 shadow-[0_24px_70px_-50px_rgba(15,23,42,0.9)]"
             >
               <p className="text-[11px] uppercase tracking-[0.28em] text-slate-500">
                 Utility
@@ -134,18 +122,18 @@ export default function ToolsPage() {
               <p className="mt-4 text-sm leading-7 text-slate-400">
                 {item.description}
               </p>
-            </AnimatedCard>
+            </article>
           ))}
-        </StaggerContainer>
-      </AnimatedSection>
+        </div>
+      </section>
 
-      <AnimatedSection className="space-y-8 sm:space-y-10">
+      <section className="space-y-8 sm:space-y-10">
         <EditorialSectionHeader
           title="Perché Tools?"
           description="Perché i buoni strumenti non rubano attenzione. Ti fanno fare una cosa in fretta, bene e con un'interfaccia che non pesa."
         />
 
-        <StaggerContainer className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-3">
           {[
             {
               icon: TimerReset,
@@ -166,50 +154,42 @@ export default function ToolsPage() {
                 "Su mobile, durante una serata o in mezzo a una pausa: tutto resta chiaro.",
             },
           ].map((item) => (
-            <AnimatedCard key={item.title} className="h-full">
-              <Card className="h-full p-6">
-                <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-emerald-200">
-                  <item.icon className="size-5" />
-                </div>
-                <h2 className="mt-6 text-xl font-semibold text-slate-50">
-                  {item.title}
-                </h2>
-                <p className="mt-3 text-sm leading-7 text-slate-400">
-                  {item.description}
-                </p>
-              </Card>
-            </AnimatedCard>
+            <Card key={item.title} className="p-6">
+              <div className="flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/8 text-emerald-200">
+                <item.icon className="size-5" />
+              </div>
+              <h2 className="mt-6 text-xl font-semibold text-slate-50">
+                {item.title}
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-slate-400">
+                {item.description}
+              </p>
+            </Card>
           ))}
-        </StaggerContainer>
-      </AnimatedSection>
+        </div>
+      </section>
 
-      <AnimatedSection>
-        <Card className="p-5">
-          <div className="flex items-start gap-4">
-            <div className="rounded-2xl border border-cyan-300/16 bg-white/6 p-3 text-cyan-200">
-              <Dices className="size-5" />
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
-                Kit utility
-              </p>
-              <p className="mt-2 text-sm leading-7 text-slate-300">
-                Timer e dadi convivono in una sezione più chiara: preset rapidi,
-                countdown in vista classica o clessidra e lanci personalizzati
-                con storico rendono Tools più pratico e immediato.
-              </p>
-            </div>
+      <Card className="p-5">
+        <div className="flex items-start gap-4">
+          <div className="rounded-2xl border border-cyan-300/16 bg-white/6 p-3 text-cyan-200">
+            <Dices className="size-5" />
           </div>
-        </Card>
-      </AnimatedSection>
+          <div>
+            <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+              Kit utility
+            </p>
+            <p className="mt-2 text-sm leading-7 text-slate-300">
+              Timer e dadi convivono in una sezione più chiara: preset rapidi,
+              countdown in vista classica o clessidra e lanci personalizzati
+              con storico rendono Tools più pratico e immediato.
+            </p>
+          </div>
+        </div>
+      </Card>
 
-      <AnimatedSection>
-        <EditorialFooter />
-      </AnimatedSection>
+      <EditorialFooter />
 
-      <AnimatedSection>
-        <PageExitBar description="Quando hai finito con timer o dadi puoi tornare alla Home o aprire un’altra sezione senza risalire fino all’header." />
-      </AnimatedSection>
+      <PageExitBar description="Quando hai finito con timer o dadi puoi tornare alla Home o aprire un’altra sezione senza risalire fino all’header." />
     </div>
   );
 }
