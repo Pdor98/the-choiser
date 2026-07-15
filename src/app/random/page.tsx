@@ -8,6 +8,7 @@ import {
   EditorialFooter,
   EditorialSectionHeader,
 } from "@/components/layout/editorial-elements";
+import { RandomScrollStory } from "@/components/home/random-scroll-story";
 import { PageExitBar } from "@/components/layout/page-exit-bar";
 import { Card } from "@/components/ui/card";
 import { RandomHub, type RandomModuleTarget } from "@/features/random/random-hub";
@@ -174,6 +175,8 @@ export default function RandomPage() {
           </div>
         </div>
       </section>
+
+      <RandomScrollStory />
 
       <section
         id="random-lab"

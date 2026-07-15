@@ -11,11 +11,20 @@ export function EditorialSectionHeader({
 }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
-      <h2 className="font-heading text-balance text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl">
+      {/* Linea decorativa animata */}
+      <div className="mb-5 flex items-center justify-center gap-3">
+        <div className="home-section-header-line h-px w-10 bg-gradient-to-r from-transparent to-white/20" />
+        <div
+          className="home-section-header-line h-px flex-1 max-w-[80px] rounded-full"
+          style={{ background: "linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.22), rgba(255,255,255,0.08))" }}
+        />
+        <div className="home-section-header-line h-px w-10 bg-gradient-to-l from-transparent to-white/20" />
+      </div>
+      <h2 className="home-section-header-title font-heading text-balance text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl">
         {title}
       </h2>
       {description ? (
-        <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base sm:leading-8">
+        <p className="home-section-header-desc mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base sm:leading-8">
           {description}
         </p>
       ) : null}

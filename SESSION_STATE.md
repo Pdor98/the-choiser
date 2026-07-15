@@ -1,6 +1,6 @@
 # Session State
 
-Last updated: 2026-05-12
+Last updated: 2026-07-15
 
 ## Project Identity
 
@@ -22,12 +22,15 @@ Last updated: 2026-05-12
 
 ## Latest Published State
 
-- Published online on 2026-05-12 from `main` commit `c5a3b5d`.
-- Live Games URL: `https://pdor98.github.io/the-choiser/games/`
-- Added the Games module `Chi è più probabile che…?` as an internal panel opened by `/games#most-likely`.
-- The new game data lives in `src/features/games/most-likely-data.ts` with three modes: `normal`, `spicy`, `deep`.
-- The new game UI lives in `src/features/games/most-likely.tsx`.
-- `docs/` was regenerated with `scripts/export-github-pages.mjs` and pushed to `main` for GitHub Pages.
+- Published online on 2026-07-15 from `main` after regenerating `docs/`.
+- Live site: `https://pdor98.github.io/the-choiser/`
+- Home, Random, Games and Tools now use the newer editorial / scroll-story composition shipped in this release.
+- `TAB-WHO?` now supports a local room mode in the Next.js runtime:
+  - create room
+  - join with code
+  - synchronized card / score / round state across devices on the same local service
+- Important: the room mode is intentionally disabled in the GitHub Pages export because `docs/` is static and cannot serve Next API routes.
+- `scripts/export-github-pages.mjs` temporarily excludes `src/app/api` and forces `NEXT_PUBLIC_TABWHO_ROOM_ENABLED=false` during Pages export so the public build stays static-compatible.
 - Note: on 2026-05-12, `origin/develop` had been force-updated to unrelated `CustodeAI` commits. Do not force-push local `develop` over it without first checking repo intent.
 
 ## Durable User Preferences

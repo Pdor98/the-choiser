@@ -19,6 +19,7 @@ import {
   EditorialFooter,
   EditorialSectionHeader,
 } from "@/components/layout/editorial-elements";
+import { GamesScrollStory } from "@/components/home/games-scroll-story";
 import { PageExitBar } from "@/components/layout/page-exit-bar";
 import { BottleSpinGame } from "@/features/games/bottle-spin";
 import { EliminationWheelGame } from "@/features/games/elimination-wheel";
@@ -393,6 +394,8 @@ export default function GamesPage() {
           </div>
         </div>
       </section>
+
+      <GamesScrollStory />
 
       <section
         id="games-arcade"

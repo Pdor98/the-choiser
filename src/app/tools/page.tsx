@@ -8,6 +8,7 @@ import {
   EditorialFooter,
   EditorialSectionHeader,
 } from "@/components/layout/editorial-elements";
+import { ToolsScrollStory } from "@/components/home/tools-scroll-story";
 import { PageExitBar } from "@/components/layout/page-exit-bar";
 import { Card } from "@/components/ui/card";
 import { DiceArenaGame } from "@/features/games/dice-arena";
@@ -72,6 +73,8 @@ export default function ToolsPage() {
           </div>
         </div>
       </section>
+
+      <ToolsScrollStory />
 
       <section
         id="tools-deck"
