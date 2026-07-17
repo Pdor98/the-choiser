@@ -38,6 +38,7 @@ Ultimo aggiornamento: 2026-07-17
 - Per usare il QR da un altro dispositivo in LAN, il computer host deve essere raggiunto tramite il proprio indirizzo di rete, non tramite localhost.
 - Entrando in Gioca con altri, la stanza host viene creata automaticamente; il join tramite codice, link o QR resta disponibile per gli altri partecipanti.
 - Su `/games/tab-who` la navbar resta raggiungibile durante lo scroll e passa alla pill compatta; il controller duplicato nel layout è stato rimosso.
+- Il pulsante `Gioca con altri` è una CTA primaria più evidente su desktop e a larghezza piena su mobile.
 - La versione GitHub Pages continua a essere statica: il pulsante `Gioca con altri` e la condivisione stanza non possono funzionare online senza un backend pubblico.
 - Su `origin/develop` è stato rilevato un force update con commit non Choiser/CustodeAI; non fare force push su quel branch senza verifica esplicita.
 

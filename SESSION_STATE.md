@@ -39,6 +39,7 @@ Last updated: 2026-07-17
 - Entering the local multiplayer mode now creates the host room automatically; joining by code/link/QR remains available.
 - The multiplayer room, automatic room creation, manual sharing, and QR sharing are committed on `main` and have been verified locally.
 - On `/games/tab-who`, the navbar remains reachable while scrolling and collapses to its compact pill instead of disappearing; the duplicate layout-level header controller was removed.
+- The local multiplayer entry button on `/games/tab-who` is now a more visible primary CTA on desktop and full-width on mobile.
 - `scripts/export-github-pages.mjs` temporarily excludes `src/app/api` and forces `NEXT_PUBLIC_TABWHO_ROOM_ENABLED=false` during Pages export so the public build stays static-compatible.
 - Note: on 2026-05-12, `origin/develop` had been force-updated to unrelated `CustodeAI` commits. Do not force-push local `develop` over it without first checking repo intent.
 

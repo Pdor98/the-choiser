@@ -26,10 +26,10 @@ export function TabWhoExperience() {
         <div className="flex justify-end">
           <Button
             type="button"
-            variant={activeMode === "room" ? "secondary" : "ghost"}
-            icon={<Users className="size-4" />}
+            variant={activeMode === "room" ? "secondary" : "primary"}
+            icon={<Users className="size-5" />}
             onClick={() => setMode(activeMode === "room" ? "solo" : "room")}
-            className="min-h-10 px-4 text-xs"
+            className="min-h-12 w-full max-w-sm px-6 text-sm shadow-[0_22px_52px_-28px_rgba(34,211,238,0.58)] sm:w-auto"
           >
             {activeMode === "room" ? "Torna al gioco" : "Gioca con altri"}
           </Button>
