@@ -33,6 +33,7 @@ export async function POST(request: Request, context: RouteContext) {
       body.playerId,
       body.type,
       isTabWhoDuration(body.selectedDuration) ? body.selectedDuration : undefined,
+      body.targetPlayerId,
     );
 
     return NextResponse.json({ room });

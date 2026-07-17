@@ -27,7 +27,6 @@ import {
 import { Card } from "@/components/ui/card";
 import { parole } from "@/features/games/tab-who-data";
 import {
-  durationOptions,
   type TabWhoGameState as GameState,
   type TabWhoLastAction as LastAction,
   shuffleTabWhoDeck,
@@ -35,6 +34,7 @@ import {
 
 const darkPrimaryActionClass =
   "bg-slate-950 !text-white hover:bg-slate-800 hover:!text-white [&>*]:!text-white disabled:!opacity-100 disabled:!text-white disabled:[&>*]:!text-white";
+const DEFAULT_DURATION = 60;
 
 function createPreparedDeck(excludeWord?: string) {
   const nextDeck = shuffleTabWhoDeck(parole);
@@ -51,14 +51,12 @@ export function TabWhoGame() {
   const [cardIndex, setCardIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [mistakes, setMistakes] = useState(0);
-  const [selectedDuration, setSelectedDuration] =
-    useState<(typeof durationOptions)[number]>(60);
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(DEFAULT_DURATION);
   const [gameState, setGameState] = useState<GameState>("idle");
   const [lastAction, setLastAction] = useState<LastAction>(null);
 
   const currentCard = deck[cardIndex] ?? deck[0];
-  const progress = (timeLeft / selectedDuration) * 100;
+  const progress = (timeLeft / DEFAULT_DURATION) * 100;
   const cardsSeen = gameState === "idle" ? 0 : cardIndex + 1;
 
   const statusCopy = useMemo(() => {
@@ -126,7 +124,7 @@ export function TabWhoGame() {
   function startGame() {
     setScore(0);
     setMistakes(0);
-    setTimeLeft(selectedDuration);
+    setTimeLeft(DEFAULT_DURATION);
     setLastAction(null);
     setGameState("playing");
   }
@@ -136,7 +134,7 @@ export function TabWhoGame() {
     setCardIndex(0);
     setScore(0);
     setMistakes(0);
-    setTimeLeft(selectedDuration);
+    setTimeLeft(DEFAULT_DURATION);
     setLastAction(null);
     setGameState("playing");
   }
@@ -146,7 +144,7 @@ export function TabWhoGame() {
     setCardIndex(0);
     setScore(0);
     setMistakes(0);
-    setTimeLeft(selectedDuration);
+    setTimeLeft(DEFAULT_DURATION);
     setLastAction(null);
     setGameState("idle");
   }
@@ -227,8 +225,7 @@ export function TabWhoGame() {
                 </div>
               </div>
 
-              <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_280px] xl:items-stretch">
-                <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm">
+              <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm">
                   <div className="space-y-3 text-center">
                     <p className="text-xs uppercase tracking-[0.24em] text-slate-500">
                       Carta pronta
@@ -248,43 +245,6 @@ export function TabWhoGame() {
                       </div>
                     ))}
                   </div>
-                </div>
-
-                <div className="grid gap-3">
-                  <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm">
-                    <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
-                      Durata turno
-                    </p>
-                    <div className="mt-3 grid grid-cols-3 gap-2">
-                      {durationOptions.map((option) => {
-                        const isActive = selectedDuration === option;
-
-                        return (
-                          <button
-                            key={option}
-                            type="button"
-                            onClick={() => {
-                              setSelectedDuration(option);
-                              setTimeLeft(option);
-                            }}
-                            className={`rounded-2xl border px-3 py-3 text-sm font-semibold transition duration-300 ${
-                              isActive
-                                ? "border-amber-300 bg-amber-50 text-slate-950 shadow-sm"
-                                : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50"
-                            }`}
-                          >
-                            {option}s
-                          </button>
-                        );
-                      })}
-                    </div>
-                    <p className="mt-3 text-sm leading-6 text-slate-600">
-                      Scegli un round rapido da 30 secondi, classico da 60 o più
-                      lungo da 180.
-                    </p>
-                  </div>
-
-                </div>
               </div>
 
               <div className="flex flex-wrap items-center justify-center gap-3">
@@ -325,8 +285,8 @@ export function TabWhoGame() {
                     Prima di partire
                   </p>
                   <p className="mt-3 text-sm leading-6 text-slate-600">
-                    Controlla la carta pronta, scegli la durata e avvia il
-                    turno solo quando il gruppo è pronto.
+                    Controlla la carta pronta e avvia il turno quando il gruppo
+                    è pronto.
                   </p>
                 </div>
 

@@ -30,6 +30,14 @@ Last updated: 2026-07-15
   - join with code
   - synchronized card / score / round state across devices on the same local service
 - Important: the room mode is intentionally disabled in the GitHub Pages export because `docs/` is static and cannot serve Next API routes.
+- Current local work adds turn management to the room mode:
+  - host can assign or advance the active player
+  - only the host or active player can score, skip, or finish the round
+  - all participants see the active player and synchronized controls
+- Local room sharing now offers a manual link or locally generated QR code after room creation.
+- The QR encodes the current room URL; for another device on the same network, the host must open Choiser through the computer's LAN address instead of localhost.
+- Entering the local multiplayer mode now creates the host room automatically; joining by code/link/QR remains available.
+- The turn-management changes are currently uncommitted on the local `main` checkout and have been verified in the browser with two tabs.
 - `scripts/export-github-pages.mjs` temporarily excludes `src/app/api` and forces `NEXT_PUBLIC_TABWHO_ROOM_ENABLED=false` during Pages export so the public build stays static-compatible.
 - Note: on 2026-05-12, `origin/develop` had been force-updated to unrelated `CustodeAI` commits. Do not force-push local `develop` over it without first checking repo intent.
 

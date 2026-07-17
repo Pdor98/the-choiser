@@ -19,6 +19,7 @@ export type TabWhoRoomSnapshot = {
   phase: TabWhoRoomPhase;
   version: number;
   players: TabWhoRoomPlayer[];
+  activePlayerId: string | null;
   selectedDuration: TabWhoDuration;
   timeLeft: number;
   score: number;
@@ -50,12 +51,15 @@ export type TabWhoRoomActionType =
   | "restart"
   | "return-to-lobby"
   | "set-duration"
+  | "set-active-player"
+  | "advance-player"
   | "leave";
 
 export type TabWhoRoomActionPayload = {
   type: TabWhoRoomActionType;
   playerId: string;
   selectedDuration?: TabWhoDuration;
+  targetPlayerId?: string;
 };
 
 export type TabWhoRoomMutationResponse = {

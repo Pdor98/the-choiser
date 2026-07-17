@@ -128,6 +128,8 @@ const showcaseCards = [
   },
 ] as const;
 
+const tabWhoRoomEnabled = process.env.NEXT_PUBLIC_TABWHO_ROOM_ENABLED !== "false";
+
 const carouselQuotes = [
   "Le migliori serate non si pianificano. Si innescano.",
   "Un gioco può dire più di mille presentazioni.",
@@ -465,8 +467,18 @@ export default function GamesPage() {
                   <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">
                     {card.description}
                   </p>
+                  {card.title === "TAB-WHO?" && tabWhoRoomEnabled ? (
+                    <span className="mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/[0.07] px-3 py-1.5 text-xs font-medium text-cyan-100">
+                      <Users className="size-3.5" />
+                      Crea una stanza locale
+                    </span>
+                  ) : null}
                   <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-slate-200">
-                    <span>Apri</span>
+                    <span>
+                      {card.title === "TAB-WHO?" && tabWhoRoomEnabled
+                        ? "Apri e scegli modalità"
+                        : "Apri"}
+                    </span>
                     <ChevronRight className="size-4 transition duration-300 group-hover:translate-x-0.5" />
                   </div>
                 </div>

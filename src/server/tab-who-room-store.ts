@@ -15,6 +15,7 @@ type InternalRoom = {
   updatedAt: number;
   hostId: string;
   players: TabWhoRoomPlayer[];
+  activePlayerId: string | null;
   selectedDuration: TabWhoDuration;
   phase: "lobby" | "playing" | "finished";
   startedAt: number | null;
@@ -155,6 +156,7 @@ function buildSnapshot(room: InternalRoom): TabWhoRoomSnapshot {
     phase: room.phase,
     version: room.version,
     players: clonePlayers(room.players),
+    activePlayerId: room.activePlayerId,
     selectedDuration: room.selectedDuration,
     timeLeft: getTimeLeft(room),
     score: room.score,
@@ -181,6 +183,22 @@ function moveToNextCard(room: InternalRoom) {
   room.cardIndex = 0;
 }
 
+function getNextPlayerId(room: InternalRoom, currentPlayerId?: string | null) {
+  if (room.players.length === 0) {
+    return null;
+  }
+
+  const activeId = currentPlayerId ?? room.activePlayerId;
+  const currentIndex = room.players.findIndex((player) => player.id === activeId);
+
+  if (currentIndex < 0) {
+    return room.players[0]?.id ?? null;
+  }
+
+  const nextIndex = (currentIndex + 1) % room.players.length;
+  return room.players[nextIndex]?.id ?? null;
+}
+
 function assertLobby(room: InternalRoom) {
   if (room.phase !== "lobby") {
     throw new TabWhoRoomError("Questa azione e disponibile solo nella lobby.");
@@ -199,6 +217,17 @@ function assertHost(room: InternalRoom, playerId: string) {
   if (room.hostId !== playerId) {
     throw new TabWhoRoomError("Solo l'host puo fare questa azione.", 403);
   }
+}
+
+function assertRoundController(room: InternalRoom, playerId: string) {
+  if (room.hostId === playerId || room.activePlayerId === playerId) {
+    return;
+  }
+
+  throw new TabWhoRoomError(
+    "Solo l'host o il giocatore attivo possono gestire questo turno.",
+    403,
+  );
 }
 
 export function createRoom(playerName: string, selectedDuration: TabWhoDuration) {
@@ -232,6 +261,7 @@ export function createRoom(playerName: string, selectedDuration: TabWhoDuration)
         joinedAt: now,
       },
     ],
+    activePlayerId: playerId,
     selectedDuration,
     phase: "lobby",
     startedAt: null,
@@ -293,8 +323,11 @@ export function performRoomAction(
     | "restart"
     | "return-to-lobby"
     | "set-duration"
+    | "set-active-player"
+    | "advance-player"
     | "leave",
   selectedDuration?: TabWhoDuration,
+  targetPlayerId?: string,
 ) {
   const room = getRoomOrThrow(code);
   getPlayerOrThrow(room, playerId);
@@ -324,6 +357,10 @@ export function performRoomAction(
       room.lastAction = null;
       room.cardIndex = 0;
       room.deck = createPreparedDeck(room.deck[room.cardIndex]?.parola);
+      room.activePlayerId =
+        room.activePlayerId && room.players.some((player) => player.id === room.activePlayerId)
+          ? room.activePlayerId
+          : room.hostId;
       room.updatedAt = Date.now();
       room.version += 1;
       break;
@@ -338,6 +375,10 @@ export function performRoomAction(
       room.lastAction = null;
       room.cardIndex = 0;
       room.deck = createPreparedDeck(room.deck[room.cardIndex]?.parola);
+      room.activePlayerId =
+        room.activePlayerId && room.players.some((player) => player.id === room.activePlayerId)
+          ? room.activePlayerId
+          : room.hostId;
       room.updatedAt = Date.now();
       room.version += 1;
       break;
@@ -345,6 +386,7 @@ export function performRoomAction(
 
     case "finish": {
       assertPlaying(room);
+      assertRoundController(room, playerId);
       room.phase = "finished";
       room.lastAction = null;
       room.updatedAt = Date.now();
@@ -361,6 +403,32 @@ export function performRoomAction(
       room.lastAction = null;
       room.cardIndex = 0;
       room.deck = createPreparedDeck(room.deck[room.cardIndex]?.parola);
+      room.activePlayerId =
+        room.activePlayerId && room.players.some((player) => player.id === room.activePlayerId)
+          ? room.activePlayerId
+          : room.hostId;
+      room.updatedAt = Date.now();
+      room.version += 1;
+      break;
+    }
+
+    case "set-active-player": {
+      assertHost(room, playerId);
+
+      if (!targetPlayerId) {
+        throw new TabWhoRoomError("Giocatore attivo mancante.");
+      }
+
+      getPlayerOrThrow(room, targetPlayerId);
+      room.activePlayerId = targetPlayerId;
+      room.updatedAt = Date.now();
+      room.version += 1;
+      break;
+    }
+
+    case "advance-player": {
+      assertHost(room, playerId);
+      room.activePlayerId = getNextPlayerId(room);
       room.updatedAt = Date.now();
       room.version += 1;
       break;
@@ -368,6 +436,7 @@ export function performRoomAction(
 
     case "correct": {
       assertPlaying(room);
+      assertRoundController(room, playerId);
       room.score += 1;
       room.lastAction = "correct";
       moveToNextCard(room);
@@ -378,6 +447,7 @@ export function performRoomAction(
 
     case "wrong": {
       assertPlaying(room);
+      assertRoundController(room, playerId);
       room.mistakes += 1;
       room.lastAction = "wrong";
       moveToNextCard(room);
@@ -388,6 +458,7 @@ export function performRoomAction(
 
     case "skip": {
       assertPlaying(room);
+      assertRoundController(room, playerId);
       room.lastAction = "skip";
       moveToNextCard(room);
       room.updatedAt = Date.now();
@@ -412,6 +483,10 @@ export function performRoomAction(
         }));
       } else {
         room.players = nextPlayers;
+      }
+
+      if (!room.players.some((player) => player.id === room.activePlayerId)) {
+        room.activePlayerId = getNextPlayerId(room, playerId) ?? room.hostId;
       }
 
       room.updatedAt = Date.now();
