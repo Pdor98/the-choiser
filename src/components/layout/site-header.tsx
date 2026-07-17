@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 import { HeaderQuickSwitch } from "@/components/layout/header-quick-switch";
 import { cn } from "@/lib/utils";
@@ -9,6 +10,8 @@ const FULL_HEADER_THRESHOLD = 72;
 const REVEAL_DELTA = 4;
 
 export function SiteHeader() {
+  const pathname = usePathname();
+  const keepHeaderReachable = pathname.replace(/\/+$/, "").endsWith("/games/tab-who");
   const [mode, setMode] = useState<"full" | "hidden" | "compact">("full");
   const headerRef = useRef<HTMLElement | null>(null);
   const lastScrollYRef = useRef(0);
@@ -43,6 +46,12 @@ export function SiteHeader() {
       const scrollY = getScrollY();
       const delta = scrollY - lastScrollYRef.current;
 
+      if (keepHeaderReachable) {
+        setNextMode(scrollY <= FULL_HEADER_THRESHOLD ? "full" : "compact");
+        lastScrollYRef.current = scrollY;
+        return;
+      }
+
       if (scrollY <= FULL_HEADER_THRESHOLD) {
         setNextMode("full");
       } else if (delta > REVEAL_DELTA) {
@@ -58,6 +67,12 @@ export function SiteHeader() {
 
     const syncFromDirection = (direction: "down" | "up") => {
       const scrollY = getScrollY();
+
+      if (keepHeaderReachable) {
+        setNextMode(scrollY <= FULL_HEADER_THRESHOLD ? "full" : "compact");
+        lastScrollYRef.current = scrollY;
+        return;
+      }
 
       if (scrollY <= FULL_HEADER_THRESHOLD) {
         setNextMode("full");
@@ -134,7 +149,7 @@ export function SiteHeader() {
       timeoutIds.forEach((timeoutId) => window.clearTimeout(timeoutId));
       window.clearInterval(intervalId);
     };
-  }, []);
+  }, [keepHeaderReachable]);
 
   function handleBackToTop() {
     window.history.replaceState(null, "", window.location.pathname);

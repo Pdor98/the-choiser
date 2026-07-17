@@ -1,6 +1,6 @@
 # Project Memory
 
-Ultimo aggiornamento: 2026-07-15
+Ultimo aggiornamento: 2026-07-17
 
 ## Identita progetto
 
@@ -33,10 +33,12 @@ Ultimo aggiornamento: 2026-07-15
   - `Stanza locale` con codice e sincronizzazione multi-dispositivo via API Next locali
 - La modalità `Stanza locale` funziona in sviluppo / runtime Next, ma non deve apparire nella build GitHub Pages statica.
 - La stanza locale ora gestisce anche il turno attivo: l'host può assegnarlo o farlo avanzare, mentre il punteggio e i controlli del round sono disponibili all'host o al giocatore attivo.
-- Il lavoro sul turno attivo è locale e non ancora committato; il flusso è stato verificato con due schede browser e server Next attivo.
+- Il turno attivo e la condivisione stanza sono committati su `main`; il flusso è stato verificato localmente con server Next attivo.
 - La condivisione della stanza locale ora offre un pannello Manuale / QR code dopo la creazione, con QR generato localmente e link/codice come fallback.
 - Per usare il QR da un altro dispositivo in LAN, il computer host deve essere raggiunto tramite il proprio indirizzo di rete, non tramite localhost.
 - Entrando in Gioca con altri, la stanza host viene creata automaticamente; il join tramite codice, link o QR resta disponibile per gli altri partecipanti.
+- Su `/games/tab-who` la navbar resta raggiungibile durante lo scroll e passa alla pill compatta; il controller duplicato nel layout è stato rimosso.
+- La versione GitHub Pages continua a essere statica: il pulsante `Gioca con altri` e la condivisione stanza non possono funzionare online senza un backend pubblico.
 - Su `origin/develop` è stato rilevato un force update con commit non Choiser/CustodeAI; non fare force push su quel branch senza verifica esplicita.
 
 ## Continuita operativa

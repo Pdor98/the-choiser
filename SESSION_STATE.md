@@ -1,6 +1,6 @@
 # Session State
 
-Last updated: 2026-07-15
+Last updated: 2026-07-17
 
 ## Project Identity
 
@@ -9,7 +9,7 @@ Last updated: 2026-07-15
 - Legacy local repo path in older chats: `/Users/Davide/Documents/progetto`
 - Remote GitHub repo: `https://github.com/Pdor98/the-choiser.git`
 - Live site: `https://pdor98.github.io/the-choiser/`
-- Main working branch: `develop`
+- Main working branch: `main`
 
 ## Stack
 
@@ -22,7 +22,7 @@ Last updated: 2026-07-15
 
 ## Latest Published State
 
-- Published online on 2026-07-15 from `main` after regenerating `docs/`.
+- Published online on 2026-07-17 from `main` after regenerating `docs/`.
 - Live site: `https://pdor98.github.io/the-choiser/`
 - Home, Random, Games and Tools now use the newer editorial / scroll-story composition shipped in this release.
 - `TAB-WHO?` now supports a local room mode in the Next.js runtime:
@@ -37,7 +37,8 @@ Last updated: 2026-07-15
 - Local room sharing now offers a manual link or locally generated QR code after room creation.
 - The QR encodes the current room URL; for another device on the same network, the host must open Choiser through the computer's LAN address instead of localhost.
 - Entering the local multiplayer mode now creates the host room automatically; joining by code/link/QR remains available.
-- The turn-management changes are currently uncommitted on the local `main` checkout and have been verified in the browser with two tabs.
+- The multiplayer room, automatic room creation, manual sharing, and QR sharing are committed on `main` and have been verified locally.
+- On `/games/tab-who`, the navbar remains reachable while scrolling and collapses to its compact pill instead of disappearing; the duplicate layout-level header controller was removed.
 - `scripts/export-github-pages.mjs` temporarily excludes `src/app/api` and forces `NEXT_PUBLIC_TABWHO_ROOM_ENABLED=false` during Pages export so the public build stays static-compatible.
 - Note: on 2026-05-12, `origin/develop` had been force-updated to unrelated `CustodeAI` commits. Do not force-push local `develop` over it without first checking repo intent.
 
