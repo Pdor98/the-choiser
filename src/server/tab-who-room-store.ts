@@ -94,6 +94,19 @@ function clonePlayers(players: TabWhoRoomPlayer[]) {
   return players.map((player) => ({ ...player }));
 }
 
+function createGuestName(players: TabWhoRoomPlayer[]) {
+  const existingNames = new Set(
+    players.map((player) => player.name.toLowerCase()),
+  );
+  let guestNumber = 2;
+
+  while (existingNames.has(`giocatore ${guestNumber}`)) {
+    guestNumber += 1;
+  }
+
+  return `Giocatore ${guestNumber}`;
+}
+
 function getElapsedSeconds(room: InternalRoom) {
   if (room.phase !== "playing" || !room.startedAt) {
     return 0;
@@ -278,11 +291,7 @@ export function createRoom(playerName: string, selectedDuration: TabWhoDuration)
 
 export function joinRoom(code: string, playerName: string) {
   const room = getRoomOrThrow(code);
-  const name = playerName.trim();
-
-  if (!name) {
-    throw new TabWhoRoomError("Inserisci un nickname per entrare.");
-  }
+  const name = playerName.trim() || createGuestName(room.players);
 
   const existing = room.players.find(
     (player) => player.name.toLowerCase() === name.toLowerCase(),

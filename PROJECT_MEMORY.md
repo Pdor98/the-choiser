@@ -40,6 +40,7 @@ Ultimo aggiornamento: 2026-07-27
 - Su `/games/tab-who` la navbar resta raggiungibile durante lo scroll e passa alla pill compatta; il controller duplicato nel layout è stato rimosso.
 - Il pulsante `Gioca con altri` è una CTA primaria più evidente su desktop e a larghezza piena su mobile.
 - Se il gioco viene aperto su `localhost`, il link e il QR della stanza usano automaticamente l'indirizzo LAN rilevato dal server locale.
+- Il join da QR/link non richiede più un nickname: se il campo è vuoto viene assegnato automaticamente un nome ospite univoco.
 - La versione GitHub Pages continua a essere statica: il pulsante `Gioca con altri` e la condivisione stanza non possono funzionare online senza un backend pubblico.
 - Su `origin/develop` è stato rilevato un force update con commit non Choiser/CustodeAI; non fare force push su quel branch senza verifica esplicita.
 

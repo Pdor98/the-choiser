@@ -41,6 +41,7 @@ Last updated: 2026-07-27
 - On `/games/tab-who`, the navbar remains reachable while scrolling and collapses to its compact pill instead of disappearing; the duplicate layout-level header controller was removed.
 - The local multiplayer entry button on `/games/tab-who` is now a more visible primary CTA on desktop and full-width on mobile.
 - When the host opens the game on `localhost`, room links and QR codes now use the computer's detected LAN address so mobile devices on the same Wi-Fi can reach the room.
+- Joining a room from a QR/link now works without a nickname; the server assigns a unique guest name such as `Giocatore 2`.
 - `scripts/export-github-pages.mjs` temporarily excludes `src/app/api` and forces `NEXT_PUBLIC_TABWHO_ROOM_ENABLED=false` during Pages export so the public build stays static-compatible.
 - Note: on 2026-05-12, `origin/develop` had been force-updated to unrelated `CustodeAI` commits. Do not force-push local `develop` over it without first checking repo intent.
 

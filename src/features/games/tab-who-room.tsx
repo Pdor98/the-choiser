@@ -480,7 +480,7 @@ export function TabWhoRoomGame() {
                   <Input
                     value={joinName}
                     onChange={(event) => setJoinName(event.target.value)}
-                    placeholder="Il tuo nickname"
+                    placeholder="Nome (opzionale)"
                     maxLength={24}
                   />
                   <Input
@@ -522,7 +522,7 @@ export function TabWhoRoomGame() {
                 <Input
                   value={joinName}
                   onChange={(event) => setJoinName(event.target.value)}
-                  placeholder="Il tuo nickname"
+                  placeholder="Nome (opzionale)"
                   maxLength={24}
                 />
                 <Button
