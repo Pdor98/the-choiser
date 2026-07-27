@@ -82,6 +82,7 @@ export function TabWhoRoomGame() {
   const [shareOpen, setShareOpen] = useState(false);
   const [shareMode, setShareMode] = useState<ShareMode>("manual");
   const [qrDataUrl, setQrDataUrl] = useState("");
+  const [shareOrigin, setShareOrigin] = useState("");
   const [error, setError] = useState<string | null>(null);
   const autoCreateStartedRef = useRef(false);
 
@@ -96,6 +97,43 @@ export function TabWhoRoomGame() {
 
     const storedPlayerId = window.localStorage.getItem(roomStorageKey(roomCode));
     setPlayerId(storedPlayerId);
+  }, [roomCode]);
+
+  useEffect(() => {
+    if (!roomCode || typeof window === "undefined") {
+      setShareOrigin("");
+      return undefined;
+    }
+
+    const currentOrigin = window.location.origin;
+    const isLocalHost = ["localhost", "127.0.0.1"].includes(
+      window.location.hostname,
+    );
+
+    if (!isLocalHost) {
+      setShareOrigin(currentOrigin);
+      return undefined;
+    }
+
+    let cancelled = false;
+
+    void requestJson<{ origin: string }>("/api/tab-who/network-origin", {
+      method: "GET",
+    })
+      .then((payload) => {
+        if (!cancelled) {
+          setShareOrigin(payload.origin);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setShareOrigin(currentOrigin);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
   }, [roomCode]);
 
   useEffect(() => {
@@ -161,15 +199,16 @@ export function TabWhoRoomGame() {
   const isHost = me?.id === room?.hostId;
   const isActivePlayer = Boolean(me && room && me.id === room.activePlayerId);
   const canControlRound = Boolean(room && (isHost || isActivePlayer));
-  const shareUrl =
-    typeof window !== "undefined" && roomCode
-      ? `${window.location.origin}/games/tab-who?room=${roomCode}`
-      : "";
+  const shareUrl = shareOrigin && roomCode
+    ? `${shareOrigin}/games/tab-who?room=${roomCode}`
+    : "";
+  const shareOriginHostname = shareOrigin
+    ? new URL(shareOrigin).hostname
+    : "";
   const shareHint =
-    typeof window !== "undefined" &&
-    ["localhost", "127.0.0.1"].includes(window.location.hostname)
-      ? "Sugli altri dispositivi apri Choiser con l'indirizzo di rete del computer host, poi inserisci questo codice stanza."
-      : "Se tutti usano questo stesso indirizzo, puoi condividere il link o il codice stanza.";
+    ["localhost", "127.0.0.1"].includes(shareOriginHostname)
+      ? "Apri questo link sugli altri dispositivi collegati alla stessa rete Wi-Fi. Se non risponde, controlla che il computer host sia acceso e visibile in rete."
+      : "Apri questo link sugli altri dispositivi collegati alla stessa rete Wi-Fi.";
 
   useEffect(() => {
     let cancelled = false;

@@ -1,6 +1,6 @@
 # Project Memory
 
-Ultimo aggiornamento: 2026-07-17
+Ultimo aggiornamento: 2026-07-27
 
 ## Identita progetto
 
@@ -39,6 +39,7 @@ Ultimo aggiornamento: 2026-07-17
 - Entrando in Gioca con altri, la stanza host viene creata automaticamente; il join tramite codice, link o QR resta disponibile per gli altri partecipanti.
 - Su `/games/tab-who` la navbar resta raggiungibile durante lo scroll e passa alla pill compatta; il controller duplicato nel layout è stato rimosso.
 - Il pulsante `Gioca con altri` è una CTA primaria più evidente su desktop e a larghezza piena su mobile.
+- Se il gioco viene aperto su `localhost`, il link e il QR della stanza usano automaticamente l'indirizzo LAN rilevato dal server locale.
 - La versione GitHub Pages continua a essere statica: il pulsante `Gioca con altri` e la condivisione stanza non possono funzionare online senza un backend pubblico.
 - Su `origin/develop` è stato rilevato un force update con commit non Choiser/CustodeAI; non fare force push su quel branch senza verifica esplicita.
 
